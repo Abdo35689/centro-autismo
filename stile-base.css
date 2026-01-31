@@ -41,7 +41,7 @@ body {
 
 /* QUI controlli la dimensione del logo */
 .site-logo {
-  height: 50px;   /* se lo vuoi più piccolo, prova 40px o 35px */
+  height: 35px;   /* se lo vuoi più piccolo, prova 40px o 35px */
   width: auto;
 }
 
