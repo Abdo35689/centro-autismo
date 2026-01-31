@@ -32,7 +32,7 @@
             padding: 0;
             color: var(--text-color);
             background-color: #f8fafc;
-            scroll-behavior: smooth; /* Scorrimento morbido per i link interni */
+            scroll-behavior: smooth;
         }
 
         a {
@@ -97,13 +97,12 @@
             color: #94a3b8;
         }
 
-        /* Navigazione con sfondo mobile */
         .nav-shell {
             background: rgba(15,23,42,0.7);
             border-radius: 999px;
             padding: 5px;
             border: 1px solid rgba(148, 163, 184, 0.45);
-            position: relative; /* Necessario per il posizionamento assoluto dello sfondo */
+            position: relative;
         }
 
         nav ul {
@@ -113,7 +112,7 @@
             margin: 0;
             align-items: center;
             position: relative;
-            z-index: 2; /* I link devono stare sopra lo sfondo mobile */
+            z-index: 2;
         }
 
         nav ul li {
@@ -131,33 +130,35 @@
             position: relative;
             z-index: 2;
         }
-        
-        /* Questo è l'elemento che si muoverà */
+
+        /* “Pill” azzurro che si muove */
         .nav-indicator {
             position: absolute;
-            top: 5px; /* Corrisponde al padding del .nav-shell */
+            top: 5px;
             left: 5px;
             height: calc(100% - 10px);
-            background: var(--secondary-color);
+            background: radial-gradient(circle at 30% 30%, #f9fafb, #e0f2fe 45%, #0ea5e9);
             border-radius: 999px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            z-index: 1; /* Sta dietro ai link */
-            width: 0; /* Inizialmente zero, viene settato via JS */
-            opacity: 0; /* Invisibile finché non calcolato */
-            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+            transition:
+                transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+                width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                height 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.25s ease-out;
+            z-index: 1;
+            width: 0;
+            opacity: 0;
+            box-shadow: 0 6px 18px rgba(14, 165, 233, 0.55);
         }
 
-        /* Quando il mouse passa sopra un link, cambia colore del testo */
         nav ul li a:hover {
             color: #ffffff;
         }
 
-        /* Classe per il link attivo (testo scuro per contrasto col blu) */
         nav ul li a.active-link {
             color: var(--dark-blue);
             font-weight: 600;
         }
-        
+
         /* HERO ------------------------------------------------------------- */
         .hero {
             background:
@@ -549,14 +550,11 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            
-            /* Su mobile nascondiamo l'indicatore animato complesso per semplicità, 
-               o lo lasciamo ma potrebbe comportarsi in modo strano su più righe.
-               Qui lo nascondo per pulizia su mobile. */
+
             .nav-indicator {
-                display: none;
+                display: none; /* Su mobile manteniamo stile più semplice */
             }
-            
+
             nav ul li a.active-link {
                 background: var(--secondary-color);
                 color: var(--dark-blue);
@@ -570,24 +568,21 @@
     <div class="container">
         <nav>
             <div class="logo-container">
-                <!-- Se l'immagine non si trova, assicurati che il percorso sia giusto -->
                 <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
                 <div class="brand-block">
                     <span class="brand-name">Centro BluMente</span>
                     <span class="brand-subtitle">Diagnosi, intervento e supporto per lo spettro autistico</span>
                 </div>
             </div>
-            
+
             <div class="nav-shell">
-                <!-- L'elemento che fa l'animazione di sfondo -->
                 <div class="nav-indicator"></div>
-                
                 <ul>
-                    <li><a href="#chi-siamo" class="nav-link">L'Autismo</a></li>
-                    <li><a href="#servizi" class="nav-link">Servizi</a></li>
-                    <li><a href="#terapie" class="nav-link">Terapie</a></li>
-                    <li><a href="#struttura" class="nav-link">Struttura</a></li>
-                    <li><a href="#contatti" class="nav-link">Prenota</a></li>
+                    <li><a href="#chi-siamo"  class="nav-link" data-target="chi-siamo">L'Autismo</a></li>
+                    <li><a href="#servizi"   class="nav-link" data-target="servizi">Servizi</a></li>
+                    <li><a href="#terapie"   class="nav-link" data-target="terapie">Terapie</a></li>
+                    <li><a href="#struttura" class="nav-link" data-target="struttura">Struttura</a></li>
+                    <li><a href="#contatti"  class="nav-link" data-target="contatti">Prenota</a></li>
                 </ul>
             </div>
         </nav>
@@ -790,44 +785,77 @@
     </div>
 </footer>
 
-<!-- SCRIPT PER ANIMAZIONE MENU -->
+<!-- SCRIPT: pill che segue hover + scroll (effetto fluido) -->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const navLinks = document.querySelectorAll('.nav-link');
-        const indicator = document.querySelector('.nav-indicator');
-        const navShell = document.querySelector('.nav-shell');
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+  const indicator = document.querySelector('.nav-indicator');
+  const navShell = document.querySelector('.nav-shell');
 
-        function moveIndicator(element) {
-            // Calcola posizione e dimensione rispetto al contenitore relativo
-            const shellRect = navShell.getBoundingClientRect();
-            const rect = element.getBoundingClientRect();
-            
-            const left = rect.left - shellRect.left;
-            const top = rect.top - shellRect.top;
-            
-            indicator.style.width = `${rect.width}px`;
-            indicator.style.height = `${rect.height}px`;
-            indicator.style.transform = `translate(${left}px, ${top}px)`;
-            indicator.style.opacity = '1';
-        }
+  if (!indicator || !navShell || navLinks.length === 0) return;
 
-        // Aggiungi listener per hover
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', (e) => {
-                moveIndicator(e.target);
-                // Rimuovi classe active dagli altri per stile testo
-                navLinks.forEach(l => l.classList.remove('active-link'));
-                e.target.classList.add('active-link');
-            });
-        });
+  function moveIndicator(el) {
+    const shellRect = navShell.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
+    const left = rect.left - shellRect.left;
+    const top = rect.top - shellRect.top;
 
-        // Opzionale: torna all'elemento attivo originale quando il mouse esce dal menu?
-        // Per ora lasciamo che resti sull'ultimo hoverato, oppure potremmo implementare
-        // la logica per "tornare" alla sezione corrente (scroll spy).
-        
-        // Inizializza sul primo elemento o su nessuno
-        // moveIndicator(navLinks[0]); 
+    indicator.style.width = rect.width + 'px';
+    indicator.style.height = rect.height + 'px';
+    indicator.style.transform = `translate(${left}px, ${top}px)`;
+    indicator.style.opacity = '1';
+  }
+
+  // Hover: il pill segue il link
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      setActiveLink(link);
+      moveIndicator(link);
     });
+  });
+
+  // Scroll spy: mentre scrolli, il pill si sposta alla sezione attiva
+  const sectionIds = navLinks.map(l => l.dataset.target);
+  const sections = sectionIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  function setActiveLink(link) {
+    navLinks.forEach(l => l.classList.remove('active-link'));
+    link.classList.add('active-link');
+  }
+
+  // Usa IntersectionObserver per capire quale sezione è in vista
+  const observer = new IntersectionObserver((entries) => {
+    let visibleEntry = null;
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!visibleEntry || entry.intersectionRatio > visibleEntry.intersectionRatio) {
+          visibleEntry = entry;
+        }
+      }
+    });
+
+    if (visibleEntry) {
+      const id = visibleEntry.target.id;
+      const activeNav = navLinks.find(l => l.dataset.target === id);
+      if (activeNav) {
+        setActiveLink(activeNav);
+        moveIndicator(activeNav);
+      }
+    }
+  }, {
+    root: null,
+    threshold: [0.4, 0.6]  // il pill cambia quando ~metà sezione è visibile
+  });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // Posiziona il pill su L'Autismo all'inizio (o niente se vuoi che appaia solo allo scroll)
+  moveIndicator(navLinks[0]);
+  setActiveLink(navLinks[0]);
+});
 </script>
 
 </body>
