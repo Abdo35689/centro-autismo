@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centro BluMente - Supporto e Diagnosi Autismo</title>
     <style>
-        /* --- PALETTE BLU --- */
         :root {
             --primary-color: #0056b3;
             --secondary-color: #00a8cc;
@@ -24,7 +23,6 @@
             background-color: var(--white);
         }
 
-        /* Header & Navigazione */
         header {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -85,7 +83,6 @@
             color: var(--primary-color);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 86, 179, 0.9), rgba(0, 168, 204, 0.9)),
                         url('https://placehold.co/1920x600/003366/ffffff?text=Autismo+Consapevolezza+in+Blu');
@@ -125,7 +122,6 @@
             background: #008cba;
         }
 
-        /* Sezioni Contenuto */
         .section {
             padding: 60px 0;
         }
@@ -141,7 +137,6 @@
             font-size: 2rem;
         }
 
-        /* Griglie */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -162,7 +157,6 @@
             margin-bottom: 15px;
         }
 
-        /* Sezione Informativa */
         .info-split {
             display: flex;
             flex-wrap: wrap;
@@ -186,26 +180,40 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* Galleria Struttura */
+        /* GALLERIA INTERATTIVA */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
 
+        .gallery-item {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            background: #ffffff;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 5px;
-            transition: transform 0.3s;
+            transition: transform 0.3s ease;
         }
 
-        .gallery-item img:hover {
-            transform: scale(1.03);
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.18);
         }
 
-        /* Footer */
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
         footer {
             background: var(--dark-blue);
             color: #e0ecff;
@@ -214,7 +222,6 @@
             margin-top: auto;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             nav ul { flex-direction: column; text-align: center; display: none; }
@@ -223,181 +230,156 @@
 </head>
 <body>
 
-    <!-- HEADER & LOGO -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo-container">
-                    <!-- Nome del logo (assicurati che su GitHub sia proprio image.jpeg) -->
-                    <img src="image.jpeg" alt="Logo Cervello Blu" class="logo-img">
-                    <span class="brand-name">Centro BluMente</span>
-                </div>
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo-container">
+                <img src="image.jpeg.jpg" alt="Logo Cervello Blu" class="logo-img">
+                <span class="brand-name">Centro BluMente</span>
+            </div>
+            <ul>
+                <li><a href="#chi-siamo">L'Autismo</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#terapie">Terapie</a></li>
+                <li><a href="#struttura">La Struttura</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Accogliere. Comprendere. Crescere.</h1>
+        <p>Un punto di riferimento per diagnosi precoce, interventi educativi e supporto alle famiglie nello spettro dell'autismo.</p>
+        <a href="#contatti" class="btn">Prenota un colloquio</a>
+        <p style="margin-top:20px; font-size:0.95rem;">
+          Il blu è il colore scelto a livello internazionale per rappresentare la consapevolezza
+          sull'autismo: richiama calma, sicurezza e desiderio di conoscenza e viene usato ogni
+          2 aprile nella Giornata Mondiale dell'Autismo.
+        </p>
+    </div>
+</section>
+
+<section id="chi-siamo" class="section">
+    <div class="container">
+        <h2 class="section-title">Cos'è lo Spettro dell'Autismo?</h2>
+        <div class="info-split">
+            <div class="info-text">
+                <p>Il Disturbo dello Spettro Autistico (ASD) è una condizione del neurosviluppo caratterizzata da difficoltà nella comunicazione sociale e dalla presenza di comportamenti e interessi ristretti e ripetitivi.</p>
                 <ul>
-                    <li><a href="#chi-siamo">L'Autismo</a></li>
-                    <li><a href="#servizi">Servizi</a></li>
-                    <li><a href="#terapie">Terapie</a></li>
-                    <li><a href="#struttura">La Struttura</a></li>
-                    <li><a href="#contatti">Contatti</a></li>
+                    <li><strong>Comunicazione sociale:</strong> difficoltà nella reciprocità, nel contatto oculare, nell'uso di gesti e nel comprendere le regole sociali implicite.[web:124][web:125]</li>
+                    <li><strong>Comportamenti ripetitivi:</strong> routine rigide, movimenti stereotipati, interessi intensi e particolari sensibilità agli stimoli sensoriali.[web:119][web:123]</li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container">
-            <h1>Accogliere. Comprendere. Crescere.</h1>
-            <p>Un punto di riferimento per diagnosi precoce, interventi educativi e supporto alle famiglie nello spettro dell'autismo.</p>
-            <a href="#contatti" class="btn">Prenota un colloquio</a>
-            <p style="margin-top:20px; font-size:0.95rem;">
-              Il blu è il colore scelto a livello internazionale per rappresentare la consapevolezza
-              sull'autismo: richiama calma, sicurezza e desiderio di conoscenza e viene usato ogni
-              2 aprile nella Giornata Mondiale dell'Autismo.
-            </p>
-        </div>
-    </section>
-
-    <!-- CHI SIAMO / INFO AUTISMO -->
-    <section id="chi-siamo" class="section">
-        <div class="container">
-            <h2 class="section-title">Cos'è lo Spettro dell'Autismo?</h2>
-            <div class="info-split">
-                <div class="info-text">
-                    <p>Il Disturbo dello Spettro Autistico (ASD) è una condizione del neurosviluppo caratterizzata da difficoltà nella comunicazione sociale e dalla presenza di comportamenti e interessi ristretti e ripetitivi, secondo i criteri del DSM-5.</p>
-                    <ul>
-                        <li><strong>Comunicazione sociale:</strong> difficoltà nella reciprocità, nel contatto oculare, nell'uso di gesti e nel comprendere le regole sociali implicite.</li>
-                        <li><strong>Comportamenti ripetitivi:</strong> routine rigide, movimenti stereotipati, interessi intensi e particolari sensibilità ai suoni, luci o contatti fisici.</li>
-                    </ul>
-                    <p>La diagnosi si basa sull'osservazione clinica e su strumenti standardizzati e permette di definire il livello di supporto necessario per la persona e la sua famiglia.</p>
-                </div>
-                <div class="info-img">
-                    <img src="https://placehold.co/600x400/00a8cc/ffffff?text=Terapia+e+Supporto" alt="Sessione di terapia">
-                </div>
+                <p>La diagnosi si basa su valutazioni cliniche specialistiche e strumenti standardizzati che permettono di definire il livello di supporto necessario per la persona e la sua famiglia.[web:119][web:124]</p>
+            </div>
+            <div class="info-img">
+                <img src="https://placehold.co/600x400/00a8cc/ffffff?text=Terapia+e+Supporto" alt="Sessione di terapia">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- I NOSTRI SERVIZI -->
-    <section id="servizi" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">I Nostri Percorsi</h2>
-            <div class="services-grid">
-                <div class="card">
-                    <h3>Diagnosi Precoce</h3>
-                    <p>Valutazioni cliniche multidisciplinari e uso di test specifici per riconoscere i segnali dello spettro autistico fin dai primi anni di vita, così da avviare rapidamente il percorso di intervento.</p>
-                </div>
-                <div class="card">
-                    <h3>Supporto Scolastico</h3>
-                    <p>Collaborazione con scuola e insegnanti di sostegno per costruire percorsi inclusivi, adattare materiali e ambienti e facilitare la partecipazione alla vita di classe.</p>
-                </div>
-                <div class="card">
-                    <h3>Parent Training</h3>
-                    <p>Incontri dedicati ai genitori per condividere strategie educative, gestire situazioni difficili e sostenere la relazione quotidiana con il proprio figlio.</p>
-                </div>
+<section id="servizi" class="section bg-light">
+    <div class="container">
+        <h2 class="section-title">I Nostri Percorsi</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Diagnosi Precoce</h3>
+                <p>Valutazioni cliniche multidisciplinari per riconoscere i segnali dello spettro autistico fin dai primi anni di vita e avviare rapidamente il percorso di intervento.[web:119][web:124]</p>
+            </div>
+            <div class="card">
+                <h3>Supporto Scolastico</h3>
+                <p>Collaborazione con la scuola per costruire percorsi inclusivi, adattare materiali e ambienti e facilitare la partecipazione alla vita di classe.[web:120][web:125]</p>
+            </div>
+            <div class="card">
+                <h3>Parent Training</h3>
+                <p>Incontri dedicati ai genitori per condividere strategie educative e sostenere la relazione quotidiana con il proprio figlio.[web:120][web:125]</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- TERAPIE: ABA e TEACCH -->
-    <section id="terapie" class="section">
-        <div class="container">
-            <h2 class="section-title">Terapie per lo Spettro dell'Autismo</h2>
-            <div class="services-grid">
-                <div class="card">
-                    <h3>Metodo ABA</h3>
-                    <p>
-                        L'Applied Behavior Analysis (ABA) è un intervento educativo e terapeutico
-                        basato sui principi dell'analisi del comportamento. Ha l'obiettivo di
-                        aumentare abilità comunicative, sociali e di autonomia e ridurre i
-                        comportamenti problematici attraverso il rinforzo positivo e programmi
-                        individualizzati, strutturati in piccoli passi osservabili e misurabili.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h3>Programma TEACCH</h3>
-                    <p>
-                        Il metodo TEACCH (Treatment and Education of Autistic and Communication
-                        Handicapped Children) è un approccio educativo che utilizza la
-                        strutturazione dell'ambiente e delle attività per rendere il mondo più
-                        prevedibile e comprensibile. Attraverso orari visivi, routine chiare,
-                        organizzazione degli spazi e materiali ben etichettati, aiuta la persona
-                        autistica a capire cosa fare, dove, per quanto tempo e con quale risultato,
-                        promuovendo autonomia e partecipazione.
-                    </p>
-                </div>
+<section id="terapie" class="section">
+    <div class="container">
+        <h2 class="section-title">Terapie per lo Spettro dell'Autismo</h2>
+        <div class="services-grid">
+            <div class="card">
+                <h3>Metodo ABA</h3>
+                <p>L'Applied Behavior Analysis è un intervento educativo basato sull’analisi del comportamento che mira a potenziare abilità comunicative, sociali e di autonomia attraverso obiettivi misurabili e rinforzi positivi.[web:119][web:125]</p>
+            </div>
+            <div class="card">
+                <h3>Programma TEACCH</h3>
+                <p>Il metodo TEACCH utilizza la strutturazione dell’ambiente, orari visivi e routine chiare per rendere le attività più prevedibili e comprensibili, favorendo partecipazione e autonomia.[web:119][web:123]</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- LA STRUTTURA (GALLERIA) -->
-    <section id="struttura" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">La Nostra Struttura</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Ambienti progettati per il benessere sensoriale e l'apprendimento.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/e0e8ff/333?text=Sala+Sensoriale" alt="Sala Sensoriale">
-                    <p style="text-align: center; padding: 10px;">Sala Sensoriale</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/d0e0ff/333?text=Area+Gioco" alt="Area Gioco">
-                    <p style="text-align: center; padding: 10px;">Area Gioco e Socializzazione</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/c0d4ff/333?text=Studio+Medico" alt="Studio Medico">
-                    <p style="text-align: center; padding: 10px;">Studi per la Diagnosi</p>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://placehold.co/400x300/b0c8ff/333?text=Laboratori" alt="Laboratori">
-                    <p style="text-align: center; padding: 10px;">Laboratori Creativi</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- LA STRUTTURA INTERATTIVA -->
+<section id="struttura" class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">La Nostra Struttura</h2>
+    <p style="text-align: center; margin-bottom: 30px;">
+      Clicca su uno spazio del centro per scoprirlo nel dettaglio.
+    </p>
+    <div class="gallery-grid">
+      <a class="gallery-item" href="sala-sensoriale.html">
+        <img src="https://placehold.co/400x300/e0e8ff/333?text=Sala+Sensoriale" alt="Sala Sensoriale">
+        <p style="text-align: center; padding: 10px;">Sala Sensoriale</p>
+      </a>
+      <a class="gallery-item" href="area-giochi.html">
+        <img src="https://placehold.co/400x300/d0e0ff/333?text=Area+Giochi" alt="Area Giochi">
+        <p style="text-align: center; padding: 10px;">Area Giochi e Socializzazione</p>
+      </a>
+      <a class="gallery-item" href="studio-medico.html">
+        <img src="https://placehold.co/400x300/c0d4ff/333?text=Studio+Medico" alt="Studio Medico">
+        <p style="text-align: center; padding: 10px;">Studi per la Diagnosi</p>
+      </a>
+      <a class="gallery-item" href="laboratori.html">
+        <img src="https://placehold.co/400x300/b0c8ff/333?text=Laboratori" alt="Laboratori">
+        <p style="text-align: center; padding: 10px;">Laboratori Creativi</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- CONTATTI CON FORMSUBMIT (CORRETTO PER Abdo35689) -->
-    <section id="contatti" class="section">
-      <div class="container">
-        <h2 class="section-title">Contattaci</h2>
-        <div style="text-align: center; max-width: 600px; margin: auto;">
-          <p>Siamo aperti dal Lunedì al Venerdì, dalle 9:00 alle 18:00.</p>
-          <p><strong>Indirizzo:</strong> Via Roma 123, Milano</p>
-          <p><strong>Email:</strong> info.centroautismo@gmail.com</p>
-          <br>
+<section id="contatti" class="section">
+  <div class="container">
+    <h2 class="section-title">Contattaci</h2>
+    <div style="text-align: center; max-width: 600px; margin: auto;">
+      <p>Siamo aperti dal Lunedì al Venerdì, dalle 9:00 alle 18:00.</p>
+      <p><strong>Indirizzo:</strong> Via Roma 123, Milano</p>
+      <p><strong>Email:</strong> info.centroautismo@gmail.com</p>
+      <br>
 
-          <!-- FORM SUBMIT: INVIO MAIL PER TUTTI -->
-          <form action="https://formsubmit.co/info.centroautismo@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
-            <!-- disattiva captcha e manda alla pagina di successo -->
-            <input type="hidden" name="_captcha" value="false">
-            <!-- URL CORRETTO CON IL TUO USERNAME -->
-            <input type="hidden" name="_next" value="https://Abdo35689.github.io/centro-autismo/successo.html">
+      <form action="https://formsubmit.co/info.centroautismo@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://Abdo35689.github.io/centro-autismo/successo.html">
 
-            <input type="text" name="Nome" placeholder="Il tuo nome" required
-                   style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <input type="email" name="Email" placeholder="La tua email" required
-                   style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
-            <textarea name="Messaggio" placeholder="Scrivi qui il tuo messaggio" rows="4" required
-                      style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
-            <button type="submit" class="btn" style="border: none; cursor: pointer;">
-              Invia richiesta
-            </button>
-          </form>
+        <input type="text" name="Nome" placeholder="Il tuo nome" required
+               style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        <input type="email" name="Email" placeholder="La tua email" required
+               style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+        <textarea name="Messaggio" placeholder="Scrivi qui il tuo messaggio" rows="4" required
+                  style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+        <button type="submit" class="btn" style="border: none; cursor: pointer;">
+          Invia richiesta
+        </button>
+      </form>
 
-          <p style="font-size: 0.85rem; margin-top: 10px;">
-            Il modulo utilizza il servizio Formsubmit per inviare le richieste direttamente alla casella email del centro,
-            senza bisogno che l'utente configuri un programma di posta.
-          </p>
-        </div>
-      </div>
-    </section>
+      <p style="font-size: 0.85rem; margin-top: 10px;">
+        Il modulo utilizza il servizio Formsubmit per inviare le richieste direttamente alla casella email del centro.
+      </p>
+    </div>
+  </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Centro BluMente. Tutti i diritti riservati.</p>
-        </div>
-    </footer>
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Centro BluMente. Tutti i diritti riservati.</p>
+    </div>
+</footer>
 
 </body>
 </html>
