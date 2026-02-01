@@ -11,10 +11,10 @@
             --bg-card: rgba(30, 41, 59, 0.7);
             --bg-card-hover: rgba(51, 65, 85, 0.8);
             
-            --primary-glow: #0ea5e9;    /* Azzurro acceso per glow/accenti */
-            --text-main: #f8fafc;       /* Bianco sporco per titoli */
-            --text-body: #cbd5e1;       /* Grigio chiaro per testi lunghi */
-            --text-muted: #94a3b8;      /* Grigio più scuro per dettagli */
+            --primary-glow: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #94a3b8;
             
             --border-glass: rgba(148, 163, 184, 0.2);
             --border-glass-hover: rgba(56, 189, 248, 0.5);
@@ -37,7 +37,6 @@
             color: var(--text-body);
             background-color: var(--bg-deep);
             scroll-behavior: smooth;
-            /* Sfondo generale a gradiente scuro fisso */
             background-image: 
                 radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08), transparent 40%),
                 radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08), transparent 40%);
@@ -50,7 +49,7 @@
             transition: color 0.2s;
         }
 
-        /* HEADER / NAVBAR -------------------------------------------------- */
+        /* HEADER / NAVBAR */
         header {
             background-color: rgba(11, 17, 32, 0.85);
             backdrop-filter: blur(12px);
@@ -147,7 +146,6 @@
             top: 5px;
             left: 5px;
             height: calc(100% - 10px);
-            /* Gradiente Azzurro Neon */
             background: linear-gradient(90deg, #0ea5e9, #38bdf8);
             border-radius: 999px;
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -162,18 +160,17 @@
         }
 
         nav ul li a.active-link {
-            color: #0f172a; /* Testo scuro su pillola chiara */
+            color: #0f172a;
             font-weight: 700;
         }
 
-        /* HERO SECTION (Già Dark) ------------------------------------------ */
+        /* HERO SECTION */
         .hero {
             padding: 80px 0 100px;
             position: relative;
             overflow: hidden;
         }
         
-        /* Glow decorativi di sfondo */
         .glow-spot {
             position: absolute;
             width: 400px;
@@ -235,7 +232,6 @@
             margin-bottom: 24px;
         }
 
-        /* Bottoni */
         .btn-glow {
             display: inline-flex;
             align-items: center;
@@ -274,7 +270,6 @@
             border-color: #fff;
         }
 
-        /* Hero Card */
         .glass-card {
             background: var(--bg-card);
             backdrop-filter: blur(10px);
@@ -300,15 +295,14 @@
             background: rgba(14, 165, 233, 0.1);
         }
 
-        /* SEZIONI GENERALI (Dark Style) ----------------------------------- */
+        /* SEZIONI GENERALI */
         .section {
             padding: 80px 0;
             position: relative;
         }
 
-        /* Sfondi alternati leggeri per stacco visivo, sempre scuri */
         .bg-alt {
-            background: rgba(15, 23, 42, 0.4); 
+            background: rgba(15, 23, 42, 0.4);
             border-top: 1px solid var(--border-glass);
             border-bottom: 1px solid var(--border-glass);
         }
@@ -329,7 +323,6 @@
             font-size: 1.05rem;
         }
 
-        /* Cards scure e moderne */
         .dark-card {
             background: rgba(30, 41, 59, 0.4);
             border: 1px solid var(--border-glass);
@@ -358,7 +351,6 @@
             font-size: 0.95rem;
         }
 
-        /* Griglie */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -371,7 +363,6 @@
             gap: 30px;
         }
         
-        /* Layout Info Split */
         .info-split {
             display: flex;
             flex-wrap: wrap;
@@ -392,7 +383,6 @@
         .info-text strong { color: var(--text-main); }
         .info-text li { margin-bottom: 10px; color: var(--text-body); }
 
-        /* Galleria Struttura */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -435,7 +425,6 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Form Contatti */
         .form-container {
             max-width: 600px;
             margin: 0 auto;
@@ -471,7 +460,6 @@
             margin-top: 10px;
         }
 
-        /* Footer */
         footer {
             background: #020617;
             border-top: 1px solid var(--border-glass);
@@ -481,13 +469,60 @@
             color: var(--text-muted);
         }
 
+        /* ------------ METODI/TERAPIE ACCORDION ------------ */
+        .method-card {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .method-header {
+            width: 100%;
+            padding: 20px 24px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            color: inherit;
+            font: inherit;
+        }
+
+        .method-header h3 {
+            margin: 0;
+            color: var(--primary-glow);
+            font-size: 1.3rem;
+        }
+
+        .method-toggle {
+            font-size: 1.4rem;
+            color: var(--text-body);
+            transition: transform 0.3s ease;
+        }
+
+        .method-card.open .method-toggle {
+            transform: rotate(45deg); /* + -> x */
+        }
+
+        .method-body {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 24px;
+            transition: max-height 0.35s ease, padding-bottom 0.35s ease;
+        }
+
+        .method-card.open .method-body {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .grid-2, .hero-grid { grid-template-columns: 1fr; }
             
             nav { flex-wrap: wrap; gap: 15px; }
             .nav-shell { width: 100%; overflow-x: auto; }
-            .nav-indicator { display: none; } /* Semplifichiamo su mobile */
+            .nav-indicator { display: none; }
             nav ul li a.active-link { color: var(--primary-glow); }
         }
     </style>
@@ -571,7 +606,6 @@
                 <p>La diagnosi precoce permette di definire il supporto ideale per valorizzare le potenzialità di ogni persona.</p>
             </div>
             <div class="info-img">
-                <!-- Placeholder scuro/blu -->
                 <img src="https://placehold.co/600x400/1e293b/0ea5e9?text=Supporto+Specialistico" alt="Terapia">
             </div>
         </div>
@@ -608,13 +642,38 @@
         <p class="section-intro">Approcci scientifici basati sull'evidenza per sviluppare autonomia e comunicazione.</p>
         
         <div class="grid-2">
-            <div class="dark-card">
-                <h3>Metodo ABA</h3>
-                <p>L'Analisi Comportamentale Applicata lavora su obiettivi misurabili per potenziare abilità sociali e ridurre comportamenti problema attraverso il rinforzo positivo.</p>
+            <div class="dark-card method-card">
+                <button class="method-header" type="button">
+                    <h3>Metodo ABA</h3>
+                    <span class="method-toggle">+</span>
+                </button>
+                <div class="method-body">
+                    <p>
+                        L'Analisi Comportamentale Applicata lavora su obiettivi misurabili per potenziare abilità sociali
+                        e ridurre comportamenti problema attraverso il rinforzo positivo.
+                    </p>
+                    <p>
+                        Gli interventi vengono strutturati in piccoli passi, con attività ripetute e adattate all'età
+                        e al profilo del bambino, in collaborazione con famiglia e scuola.
+                    </p>
+                </div>
             </div>
-            <div class="dark-card">
-                <h3>Metodo TEACCH</h3>
-                <p>Strutturazione visiva dello spazio e del tempo per rendere l'ambiente prevedibile, riducendo l'ansia e favorendo l'autonomia personale.</p>
+
+            <div class="dark-card method-card">
+                <button class="method-header" type="button">
+                    <h3>Metodo TEACCH</h3>
+                    <span class="method-toggle">+</span>
+                </button>
+                <div class="method-body">
+                    <p>
+                        Il metodo TEACCH utilizza la strutturazione visiva dello spazio e del tempo per rendere
+                        l'ambiente più prevedibile e comprensibile, riducendo il carico di stress.
+                    </p>
+                    <p>
+                        Si lavora con agende visive, indicazioni chiare e attività suddivise in passaggi,
+                        per favorire autonomia, autoregolazione e partecipazione attiva alla giornata.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -682,55 +741,74 @@
 </footer>
 
 <script>
-    // Script per il movimento fluido della pillola di navigazione
-    document.addEventListener('DOMContentLoaded', () => {
-        const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-        const indicator = document.querySelector('.nav-indicator');
-        const navShell = document.querySelector('.nav-shell');
+  document.addEventListener('DOMContentLoaded', () => {
+    // ------------ NAV PILL ------------
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const indicator = document.querySelector('.nav-indicator');
+    const navShell = document.querySelector('.nav-shell');
 
-        if(!indicator || !navShell) return;
+    if (indicator && navShell) {
+      function moveIndicator(el) {
+        const shellRect = navShell.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
+        indicator.style.width = `${rect.width}px`;
+        indicator.style.height = `${rect.height}px`;
+        indicator.style.transform = `translate(${rect.left - shellRect.left}px, ${rect.top - shellRect.top}px)`;
+        indicator.style.opacity = '1';
+      }
 
-        function moveIndicator(el) {
-            const shellRect = navShell.getBoundingClientRect();
-            const rect = el.getBoundingClientRect();
-            
-            indicator.style.width = `${rect.width}px`;
-            indicator.style.height = `${rect.height}px`;
-            indicator.style.transform = `translate(${rect.left - shellRect.left}px, ${rect.top - shellRect.top}px)`;
-            indicator.style.opacity = '1';
-        }
-
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                moveIndicator(link);
-                navLinks.forEach(l => l.classList.remove('active-link'));
-                link.classList.add('active-link');
-            });
+      navLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          moveIndicator(link);
+          navLinks.forEach(l => l.classList.remove('active-link'));
+          link.classList.add('active-link');
         });
+      });
 
-        // Scroll Spy per aggiornare la pillola mentre scorri
-        const sections = navLinks.map(l => document.getElementById(l.dataset.target)).filter(Boolean);
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    const id = entry.target.id;
-                    const activeLink = navLinks.find(l => l.dataset.target === id);
-                    if(activeLink) {
-                        moveIndicator(activeLink);
-                        navLinks.forEach(l => l.classList.remove('active-link'));
-                        activeLink.classList.add('active-link');
-                    }
-                }
-            });
-        }, { threshold: 0.5 });
+      const sections = navLinks
+        .map(l => document.getElementById(l.dataset.target))
+        .filter(Boolean);
 
-        sections.forEach(s => observer.observe(s));
-        
-        // Inizializza sul primo
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const activeLink = navLinks.find(l => l.dataset.target === id);
+            if (activeLink) {
+              moveIndicator(activeLink);
+              navLinks.forEach(l => l.classList.remove('active-link'));
+              activeLink.classList.add('active-link');
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+
+      sections.forEach(s => observer.observe(s));
+      if (navLinks[0]) {
         moveIndicator(navLinks[0]);
         navLinks[0].classList.add('active-link');
+      }
+    }
+
+    // ------------ METODI/TERAPIE ACCORDION ------------
+    const methodCards = document.querySelectorAll('.method-card');
+
+    methodCards.forEach(card => {
+      const header = card.querySelector('.method-header');
+      if (!header) return;
+      header.addEventListener('click', () => {
+        // Solo una card aperta alla volta
+        methodCards.forEach(c => {
+          if (c !== card) c.classList.remove('open');
+        });
+        card.classList.toggle('open');
+      });
     });
+
+    // opzionale: apri ABA di default
+    const firstCard = document.querySelector('.method-card');
+    if (firstCard) firstCard.classList.add('open');
+  });
 </script>
 
 </body>
