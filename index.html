@@ -1,3 +1,677 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro BluMente - Supporto e Diagnosi Autismo</title>
+  <meta name="description" content="Centro BluMente: diagnosi precoce, interventi educativi, metodo ABA e TEACCH, supporto scolastico e parent training per bambini e ragazzi nello spettro autistico.">
+  <style>
+    :root {
+      --bg-deep: #0b1120;
+      --bg-card: rgba(30, 41, 59, 0.7);
+      --bg-card-hover: rgba(51, 65, 85, 0.8);
+      --primary-glow: #0ea5e9;
+      --text-main: #f8fafc;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-glass: rgba(148, 163, 184, 0.2);
+      --border-glass-hover: rgba(56, 189, 248, 0.5);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: var(--text-body);
+      background-color: var(--bg-deep);
+      scroll-behavior: smooth;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08), transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08), transparent 40%);
+      background-attachment: fixed;
+    }
+
+    a { color: inherit; text-decoration: none; transition: color 0.2s; }
+
+    header {
+      background-color: rgba(11,17,32,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-glass);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-img {
+      height: 48px;
+      width: 48px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
+      border: 1px solid rgba(14, 165, 233, 0.4);
+    }
+
+    .brand-block { display: flex; flex-direction: column; }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle { font-size: 0.75rem; color: var(--text-muted); }
+
+    .nav-shell {
+      background: rgba(30,41,59,0.5);
+      border-radius: 999px;
+      padding: 5px;
+      border: 1px solid var(--border-glass);
+      position: relative;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    nav ul li { position: relative; }
+
+    nav ul li a {
+      display: block;
+      color: var(--text-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 8px 18px;
+      border-radius: 999px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-indicator {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      height: calc(100% - 10px);
+      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+      border-radius: 999px;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 1;
+      width: 0;
+      opacity: 0;
+      box-shadow: 0 0 15px rgba(14, 165, 233, 0.6);
+    }
+
+    nav ul li a:hover { color: #fff; }
+    nav ul li a.active-link { color: #0f172a; font-weight: 700; }
+
+    .hero {
+      padding: 80px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-spot {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid var(--border-glass);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary-glow);
+      margin-bottom: 18px;
+    }
+
+    .hero-kicker span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-body);
+      max-width: 540px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn-glow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #fff;
+      font-weight: 600;
+      border: none;
+      box-shadow: 0 0 20px rgba(14,165,233,0.4);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(14,165,233,0.6);
+    }
+
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 26px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .badge-outline {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--primary-glow);
+      color: var(--primary-glow);
+      background: rgba(14,165,233,0.1);
+    }
+
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+
+    .bg-alt {
+      background: rgba(15,23,42,0.4);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(14,165,233,0.3);
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .dark-card {
+      background: rgba(30,41,59,0.4);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-glass-hover);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .dark-card h3 {
+      color: var(--primary-glow);
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .dark-card p {
+      color: var(--text-body);
+      font-size: 0.95rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+    }
+
+    .info-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .info-text { flex: 1; min-width: 300px; }
+    .info-img { flex: 1; min-width: 300px; }
+
+    .info-img img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 30px rgba(14,165,233,0.15);
+      border: 1px solid var(--border-glass);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      display: block;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--border-glass);
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(11,17,32,0.9), transparent);
+      padding: 20px;
+      transform: translateY(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-item:hover .gallery-overlay { transform: translateY(0); }
+
+    .gallery-overlay p {
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glass);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      background: rgba(15,23,42,0.6);
+      border: 1px solid var(--border-glass);
+      border-radius: 10px;
+      color: #fff;
+      margin-bottom: 15px;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary-glow);
+      background: rgba(15,23,42,0.9);
+      box-shadow: 0 0 15px rgba(14,165,233,0.2);
+    }
+
+    .form-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: #020617;
+      border-top: 1px solid var(--border-glass);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.2rem; }
+      .grid-2, .hero-grid { grid-template-columns: 1fr; }
+      nav { flex-wrap: wrap; gap: 15px; }
+      .nav-shell { width: 100%; overflow-x: auto; }
+      .nav-indicator { display: none; }
+      nav ul li a.active-link { color: var(--primary-glow); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo-container">
+        <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
+        <div class="brand-block">
+          <span class="brand-name">Centro BluMente</span>
+          <span class="brand-subtitle">Diagnosi e supporto per lo spettro autistico</span>
+        </div>
+      </div>
+
+      <div class="nav-shell">
+        <div class="nav-indicator"></div>
+        <ul>
+          <li><a href="#chi-siamo" class="nav-link" data-target="chi-siamo">L'Autismo</a></li>
+          <li><a href="#servizi" class="nav-link" data-target="servizi">Servizi</a></li>
+          <li><a href="#terapie" class="nav-link" data-target="terapie">Terapie</a></li>
+          <li><a href="#struttura" class="nav-link" data-target="struttura">Struttura</a></li>
+          <li><a href="#contatti" class="nav-link" data-target="contatti">Prenota</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="glow-spot" style="top:-100px; right:-100px;"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-kicker">
+          <span></span> CENTRO SPECIALIZZATO
+        </div>
+        <h1>Accogliere. Comprendere.<br>Crescere.</h1>
+        <p class="hero-sub">
+          Un punto di riferimento per diagnosi precoce, interventi educativi e supporto alle famiglie
+          nello spettro dell'autismo.
+        </p>
+        <div class="hero-actions">
+          <a href="#contatti" class="btn-glow">Prenota un colloquio</a>
+          <a href="#servizi" class="btn-glass">Scopri i percorsi</a>
+        </div>
+        <p style="font-size:0.85rem; color: var(--text-muted);">
+          Equipe multidisciplinare: psicologi, terapisti, educatori e logopedisti.
+        </p>
+      </div>
+
+      <div>
+        <div class="glass-card">
+          <div class="hero-card-header">
+            <h3 style="color:#fff; margin:0;">Per famiglie e bambini</h3>
+            <span class="badge-outline">Percorsi personalizzati</span>
+          </div>
+          <p style="color: var(--text-body); font-size: 0.95rem;">
+            Valutazioni cliniche, progetti educativi individualizzati e percorsi di parent training,
+            costruiti insieme a scuola e famiglia per sostenere la crescita quotidiana.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="chi-siamo" class="section bg-alt">
+  <div class="container">
+    <h2 class="section-title">Cos'è lo Spettro dell'Autismo?</h2>
+    <div class="info-split">
+      <div class="info-text">
+        <p>
+          Il <strong>Disturbo dello Spettro Autistico (ASD)</strong> è una condizione del neurosviluppo
+          caratterizzata da differenze nella comunicazione sociale e dalla presenza di interessi assorbenti.
+        </p>
+        <ul style="color: var(--text-body);">
+          <li><strong>Comunicazione:</strong> differenze nella reciprocità, nel contatto oculare e nella comprensione delle sfumature sociali.</li>
+          <li><strong>Sensorialità e interessi:</strong> routine rigide, sensibilità agli stimoli (luci, suoni) e passioni molto focalizzate.</li>
+        </ul>
+        <p>La diagnosi precoce permette di definire il supporto ideale per valorizzare le potenzialità di ogni persona.</p>
+      </div>
+      <div class="info-img">
+        <img src="https://placehold.co/600x400/1e293b/0ea5e9?text=Supporto+Specialistico" alt="Terapia e supporto specialistico">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servizi" class="section">
+  <div class="container">
+    <h2 class="section-title">I Nostri Percorsi</h2>
+    <p class="section-intro">Supportiamo la crescita con interventi mirati per ogni fase della vita.</p>
+
+    <div class="grid-3">
+      <a href="diagnosi-precoce.html" class="dark-card" style="display:block;">
+        <h3>Diagnosi Precoce</h3>
+        <p>Valutazioni cliniche per individuare i segnali dello spettro fin dai primi anni e avviare subito l'intervento.</p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per approfondire la diagnosi precoce »</p>
+      </a>
+
+      <a href="supporto-scolastico.html" class="dark-card" style="display:block;">
+        <h3>Supporto Scolastico</h3>
+        <p>Collaboriamo con le scuole per creare ambienti inclusivi e adattare la didattica ai bisogni dello studente.</p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per scoprire il lavoro con la scuola »</p>
+      </a>
+
+      <a href="parent-training.html" class="dark-card" style="display:block;">
+        <h3>Parent Training</h3>
+        <p>Incontri per genitori, per fornire strumenti pratici e strategie educative da usare nel quotidiano.</p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per vedere i percorsi per genitori »</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="terapie" class="section bg-alt">
+  <div class="container">
+    <h2 class="section-title">Metodi e Terapie</h2>
+    <p class="section-intro">Approcci scientifici basati sull'evidenza per sviluppare autonomia e comunicazione.</p>
+
+    <div class="grid-2">
+      <a href="aba.html" class="dark-card" style="display:block;">
+        <h3>Metodo ABA</h3>
+        <p>
+          L'Analisi Comportamentale Applicata lavora su obiettivi misurabili per potenziare abilità sociali
+          e ridurre comportamenti problema attraverso il rinforzo positivo.
+        </p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per scoprire come lavoriamo con il metodo ABA »</p>
+      </a>
+
+      <a href="teacch.html" class="dark-card" style="display:block;">
+        <h3>Metodo TEACCH</h3>
+        <p>
+          Il metodo TEACCH utilizza la strutturazione visiva dello spazio e del tempo per rendere
+          l'ambiente più prevedibile e comprensibile, riducendo il carico di stress.
+        </p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per approfondire l’approccio TEACCH »</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="struttura" class="section">
+  <div class="container">
+    <h2 class="section-title">I Nostri Spazi</h2>
+    <p class="section-intro">Ambienti progettati per accogliere, calmare e stimolare.</p>
+
+    <div class="gallery-grid">
+      <a href="sala-sensoriale.html" class="gallery-item">
+        <img src="sala-sensoriale.jpg.webp" alt="Sala Sensoriale">
+        <div class="gallery-overlay"><p>Sala Sensoriale</p></div>
+      </a>
+      <a href="area-giochi.html" class="gallery-item">
+        <img src="area-giochi.jpg.avif" alt="Area Giochi">
+        <div class="gallery-overlay"><p>Area Giochi</p></div>
+      </a>
+      <a href="studio-medico.html" class="gallery-item">
+        <img src="studio-medico.jpg.jpg" alt="Studio Medico">
+        <div class="gallery-overlay"><p>Studio Medico</p></div>
+      </a>
+      <a href="laboratori.html" class="gallery-item">
+        <img src="laboratori.jpg.jpg" alt="Laboratori creativi">
+        <div class="gallery-overlay"><p>Laboratori Creativi</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="recensioni" class="section bg-alt">
+  <div class="container">
+    <h2 class="section-title">Cosa dicono le famiglie</h2>
+    <p class="section-intro">
+      Alcune testimonianze di genitori che hanno intrapreso un percorso con il nostro centro.
+    </p>
+
+    <div class="grid-3">
+      <div class="dark-card">
+        <h3>Mamma di L., 5 anni</h3>
+        <p>
+          «All’inizio eravamo spaventati dalla diagnosi, ma qui ci siamo sentiti ascoltati
+          e guidati passo dopo passo. Ora comprendiamo meglio i bisogni di nostro figlio.»
+        </p>
+      </div>
+      <div class="dark-card">
+        <h3>Papà di M., 8 anni</h3>
+        <p>
+          «Il lavoro in équipe con scuola e famiglia ha fatto davvero la differenza.
+          Abbiamo strategie concrete da usare ogni giorno, anche nei momenti più difficili.»
+        </p>
+      </div>
+      <div class="dark-card">
+        <h3>Genitori di S., 3 anni</h3>
+        <p>
+          «La diagnosi precoce ci ha permesso di iniziare subito un percorso mirato.
+          Abbiamo visto piccoli grandi progressi nella comunicazione e nelle routine.»
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contatti" class="section bg-alt">
+  <div class="container">
+    <h2 class="section-title">Prenota un Colloquio</h2>
+
+    <div class="form-container">
+      <p style="text-align:center; margin-bottom:25px; color: var(--text-body);">
+        Compila il modulo per richiedere informazioni o fissare un primo appuntamento conoscitivo.
+      </p>
+
+      <form action="https://formsubmit.co/info.centroautismo@gmail.com" method="POST">
+        <input type="hidden" name="_next" value="https://Abdo35689.github.io/centro-autismo/successo.html">
+        <input type="hidden" name="_captcha" value="false">
+
+        <input type="text" name="Nome" placeholder="Il tuo nome" required>
+        <input type="email" name="Email" placeholder="La tua email" required>
+        <textarea name="Messaggio" rows="4" placeholder="Come possiamo aiutarti?" required></textarea>
+
+        <button type="submit" class="btn-glow" style="width:100%; border-radius:10px;">Invia Richiesta</button>
+      </form>
+      <p class="form-note">
+        Rispondiamo solitamente entro 24 ore lavorative. I dati inviati saranno utilizzati solo per rispondere alla tua richiesta.
+      </p>
+    </div>
+  </div>
+</section>
+
 <section id="come-raggiungerci" class="section">
   <div class="container">
     <h2 class="section-title">Come raggiungerci</h2>
@@ -8,11 +682,15 @@
 
     <div class="grid-2">
       <div class="dark-card">
-        <h3>Indirizzo</h3>
+        <h3>Indirizzo e contatti</h3>
         <p>
           <strong>Centro BluMente</strong><br>
           Via Giuseppe di Vittorio, 1<br>
           20092 Cinisello Balsamo (MI)
+        </p>
+        <p>
+          Email: <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a><br>
+          (Puoi scriverci per informazioni o per prenotare un colloquio.)
         </p>
         <p>
           Parcheggi disponibili nelle vie adiacenti. Fermate autobus nelle vicinanze con collegamenti verso Milano.
@@ -20,8 +698,9 @@
       </div>
 
       <div class="dark-card" style="padding:0; overflow:hidden;">
+        <!-- Sostituisci SOLO src con quello che copi da Google Maps per l’indirizzo esatto -->
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2795.493742628888!2d9.2145!3d45.5542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786b918c7c6b7a9%3A0xXXXXXXXXXXXXXXX!2sVia%20Giuseppe%20di%20Vittorio%2C%201%2C%2020092%20Cinisello%20Balsamo%20MI!5e0!3m2!1sit!2sit!4v1700000000000"
+          src="https://www.google.com/maps/embed?pb=INSERISCI_QUI_IL_TUO_IFRAME_DI_MAPS"
           width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
@@ -29,3 +708,72 @@
     </div>
   </div>
 </section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Centro BluMente. Tutti i diritti riservati.</p>
+    <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">
+      Il blu è il colore della consapevolezza sull'autismo (Giornata Mondiale, 2 Aprile).
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+    const indicator = document.querySelector('.nav-indicator');
+    const navShell = document.querySelector('.nav-shell');
+
+    if (!indicator || !navShell || navLinks.length === 0) return;
+
+    function moveIndicator(el) {
+      const shellRect = navShell.getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
+      indicator.style.width = rect.width + 'px';
+      indicator.style.height = rect.height + 'px';
+      indicator.style.transform =
+        'translate(' + (rect.left - shellRect.left) + 'px, ' + (rect.top - shellRect.top) + 'px)';
+      indicator.style.opacity = '1';
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href').replace('#', '');
+        const section = document.getElementById(targetId);
+        if (section) {
+          e.preventDefault();
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    const sections = navLinks
+      .map(l => document.getElementById(l.getAttribute('href').replace('#', '')))
+      .filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const activeLink = navLinks.find(l => l.getAttribute('href') === '#' + id);
+          if (activeLink) {
+            navLinks.forEach(l => l.classList.remove('active-link'));
+            activeLink.classList.add('active-link');
+            moveIndicator(activeLink);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+
+    sections.forEach(s => observer.observe(s));
+
+    const first = navLinks[0];
+    if (first) {
+      first.classList.add('active-link');
+      moveIndicator(first);
+    }
+  });
+</script>
+
+</body>
+</html>
