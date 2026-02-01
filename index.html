@@ -6,7 +6,6 @@
     <title>Centro BluMente - Supporto e Diagnosi Autismo</title>
     <style>
         :root {
-            /* Palette Dark & Blue Theme */
             --bg-deep: #0b1120;
             --bg-card: rgba(30, 41, 59, 0.7);
             --bg-card-hover: rgba(51, 65, 85, 0.8);
@@ -106,7 +105,6 @@
             color: var(--text-muted);
         }
 
-        /* Navigazione Pillola */
         .nav-shell {
             background: rgba(30, 41, 59, 0.5);
             border-radius: 999px;
@@ -164,7 +162,7 @@
             font-weight: 700;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
             padding: 80px 0 100px;
             position: relative;
@@ -295,7 +293,7 @@
             background: rgba(14, 165, 233, 0.1);
         }
 
-        /* SEZIONI GENERALI */
+        /* SEZIONI */
         .section {
             padding: 80px 0;
             position: relative;
@@ -469,53 +467,6 @@
             color: var(--text-muted);
         }
 
-        /* ------------ METODI/TERAPIE ACCORDION ------------ */
-        .method-card {
-            padding: 0;
-            overflow: hidden;
-        }
-
-        .method-header {
-            width: 100%;
-            padding: 20px 24px;
-            background: transparent;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            color: inherit;
-            font: inherit;
-        }
-
-        .method-header h3 {
-            margin: 0;
-            color: var(--primary-glow);
-            font-size: 1.3rem;
-        }
-
-        .method-toggle {
-            font-size: 1.4rem;
-            color: var(--text-body);
-            transition: transform 0.3s ease;
-        }
-
-        .method-card.open .method-toggle {
-            transform: rotate(45deg); /* + -> x */
-        }
-
-        .method-body {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 24px;
-            transition: max-height 0.35s ease, padding-bottom 0.35s ease;
-        }
-
-        .method-card.open .method-body {
-            max-height: 500px;
-            padding-bottom: 20px;
-        }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .grid-2, .hero-grid { grid-template-columns: 1fr; }
@@ -619,18 +570,29 @@
         <p class="section-intro">Supportiamo la crescita con interventi mirati per ogni fase della vita.</p>
         
         <div class="grid-3">
-            <div class="dark-card">
+            <a href="diagnosi-precoce.html" class="dark-card" style="display:block;">
                 <h3>Diagnosi Precoce</h3>
                 <p>Valutazioni cliniche per individuare i segnali dello spettro fin dai primi anni e avviare subito l'intervento.</p>
-            </div>
-            <div class="dark-card">
+                <p style="margin-top:10px; color: var(--text-muted);">
+                    Clicca per approfondire la diagnosi precoce &raquo;
+                </p>
+            </a>
+
+            <a href="supporto-scolastico.html" class="dark-card" style="display:block;">
                 <h3>Supporto Scolastico</h3>
                 <p>Collaboriamo con le scuole per creare ambienti inclusivi e adattare la didattica ai bisogni dello studente.</p>
-            </div>
-            <div class="dark-card">
+                <p style="margin-top:10px; color: var(--text-muted);">
+                    Clicca per scoprire il lavoro con la scuola &raquo;
+                </p>
+            </a>
+
+            <a href="parent-training.html" class="dark-card" style="display:block;">
                 <h3>Parent Training</h3>
                 <p>Incontri per genitori, per fornire strumenti pratici e strategie educative da usare nel quotidiano.</p>
-            </div>
+                <p style="margin-top:10px; color: var(--text-muted);">
+                    Clicca per vedere i percorsi per genitori &raquo;
+                </p>
+            </a>
         </div>
     </div>
 </section>
@@ -642,39 +604,27 @@
         <p class="section-intro">Approcci scientifici basati sull'evidenza per sviluppare autonomia e comunicazione.</p>
         
         <div class="grid-2">
-            <div class="dark-card method-card">
-                <button class="method-header" type="button">
-                    <h3>Metodo ABA</h3>
-                    <span class="method-toggle">+</span>
-                </button>
-                <div class="method-body">
-                    <p>
-                        L'Analisi Comportamentale Applicata lavora su obiettivi misurabili per potenziare abilità sociali
-                        e ridurre comportamenti problema attraverso il rinforzo positivo.
-                    </p>
-                    <p>
-                        Gli interventi vengono strutturati in piccoli passi, con attività ripetute e adattate all'età
-                        e al profilo del bambino, in collaborazione con famiglia e scuola.
-                    </p>
-                </div>
-            </div>
+            <a href="aba.html" class="dark-card" style="display:block;">
+                <h3>Metodo ABA</h3>
+                <p>
+                    L'Analisi Comportamentale Applicata lavora su obiettivi misurabili per potenziare abilità sociali
+                    e ridurre comportamenti problema attraverso il rinforzo positivo.
+                </p>
+                <p style="margin-top:10px; color: var(--text-muted);">
+                    Clicca per scoprire come lavoriamo con il metodo ABA &raquo;
+                </p>
+            </a>
 
-            <div class="dark-card method-card">
-                <button class="method-header" type="button">
-                    <h3>Metodo TEACCH</h3>
-                    <span class="method-toggle">+</span>
-                </button>
-                <div class="method-body">
-                    <p>
-                        Il metodo TEACCH utilizza la strutturazione visiva dello spazio e del tempo per rendere
-                        l'ambiente più prevedibile e comprensibile, riducendo il carico di stress.
-                    </p>
-                    <p>
-                        Si lavora con agende visive, indicazioni chiare e attività suddivise in passaggi,
-                        per favorire autonomia, autoregolazione e partecipazione attiva alla giornata.
-                    </p>
-                </div>
-            </div>
+            <a href="teacch.html" class="dark-card" style="display:block;">
+                <h3>Metodo TEACCH</h3>
+                <p>
+                    Il metodo TEACCH utilizza la strutturazione visiva dello spazio e del tempo per rendere
+                    l'ambiente più prevedibile e comprensibile, riducendo il carico di stress.
+                </p>
+                <p style="margin-top:10px; color: var(--text-muted);">
+                    Clicca per approfondire l’approccio TEACCH &raquo;
+                </p>
+            </a>
         </div>
     </div>
 </section>
@@ -742,7 +692,6 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // ------------ NAV PILL ------------
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const indicator = document.querySelector('.nav-indicator');
     const navShell = document.querySelector('.nav-shell');
@@ -789,25 +738,6 @@
         navLinks[0].classList.add('active-link');
       }
     }
-
-    // ------------ METODI/TERAPIE ACCORDION ------------
-    const methodCards = document.querySelectorAll('.method-card');
-
-    methodCards.forEach(card => {
-      const header = card.querySelector('.method-header');
-      if (!header) return;
-      header.addEventListener('click', () => {
-        // Solo una card aperta alla volta
-        methodCards.forEach(c => {
-          if (c !== card) c.classList.remove('open');
-        });
-        card.classList.toggle('open');
-      });
-    });
-
-    // opzionale: apri ABA di default
-    const firstCard = document.querySelector('.method-card');
-    if (firstCard) firstCard.classList.add('open');
   });
 </script>
 
