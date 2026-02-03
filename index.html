@@ -94,6 +94,7 @@
       padding: 5px;
       border: 1px solid var(--border-glass);
       position: relative;
+      overflow: hidden;
     }
 
     nav ul {
@@ -113,10 +114,11 @@
       color: var(--text-body);
       font-weight: 500;
       font-size: 0.9rem;
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 999px;
       position: relative;
       z-index: 2;
+      white-space: nowrap;
     }
 
     .nav-indicator {
@@ -462,10 +464,11 @@
       <div class="nav-shell">
         <div class="nav-indicator"></div>
         <ul>
-          <li><a href="#chi-siamo" class="nav-link" data-target="chi-siamo">L'Autismo</a></li>
           <li><a href="#servizi" class="nav-link" data-target="servizi">Servizi</a></li>
+          <li><a href="#faq" class="nav-link" data-target="faq">FAQ</a></li>
           <li><a href="#terapie" class="nav-link" data-target="terapie">Terapie</a></li>
           <li><a href="#struttura" class="nav-link" data-target="struttura">Struttura</a></li>
+          <li><a href="#recensioni" class="nav-link" data-target="recensioni">Opinioni</a></li>
           <li><a href="#contatti" class="nav-link" data-target="contatti">Prenota</a></li>
         </ul>
       </div>
@@ -560,7 +563,7 @@
   </div>
 </section>
 
-<!-- NUOVA SEZIONE FAQ A TENDINA -->
+<!-- FAQ a tendina -->
 <section id="faq" class="section bg-alt">
   <div class="container">
     <h2 class="section-title">Domande frequenti</h2>
@@ -631,8 +634,6 @@
     </div>
   </div>
 </section>
-<!-- FINE SEZIONE FAQ A TENDINA -->
-
 
 <section id="terapie" class="section bg-alt">
   <div class="container">
@@ -782,27 +783,25 @@
     function moveIndicator(el) {
       const shellRect = navShell.getBoundingClientRect();
       const rect = el.getBoundingClientRect();
+      const left = rect.left - shellRect.left;
+      const top = rect.top - shellRect.top;
+
       indicator.style.width = rect.width + 'px';
       indicator.style.height = rect.height + 'px';
-      indicator.style.transform =
-        'translate(' + (rect.left - shellRect.left) + 'px, ' + (rect.top - shellRect.top) + 'px)';
+      indicator.style.transform = `translate(${left}px, ${top}px)`;
       indicator.style.opacity = '1';
     }
 
     navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
+        e.preventDefault();
         const targetId = link.getAttribute('href').replace('#', '');
         const section = document.getElementById(targetId);
         if (section) {
-          e.preventDefault();
           section.scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
-
-    const sections = navLinks
-      .map(l => document.getElementById(l.getAttribute('href').replace('#', '')))
-      .filter(Boolean);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -816,15 +815,24 @@
           }
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
-    sections.forEach(s => observer.observe(s));
+    navLinks.forEach(link => {
+      const id = link.getAttribute('href').replace('#', '');
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
 
     const first = navLinks[0];
     if (first) {
       first.classList.add('active-link');
-      moveIndicator(first);
+      setTimeout(() => moveIndicator(first), 100);
     }
+
+    window.addEventListener('resize', () => {
+      const active = document.querySelector('.nav-link.active-link');
+      if (active) moveIndicator(active);
+    });
   });
 </script>
 
@@ -846,4 +854,3 @@
 
 </body>
 </html>
-
