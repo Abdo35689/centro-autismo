@@ -621,15 +621,7 @@
     </p>
 
     <div class="dark-card" style="max-width: 800px; margin: 0 auto;">
-      <div id="comments"></div>
-
-      <script src="https://utteranc.es/client.js"
-              repo="Abdo35689/centro-autismo"
-              issue-term="pathname"
-              theme="dark-blue"
-              crossorigin="anonymous"
-              async>
-      </script>
+      <div id="disqus_thread"></div>
     </div>
   </div>
 </section>
@@ -761,6 +753,22 @@
     }
   });
 </script>
+
+<!-- Disqus embed -->
+<script>
+  var disqus_config = function () {
+    this.page.url = 'https://abdo35689.github.io/centro-autismo/';
+    this.page.identifier = 'home-centro-autismo';
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://centro-blumente.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Abilita JavaScript per vedere i commenti di Disqus.</noscript>
 
 </body>
 </html>
