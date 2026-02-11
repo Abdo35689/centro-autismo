@@ -38,7 +38,6 @@
 
     a { color: inherit; text-decoration: none; transition: color 0.2s; }
 
-    /* HEADER base */
     header {
       background-color: rgba(11,17,32,0.85);
       backdrop-filter: blur(12px);
@@ -47,7 +46,6 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: background-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .container {
@@ -62,16 +60,12 @@
       justify-content: space-between;
       align-items: center;
       padding: 14px 0;
-      transition: padding 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
-    /* LOGO / BRAND: stato base */
     .logo-container {
       display: flex;
       align-items: center;
       gap: 14px;
-      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
-                  gap 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
     .logo-img {
@@ -81,15 +75,9 @@
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
       border: 1px solid rgba(14, 165, 233, 0.4);
-      transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
 
-    .brand-block {
-      display: flex;
-      flex-direction: column;
-      transition: opacity 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
-                  transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
-    }
+    .brand-block { display: flex; flex-direction: column; }
 
     .brand-name {
       font-size: 1.3rem;
@@ -469,6 +457,7 @@
       color: var(--text-muted);
     }
 
+    /* Link “accesi” nel blocco indirizzo e contatti */
     .contact-links a {
       color: var(--text-muted);
       font-weight: 600;
@@ -482,6 +471,7 @@
       text-shadow: 0 0 12px rgba(148, 163, 184, 1);
     }
 
+    /* Commenti Disqus: forziamo tema scuro e testo chiaro */
     #disqus_thread {
       color-scheme: dark;
       color: #ffffff !important;
@@ -491,7 +481,6 @@
       color: #0ea5e9 !important;
     }
 
-    /* MOBILE: header compresso + movimento fluido logo */
     @media (max-width: 768px) {
       .hero h1 { font-size: 2.2rem; }
       .grid-2, .hero-grid { grid-template-columns: 1fr; }
@@ -499,21 +488,12 @@
       .nav-shell { width: 100%; overflow-x: auto; }
       .nav-indicator { display: none; }
       nav ul li a.active-link { color: var(--primary-glow); }
-
-      header.compressed {
-        background-color: rgba(11,17,32,0.96);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      }
-
-      header.compressed nav {
-        padding-left: 70px; /* spazio per il logo che si avvicina alla nav */
-      }
     }
   </style>
 </head>
 <body>
 
-<header id="site-header">
+<header>
   <div class="container">
     <nav>
       <div class="logo-container">
@@ -726,7 +706,7 @@
           Il metodo TEACCH utilizza la strutturazione visiva dello spazio e del tempo per rendere
           l'ambiente più prevedibile e comprensibile, riducendo il carico di stress.
         </p>
-        <p style="margin-top:10px; color: var(--text-muted);">Clicca per approfondire l'approccio TEACCH »</p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per approfondire l’approccio TEACCH »</p>
       </a>
     </div>
   </div>
@@ -848,140 +828,62 @@
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const indicator = document.querySelector('.nav-indicator');
     const navShell = document.querySelector('.nav-shell');
-    const header = document.getElementById('site-header');
-    const logoContainer = document.querySelector('.logo-container');
-    const logoImg = document.querySelector('.logo-img');
-    const brandBlock = document.querySelector('.brand-block');
 
-    // NAV + INDICATOR come prima
-    if (navShell && navLinks.length) {
-      function moveIndicator(el) {
-        if (!indicator) return;
-        const shellRect = navShell.getBoundingClientRect();
-        const rect = el.getBoundingClientRect();
-        const left = rect.left - shellRect.left;
-        const top = rect.top - shellRect.top;
+    if (!indicator || !navShell || navLinks.length === 0) return;
 
-        indicator.style.width = rect.width + 'px';
-        indicator.style.height = rect.height + 'px';
-        indicator.style.transform = `translate(${left}px, ${top}px)`;
-        indicator.style.opacity = '1';
-      }
+    function moveIndicator(el) {
+      const shellRect = navShell.getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
+      const left = rect.left - shellRect.left;
+      const top = rect.top - shellRect.top;
 
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute('href').replace('#', '');
-          const section = document.getElementById(targetId);
-          if (section) section.scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            const activeLink = navLinks.find(l => l.getAttribute('href') === '#' + id);
-            if (activeLink) {
-              navLinks.forEach(l => l.classList.remove('active-link'));
-              activeLink.classList.add('active-link');
-              if (window.innerWidth > 768) moveIndicator(activeLink);
-            }
-          }
-        });
-      }, { threshold: 0.3 });
-
-      navLinks.forEach(link => {
-        const id = link.getAttribute('href').replace('#', '');
-        const section = document.getElementById(id);
-        if (section) observer.observe(section);
-      });
-
-      const first = navLinks[0];
-      if (first) {
-        first.classList.add('active-link');
-        setTimeout(() => {
-          if (window.innerWidth > 768) moveIndicator(first);
-        }, 100);
-      }
-
-      window.addEventListener('resize', () => {
-        const active = document.querySelector('.nav-link.active-link');
-        if (active && window.innerWidth > 768) moveIndicator(active);
-      });
+      indicator.style.width = rect.width + 'px';
+      indicator.style.height = rect.height + 'px';
+      indicator.style.transform = `translate(${left}px, ${top}px)`;
+      indicator.style.opacity = '1';
     }
 
-    // SCROLL FLUIDO DEL LOGO SU MOBILE
-    let latestScrollY = window.scrollY;
-    let ticking = false;
-
-    const START = 0;    // da 0px
-    const END = 120;    // a 120px il logo è al 100% dello stato "vicino alla nav"
-
-    function clamp(v, min, max) {
-      return Math.min(max, Math.max(min, v));
-    }
-
-    function onScrollAnimation() {
-      const y = latestScrollY;
-
-      if (window.innerWidth <= 768) {
-        let t = (y - START) / (END - START);
-        t = clamp(t, 0, 1);
-
-        // easing dolce (smoothstep)
-        const eased = t * t * (3 - 2 * t);
-
-        // spostamento logo verso destra e leggermente verso l'alto
-        const translateX = eased * 30;   // aumenta se vuoi ancora più vicino
-        const translateY = -eased * 6;
-
-        logoContainer.style.transform =
-          `translate(${translateX}px, ${translateY}px)`;
-
-        // piccolo zoom del logo
-        const scale = 1 + eased * 0.08;
-        logoImg.style.transform = `scale(${scale})`;
-
-        // scomparsa fluida di titolo + mail + insta
-        brandBlock.style.opacity = 1 - eased;
-        brandBlock.style.transform = `translateY(${ -10 * eased }px)`;
-
-        // header "compressed" per sfondo/ombra
-        if (eased > 0.05) {
-          header.classList.add('compressed');
-        } else {
-          header.classList.remove('compressed');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').replace('#', '');
+        const section = document.getElementById(targetId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
         }
-      } else {
-        // desktop: reset
-        header.classList.remove('compressed');
-        logoContainer.style.transform = '';
-        logoImg.style.transform = '';
-        brandBlock.style.opacity = '';
-        brandBlock.style.transform = '';
-      }
-
-      ticking = false;
-    }
-
-    function onScroll() {
-      latestScrollY = window.scrollY;
-      if (!ticking) {
-        window.requestAnimationFrame(onScrollAnimation);
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        onScrollAnimation();
-      }
+      });
     });
 
-    // stato iniziale corretto
-    onScrollAnimation();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const activeLink = navLinks.find(l => l.getAttribute('href') === '#' + id);
+          if (activeLink) {
+            navLinks.forEach(l => l.classList.remove('active-link'));
+            activeLink.classList.add('active-link');
+            moveIndicator(activeLink);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    navLinks.forEach(link => {
+      const id = link.getAttribute('href').replace('#', '');
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    const first = navLinks[0];
+    if (first) {
+      first.classList.add('active-link');
+      setTimeout(() => moveIndicator(first), 100);
+    }
+
+    window.addEventListener('resize', () => {
+      const active = document.querySelector('.nav-link.active-link');
+      if (active) moveIndicator(active);
+    });
   });
 </script>
 
@@ -1002,3 +904,5 @@
 
 </body>
 </html>
+
+
