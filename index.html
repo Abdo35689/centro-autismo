@@ -46,6 +46,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: all 0.3s ease;
     }
 
     .container {
@@ -55,11 +56,27 @@
       padding: 0 20px;
     }
 
+    /* Sezione info header che si nasconde */
+    .header-info {
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+      opacity: 1;
+      padding: 14px 0;
+    }
+
+    .header-info.hidden {
+      max-height: 0;
+      opacity: 0;
+      padding: 0;
+    }
+
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 14px 0;
+      transition: padding 0.3s ease;
     }
 
     .logo-container {
@@ -493,7 +510,8 @@
 
 <header>
   <div class="container">
-    <nav>
+    <!-- Sezione che si nasconde scrollando -->
+    <div class="header-info" id="headerInfo">
       <div class="logo-container">
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div class="brand-block">
@@ -509,7 +527,10 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <!-- Barra di navigazione che rimane -->
+    <nav>
       <div class="nav-shell">
         <div class="nav-indicator"></div>
         <ul>
@@ -588,7 +609,7 @@
 <section id="servizi" class="section">
   <div class="container">
     <h2 class="section-title">I Nostri Percorsi</h2>
-  <p class="section-intro">Supportiamo la crescita con interventi mirati per ogni fase della vita.</p>
+    <p class="section-intro">Supportiamo la crescita con interventi mirati per ogni fase della vita.</p>
 
     <div class="grid-3">
       <a href="diagnosi-precoce.html" class="dark-card" style="display:block;">
@@ -704,7 +725,7 @@
           Il metodo TEACCH utilizza la strutturazione visiva dello spazio e del tempo per rendere
           l'ambiente più prevedibile e comprensibile, riducendo il carico di stress.
         </p>
-        <p style="margin-top:10px; color: var(--text-muted);">Clicca per approfondire l’approccio TEACCH »</p>
+        <p style="margin-top:10px; color: var(--text-muted);">Clicca per approfondire l'approccio TEACCH »</p>
       </a>
     </div>
   </div>
@@ -822,6 +843,23 @@
 </footer>
 
 <script>
+  // Gestione scroll per nascondere header info
+  let lastScroll = 0;
+  const headerInfo = document.getElementById('headerInfo');
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > 100) {
+      headerInfo.classList.add('hidden');
+    } else {
+      headerInfo.classList.remove('hidden');
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  // Navigazione con indicatore
   document.addEventListener('DOMContentLoaded', () => {
     const navLinks = Array.from(document.querySelectorAll('.nav-link'));
     const indicator = document.querySelector('.nav-indicator');
