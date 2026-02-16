@@ -34,19 +34,21 @@
         radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08), transparent 40%),
         radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08), transparent 40%);
       background-attachment: fixed;
-      padding-top: 80px; /* spazio per header sticky su mobile */
+      padding-top: 80px; /* spazio per header fisso */
     }
 
     a { color: inherit; text-decoration: none; transition: color 0.2s; }
 
-    /* HEADER BASE (desktop invariato, nessuna transizione) */
+    /* HEADER BASE - fisso in alto su desktop */
     header {
       background-color: rgba(11,17,32,0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-glass);
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
     }
 
@@ -481,14 +483,10 @@
       color: #0ea5e9 !important;
     }
 
-    /* MOBILE: attivo transizioni e header compatto su scroll */
+    /* MOBILE: header compatto su scroll, con transizioni */
     @media (max-width: 768px) {
 
       header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
         transition: transform 0.2s ease-in-out, height 0.2s ease-in-out;
       }
 
@@ -534,7 +532,6 @@
         font-size: 1.05rem;
       }
 
-      /* solo logo + nome */
       header.header-compact .brand-subtitle,
       header.header-compact .brand-links,
       header.header-compact .nav-shell {
@@ -944,12 +941,11 @@
     const header = document.getElementById('main-header');
     if (!header) return;
 
-    const threshold = 40; // dopo 40px passa alla versione compatta [web:53]
+    const threshold = 40;
 
     function onScroll() {
       const currentY = window.scrollY;
 
-      // solo mobile
       if (window.innerWidth > 768) {
         header.classList.remove('header-compact');
         return;
