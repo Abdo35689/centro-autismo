@@ -34,7 +34,7 @@
         radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08), transparent 40%),
         radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08), transparent 40%);
       background-attachment: fixed;
-      padding-top: 80px; /* spazio per header sticky su mobile [web:6] */
+      padding-top: 80px; /* spazio per header sticky su mobile */
     }
 
     a { color: inherit; text-decoration: none; transition: color 0.2s; }
@@ -48,7 +48,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: transform 0.3s ease, height 0.3s ease;
+      transition: transform 0.2s ease-in-out, height 0.2s ease-in-out;
     }
 
     .container {
@@ -63,14 +63,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 14px 0;
-      transition: padding 0.3s ease;
+      transition: padding 0.2s ease-in-out;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
       gap: 14px;
-      transition: gap 0.3s ease;
+      transition: gap 0.2s ease-in-out;
     }
 
     .logo-img {
@@ -80,7 +80,7 @@
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
       border: 1px solid rgba(14, 165, 233, 0.4);
-      transition: height 0.3s ease, width 0.3s ease;
+      transition: height 0.2s ease-in-out, width 0.2s ease-in-out;
     }
 
     .brand-block { display: flex; flex-direction: column; }
@@ -90,7 +90,7 @@
       font-weight: 700;
       color: var(--text-main);
       letter-spacing: 0.02em;
-      transition: font-size 0.3s ease;
+      transition: font-size 0.2s ease-in-out;
     }
 
     .brand-subtitle { font-size: 0.75rem; color: var(--text-muted); }
@@ -121,7 +121,7 @@
       border: 1px solid var(--border-glass);
       position: relative;
       overflow: hidden;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
     }
 
     nav ul {
@@ -465,7 +465,6 @@
       color: var(--text-muted);
     }
 
-    /* Link “accesi” nel blocco indirizzo e contatti */
     .contact-links a {
       color: var(--text-muted);
       font-weight: 600;
@@ -479,7 +478,6 @@
       text-shadow: 0 0 12px rgba(148, 163, 184, 1);
     }
 
-    /* Commenti Disqus */
     #disqus_thread {
       color-scheme: dark;
       color: #ffffff !important;
@@ -499,7 +497,6 @@
       .nav-indicator { display: none; }
       nav ul li a.active-link { color: var(--primary-glow); }
 
-      /* header sticky fisso in alto, ma animato con transform [web:20] */
       header {
         position: fixed;
         top: 0;
@@ -507,30 +504,30 @@
         right: 0;
       }
 
-      /* quando scrolli GIÙ: header va fuori schermo */
+      /* scroll GIÙ -> header fuori schermo */
       header.header-hide {
         transform: translateY(-100%);
       }
 
-      /* quando scrolli SU: header torna ma compatto */
+      /* scroll SU -> header compatto */
       header.header-compact {
         transform: translateY(0);
       }
 
       header.header-compact nav {
-        padding: 8px 0;
+        padding: 6px 0;
       }
 
       header.header-compact .logo-img {
-        height: 40px;
-        width: 40px;
+        height: 38px;
+        width: 38px;
       }
 
       header.header-compact .brand-name {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
       }
 
-      /* nascondi sottotitolo e link, resta solo logo + nome */
+      /* solo logo + nome */
       header.header-compact .brand-subtitle,
       header.header-compact .brand-links,
       header.header-compact .nav-shell {
@@ -935,16 +932,18 @@
     });
   });
 
-  /* HEADER MOBILE: nascondi su scroll giù, mostra compatto su scroll su [web:20][web:23] */
+  /* HEADER MOBILE: nascondi su scroll giù, mostra compatto su scroll su */
   (function() {
     const header = document.getElementById('main-header');
     if (!header) return;
 
     let lastScrollY = window.scrollY;
     const threshold = 80;
+    const minDelta = 4; // evita flicker su micro-movimenti
 
     function onScroll() {
       const currentY = window.scrollY;
+      const diff = currentY - lastScrollY;
 
       // solo mobile
       if (window.innerWidth > 768) {
@@ -956,12 +955,16 @@
       if (currentY <= threshold) {
         header.classList.remove('header-hide', 'header-compact');
       } else {
-        if (currentY > lastScrollY) {
+        if (Math.abs(diff) < minDelta) {
+          return;
+        }
+
+        if (diff > 0) {
           // scroll GIÙ -> nascondi
           header.classList.add('header-hide');
           header.classList.remove('header-compact');
         } else {
-          // scroll SU -> mostra compatto (solo logo + nome)
+          // scroll SU -> mostra compatto
           header.classList.remove('header-hide');
           header.classList.add('header-compact');
         }
