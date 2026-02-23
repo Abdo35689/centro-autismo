@@ -88,7 +88,6 @@
       font-size: 1.8rem;
       box-shadow: 0 0 24px rgba(34,197,94,0.2);
       animation: pop 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
-      color: #bbf7d0;
     }
     @keyframes pop {
       0% { transform: scale(0.6); opacity: 0; }
@@ -124,7 +123,6 @@
       font-size: 0.92rem; text-decoration: none; border: none; cursor: pointer;
       box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2);
       transition: all 0.3s; letter-spacing: 0.01em;
-      margin-top: 8px;
     }
     .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4); }
 
@@ -177,10 +175,7 @@
       </div>
     </div>
 
-    <!-- LINK CORRETTO PER GITHUB PAGES -->
-    <a href="https://abdo35689.github.io/centro-autismo/" class="btn" data-i18n="btn">
-      ← Torna al sito
-    </a>
+    <a href="index.html" class="btn" data-i18n="btn">← Torna al sito</a>
 
     <p class="note" data-i18n="note">
       Questa è una conferma automatica di ricezione. Ti invieremo una risposta
@@ -232,6 +227,7 @@ const translations = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Legge la lingua scelta in precedenza, default italiano
   const lang = localStorage.getItem('blumente-lang') || 'it';
   const t = translations[lang] || translations['it'];
 
