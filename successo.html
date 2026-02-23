@@ -4,144 +4,303 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Richiesta inviata - Centro BluMente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-deep: #0b1120;
-      --bg-card: rgba(30, 41, 59, 0.78);
-      --primary-glow: #0ea5e9;
-      --text-main: #f8fafc;
-      --text-body: #cbd5e1;
-      --text-muted: #94a3b8;
-      --border-glass: rgba(148, 163, 184, 0.32);
-      --radius-lg: 22px;
+      --blue-deep: #020c1b;
+      --blue-card: rgba(8, 20, 45, 0.85);
+      --blue-border: rgba(56, 189, 248, 0.15);
+      --accent: #38bdf8;
+      --accent-2: #7dd3fc;
+      --text-white: #f0f8ff;
+      --text-body: #a8c4d8;
+      --text-muted: #5a7a94;
     }
-
-    * { box-sizing: border-box; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
+      color: var(--text-body);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-body);
-      background-color: var(--bg-deep);
-      background-image:
-        radial-gradient(circle at 12% 0%, rgba(14,165,233,0.20), transparent 55%),
-        radial-gradient(circle at 88% 100%, rgba(59,130,246,0.22), transparent 55%);
-      background-attachment: fixed;
+      overflow: hidden;
     }
+    /* Noise texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Orb lights */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.13), transparent 65%); top: -200px; right: -150px; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: -150px; left: -150px; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 65%); top: 50%; left: 40%; }
 
+    /* Card */
     .card {
-      background: var(--bg-card);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      max-width: 640px;
+      position: relative;
+      z-index: 1;
+      background: var(--blue-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      max-width: 580px;
       width: 92%;
-      padding: 32px 26px 26px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-glass);
-      box-shadow: 0 24px 50px rgba(0,0,0,0.55);
+      padding: 48px 40px 40px;
+      border-radius: 24px;
+      border: 1px solid var(--blue-border);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
       text-align: center;
+      /* radial glow inside card */
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
+      top: -120px; right: -80px;
+      pointer-events: none;
     }
 
-    .logo {
-      height: 70px;
-      margin-bottom: 8px;
-      border-radius: 14px;
-      box-shadow: 0 0 18px rgba(14,165,233,0.4);
-      border: 1px solid rgba(191,219,254,0.7);
+    /* Logo */
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1.5px solid rgba(56,189,248,0.4);
+      box-shadow: 0 0 20px rgba(56,189,248,0.25);
+    }
+    .brand-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--text-white);
+      letter-spacing: 0.01em;
+    }
+    .brand-sub {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
-    .brand {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text-main);
-      margin-bottom: 18px;
+    /* Icon */
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.05));
+      border: 1px solid rgba(34,197,94,0.35);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.8rem;
+      box-shadow: 0 0 24px rgba(34,197,94,0.2);
+      animation: pop 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+    }
+    @keyframes pop {
+      0% { transform: scale(0.6); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
+    /* Tag */
+    .section-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 14px;
+      background: rgba(56,189,248,0.05);
+    }
+
+    /* Title */
     h1 {
-      font-size: 2rem;
-      color: var(--text-main);
-      margin: 0 0 10px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    h1 em { font-style: italic; color: var(--accent-2); }
+
+    /* Divider line */
+    .line {
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 0 auto 22px;
     }
 
-    p {
-      margin: 6px 0;
-      line-height: 1.6;
-      color: var(--text-body);
+    /* Body text */
+    .body-text {
       font-size: 0.96rem;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 10px;
     }
-
-    .highlight {
+    .body-text .highlight {
+      color: var(--text-white);
       font-weight: 600;
-      color: var(--primary-glow);
     }
 
+    /* Info items */
+    .info-items {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0;
+      text-align: left;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(8,20,45,0.5);
+      border: 1px solid var(--blue-border);
+      border-radius: 12px;
+    }
+    .info-item-icon {
+      width: 32px; height: 32px;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .info-item span {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.5;
+    }
+    .info-item span strong {
+      display: block;
+      color: var(--text-white);
+      font-size: 0.8rem;
+      margin-bottom: 1px;
+    }
+
+    /* Button */
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      margin-top: 22px;
-      padding: 11px 26px;
+      gap: 8px;
+      padding: 13px 30px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9, #0284c7);
-      color: #ffffff;
-      text-decoration: none;
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
+      text-decoration: none;
       border: none;
-      box-shadow: 0 0 22px rgba(14,165,233,0.55);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
       cursor: pointer;
+      box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2);
+      transition: all 0.3s;
+      letter-spacing: 0.01em;
     }
-
     .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 30px rgba(14,165,233,0.8);
-      filter: brightness(1.03);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4);
     }
 
+    /* Note */
     .note {
       margin-top: 16px;
-      font-size: 0.86rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
+      line-height: 1.6;
     }
 
     @media (max-width: 600px) {
-      .card {
-        padding: 26px 20px 22px;
-      }
-      h1 { font-size: 1.6rem; }
+      .card { padding: 36px 22px 30px; }
+      h1 { font-size: 1.7rem; }
+      .logo-wrap { gap: 10px; }
     }
   </style>
 </head>
 <body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
   <div class="card">
-    <!-- Modifica il percorso se il logo è in una cartella, es: /assets/logo.png -->
-    <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo">
-    <div class="brand">Centro BluMente</div>
+    <!-- Logo + brand -->
+    <div class="logo-wrap">
+      <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
+      <div>
+        <div class="brand-name">Centro BluMente</div>
+        <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+      </div>
+    </div>
 
-    <h1>Richiesta inviata con successo</h1>
-    <p>
-      Grazie per aver contattato il <span class="highlight">Centro BluMente</span>.
-    </p>
-    <p>
-      Abbiamo ricevuto il tuo messaggio e il nostro team ti risponderà
-      all’indirizzo email indicato nel più breve tempo possibile.
-    </p>
-    <p>
-      Per urgenze ti invitiamo a contattarci telefonicamente negli orari di apertura del centro.
+    <!-- Success icon -->
+    <div class="success-icon">✓</div>
+
+    <!-- Tag + title -->
+    <div class="section-tag">Conferma ricezione</div>
+    <h1>Richiesta inviata<br><em>con successo</em></h1>
+    <span class="line"></span>
+
+    <!-- Body -->
+    <p class="body-text">
+      Grazie per aver contattato il <span class="highlight">Centro BluMente</span>.<br>
+      Abbiamo ricevuto il tuo messaggio e il nostro team ti risponderà all'indirizzo email indicato nel più breve tempo possibile.
     </p>
 
-    <!-- Link aggiornato al nuovo dominio -->
-    <a href="https://centroblumente.com" class="btn">Torna al sito</a>
+    <!-- Info items -->
+    <div class="info-items">
+      <div class="info-item">
+        <div class="info-item-icon">⏱</div>
+        <span><strong>Tempi di risposta</strong>Entro 24 ore lavorative dalla ricezione.</span>
+      </div>
+      <div class="info-item">
+        <div class="info-item-icon">📞</div>
+        <span><strong>Per urgenze</strong>Contattaci telefonicamente negli orari di apertura del centro.</span>
+      </div>
+      <div class="info-item">
+        <div class="info-item-icon">📸</div>
+        <span><strong>Seguici su Instagram</strong><a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener" style="color:var(--accent);">@centro_blumente</a></span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <a href="index.html" class="btn">← Torna al sito</a>
 
     <p class="note">
-      Questa è una conferma automatica di ricezione. Ti invieremo una risposta personalizzata
-      dopo la presa in carico della richiesta.
+      Questa è una conferma automatica di ricezione. Ti invieremo una risposta
+      personalizzata dopo la presa in carico della richiesta.
     </p>
   </div>
 </body>
