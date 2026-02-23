@@ -67,7 +67,7 @@
       z-index: 1;
     }
 
-    /* ─── HEADER ─── */
+    /* HEADER */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -114,34 +114,15 @@
       text-transform: uppercase;
     }
 
-    .nav-pills {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-      background: rgba(8, 20, 45, 0.6);
-      border: 1px solid var(--blue-border);
-      border-radius: 999px;
-      padding: 4px;
-    }
-
-    .nav-pills li a {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-body);
-      padding: 7px 15px;
-      border-radius: 999px;
-      transition: all 0.25s;
-      white-space: nowrap;
+    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .brand-contacts a {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(90,122,148,0.4);
+      transition: color 0.2s, border-color 0.2s;
       opacity: 1;
     }
-    .nav-pills li a:hover { color: var(--text-white); opacity: 1; }
-    .nav-pills li a.active {
-      background: linear-gradient(135deg, #0ea5e9, #0369a1);
-      color: #fff;
-      box-shadow: 0 0 16px rgba(14,165,233,0.4);
-    }
+    .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); opacity: 1; }
 
     .divider {
       border: none;
@@ -150,7 +131,7 @@
       margin: 0;
     }
 
-    /* ─── PAGE HEADER ─── */
+    /* PAGE HEADER */
     .page-header {
       padding: 60px 0 70px;
       position: relative;
@@ -174,6 +155,7 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       margin-bottom: 24px;
+      flex-wrap: wrap;
     }
 
     .breadcrumb a {
@@ -183,6 +165,7 @@
     }
     .breadcrumb a:hover { color: var(--accent); opacity: 1; }
     .breadcrumb span { opacity: 0.5; }
+    .breadcrumb .current { color: var(--accent); opacity: 1; }
 
     .page-tag {
       display: inline-block;
@@ -225,7 +208,7 @@
       line-height: 1.8;
     }
 
-    /* ─── GALLERY ─── */
+    /* GALLERY */
     .gallery-section {
       padding: 70px 0 60px;
     }
@@ -290,7 +273,7 @@
       line-height: 1.75;
     }
 
-    /* ─── TWO COL TEXT ─── */
+    /* CONTENT */
     .content-section {
       padding: 0 0 70px;
     }
@@ -370,7 +353,7 @@
       opacity: 0.7;
     }
 
-    /* ─── CTA BANNER ─── */
+    /* CTA BANNER */
     .cta-section {
       padding: 0 0 80px;
     }
@@ -475,7 +458,7 @@
       opacity: 1;
     }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
       background: rgba(2,8,18,0.95);
       border-top: 1px solid var(--blue-border);
@@ -494,7 +477,7 @@
       margin-bottom: 8px;
     }
 
-    /* ─── REVEAL ─── */
+    /* REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -505,10 +488,9 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       body { padding-top: 68px; }
-      .nav-pills { display: none; }
       .page-header h1 { font-size: 2.1rem; }
       .gallery-grid { grid-template-columns: 1fr; }
       .two-col { grid-template-columns: 1fr; }
@@ -522,7 +504,6 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- ══════════════ HEADER ══════════════ -->
 <header>
   <div class="container">
     <nav>
@@ -530,34 +511,31 @@
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div>
           <div class="brand-name">Centro BluMente</div>
-          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-contacts">
+            <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
+            <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
+          </div>
         </div>
       </div>
-      <ul class="nav-pills">
-        <li><a href="index.html#chi-siamo">L'Autismo</a></li>
-        <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a href="index.html#terapie">Terapie</a></li>
-        <li><a href="index.html#struttura" class="active">Struttura</a></li>
-        <li><a href="index.html#contatti">Prenota</a></li>
-      </ul>
+      <!-- niente nav-right, niente pillole, niente lang-switcher -->
     </nav>
   </div>
 </header>
 
-<!-- ══════════════ PAGE HEADER ══════════════ -->
 <section class="page-header">
   <div class="container">
     <div class="breadcrumb reveal">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="breadcrumb-home">Home</a>
       <span>›</span>
-      <a href="index.html#struttura">La nostra struttura</a>
+      <a href="index.html#struttura" data-i18n="breadcrumb-structure">La nostra struttura</a>
       <span>›</span>
-      <span style="color: var(--accent);">Studi per la diagnosi</span>
+      <span class="current" data-i18n="breadcrumb-current">Studi per la diagnosi</span>
     </div>
-    <div class="page-tag reveal reveal-delay-1">Struttura · Spazi clinici</div>
-    <h1 class="reveal reveal-delay-1">Studi per la diagnosi<br><em>e il follow-up</em></h1>
+    <div class="page-tag reveal reveal-delay-1" data-i18n="page-tag">Struttura · Spazi clinici</div>
+    <h1 class="reveal reveal-delay-1" data-i18n-html="page-title">Studi per la diagnosi<br><em>e il follow-up</em></h1>
     <span class="hero-line reveal reveal-delay-2"></span>
-    <p class="reveal reveal-delay-2">
+    <p class="reveal reveal-delay-2" data-i18n="page-desc">
       Gli studi del Centro BluMente sono ambienti dedicati alla valutazione, alla diagnosi
       e al monitoraggio nel tempo dei bambini e dei ragazzi con disturbo dello spettro
       autistico, in un contesto professionale ma accogliente per le famiglie.
@@ -567,36 +545,35 @@
 
 <hr class="divider">
 
-<!-- ══════════════ GALLERY ══════════════ -->
 <section class="gallery-section">
   <div class="container">
     <div class="gallery-grid">
       <div class="gallery-card reveal">
         <img class="gallery-card-img" src="studio-medico-visite.jpg.avif" alt="Studio medico per le visite pediatriche">
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Visita medica</span>
-          <p>Studio medico attrezzato per le visite pediatriche e gli inquadramenti clinici, con strumentazione pensata per ridurre al minimo il carico di stress sensoriale.</p>
+          <span class="gallery-card-label" data-i18n="card1-label">Visita medica</span>
+          <p data-i18n="card1-desc">Studio medico attrezzato per le visite pediatriche e gli inquadramenti clinici, con strumentazione pensata per ridurre al minimo il carico di stress sensoriale.</p>
         </div>
       </div>
       <div class="gallery-card reveal reveal-delay-1">
         <img class="gallery-card-img" src="studio-colloqui-famiglia.jpg.jpg" alt="Stanza per i colloqui con i genitori">
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Colloqui famiglia</span>
-          <p>Stanza riservata ai colloqui con i genitori, uno spazio protetto dove raccogliere la storia del bambino e condividere ipotesi di lavoro.</p>
+          <span class="gallery-card-label" data-i18n="card2-label">Colloqui famiglia</span>
+          <p data-i18n="card2-desc">Stanza riservata ai colloqui con i genitori, uno spazio protetto dove raccogliere la storia del bambino e condividere ipotesi di lavoro.</p>
         </div>
       </div>
       <div class="gallery-card reveal reveal-delay-1">
         <img class="gallery-card-img" src="studio-osservazione-gioco.jpg.webp" alt="Stanza per l'osservazione del gioco del bambino">
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Osservazione del gioco</span>
-          <p>Ambiente per l'osservazione del gioco spontaneo e guidato, utile a comprendere modalità comunicative, interessi e qualità dell'interazione con l'adulto.</p>
+          <span class="gallery-card-label" data-i18n="card3-label">Osservazione del gioco</span>
+          <p data-i18n="card3-desc">Ambiente per l'osservazione del gioco spontaneo e guidato, utile a comprendere modalità comunicative, interessi e qualità dell'interazione con l'adulto.</p>
         </div>
       </div>
       <div class="gallery-card reveal reveal-delay-2">
         <img class="gallery-card-img" src="studio-test-valutazione.jpg.png" alt="Tavolo con test e materiali per la valutazione psicologica">
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Valutazione psicologica</span>
-          <p>Tavolo di lavoro con test psicologici e materiali standardizzati per la valutazione delle competenze cognitive, linguistiche e socio-comunicative.</p>
+          <span class="gallery-card-label" data-i18n="card4-label">Valutazione psicologica</span>
+          <p data-i18n="card4-desc">Tavolo di lavoro con test psicologici e materiali standardizzati per la valutazione delle competenze cognitive, linguistiche e socio-comunicative.</p>
         </div>
       </div>
     </div>
@@ -605,27 +582,26 @@
 
 <hr class="divider">
 
-<!-- ══════════════ CONTENT ══════════════ -->
 <section class="content-section" style="padding-top: 60px;">
   <div class="container">
-    <div class="section-tag reveal">Attività e obiettivi</div>
+    <div class="section-tag reveal" data-i18n="section-tag">Attività e obiettivi</div>
     <div class="two-col">
       <div class="content-card reveal reveal-delay-1">
-        <h2>Cosa si svolge negli studi</h2>
+        <h2 data-i18n="col1-title">Cosa si svolge negli studi</h2>
         <ul class="feature-list">
-          <li>Visite neuropsichiatriche e valutazioni cliniche specialistiche.</li>
-          <li>Colloqui psicologici e pedagogici con la famiglia.</li>
-          <li>Osservazioni strutturate del comportamento e del gioco del bambino.</li>
-          <li>Somministrazione di test e scale standardizzate per la diagnosi.</li>
+          <li data-i18n="col1-li1">Visite neuropsichiatriche e valutazioni cliniche specialistiche.</li>
+          <li data-i18n="col1-li2">Colloqui psicologici e pedagogici con la famiglia.</li>
+          <li data-i18n="col1-li3">Osservazioni strutturate del comportamento e del gioco del bambino.</li>
+          <li data-i18n="col1-li4">Somministrazione di test e scale standardizzate per la diagnosi.</li>
         </ul>
       </div>
       <div class="content-card reveal reveal-delay-2">
-        <h2>Obiettivi della valutazione</h2>
+        <h2 data-i18n="col2-title">Obiettivi della valutazione</h2>
         <ul class="feature-list">
-          <li>Raccogliere un quadro completo delle difficoltà e delle risorse del bambino.</li>
-          <li>Confermare o escludere la presenza di un disturbo dello spettro autistico.</li>
-          <li>Definire il profilo funzionale e le aree di intervento prioritario.</li>
-          <li>Impostare un progetto personalizzato di trattamento e follow-up.</li>
+          <li data-i18n="col2-li1">Raccogliere un quadro completo delle difficoltà e delle risorse del bambino.</li>
+          <li data-i18n="col2-li2">Confermare o escludere la presenza di un disturbo dello spettro autistico.</li>
+          <li data-i18n="col2-li3">Definire il profilo funzionale e le aree di intervento prioritario.</li>
+          <li data-i18n="col2-li4">Impostare un progetto personalizzato di trattamento e follow-up.</li>
         </ul>
       </div>
     </div>
@@ -634,27 +610,25 @@
 
 <hr class="divider">
 
-<!-- ══════════════ CTA ══════════════ -->
 <section class="cta-section" style="padding-top: 60px;">
   <div class="container">
     <div class="cta-banner reveal">
       <div class="cta-text">
-        <h2>Prenota una valutazione</h2>
-        <p>
+        <h2 data-i18n="cta-title">Prenota una valutazione</h2>
+        <p data-i18n="cta-desc">
           Le valutazioni diagnostiche vengono programmate su appuntamento e prevedono
           più incontri tra bambino, famiglia e specialisti. Per informazioni su tempi,
           modalità di accesso e documentazione necessaria contatta la nostra segreteria.
         </p>
       </div>
       <div class="cta-actions">
-        <a href="index.html#contatti" class="btn-primary">Vai ai contatti →</a>
-        <a href="index.html#struttura" class="back-link">← Torna alla struttura</a>
+        <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn-primary">Vai ai contatti →</a>
+        <a href="index.html#struttura" class="back-link" data-i18n="cta-btn-secondary">← Torna alla struttura</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="container">
     <div class="footer-brand">Centro BluMente</div>
@@ -664,15 +638,131 @@
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "breadcrumb-home": "Home",
+    "breadcrumb-structure": "La nostra struttura",
+    "breadcrumb-current": "Studi per la diagnosi",
+    "page-tag": "Struttura · Spazi clinici",
+    "page-title": "Studi per la diagnosi<br><em>e il follow-up</em>",
+    "page-desc": "Gli studi del Centro BluMente sono ambienti dedicati alla valutazione, alla diagnosi e al monitoraggio nel tempo dei bambini e dei ragazzi con disturbo dello spettro autistico, in un contesto professionale ma accogliente per le famiglie.",
+    "card1-label": "Visita medica",
+    "card1-desc": "Studio medico attrezzato per le visite pediatriche e gli inquadramenti clinici, con strumentazione pensata per ridurre al minimo il carico di stress sensoriale.",
+    "card2-label": "Colloqui famiglia",
+    "card2-desc": "Stanza riservata ai colloqui con i genitori, uno spazio protetto dove raccogliere la storia del bambino e condividere ipotesi di lavoro.",
+    "card3-label": "Osservazione del gioco",
+    "card3-desc": "Ambiente per l'osservazione del gioco spontaneo e guidato, utile a comprendere modalità comunicative, interessi e qualità dell'interazione con l'adulto.",
+    "card4-label": "Valutazione psicologica",
+    "card4-desc": "Tavolo di lavoro con test psicologici e materiali standardizzati per la valutazione delle competenze cognitive, linguistiche e socio-comunicative.",
+    "section-tag": "Attività e obiettivi",
+    "col1-title": "Cosa si svolge negli studi",
+    "col1-li1": "Visite neuropsichiatriche e valutazioni cliniche specialistiche.",
+    "col1-li2": "Colloqui psicologici e pedagogici con la famiglia.",
+    "col1-li3": "Osservazioni strutturate del comportamento e del gioco del bambino.",
+    "col1-li4": "Somministrazione di test e scale standardizzate per la diagnosi.",
+    "col2-title": "Obiettivi della valutazione",
+    "col2-li1": "Raccogliere un quadro completo delle difficoltà e delle risorse del bambino.",
+    "col2-li2": "Confermare o escludere la presenza di un disturbo dello spettro autistico.",
+    "col2-li3": "Definire il profilo funzionale e le aree di intervento prioritario.",
+    "col2-li4": "Impostare un progetto personalizzato di trattamento e follow-up.",
+    "cta-title": "Prenota una valutazione",
+    "cta-desc": "Le valutazioni diagnostiche vengono programmate su appuntamento e prevedono più incontri tra bambino, famiglia e specialisti. Per informazioni su tempi, modalità di accesso e documentazione necessaria contatta la nostra segreteria.",
+    "cta-btn-primary": "Vai ai contatti →",
+    "cta-btn-secondary": "← Torna alla struttura"
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "breadcrumb-home": "Inicio",
+    "breadcrumb-structure": "Nuestras instalaciones",
+    "breadcrumb-current": "Consultas para el diagnóstico",
+    "page-tag": "Instalaciones · Espacios clínicos",
+    "page-title": "Consultas para el diagnóstico<br><em>y el seguimiento</em>",
+    "page-desc": "Los consultorios del Centro BluMente son entornos dedicados a la evaluación, el diagnóstico y el seguimiento a lo largo del tiempo de niños y jóvenes con trastorno del espectro autista, en un contexto profesional y acogedor para las familias.",
+    "card1-label": "Visita médica",
+    "card1-desc": "Consultorio médico equipado para visitas pediátricas e informes clínicos, con instrumental diseñado para minimizar la carga de estrés sensorial.",
+    "card2-label": "Entrevistas familiares",
+    "card2-desc": "Sala reservada para las entrevistas con los padres, un espacio protegido donde recopilar la historia del niño y compartir hipótesis de trabajo.",
+    "card3-label": "Observación del juego",
+    "card3-desc": "Entorno para la observación del juego espontáneo y dirigido, útil para comprender los modos comunicativos, los intereses y la calidad de la interacción con el adulto.",
+    "card4-label": "Evaluación psicológica",
+    "card4-desc": "Mesa de trabajo con tests psicológicos y materiales estandarizados para la evaluación de competencias cognitivas, lingüísticas y sociocomunicativas.",
+    "section-tag": "Actividades y objetivos",
+    "col1-title": "Qué se realiza en los consultorios",
+    "col1-li1": "Visitas neuropsiquiátricas y evaluaciones clínicas especializadas.",
+    "col1-li2": "Entrevistas psicológicas y pedagógicas con la familia.",
+    "col1-li3": "Observaciones estructuradas del comportamiento y el juego del niño.",
+    "col1-li4": "Aplicación de tests y escalas estandarizadas para el diagnóstico.",
+    "col2-title": "Objetivos de la evaluación",
+    "col2-li1": "Obtener un panorama completo de las dificultades y los recursos del niño.",
+    "col2-li2": "Confirmar o descartar la presencia de un trastorno del espectro autista.",
+    "col2-li3": "Definir el perfil funcional y las áreas de intervención prioritarias.",
+    "col2-li4": "Establecer un proyecto personalizado de tratamiento y seguimiento.",
+    "cta-title": "Reserva una evaluación",
+    "cta-desc": "Las evaluaciones diagnósticas se programan con cita previa e implican varios encuentros entre el niño, la familia y los especialistas. Para información sobre plazos, modalidades de acceso y documentación necesaria, contacta con nuestra secretaría.",
+    "cta-btn-primary": "Ir a contactos →",
+    "cta-btn-secondary": "← Volver a instalaciones"
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "breadcrumb-home": "Home",
+    "breadcrumb-structure": "Our facilities",
+    "breadcrumb-current": "Diagnostic rooms",
+    "page-tag": "Facilities · Clinical spaces",
+    "page-title": "Diagnostic rooms<br><em>& follow-up</em>",
+    "page-desc": "The Centro BluMente's clinical rooms are dedicated to the assessment, diagnosis and long-term monitoring of children and young people with autism spectrum disorder, in a professional yet welcoming environment for families.",
+    "card1-label": "Medical examination",
+    "card1-desc": "Fully equipped medical room for paediatric visits and clinical assessments, with instruments designed to minimise sensory stress.",
+    "card2-label": "Family consultations",
+    "card2-desc": "Private room for consultations with parents — a protected space to gather the child's history and share working hypotheses.",
+    "card3-label": "Play observation",
+    "card3-desc": "Environment for observing spontaneous and guided play, useful for understanding communication styles, interests and the quality of adult–child interaction.",
+    "card4-label": "Psychological assessment",
+    "card4-desc": "Work table with psychological tests and standardised materials for assessing cognitive, language and socio-communicative skills.",
+    "section-tag": "Activities & goals",
+    "col1-title": "What takes place in the rooms",
+    "col1-li1": "Neuropsychiatric visits and specialist clinical assessments.",
+    "col1-li2": "Psychological and pedagogical consultations with the family.",
+    "col1-li3": "Structured observations of the child's behaviour and play.",
+    "col1-li4": "Administration of standardised tests and scales for diagnosis.",
+    "col2-title": "Assessment goals",
+    "col2-li1": "Build a comprehensive picture of the child's difficulties and strengths.",
+    "col2-li2": "Confirm or rule out the presence of an autism spectrum disorder.",
+    "col2-li3": "Define the functional profile and priority areas for intervention.",
+    "col2-li4": "Set up a personalised treatment and follow-up plan.",
+    "cta-title": "Book an assessment",
+    "cta-desc": "Diagnostic assessments are scheduled by appointment and involve multiple sessions with the child, the family and our specialists. For information on timelines, access and required documentation, please contact our reception.",
+    "cta-btn-primary": "Go to contacts →",
+    "cta-btn-secondary": "← Back to facilities"
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+});
 </script>
 </body>
 </html>
