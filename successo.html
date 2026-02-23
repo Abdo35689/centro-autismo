@@ -28,7 +28,6 @@
       justify-content: center;
       overflow: hidden;
     }
-    /* Noise texture */
     body::before {
       content: "";
       position: fixed;
@@ -38,19 +37,11 @@
       pointer-events: none;
       z-index: 0;
     }
-    /* Orb lights */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
     .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.13), transparent 65%); top: -200px; right: -150px; }
     .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: -150px; left: -150px; }
     .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 65%); top: 50%; left: 40%; }
 
-    /* Card */
     .card {
       position: relative;
       z-index: 1;
@@ -64,7 +55,6 @@
       border: 1px solid var(--blue-border);
       box-shadow: 0 30px 70px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
       text-align: center;
-      /* radial glow inside card */
       overflow: hidden;
     }
     .card::before {
@@ -76,46 +66,24 @@
       pointer-events: none;
     }
 
-    /* Logo */
     .logo-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 32px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; margin-bottom: 32px;
     }
     .logo-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      object-fit: cover;
+      width: 50px; height: 50px; border-radius: 12px; object-fit: cover;
       border: 1.5px solid rgba(56,189,248,0.4);
       box-shadow: 0 0 20px rgba(56,189,248,0.25);
     }
-    .brand-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      color: var(--text-white);
-      letter-spacing: 0.01em;
-    }
-    .brand-sub {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
+    .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); letter-spacing: 0.01em; }
+    .brand-sub { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
 
-    /* Icon */
     .success-icon {
-      width: 64px;
-      height: 64px;
+      width: 64px; height: 64px;
       background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.05));
       border: 1px solid rgba(34,197,94,0.35);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       margin: 0 auto 24px;
       font-size: 1.8rem;
       box-shadow: 0 0 24px rgba(34,197,94,0.2);
@@ -126,122 +94,39 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Tag */
     .section-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 999px;
-      padding: 4px 14px;
-      margin-bottom: 14px;
-      background: rgba(56,189,248,0.05);
+      display: inline-block; font-size: 0.68rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.3); border-radius: 999px;
+      padding: 4px 14px; margin-bottom: 14px; background: rgba(56,189,248,0.05);
     }
 
-    /* Title */
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.2rem;
-      color: var(--text-white);
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
+    h1 { font-family: 'DM Serif Display', serif; font-size: 2.2rem; color: var(--text-white); line-height: 1.15; margin-bottom: 16px; }
     h1 em { font-style: italic; color: var(--accent-2); }
 
-    /* Divider line */
-    .line {
-      display: block;
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      margin: 0 auto 22px;
-    }
+    .line { display: block; width: 60px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 0 auto 22px; }
 
-    /* Body text */
-    .body-text {
-      font-size: 0.96rem;
-      color: var(--text-body);
-      line-height: 1.8;
-      margin-bottom: 10px;
-    }
-    .body-text .highlight {
-      color: var(--text-white);
-      font-weight: 600;
-    }
+    .body-text { font-size: 0.96rem; color: var(--text-body); line-height: 1.8; margin-bottom: 10px; }
+    .body-text .highlight { color: var(--text-white); font-weight: 600; }
 
-    /* Info items */
-    .info-items {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 24px 0;
-      text-align: left;
-    }
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      background: rgba(8,20,45,0.5);
-      border: 1px solid var(--blue-border);
-      border-radius: 12px;
-    }
-    .info-item-icon {
-      width: 32px; height: 32px;
-      background: rgba(56,189,248,0.1);
-      border: 1px solid rgba(56,189,248,0.2);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-    .info-item span {
-      font-size: 0.88rem;
-      color: var(--text-body);
-      line-height: 1.5;
-    }
-    .info-item span strong {
-      display: block;
-      color: var(--text-white);
-      font-size: 0.8rem;
-      margin-bottom: 1px;
-    }
+    .info-items { display: flex; flex-direction: column; gap: 10px; margin: 24px 0; text-align: left; }
+    .info-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: rgba(8,20,45,0.5); border: 1px solid var(--blue-border); border-radius: 12px; }
+    .info-item-icon { width: 32px; height: 32px; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; }
+    .info-item span { font-size: 0.88rem; color: var(--text-body); line-height: 1.5; }
+    .info-item span strong { display: block; color: var(--text-white); font-size: 0.8rem; margin-bottom: 1px; }
 
-    /* Button */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 30px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 30px; border-radius: 999px;
       background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      font-size: 0.92rem;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
+      color: #fff; font-family: 'DM Sans', sans-serif; font-weight: 600;
+      font-size: 0.92rem; text-decoration: none; border: none; cursor: pointer;
       box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2);
-      transition: all 0.3s;
-      letter-spacing: 0.01em;
+      transition: all 0.3s; letter-spacing: 0.01em;
     }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4);
-    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4); }
 
-    /* Note */
-    .note {
-      margin-top: 16px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .note { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
 
     @media (max-width: 600px) {
       .card { padding: 36px 22px 30px; }
@@ -256,52 +141,107 @@
   <div class="orb orb-3"></div>
 
   <div class="card">
-    <!-- Logo + brand -->
     <div class="logo-wrap">
       <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
       <div>
         <div class="brand-name">Centro BluMente</div>
-        <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+        <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
       </div>
     </div>
 
-    <!-- Success icon -->
     <div class="success-icon">✓</div>
 
-    <!-- Tag + title -->
-    <div class="section-tag">Conferma ricezione</div>
-    <h1>Richiesta inviata<br><em>con successo</em></h1>
+    <div class="section-tag" data-i18n="tag">Conferma ricezione</div>
+    <h1 data-i18n-html="title">Richiesta inviata<br><em>con successo</em></h1>
     <span class="line"></span>
 
-    <!-- Body -->
-    <p class="body-text">
+    <p class="body-text" data-i18n-html="body">
       Grazie per aver contattato il <span class="highlight">Centro BluMente</span>.<br>
       Abbiamo ricevuto il tuo messaggio e il nostro team ti risponderà all'indirizzo email indicato nel più breve tempo possibile.
     </p>
 
-    <!-- Info items -->
     <div class="info-items">
       <div class="info-item">
         <div class="info-item-icon">⏱</div>
-        <span><strong>Tempi di risposta</strong>Entro 24 ore lavorative dalla ricezione.</span>
+        <span><strong data-i18n="item1-title">Tempi di risposta</strong><span data-i18n="item1-desc">Entro 24 ore lavorative dalla ricezione.</span></span>
       </div>
       <div class="info-item">
         <div class="info-item-icon">📞</div>
-        <span><strong>Per urgenze</strong>Contattaci telefonicamente negli orari di apertura del centro.</span>
+        <span><strong data-i18n="item2-title">Per urgenze</strong><span data-i18n="item2-desc">Contattaci telefonicamente negli orari di apertura del centro.</span></span>
       </div>
       <div class="info-item">
         <div class="info-item-icon">📸</div>
-        <span><strong>Seguici su Instagram</strong><a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener" style="color:var(--accent);">@centro_blumente</a></span>
+        <span><strong data-i18n="item3-title">Seguici su Instagram</strong><a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener" style="color:var(--accent);">@centro_blumente</a></span>
       </div>
     </div>
 
-    <!-- CTA -->
-    <a href="index.html" class="btn">← Torna al sito</a>
+    <a href="index.html" class="btn" data-i18n="btn">← Torna al sito</a>
 
-    <p class="note">
+    <p class="note" data-i18n="note">
       Questa è una conferma automatica di ricezione. Ti invieremo una risposta
       personalizzata dopo la presa in carico della richiesta.
     </p>
   </div>
+
+<script>
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "tag": "Conferma ricezione",
+    "title": "Richiesta inviata<br><em>con successo</em>",
+    "body": "Grazie per aver contattato il <span class=\"highlight\">Centro BluMente</span>.<br>Abbiamo ricevuto il tuo messaggio e il nostro team ti risponderà all'indirizzo email indicato nel più breve tempo possibile.",
+    "item1-title": "Tempi di risposta",
+    "item1-desc": "Entro 24 ore lavorative dalla ricezione.",
+    "item2-title": "Per urgenze",
+    "item2-desc": "Contattaci telefonicamente negli orari di apertura del centro.",
+    "item3-title": "Seguici su Instagram",
+    "btn": "← Torna al sito",
+    "note": "Questa è una conferma automatica di ricezione. Ti invieremo una risposta personalizzata dopo la presa in carico della richiesta."
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "tag": "Confirmación de recepción",
+    "title": "Solicitud enviada<br><em>con éxito</em>",
+    "body": "Gracias por contactar con el <span class=\"highlight\">Centro BluMente</span>.<br>Hemos recibido tu mensaje y nuestro equipo te responderá a la dirección de correo electrónico indicada lo antes posible.",
+    "item1-title": "Tiempo de respuesta",
+    "item1-desc": "En un plazo de 24 horas laborables desde la recepción.",
+    "item2-title": "Para urgencias",
+    "item2-desc": "Contáctanos por teléfono durante el horario de apertura del centro.",
+    "item3-title": "Síguenos en Instagram",
+    "btn": "← Volver al sitio",
+    "note": "Esta es una confirmación automática de recepción. Te enviaremos una respuesta personalizada tras la revisión de tu solicitud."
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "tag": "Receipt confirmed",
+    "title": "Request sent<br><em>successfully</em>",
+    "body": "Thank you for contacting <span class=\"highlight\">Centro BluMente</span>.<br>We have received your message and our team will reply to the email address you provided as soon as possible.",
+    "item1-title": "Response time",
+    "item1-desc": "Within 24 working hours of receipt.",
+    "item2-title": "For urgent matters",
+    "item2-desc": "Please call us during the centre's opening hours.",
+    "item3-title": "Follow us on Instagram",
+    "btn": "← Back to the website",
+    "note": "This is an automatic confirmation of receipt. We will send you a personalised reply once your request has been reviewed."
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Legge la lingua scelta in precedenza, default italiano
+  const lang = localStorage.getItem('blumente-lang') || 'it';
+  const t = translations[lang] || translations['it'];
+
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+});
+</script>
 </body>
 </html>
