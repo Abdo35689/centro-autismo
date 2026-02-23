@@ -46,55 +46,28 @@
     .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
     a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
     a:hover { opacity: 0.8; }
+
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(2, 12, 27, 0.75);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--blue-border);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--blue-border);
     }
-    .container {
-      width: 92%; max-width: 1100px;
-      margin: 0 auto; padding: 0 20px;
-      position: relative; z-index: 1;
-    }
+    .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
     nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
     .logo-area { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
-    .logo-img {
-      width: 46px; height: 46px; border-radius: 12px; object-fit: cover;
-      border: 1.5px solid rgba(56,189,248,0.4);
-      box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05);
-    }
+    .logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 1.5px solid rgba(56,189,248,0.4); box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05); }
     .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); }
     .brand-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
-    .back-link {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.85rem; font-weight: 500; color: var(--text-body);
-      padding: 7px 18px; border-radius: 999px;
-      border: 1px solid var(--blue-border); background: rgba(8,20,45,0.6);
-      transition: all 0.25s;
-    }
-    .back-link:hover { color: var(--accent); border-color: rgba(56,189,248,0.4); opacity: 1; }
+    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .brand-contacts a { font-size: 0.72rem; color: var(--text-muted); border-bottom: 1px solid rgba(90,122,148,0.4); transition: color 0.2s, border-color 0.2s; }
+    .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* PAGE HERO */
     .page-hero { padding: 70px 0 60px; position: relative; overflow: hidden; }
-    .page-hero::after {
-      content: ""; position: absolute; width: 1px; height: 300px;
-      background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent);
-      right: 15%; top: 5%; transform: rotate(15deg);
-    }
+    .page-hero::after { content: ""; position: absolute; width: 1px; height: 300px; background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent); right: 15%; top: 5%; transform: rotate(15deg); }
     .page-hero-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px;
-      border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05);
-    }
-    .hero-eyebrow .dot {
-      width: 7px; height: 7px; background: #22c55e; border-radius: 50%;
-      box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite;
-    }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px; border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05); }
+    .hero-eyebrow .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
     @keyframes pulse {
       0%,100% { box-shadow: 0 0 8px #22c55e; }
       50% { box-shadow: 0 0 16px #22c55e, 0 0 24px rgba(34,197,94,0.4); }
@@ -119,7 +92,6 @@
     .content-block p { font-size: 0.97rem; color: var(--text-body); line-height: 1.85; margin-bottom: 18px; }
     .content-block p strong { color: var(--text-white); }
 
-    /* INFO POINTS */
     .info-points { display: flex; flex-direction: column; gap: 14px; }
     .info-point { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: rgba(8,20,45,0.5); border: 1px solid var(--blue-border); border-radius: 14px; transition: border-color 0.2s; }
     .info-point:hover { border-color: rgba(56,189,248,0.35); }
@@ -127,7 +99,6 @@
     .info-point-text strong { display: block; color: var(--text-white); font-size: 0.92rem; margin-bottom: 4px; }
     .info-point-text span { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* SIGNAL CARDS */
     .signals-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
     .signal-card { background: var(--blue-card); border: 1px solid var(--blue-border); border-radius: 18px; padding: 24px; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.23,1,0.32,1); }
     .signal-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(56,189,248,0.06), transparent 60%); opacity: 0; transition: opacity 0.35s; }
@@ -137,15 +108,13 @@
     .signal-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text-white); margin-bottom: 10px; }
     .signal-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; }
 
-    /* AFTER CARD */
     .after-card { background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95)); border: 1px solid var(--blue-border); border-radius: 24px; padding: 40px; position: relative; overflow: hidden; }
     .after-card::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); top: -120px; right: -80px; pointer-events: none; }
     .after-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--text-white); margin-bottom: 16px; }
     .after-card p { font-size: 0.95rem; color: var(--text-body); line-height: 1.85; margin-bottom: 16px; max-width: 680px; }
     .after-card p:last-child { margin-bottom: 0; }
 
-    /* FAQ ACCORDION */
-    details.faq-item { background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+    .faq-item { background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
     details.faq-item[open] { border-color: rgba(56,189,248,0.4); }
     details.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; padding: 22px 24px; font-weight: 600; font-size: 0.97rem; color: var(--text-white); user-select: none; }
     details.faq-item summary::-webkit-details-marker { display: none; }
@@ -155,20 +124,17 @@
     .faq-body p { margin-bottom: 14px; }
     .faq-body p:last-child { margin-bottom: 0; }
 
-    /* CTA STRIP */
     .cta-strip { background: linear-gradient(135deg, rgba(14,165,233,0.12), rgba(3,105,161,0.08)); border: 1px solid rgba(56,189,248,0.25); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
     .cta-strip h3 { font-family: 'DM Serif Display', serif; font-size: 1.7rem; color: var(--text-white); margin-bottom: 6px; }
     .cta-strip p { font-size: 0.93rem; color: var(--text-body); max-width: 440px; line-height: 1.7; }
     .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 999px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: #fff; font-weight: 600; font-size: 0.92rem; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2); transition: all 0.3s; white-space: nowrap; flex-shrink: 0; }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4); opacity: 1; }
 
-    /* FOOTER */
     footer { background: rgba(2,8,18,0.95); border-top: 1px solid var(--blue-border); padding: 44px 0; text-align: center; }
     footer p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
     .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 10px; }
     .footer-accent { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 8px; opacity: 0.6; }
 
-    /* REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
@@ -204,10 +170,14 @@
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div>
           <div class="brand-name">Centro BluMente</div>
-          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-contacts">
+            <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
+            <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
+          </div>
         </div>
       </div>
-      <a href="index.html" class="back-link">← Torna alla home</a>
+      <!-- nav-right rimosso (menu + selettore lingua) -->
     </nav>
   </div>
 </header>
@@ -218,13 +188,14 @@
     <div class="page-hero-inner">
       <div>
         <div class="hero-eyebrow reveal">
-          <span class="dot"></span> Percorso diagnostico
+          <span class="dot"></span>
+          <span data-i18n="hero-eyebrow">Percorso diagnostico</span>
         </div>
-        <h1 class="page-title reveal reveal-delay-1">
+        <h1 class="page-title reveal reveal-delay-1" data-i18n-html="hero-title">
           Diagnosi<br><em>Precoce</em>
         </h1>
         <span class="hero-line reveal reveal-delay-1"></span>
-        <p class="page-lead reveal reveal-delay-2">
+        <p class="page-lead reveal reveal-delay-2" data-i18n="hero-desc">
           Valutazioni specialistiche per individuare in modo tempestivo i segnali
           di un disturbo dello spettro autistico e avviare percorsi di intervento
           mirati già nei primi anni di vita.
@@ -244,16 +215,16 @@
   <div class="container">
     <div class="two-col">
       <div class="reveal">
-        <div class="section-tag">Importanza</div>
-        <h2 class="section-title">Perché è importante<br><em>intervenire presto</em></h2>
+        <div class="section-tag" data-i18n="s1-tag">Importanza</div>
+        <h2 class="section-title" data-i18n-html="s1-title">Perché è importante<br><em>intervenire presto</em></h2>
       </div>
       <div class="content-block reveal reveal-delay-1">
-        <p>
+        <p data-i18n="s1-p1">
           La diagnosi clinica dello spettro autistico si basa sull'osservazione del comportamento
           e sulla raccolta accurata dei dati anamnestici, perché non esistono test biologici in grado
           di individuare direttamente la condizione.
         </p>
-        <p>
+        <p data-i18n-html="s1-p2">
           La valutazione e il trattamento precoci <strong>cambiano la prognosi a lungo termine</strong>:
           un intervento avviato presto aumenta significativamente le probabilità di sviluppare
           autonomia comunicativa e sociale, mentre un intervento tardivo riduce le possibilità di
@@ -270,37 +241,37 @@
 <section class="section bg-subtle">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Il percorso</div>
-      <h2 class="section-title">Cosa comprende<br><em>la valutazione</em></h2>
-      <p class="section-desc">Un percorso multidisciplinare strutturato, costruito attorno al bambino e alla sua famiglia.</p>
+      <div class="section-tag" data-i18n="s2-tag">Il percorso</div>
+      <h2 class="section-title" data-i18n-html="s2-title">Cosa comprende<br><em>la valutazione</em></h2>
+      <p class="section-desc" data-i18n="s2-desc">Un percorso multidisciplinare strutturato, costruito attorno al bambino e alla sua famiglia.</p>
     </div>
     <div class="info-points">
       <div class="info-point reveal">
         <div class="info-point-icon">🗣️</div>
         <div class="info-point-text">
-          <strong>Colloqui con i genitori</strong>
-          <span>Raccolta accurata della storia di sviluppo, delle tappe motorie e linguistiche e delle preoccupazioni emerse nei primi anni di vita.</span>
+          <strong data-i18n="ip1-title">Colloqui con i genitori</strong>
+          <span data-i18n="ip1-desc">Raccolta accurata della storia di sviluppo, delle tappe motorie e linguistiche e delle preoccupazioni emerse nei primi anni di vita.</span>
         </div>
       </div>
       <div class="info-point reveal reveal-delay-1">
         <div class="info-point-icon">👁️</div>
         <div class="info-point-text">
-          <strong>Osservazione diretta</strong>
-          <span>Attenzione alla comunicazione, all'interazione sociale, al gioco, alla presenza di stereotipie e alla risposta ai cambiamenti.</span>
+          <strong data-i18n="ip2-title">Osservazione diretta</strong>
+          <span data-i18n="ip2-desc">Attenzione alla comunicazione, all'interazione sociale, al gioco, alla presenza di stereotipie e alla risposta ai cambiamenti.</span>
         </div>
       </div>
       <div class="info-point reveal reveal-delay-2">
         <div class="info-point-icon">📋</div>
         <div class="info-point-text">
-          <strong>Strumenti psicometrici standardizzati</strong>
-          <span>Interviste strutturate con neuropsichiatra infantile e psicologo per valutare il livello di sviluppo e il funzionamento globale in modo oggettivo.</span>
+          <strong data-i18n="ip3-title">Strumenti psicometrici standardizzati</strong>
+          <span data-i18n="ip3-desc">Interviste strutturate con neuropsichiatra infantile e psicologo per valutare il livello di sviluppo e il funzionamento globale in modo oggettivo.</span>
         </div>
       </div>
       <div class="info-point reveal reveal-delay-3">
         <div class="info-point-icon">🔬</div>
         <div class="info-point-text">
-          <strong>Esami medici di approfondimento</strong>
-          <span>Quando indicati: valutazione dell'udito, EEG e accertamenti genetici o metabolici per escludere altre condizioni associate.</span>
+          <strong data-i18n="ip4-title">Esami medici di approfondimento</strong>
+          <span data-i18n="ip4-desc">Quando indicati: valutazione dell'udito, EEG e accertamenti genetici o metabolici per escludere altre condizioni associate.</span>
         </div>
       </div>
     </div>
@@ -313,30 +284,30 @@
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Indicatori di rischio</div>
-      <h2 class="section-title">Segnali precoci<br><em>da osservare</em></h2>
-      <p class="section-desc">Alcuni comportamenti nei primi anni possono rendere opportuna una valutazione specialistica.</p>
+      <div class="section-tag" data-i18n="s3-tag">Indicatori di rischio</div>
+      <h2 class="section-title" data-i18n-html="s3-title">Segnali precoci<br><em>da osservare</em></h2>
+      <p class="section-desc" data-i18n="s3-desc">Alcuni comportamenti nei primi anni possono rendere opportuna una valutazione specialistica.</p>
     </div>
     <div class="signals-grid">
       <div class="signal-card reveal">
-        <span class="signal-age">Primi mesi di vita</span>
-        <h4>Segnali primissimi</h4>
-        <p>Assenza del sorriso sociale, pianti poco frequenti, scarso contatto oculare e difficoltà nel dialogo tonico con la figura di riferimento.</p>
+        <span class="signal-age" data-i18n="sc1-age">Primi mesi di vita</span>
+        <h4 data-i18n="sc1-title">Segnali primissimi</h4>
+        <p data-i18n="sc1-desc">Assenza del sorriso sociale, pianti poco frequenti, scarso contatto oculare e difficoltà nel dialogo tonico con la figura di riferimento.</p>
       </div>
       <div class="signal-card reveal reveal-delay-1">
-        <span class="signal-age">6–12 mesi</span>
-        <h4>Primo semestre</h4>
-        <p>Assenza di reazioni di angoscia di fronte agli estranei, mancanza di lallazione e di risposte anticipatorie come girare la testa o tendere le braccia.</p>
+        <span class="signal-age" data-i18n="sc2-age">6–12 mesi</span>
+        <h4 data-i18n="sc2-title">Primo semestre</h4>
+        <p data-i18n="sc2-desc">Assenza di reazioni di angoscia di fronte agli estranei, mancanza di lallazione e di risposte anticipatorie come girare la testa o tendere le braccia.</p>
       </div>
       <div class="signal-card reveal reveal-delay-2">
-        <span class="signal-age">12–24 mesi</span>
-        <h4>Secondo anno</h4>
-        <p>Comparsa di stereotipie motorie come dondolarsi o camminare sulle punte, assenza del gesto di indicare per mostrare e forte opposizione ai cambiamenti di routine.</p>
+        <span class="signal-age" data-i18n="sc3-age">12–24 mesi</span>
+        <h4 data-i18n="sc3-title">Secondo anno</h4>
+        <p data-i18n="sc3-desc">Comparsa di stereotipie motorie come dondolarsi o camminare sulle punte, assenza del gesto di indicare per mostrare e forte opposizione ai cambiamenti di routine.</p>
       </div>
       <div class="signal-card reveal reveal-delay-3">
-        <span class="signal-age">Area comunicativa</span>
-        <h4>Linguaggio e socialità</h4>
-        <p>Scarso interesse per gli altri bambini, uso atipico dei giochi, linguaggio assente o non adeguato all'età, ecolalia, rigidità negli interessi.</p>
+        <span class="signal-age" data-i18n="sc4-age">Area comunicativa</span>
+        <h4 data-i18n="sc4-title">Linguaggio e socialità</h4>
+        <p data-i18n="sc4-desc">Scarso interesse per gli altri bambini, uso atipico dei giochi, linguaggio assente o non adeguato all'età, ecolalia, rigidità negli interessi.</p>
       </div>
     </div>
   </div>
@@ -348,14 +319,14 @@
 <section class="section bg-subtle">
   <div class="container">
     <div class="after-card reveal">
-      <div class="section-tag" style="margin-bottom:20px;">Cosa succede dopo</div>
-      <h3>Dopo la diagnosi</h3>
-      <p>
+      <div class="section-tag" style="margin-bottom:20px;" data-i18n="s4-tag">Cosa succede dopo</div>
+      <h3 data-i18n="s4-title">Dopo la diagnosi</h3>
+      <p data-i18n="s4-p1">
         Al termine del percorso diagnostico viene offerta una restituzione chiara alla famiglia,
         spiegando il significato del quadro clinico, le prospettive evolutive e le priorità di intervento
         nelle aree chiave della comunicazione, della socializzazione e del comportamento adattivo.
       </p>
-      <p>
+      <p data-i18n-html="s4-p2">
         La presa in carico prevede un <strong style="color:var(--text-white)">progetto individualizzato</strong>,
         costruito sui punti di forza e di debolezza del bambino, il coinvolgimento attivo dei genitori,
         il lavoro di rete con la scuola e la programmazione di rivalutazioni periodiche
@@ -371,20 +342,20 @@
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Approfondimento</div>
-      <h2 class="section-title">Ulteriori<br><em>informazioni</em></h2>
+      <div class="section-tag" data-i18n="s5-tag">Approfondimento</div>
+      <h2 class="section-title" data-i18n-html="s5-title">Ulteriori<br><em>informazioni</em></h2>
     </div>
     <div class="reveal">
       <details class="faq-item">
         <summary>
-          Informazioni aggiuntive sul percorso diagnostico
+          <span data-i18n="faq-q">Informazioni aggiuntive sul percorso diagnostico</span>
           <span class="faq-arrow">+</span>
         </summary>
         <div class="faq-body">
-          <p>La valutazione comprende un'attenta anamnesi, l'intervista ai genitori e l'osservazione del bambino in situazioni strutturate e non strutturate, così da cogliere il modo in cui comunica, gioca, reagisce ai cambiamenti e ricerca il contatto con l'altro.</p>
-          <p>Gli strumenti psicometrici e le interviste standardizzate permettono di descrivere in modo più oggettivo il profilo di sviluppo, integrando le osservazioni cliniche con dati confrontabili con i parametri di riferimento disponibili.</p>
-          <p>Un intervento precoce, intensivo e cucito su misura, che consideri sia le difficoltà sia le risorse del bambino, offre maggiori possibilità di sviluppare competenze comunicative, sociali e adattive e di preparare al meglio il passaggio alle fasi successive della crescita.</p>
-          <p>La famiglia non è lasciata sola: il centro rimane un punto di riferimento nel tempo per verifiche, aggiornamenti del progetto, consulenze su aspetti scolastici e orientamento tra i diversi servizi sanitari, riabilitativi ed educativi del territorio.</p>
+          <p data-i18n="faq-p1">La valutazione comprende un'attenta anamnesi, l'intervista ai genitori e l'osservazione del bambino in situazioni strutturate e non strutturate, così da cogliere il modo in cui comunica, gioca, reagisce ai cambiamenti e ricerca il contatto con l'altro.</p>
+          <p data-i18n="faq-p2">Gli strumenti psicometrici e le interviste standardizzate permettono di descrivere in modo più oggettivo il profilo di sviluppo, integrando le osservazioni cliniche con dati confrontabili con i parametri di riferimento disponibili.</p>
+          <p data-i18n="faq-p3">Un intervento precoce, intensivo e cucito su misura, che consideri sia le difficoltà sia le risorse del bambino, offre maggiori possibilità di sviluppare competenze comunicative, sociali e adattive e di preparare al meglio il passaggio alle fasi successive della crescita.</p>
+          <p data-i18n="faq-p4">La famiglia non è lasciata sola: il centro rimane un punto di riferimento nel tempo per verifiche, aggiornamenti del progetto, consulenze su aspetti scolastici e orientamento tra i diversi servizi sanitari, riabilitativi ed educativi del territorio.</p>
         </div>
       </details>
     </div>
@@ -398,10 +369,10 @@
   <div class="container">
     <div class="cta-strip reveal">
       <div>
-        <h3>Prenota una valutazione</h3>
-        <p>Il nostro team è pronto ad accoglierti e guidarti nel percorso più adatto al tuo bambino.</p>
+        <h3 data-i18n="cta-title">Prenota una valutazione</h3>
+        <p data-i18n="cta-desc">Il nostro team è pronto ad accoglierti e guidarti nel percorso più adatto al tuo bambino.</p>
       </div>
-      <a href="index.html#contatti" class="btn-primary">Contattaci ora →</a>
+      <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn">Contattaci ora →</a>
     </div>
   </div>
 </section>
@@ -410,22 +381,197 @@
 <footer>
   <div class="container">
     <div class="footer-brand">Centro BluMente</div>
-    <p>© 2026 Centro BluMente. Tutti i diritti riservati.<span class="footer-accent"></span>Cinisello Balsamo (MI)</p>
-    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;">Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.</p>
+    <p>© 2026 Centro BluMente. <span data-i18n="footer-rights">Tutti i diritti riservati.</span><span class="footer-accent"></span>Cinisello Balsamo (MI)</p>
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;" data-i18n="footer-note">Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.</p>
   </div>
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
-  });
-</script>
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "hero-eyebrow": "Percorso diagnostico",
+    "hero-title": "Diagnosi<br><em>Precoce</em>",
+    "hero-desc": "Valutazioni specialistiche per individuare in modo tempestivo i segnali di un disturbo dello spettro autistico e avviare percorsi di intervento mirati già nei primi anni di vita.",
+    "s1-tag": "Importanza",
+    "s1-title": "Perché è importante<br><em>intervenire presto</em>",
+    "s1-p1": "La diagnosi clinica dello spettro autistico si basa sull'osservazione del comportamento e sulla raccolta accurata dei dati anamnestici, perché non esistono test biologici in grado di individuare direttamente la condizione.",
+    "s1-p2": "La valutazione e il trattamento precoci <strong>cambiano la prognosi a lungo termine</strong>: un intervento avviato presto aumenta significativamente le probabilità di sviluppare autonomia comunicativa e sociale, mentre un intervento tardivo riduce le possibilità di piena espressione delle potenzialità di ogni bambino.",
+    "s2-tag": "Il percorso",
+    "s2-title": "Cosa comprende<br><em>la valutazione</em>",
+    "s2-desc": "Un percorso multidisciplinare strutturato, costruito attorno al bambino e alla sua famiglia.",
+    "ip1-title": "Colloqui con i genitori",
+    "ip1-desc": "Raccolta accurata della storia di sviluppo, delle tappe motorie e linguistiche e delle preoccupazioni emerse nei primi anni di vita.",
+    "ip2-title": "Osservazione diretta",
+    "ip2-desc": "Attenzione alla comunicazione, all'interazione sociale, al gioco, alla presenza di stereotipie e alla risposta ai cambiamenti.",
+    "ip3-title": "Strumenti psicometrici standardizzati",
+    "ip3-desc": "Interviste strutturate con neuropsichiatra infantile e psicologo per valutare il livello di sviluppo e il funzionamento globale in modo oggettivo.",
+    "ip4-title": "Esami medici di approfondimento",
+    "ip4-desc": "Quando indicati: valutazione dell'udito, EEG e accertamenti genetici o metabolici per escludere altre condizioni associate.",
+    "s3-tag": "Indicatori di rischio",
+    "s3-title": "Segnali precoci<br><em>da osservare</em>",
+    "s3-desc": "Alcuni comportamenti nei primi anni possono rendere opportuna una valutazione specialistica.",
+    "sc1-age": "Primi mesi di vita",
+    "sc1-title": "Segnali primissimi",
+    "sc1-desc": "Assenza del sorriso sociale, pianti poco frequenti, scarso contatto oculare e difficoltà nel dialogo tonico con la figura di riferimento.",
+    "sc2-age": "6–12 mesi",
+    "sc2-title": "Primo semestre",
+    "sc2-desc": "Assenza di reazioni di angoscia di fronte agli estranei, mancanza di lallazione e di risposte anticipatorie come girare la testa o tendere le braccia.",
+    "sc3-age": "12–24 mesi",
+    "sc3-title": "Secondo anno",
+    "sc3-desc": "Comparsa di stereotipie motorie come dondolarsi o camminare sulle punte, assenza del gesto di indicare per mostrare e forte opposizione ai cambiamenti di routine.",
+    "sc4-age": "Area comunicativa",
+    "sc4-title": "Linguaggio e socialità",
+    "sc4-desc": "Scarso interesse per gli altri bambini, uso atipico dei giochi, linguaggio assente o non adeguato all'età, ecolalia, rigidità negli interessi.",
+    "s4-tag": "Cosa succede dopo",
+    "s4-title": "Dopo la diagnosi",
+    "s4-p1": "Al termine del percorso diagnostico viene offerta una restituzione chiara alla famiglia, spiegando il significato del quadro clinico, le prospettive evolutive e le priorità di intervento nelle aree chiave della comunicazione, della socializzazione e del comportamento adattivo.",
+    "s4-p2": "La presa in carico prevede un <strong style=\"color:var(--text-white)\">progetto individualizzato</strong>, costruito sui punti di forza e di debolezza del bambino, il coinvolgimento attivo dei genitori, il lavoro di rete con la scuola e la programmazione di rivalutazioni periodiche per aggiornare il piano educativo.",
+    "s5-tag": "Approfondimento",
+    "s5-title": "Ulteriori<br><em>informazioni</em>",
+    "faq-q": "Informazioni aggiuntive sul percorso diagnostico",
+    "faq-p1": "La valutazione comprende un'attenta anamnesi, l'intervista ai genitori e l'osservazione del bambino in situazioni strutturate e non strutturate, così da cogliere il modo in cui comunica, gioca, reagisce ai cambiamenti e ricerca il contatto con l'altro.",
+    "faq-p2": "Gli strumenti psicometrici e le interviste standardizzate permettono di descrivere in modo più oggettivo il profilo di sviluppo, integrando le osservazioni cliniche con dati confrontabili con i parametri di riferimento disponibili.",
+    "faq-p3": "Un intervento precoce, intensivo e cucito su misura, che consideri sia le difficoltà sia le risorse del bambino, offre maggiori possibilità di sviluppare competenze comunicative, sociali e adattive e di preparare al meglio il passaggio alle fasi successive della crescita.",
+    "faq-p4": "La famiglia non è lasciata sola: il centro rimane un punto di riferimento nel tempo per verifiche, aggiornamenti del progetto, consulenze su aspetti scolastici e orientamento tra i diversi servizi sanitari, riabilitativi ed educativi del territorio.",
+    "cta-title": "Prenota una valutazione",
+    "cta-desc": "Il nostro team è pronto ad accoglierti e guidarti nel percorso più adatto al tuo bambino.",
+    "cta-btn": "Contattaci ora →",
+    "footer-rights": "Tutti i diritti riservati.",
+    "footer-note": "Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile."
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "hero-eyebrow": "Itinerario diagnóstico",
+    "hero-title": "Diagnóstico<br><em>Precoz</em>",
+    "hero-desc": "Evaluaciones especializadas para identificar de forma temprana las señales de un trastorno del espectro autista e iniciar programas de intervención específicos desde los primeros años de vida.",
+    "s1-tag": "Importancia",
+    "s1-title": "Por qué es importante<br><em>intervenir pronto</em>",
+    "s1-p1": "El diagnóstico clínico del espectro autista se basa en la observación del comportamiento y en la recogida detallada de los datos anamnésicos, ya que no existen pruebas biológicas capaces de identificar directamente la condición.",
+    "s1-p2": "La evaluación y el tratamiento precoces <strong>cambian el pronóstico a largo plazo</strong>: una intervención iniciada a tiempo aumenta significativamente las probabilidades de desarrollar autonomía comunicativa y social, mientras que una intervención tardía reduce las posibilidades de plena expresión del potencial de cada niño.",
+    "s2-tag": "El proceso",
+    "s2-title": "Qué comprende<br><em>la evaluación</em>",
+    "s2-desc": "Un proceso multidisciplinar estructurado, construido en torno al niño y su familia.",
+    "ip1-title": "Entrevistas con los padres",
+    "ip1-desc": "Recogida detallada de la historia del desarrollo, los hitos motores y lingüísticos y las preocupaciones surgidas en los primeros años de vida.",
+    "ip2-title": "Observación directa",
+    "ip2-desc": "Atención a la comunicación, la interacción social, el juego, la presencia de estereotipias y la respuesta a los cambios.",
+    "ip3-title": "Herramientas psicométricas estandarizadas",
+    "ip3-desc": "Entrevistas estructuradas con neuropediatra y psicólogo para evaluar el nivel de desarrollo y el funcionamiento global de forma objetiva.",
+    "ip4-title": "Pruebas médicas complementarias",
+    "ip4-desc": "Cuando están indicadas: evaluación auditiva, EEG y estudios genéticos o metabólicos para descartar otras condiciones asociadas.",
+    "s3-tag": "Indicadores de riesgo",
+    "s3-title": "Señales precoces<br><em>a observar</em>",
+    "s3-desc": "Algunos comportamientos en los primeros años pueden hacer recomendable una evaluación especializada.",
+    "sc1-age": "Primeros meses de vida",
+    "sc1-title": "Señales muy tempranas",
+    "sc1-desc": "Ausencia de sonrisa social, llanto poco frecuente, escaso contacto visual y dificultades en el diálogo tónico con la figura de referencia.",
+    "sc2-age": "6–12 meses",
+    "sc2-title": "Primer semestre",
+    "sc2-desc": "Ausencia de reacciones de angustia ante extraños, falta de balbuceo y de respuestas anticipatorias como girar la cabeza o extender los brazos.",
+    "sc3-age": "12–24 meses",
+    "sc3-title": "Segundo año",
+    "sc3-desc": "Aparición de estereotipias motoras como balancearse o caminar de puntillas, ausencia del gesto de señalar para mostrar y fuerte oposición a cambios de rutina.",
+    "sc4-age": "Área comunicativa",
+    "sc4-title": "Lenguaje y sociabilidad",
+    "sc4-desc": "Escaso interés por los otros niños, uso atípico de los juguetes, lenguaje ausente o no adecuado a la edad, ecolalia, rigidez en los intereses.",
+    "s4-tag": "Qué ocurre después",
+    "s4-title": "Tras el diagnóstico",
+    "s4-p1": "Al finalizar el proceso diagnóstico se ofrece a la familia una devolución clara, explicando el significado del cuadro clínico, las perspectivas evolutivas y las prioridades de intervención en las áreas clave de la comunicación, la socialización y el comportamiento adaptativo.",
+    "s4-p2": "La atención continuada contempla un <strong style=\"color:var(--text-white)\">proyecto individualizado</strong>, construido sobre las fortalezas y dificultades del niño, la participación activa de los padres, el trabajo en red con la escuela y la planificación de reevaluaciones periódicas para actualizar el plan educativo.",
+    "s5-tag": "Más información",
+    "s5-title": "Información<br><em>adicional</em>",
+    "faq-q": "Información adicional sobre el proceso diagnóstico",
+    "faq-p1": "La evaluación comprende una anamnesis detallada, la entrevista con los padres y la observación del niño en situaciones estructuradas y no estructuradas, para captar la forma en que se comunica, juega, reacciona a los cambios y busca el contacto con el otro.",
+    "faq-p2": "Los instrumentos psicométricos y las entrevistas estandarizadas permiten describir de forma más objetiva el perfil de desarrollo, integrando las observaciones clínicas con datos comparables con los parámetros de referencia disponibles.",
+    "faq-p3": "Una intervención precoz, intensiva y personalizada, que tenga en cuenta tanto las dificultades como los recursos del niño, ofrece mayores posibilidades de desarrollar competencias comunicativas, sociales y adaptativas y de preparar de la mejor manera el paso a las siguientes etapas del crecimiento.",
+    "faq-p4": "La familia no queda sola: el centro permanece como punto de referencia a lo largo del tiempo para revisiones, actualizaciones del proyecto, orientación sobre aspectos escolares y acompañamiento entre los distintos servicios sanitarios, rehabilitadores y educativos del territorio.",
+    "cta-title": "Reserva una evaluación",
+    "cta-desc": "Nuestro equipo está listo para recibirte y guiarte en el proceso más adecuado para tu hijo.",
+    "cta-btn": "Contáctanos ahora →",
+    "footer-rights": "Todos los derechos reservados.",
+    "footer-note": "El azul es el color de la concienciación sobre el autismo — Día Mundial, 2 de Abril."
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "hero-eyebrow": "Diagnostic pathway",
+    "hero-title": "Early<br><em>Diagnosis</em>",
+    "hero-desc": "Specialist assessments to identify the early signs of autism spectrum disorder and begin targeted intervention programmes from the very first years of life.",
+    "s1-tag": "Importance",
+    "s1-title": "Why it matters<br><em>to act early</em>",
+    "s1-p1": "The clinical diagnosis of autism spectrum disorder is based on behavioural observation and careful collection of developmental history, as there are no biological tests that can directly identify the condition.",
+    "s1-p2": "Early assessment and treatment <strong>change the long-term prognosis</strong>: starting intervention promptly significantly increases the likelihood of developing communicative and social independence, while delayed intervention reduces each child's chances of fully expressing their potential.",
+    "s2-tag": "The process",
+    "s2-title": "What the assessment<br><em>involves</em>",
+    "s2-desc": "A structured, multidisciplinary pathway built around the child and their family.",
+    "ip1-title": "Parent interviews",
+    "ip1-desc": "Careful collection of the developmental history, motor and language milestones and concerns that have emerged in the early years of life.",
+    "ip2-title": "Direct observation",
+    "ip2-desc": "Close attention to communication, social interaction, play, the presence of stereotyped behaviours and responses to change.",
+    "ip3-title": "Standardised psychometric tools",
+    "ip3-desc": "Structured interviews with a child neuropsychiatrist and psychologist to objectively assess the level of development and overall functioning.",
+    "ip4-title": "Further medical investigations",
+    "ip4-desc": "Where indicated: hearing assessment, EEG and genetic or metabolic tests to rule out other associated conditions.",
+    "s3-tag": "Risk indicators",
+    "s3-title": "Early signs<br><em>to watch for</em>",
+    "s3-desc": "Certain behaviours in the first years of life may make a specialist assessment advisable.",
+    "sc1-age": "First months of life",
+    "sc1-title": "Very early signs",
+    "sc1-desc": "Absence of a social smile, infrequent crying, poor eye contact and difficulty in tonic dialogue with the primary caregiver.",
+    "sc2-age": "6–12 months",
+    "sc2-title": "First semester",
+    "sc2-desc": "No stranger anxiety, absence of babbling and anticipatory responses such as turning the head or reaching out arms.",
+    "sc3-age": "12–24 months",
+    "sc3-title": "Second year",
+    "sc3-desc": "Emergence of motor stereotypies such as rocking or toe-walking, absence of pointing to show, and strong resistance to changes in routine.",
+    "sc4-age": "Communication area",
+    "sc4-title": "Language & sociality",
+    "sc4-desc": "Little interest in other children, atypical use of toys, absent or age-inappropriate language, echolalia, and rigidity of interests.",
+    "s4-tag": "What happens next",
+    "s4-title": "After the diagnosis",
+    "s4-p1": "At the end of the diagnostic process, a clear feedback session is offered to the family, explaining the clinical picture, developmental prospects and intervention priorities in the key areas of communication, socialisation and adaptive behaviour.",
+    "s4-p2": "Ongoing care includes an <strong style=\"color:var(--text-white)\">individualised plan</strong>, built on the child's strengths and areas of difficulty, active parent involvement, collaboration with the school and periodic reassessments to keep the educational plan up to date.",
+    "s5-tag": "Further reading",
+    "s5-title": "Additional<br><em>information</em>",
+    "faq-q": "Further information on the diagnostic pathway",
+    "faq-p1": "The assessment includes a thorough case history, parent interview and observation of the child in both structured and unstructured situations, in order to capture how they communicate, play, respond to change and seek contact with others.",
+    "faq-p2": "Psychometric tools and standardised interviews allow a more objective description of the developmental profile, integrating clinical observations with data that can be compared against available reference parameters.",
+    "faq-p3": "An early, intensive and tailored intervention that takes into account both the child's difficulties and their resources offers greater possibilities for developing communicative, social and adaptive skills, and for preparing them as well as possible for the next stages of growth.",
+    "faq-p4": "Families are not left alone: the centre remains a point of reference over time for reviews, project updates, guidance on educational matters and signposting to the range of healthcare, rehabilitation and educational services available in the area.",
+    "cta-title": "Book an assessment",
+    "cta-desc": "Our team is ready to welcome you and guide you through the most suitable pathway for your child.",
+    "cta-btn": "Contact us now →",
+    "footer-rights": "All rights reserved.",
+    "footer-note": "Blue is the colour of autism awareness — World Autism Day, 2 April."
+  }
+};
 
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+});
+</script>
 </body>
 </html>
