@@ -34,7 +34,6 @@
       overflow-x: hidden;
       padding-top: 76px;
     }
-    /* ─── NOISE TEXTURE OVERLAY ─── */
     body::before {
       content: "";
       position: fixed;
@@ -44,20 +43,13 @@
       pointer-events: none;
       z-index: 0;
     }
-    /* ─── AMBIENT ORBS ─── */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
     .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.12), transparent 65%); top: -200px; right: -150px; }
     .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: 10%; left: -150px; }
     .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
     a { color: inherit; text-decoration: none; }
 
-    /* ─── HEADER ─── */
+    /* HEADER */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -67,506 +59,110 @@
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--blue-border);
     }
-    .container {
-      width: 92%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      gap: 20px;
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-    .logo-img {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1.5px solid rgba(56,189,248,0.4);
-      box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05);
-    }
-    .brand-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.35rem;
-      color: var(--text-white);
-      letter-spacing: 0.01em;
-    }
-    .brand-sub {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .brand-contacts {
-      margin-top: 3px;
-      display: flex;
-      gap: 12px;
-    }
-    .brand-contacts a {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      border-bottom: 1px solid rgba(90,122,148,0.4);
-      transition: color 0.2s, border-color 0.2s;
-    }
+    .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
+    .logo-area { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 1.5px solid rgba(56,189,248,0.4); box-shadow: 0 0 20px rgba(56,189,248,0.2); }
+    .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); }
+    .brand-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .brand-contacts a { font-size: 0.72rem; color: var(--text-muted); border-bottom: 1px solid rgba(90,122,148,0.4); transition: color 0.2s, border-color 0.2s; }
     .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); }
-    /* NAV PILLS */
-    .nav-pills {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-      background: rgba(8, 20, 45, 0.6);
-      border: 1px solid var(--blue-border);
-      border-radius: 999px;
-      padding: 4px;
-    }
-    .nav-pills li a {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-body);
-      padding: 7px 15px;
-      border-radius: 999px;
-      transition: all 0.25s;
-      white-space: nowrap;
-    }
-    .nav-pills li a:hover { color: var(--text-white); }
-    .nav-pills li a.active {
-      background: linear-gradient(135deg, #0ea5e9, #0369a1);
-      color: #fff;
-      box-shadow: 0 0 16px rgba(14,165,233,0.4);
-    }
 
-    /* ─── BREADCRUMB ─── */
-    .breadcrumb-wrap {
-      padding: 28px 0 0;
-      position: relative;
-      z-index: 1;
-    }
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-    .breadcrumb a {
-      color: var(--text-body);
-      transition: color 0.2s;
-    }
+    /* BREADCRUMB */
+    .breadcrumb-wrap { padding: 28px 0 0; position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); flex-wrap: wrap; }
+    .breadcrumb a { color: var(--text-body); transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--accent); }
-    .breadcrumb .sep {
-      color: var(--text-muted);
-      opacity: 0.5;
-    }
-    .breadcrumb .current {
-      color: var(--accent);
-    }
+    .breadcrumb .sep { color: var(--text-muted); opacity: 0.5; }
+    .breadcrumb .current { color: var(--accent); }
 
-    /* ─── HERO ─── */
-    .page-hero {
-      padding: 40px 0 80px;
-      position: relative;
-      overflow: hidden;
-    }
+    /* HERO */
+    .page-hero { padding: 40px 0 80px; position: relative; overflow: hidden; }
     .page-hero::after {
-      content: "";
-      position: absolute;
-      width: 1px;
-      height: 300px;
+      content: ""; position: absolute; width: 1px; height: 300px;
       background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent);
-      right: 20%;
-      top: 10%;
-      transform: rotate(15deg);
+      right: 20%; top: 10%; transform: rotate(15deg);
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 22px;
-      padding: 6px 14px 6px 8px;
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 999px;
-      background: rgba(56,189,248,0.05);
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px;
+      border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05);
     }
-    .hero-eyebrow .dot {
-      width: 7px; height: 7px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #22c55e;
-      animation: pulse 2s infinite;
-    }
+    .hero-eyebrow .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
     @keyframes pulse {
       0%, 100% { box-shadow: 0 0 8px #22c55e; }
       50% { box-shadow: 0 0 16px #22c55e, 0 0 24px rgba(34,197,94,0.4); }
     }
-    .page-hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 3.2rem;
-      line-height: 1.1;
-      color: var(--text-white);
-      margin-bottom: 10px;
-      max-width: 700px;
-    }
-    .page-hero h1 em {
-      font-style: italic;
-      color: var(--accent-2);
-    }
-    .hero-line {
-      display: block;
-      width: 80px;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      margin: 20px 0;
-    }
-    .page-hero-desc {
-      font-size: 1.05rem;
-      color: var(--text-body);
-      max-width: 620px;
-      line-height: 1.8;
-    }
+    .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: 3.2rem; line-height: 1.1; color: var(--text-white); margin-bottom: 10px; max-width: 700px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent-2); }
+    .hero-line { display: block; width: 80px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px 0; }
+    .page-hero-desc { font-size: 1.05rem; color: var(--text-body); max-width: 620px; line-height: 1.8; }
 
-    /* ─── SECTIONS ─── */
-    .section {
-      padding: 80px 0;
-      position: relative;
-    }
-    .section-header {
-      margin-bottom: 50px;
-    }
-    .section-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 999px;
-      padding: 4px 14px;
-      margin-bottom: 14px;
-      background: rgba(56,189,248,0.05);
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.4rem;
-      color: var(--text-white);
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
+    /* SECTIONS */
+    .section { padding: 80px 0; position: relative; }
+    .section-header { margin-bottom: 50px; }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; padding: 4px 14px; margin-bottom: 14px; background: rgba(56,189,248,0.05); }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--text-white); line-height: 1.15; margin-bottom: 12px; }
     .section-title em { font-style: italic; color: var(--accent-2); }
-    .section-desc {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 520px;
-      line-height: 1.8;
-    }
-    .divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
-      margin: 0;
-    }
-    .bg-subtle {
-      background: rgba(8, 20, 45, 0.25);
-      border-top: 1px solid var(--blue-border);
-      border-bottom: 1px solid var(--blue-border);
-    }
+    .section-desc { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.8; }
+    .divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-border), transparent); margin: 0; }
+    .bg-subtle { background: rgba(8,20,45,0.25); border-top: 1px solid var(--blue-border); border-bottom: 1px solid var(--blue-border); }
 
-    /* ─── GALLERY GRID ─── */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-    }
-    .gallery-item {
-      display: block;
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      border: 1px solid var(--blue-border);
-      background: rgba(8,20,45,0.6);
-      transition: border-color 0.3s, transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s;
-    }
-    .gallery-item:hover {
-      border-color: rgba(56,189,248,0.45);
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    }
-    .gallery-item-img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-      filter: brightness(0.82);
-    }
-    .gallery-item:hover .gallery-item-img {
-      transform: scale(1.06);
-      filter: brightness(0.95);
-    }
-    .gallery-caption {
-      padding: 22px 22px 20px;
-      position: relative;
-    }
-    .gallery-caption-tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-      display: block;
-    }
-    .gallery-caption-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      color: var(--text-white);
-      margin-bottom: 8px;
-    }
-    .gallery-caption-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-    }
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .gallery-item { display: block; border-radius: 20px; overflow: hidden; position: relative; border: 1px solid var(--blue-border); background: rgba(8,20,45,0.6); transition: border-color 0.3s, transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s; }
+    .gallery-item:hover { border-color: rgba(56,189,248,0.45); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .gallery-item-img { width: 100%; height: 240px; object-fit: cover; display: block; transition: transform 0.5s ease; filter: brightness(0.82); }
+    .gallery-item:hover .gallery-item-img { transform: scale(1.06); filter: brightness(0.95); }
+    .gallery-caption { padding: 22px 22px 20px; position: relative; }
+    .gallery-caption-tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; display: block; }
+    .gallery-caption-title { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--text-white); margin-bottom: 8px; }
+    .gallery-caption-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.75; }
 
-    /* ─── INFO CARDS (objectives / methods) ─── */
-    .info-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-    .info-card {
-      background: var(--blue-card);
-      border: 1px solid var(--blue-border);
-      border-radius: 20px;
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .info-card::before {
-      content: "";
-      position: absolute;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 70%);
-      bottom: -80px; right: -60px;
-      pointer-events: none;
-    }
-    .info-card:hover {
-      border-color: rgba(56,189,248,0.4);
-      transform: translateY(-4px);
-    }
-    .info-card-icon {
-      width: 46px; height: 46px;
-      background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05));
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 13px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      margin-bottom: 18px;
-    }
-    .info-card h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      color: var(--text-white);
-      margin-bottom: 20px;
-    }
-    .info-card-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .info-card-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.92rem;
-      color: var(--text-body);
-      line-height: 1.6;
-    }
-    .info-card-list li::before {
-      content: "";
-      display: block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 8px rgba(56,189,248,0.5);
-      flex-shrink: 0;
-      margin-top: 8px;
-    }
+    /* INFO CARDS */
+    .info-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .info-card { background: var(--blue-card); border: 1px solid var(--blue-border); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .info-card::before { content: ""; position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 70%); bottom: -80px; right: -60px; pointer-events: none; }
+    .info-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-4px); }
+    .info-card-icon { width: 46px; height: 46px; background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 1px solid rgba(56,189,248,0.3); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px; }
+    .info-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 20px; }
+    .info-card-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .info-card-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem; color: var(--text-body); line-height: 1.6; }
+    .info-card-list li::before { content: ""; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(56,189,248,0.5); flex-shrink: 0; margin-top: 8px; }
 
-    /* ─── CTA SECTION ─── */
-    .cta-card {
-      background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95));
-      border: 1px solid var(--blue-border);
-      border-radius: 24px;
-      padding: 50px 44px;
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
-      align-items: center;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
-    }
-    .cta-card::before {
-      content: "";
-      position: absolute;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-      top: -120px; right: -80px;
-      pointer-events: none;
-    }
-    .cta-card::after {
-      content: "";
-      position: absolute;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(251,191,36,0.05), transparent 70%);
-      bottom: -80px; left: -60px;
-      pointer-events: none;
-    }
-    .cta-card-text .section-tag { margin-bottom: 12px; }
-    .cta-card-text h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--text-white);
-      line-height: 1.2;
-      margin-bottom: 12px;
-    }
+    /* CTA */
+    .cta-card { background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95)); border: 1px solid var(--blue-border); border-radius: 24px; padding: 50px 44px; position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04); }
+    .cta-card::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); top: -120px; right: -80px; pointer-events: none; }
+    .cta-card-text h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--text-white); line-height: 1.2; margin-bottom: 12px; }
     .cta-card-text h2 em { font-style: italic; color: var(--accent-2); }
-    .cta-card-text p {
-      font-size: 0.97rem;
-      color: var(--text-body);
-      line-height: 1.8;
-      max-width: 480px;
-    }
-    .cta-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.92rem;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2);
-      transition: all 0.3s;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 24px;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--text-white);
-      font-weight: 500;
-      font-size: 0.88rem;
-      border: 1px solid rgba(255,255,255,0.18);
-      transition: all 0.3s;
-      white-space: nowrap;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.35);
-    }
+    .cta-card-text p { font-size: 0.97rem; color: var(--text-body); line-height: 1.8; max-width: 480px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; flex-shrink: 0; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 999px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: #fff; font-weight: 600; font-size: 0.92rem; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(14,165,233,0.35); transition: all 0.3s; white-space: nowrap; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: 999px; background: transparent; color: var(--text-white); font-weight: 500; font-size: 0.88rem; border: 1px solid rgba(255,255,255,0.18); transition: all 0.3s; white-space: nowrap; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
 
-    /* ─── BACK LINK ─── */
-    .back-wrap {
-      padding: 10px 0 60px;
-      position: relative;
-      z-index: 1;
-    }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      border: 1px solid var(--blue-border);
-      border-radius: 999px;
-      padding: 8px 18px;
-      transition: all 0.25s;
-    }
-    .back-link:hover {
-      color: var(--accent);
-      border-color: rgba(56,189,248,0.4);
-      background: rgba(56,189,248,0.05);
-    }
+    /* BACK LINK */
+    .back-wrap { padding: 10px 0 60px; position: relative; z-index: 1; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-muted); border: 1px solid var(--blue-border); border-radius: 999px; padding: 8px 18px; transition: all 0.25s; }
+    .back-link:hover { color: var(--accent); border-color: rgba(56,189,248,0.4); background: rgba(56,189,248,0.05); }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: rgba(2,8,18,0.95);
-      border-top: 1px solid var(--blue-border);
-      padding: 44px 0;
-      text-align: center;
-    }
-    footer p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-    footer .footer-brand {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      color: var(--text-white);
-      margin-bottom: 10px;
-    }
-    .footer-accent {
-      display: inline-block;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      margin: 0 8px;
-      opacity: 0.6;
-    }
+    /* FOOTER */
+    footer { background: rgba(2,8,18,0.95); border-top: 1px solid var(--blue-border); padding: 44px 0; text-align: center; }
+    footer p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
+    footer .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 10px; }
+    .footer-accent { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 8px; opacity: 0.6; }
 
-    /* ─── SCROLL REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .info-columns { grid-template-columns: 1fr; }
@@ -576,7 +172,6 @@
     }
     @media (max-width: 640px) {
       body { padding-top: 68px; }
-      .nav-pills { display: none; }
       .page-hero h1 { font-size: 2.1rem; }
       .section { padding: 60px 0; }
       .cta-card { padding: 34px 24px; }
@@ -585,12 +180,10 @@
   </style>
 </head>
 <body>
-<!-- ambient orbs -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 
-<!-- ══════════════ HEADER ══════════════ -->
 <header>
   <div class="container">
     <nav>
@@ -598,48 +191,41 @@
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div>
           <div class="brand-name">Centro BluMente</div>
-          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
           <div class="brand-contacts">
             <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
             <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
           </div>
         </div>
       </div>
-      <ul class="nav-pills">
-        <li><a href="index.html#chi-siamo">L'Autismo</a></li>
-        <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a href="index.html#terapie">Terapie</a></li>
-        <li><a href="index.html#struttura" class="active">Struttura</a></li>
-        <li><a href="index.html#contatti">Prenota</a></li>
-      </ul>
+      <!-- NIENTE nav-pills, NIENTE lang-switcher -->
     </nav>
   </div>
 </header>
 
-<!-- ══════════════ BREADCRUMB ══════════════ -->
 <div class="breadcrumb-wrap">
   <div class="container">
     <div class="breadcrumb reveal">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="breadcrumb-home">Home</a>
       <span class="sep">›</span>
-      <a href="index.html#struttura">La nostra struttura</a>
+      <a href="index.html#struttura" data-i18n="breadcrumb-structure">La nostra struttura</a>
       <span class="sep">›</span>
-      <span class="current">Laboratori creativi</span>
+      <span class="current" data-i18n="breadcrumb-current">Laboratori creativi</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════ HERO ══════════════ -->
 <section class="page-hero">
   <div class="container">
     <div class="hero-eyebrow reveal">
-      <span class="dot"></span> Spazio terapeutico ed educativo
+      <span class="dot"></span>
+      <span data-i18n="hero-eyebrow">Spazio terapeutico ed educativo</span>
     </div>
-    <h1 class="reveal reveal-delay-1">
+    <h1 class="reveal reveal-delay-1" data-i18n-html="hero-title">
       Laboratori<br><em>Creativi</em>
     </h1>
     <span class="hero-line reveal reveal-delay-2"></span>
-    <p class="page-hero-desc reveal reveal-delay-2">
+    <p class="page-hero-desc reveal reveal-delay-2" data-i18n="hero-desc">
       Spazi pensati per sperimentare linguaggi diversi, allenare l'autonomia
       e lavorare sulla socializzazione attraverso attività pratiche, espressive e di gruppo.
     </p>
@@ -648,21 +234,20 @@
 
 <hr class="divider">
 
-<!-- ══════════════ GALLERY ══════════════ -->
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">I nostri spazi</div>
-      <h2 class="section-title">Quattro laboratori,<br><em>mille possibilità</em></h2>
-      <p class="section-desc">Ogni ambiente è progettato per stimolare competenze specifiche in modo coinvolgente e sicuro.</p>
+      <div class="section-tag" data-i18n="gallery-tag">I nostri spazi</div>
+      <h2 class="section-title" data-i18n-html="gallery-title">Quattro laboratori,<br><em>mille possibilità</em></h2>
+      <p class="section-desc" data-i18n="gallery-desc">Ogni ambiente è progettato per stimolare competenze specifiche in modo coinvolgente e sicuro.</p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item reveal">
         <img src="lab-creativi-disegno-pittura.jpg.png" alt="Laboratorio di disegno e pittura" class="gallery-item-img">
         <div class="gallery-caption">
-          <span class="gallery-caption-tag">Espressione visiva</span>
-          <div class="gallery-caption-title">Disegno e Pittura</div>
-          <p class="gallery-caption-desc">
+          <span class="gallery-caption-tag" data-i18n="lab1-tag">Espressione visiva</span>
+          <div class="gallery-caption-title" data-i18n="lab1-title">Disegno e Pittura</div>
+          <p class="gallery-caption-desc" data-i18n="lab1-desc">
             I bambini si esprimono con colori, tempere e materiali artistici, lavorando su motricità fine,
             creatività e capacità di portare a termine un compito scelto.
           </p>
@@ -671,9 +256,9 @@
       <div class="gallery-item reveal reveal-delay-1">
         <img src="lab-creativi-cucina-educativa.jpg.jpg" alt="Laboratorio di cucina educativa" class="gallery-item-img">
         <div class="gallery-caption">
-          <span class="gallery-caption-tag">Autonomie quotidiane</span>
-          <div class="gallery-caption-title">Cucina Educativa</div>
-          <p class="gallery-caption-desc">
+          <span class="gallery-caption-tag" data-i18n="lab2-tag">Autonomie quotidiane</span>
+          <div class="gallery-caption-title" data-i18n="lab2-title">Cucina Educativa</div>
+          <p class="gallery-caption-desc" data-i18n="lab2-desc">
             Attività semplici e guidate per sperimentare piccole autonomie quotidiane, seguire passaggi
             in sequenza e collaborare nella preparazione di merende e ricette base.
           </p>
@@ -682,9 +267,9 @@
       <div class="gallery-item reveal reveal-delay-2">
         <img src="lab-creativi-attivita-pratiche.jpg.webp" alt="Laboratorio di attività pratiche" class="gallery-item-img">
         <div class="gallery-caption">
-          <span class="gallery-caption-tag">Vita quotidiana</span>
-          <div class="gallery-caption-title">Attività Pratiche</div>
-          <p class="gallery-caption-desc">
+          <span class="gallery-caption-tag" data-i18n="lab3-tag">Vita quotidiana</span>
+          <div class="gallery-caption-title" data-i18n="lab3-title">Attività Pratiche</div>
+          <p class="gallery-caption-desc" data-i18n="lab3-desc">
             Dedicato alle abilità di vita quotidiana: riordinare, travasare, piegare, organizzare materiali,
             sempre con supporti visivi e indicazioni chiare.
           </p>
@@ -693,9 +278,9 @@
       <div class="gallery-item reveal reveal-delay-3">
         <img src="lab-creativi-lavori-gruppo.jpg.webp" alt="Laboratorio di lavori di gruppo" class="gallery-item-img">
         <div class="gallery-caption">
-          <span class="gallery-caption-tag">Collaborazione</span>
-          <div class="gallery-caption-title">Lavori di Gruppo</div>
-          <p class="gallery-caption-desc">
+          <span class="gallery-caption-tag" data-i18n="lab4-tag">Collaborazione</span>
+          <div class="gallery-caption-title" data-i18n="lab4-title">Lavori di Gruppo</div>
+          <p class="gallery-caption-desc" data-i18n="lab4-desc">
             I bambini imparano a cooperare, rispettare i turni, chiedere aiuto e portare avanti
             un'attività insieme agli altri in un clima di fiducia.
           </p>
@@ -707,32 +292,31 @@
 
 <hr class="divider">
 
-<!-- ══════════════ OBIETTIVI E METODO ══════════════ -->
 <section class="section bg-subtle">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Il nostro approccio</div>
-      <h2 class="section-title">Obiettivi e<br><em>modalità di lavoro</em></h2>
+      <div class="section-tag" data-i18n="approach-tag">Il nostro approccio</div>
+      <h2 class="section-title" data-i18n-html="approach-title">Obiettivi e<br><em>modalità di lavoro</em></h2>
     </div>
     <div class="info-columns">
       <div class="info-card reveal">
         <div class="info-card-icon">🎯</div>
-        <h3>Obiettivi dei laboratori</h3>
+        <h3 data-i18n="card1-title">Obiettivi dei laboratori</h3>
         <ul class="info-card-list">
-          <li>Favorire espressione, creatività e curiosità attraverso attività concrete e accessibili.</li>
-          <li>Allenare abilità di autonomia di base in un contesto strutturato e protetto.</li>
-          <li>Rafforzare attenzione, pianificazione e tolleranza all'attesa.</li>
-          <li>Promuovere partecipazione attiva e senso di autoefficacia in ogni bambino.</li>
+          <li data-i18n="card1-li1">Favorire espressione, creatività e curiosità attraverso attività concrete e accessibili.</li>
+          <li data-i18n="card1-li2">Allenare abilità di autonomia di base in un contesto strutturato e protetto.</li>
+          <li data-i18n="card1-li3">Rafforzare attenzione, pianificazione e tolleranza all'attesa.</li>
+          <li data-i18n="card1-li4">Promuovere partecipazione attiva e senso di autoefficacia in ogni bambino.</li>
         </ul>
       </div>
       <div class="info-card reveal reveal-delay-1">
         <div class="info-card-icon">🧩</div>
-        <h3>Modalità di svolgimento</h3>
+        <h3 data-i18n="card2-title">Modalità di svolgimento</h3>
         <ul class="info-card-list">
-          <li>Piccoli gruppi o attività individuali, in base al profilo e agli obiettivi del bambino.</li>
-          <li>Uso di supporti visivi, routine chiare e compiti graduali per ridurre il carico cognitivo.</li>
-          <li>Proposte adattate all'età, agli interessi e alle abilità di ciascuno.</li>
-          <li>Condivisione con la famiglia delle attività svolte e delle competenze osservate nel tempo.</li>
+          <li data-i18n="card2-li1">Piccoli gruppi o attività individuali, in base al profilo e agli obiettivi del bambino.</li>
+          <li data-i18n="card2-li2">Uso di supporti visivi, routine chiare e compiti graduali per ridurre il carico cognitivo.</li>
+          <li data-i18n="card2-li3">Proposte adattate all'età, agli interessi e alle abilità di ciascuno.</li>
+          <li data-i18n="card2-li4">Condivisione con la famiglia delle attività svolte e delle competenze osservate nel tempo.</li>
         </ul>
       </div>
     </div>
@@ -741,62 +325,210 @@
 
 <hr class="divider">
 
-<!-- ══════════════ CTA ══════════════ -->
 <section class="section">
   <div class="container">
     <div class="cta-card reveal">
       <div class="cta-card-text">
-        <div class="section-tag">Partecipa ai laboratori</div>
-        <h2>Iniziamo<br><em>il percorso insieme</em></h2>
-        <p>
+        <div class="section-tag" data-i18n="cta-tag">Partecipa ai laboratori</div>
+        <h2 data-i18n-html="cta-title">Iniziamo<br><em>il percorso insieme</em></h2>
+        <p data-i18n="cta-desc">
           I laboratori fanno parte dei percorsi educativi personalizzati e vengono programmati
           in base agli obiettivi definiti con la famiglia e il team di lavoro.
           Per informazioni su orari, calendari e modalità di iscrizione contatta la segreteria del centro.
         </p>
       </div>
       <div class="cta-actions">
-        <a href="index.html#contatti" class="btn-primary">Prenota un colloquio →</a>
-        <a href="index.html#struttura" class="btn-secondary">← Tutti gli spazi</a>
+        <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn-primary">Prenota un colloquio →</a>
+        <a href="index.html#struttura" class="btn-secondary" data-i18n="cta-btn-secondary">← Tutti gli spazi</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ BACK LINK ══════════════ -->
 <div class="back-wrap">
   <div class="container">
-    <a href="index.html#struttura" class="back-link reveal">
-      ← Torna a "La nostra struttura"
-    </a>
+    <a href="index.html#struttura" class="back-link reveal" data-i18n="back-link">← Torna a "La nostra struttura"</a>
   </div>
 </div>
 
-<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="container">
     <div class="footer-brand">Centro BluMente</div>
     <p>
-      © 2026 Centro BluMente. Tutti i diritti riservati.
+      © 2026 Centro BluMente. <span data-i18n="footer-rights">Tutti i diritti riservati.</span>
       <span class="footer-accent"></span>
       Cinisello Balsamo (MI)
     </p>
-    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;">
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;" data-i18n="footer-note">
       Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.
     </p>
   </div>
 </footer>
 
-<!-- ══════════════ SCRIPTS ══════════════ -->
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "breadcrumb-home": "Home",
+    "breadcrumb-structure": "La nostra struttura",
+    "breadcrumb-current": "Laboratori creativi",
+    "hero-eyebrow": "Spazio terapeutico ed educativo",
+    "hero-title": "Laboratori<br><em>Creativi</em>",
+    "hero-desc": "Spazi pensati per sperimentare linguaggi diversi, allenare l'autonomia e lavorare sulla socializzazione attraverso attività pratiche, espressive e di gruppo.",
+    "gallery-tag": "I nostri spazi",
+    "gallery-title": "Quattro laboratori,<br><em>mille possibilità</em>",
+    "gallery-desc": "Ogni ambiente è progettato per stimolare competenze specifiche in modo coinvolgente e sicuro.",
+    "lab1-tag": "Espressione visiva",
+    "lab1-title": "Disegno e Pittura",
+    "lab1-desc": "I bambini si esprimono con colori, tempere e materiali artistici, lavorando su motricità fine, creatività e capacità di portare a termine un compito scelto.",
+    "lab2-tag": "Autonomie quotidiane",
+    "lab2-title": "Cucina Educativa",
+    "lab2-desc": "Attività semplici e guidate per sperimentare piccole autonomie quotidiane, seguire passaggi in sequenza e collaborare nella preparazione di merende e ricette base.",
+    "lab3-tag": "Vita quotidiana",
+    "lab3-title": "Attività Pratiche",
+    "lab3-desc": "Dedicato alle abilità di vita quotidiana: riordinare, travasare, piegare, organizzare materiali, sempre con supporti visivi e indicazioni chiare.",
+    "lab4-tag": "Collaborazione",
+    "lab4-title": "Lavori di Gruppo",
+    "lab4-desc": "I bambini imparano a cooperare, rispettare i turni, chiedere aiuto e portare avanti un'attività insieme agli altri in un clima di fiducia.",
+    "approach-tag": "Il nostro approccio",
+    "approach-title": "Obiettivi e<br><em>modalità di lavoro</em>",
+    "card1-title": "Obiettivi dei laboratori",
+    "card1-li1": "Favorire espressione, creatività e curiosità attraverso attività concrete e accessibili.",
+    "card1-li2": "Allenare abilità di autonomia di base in un contesto strutturato e protetto.",
+    "card1-li3": "Rafforzare attenzione, pianificazione e tolleranza all'attesa.",
+    "card1-li4": "Promuovere partecipazione attiva e senso di autoefficacia in ogni bambino.",
+    "card2-title": "Modalità di svolgimento",
+    "card2-li1": "Piccoli gruppi o attività individuali, in base al profilo e agli obiettivi del bambino.",
+    "card2-li2": "Uso di supporti visivi, routine chiare e compiti graduali per ridurre il carico cognitivo.",
+    "card2-li3": "Proposte adattate all'età, agli interessi e alle abilità di ciascuno.",
+    "card2-li4": "Condivisione con la famiglia delle attività svolte e delle competenze osservate nel tempo.",
+    "cta-tag": "Partecipa ai laboratori",
+    "cta-title": "Iniziamo<br><em>il percorso insieme</em>",
+    "cta-desc": "I laboratori fanno parte dei percorsi educativi personalizzati e vengono programmati in base agli obiettivi definiti con la famiglia e il team di lavoro. Per informazioni su orari, calendari e modalità di iscrizione contatta la segreteria del centro.",
+    "cta-btn-primary": "Prenota un colloquio →",
+    "cta-btn-secondary": "← Tutti gli spazi",
+    "back-link": "← Torna a \"La nostra struttura\"",
+    "footer-rights": "Tutti i diritti riservati.",
+    "footer-note": "Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile."
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "breadcrumb-home": "Inicio",
+    "breadcrumb-structure": "Nuestras instalaciones",
+    "breadcrumb-current": "Talleres creativos",
+    "hero-eyebrow": "Espacio terapéutico y educativo",
+    "hero-title": "Talleres<br><em>Creativos</em>",
+    "hero-desc": "Espacios diseñados para explorar diferentes lenguajes expresivos, entrenar la autonomía y trabajar la socialización a través de actividades prácticas, expresivas y en grupo.",
+    "gallery-tag": "Nuestros espacios",
+    "gallery-title": "Cuatro talleres,<br><em>mil posibilidades</em>",
+    "gallery-desc": "Cada ambiente está diseñado para estimular competencias específicas de forma motivadora y segura.",
+    "lab1-tag": "Expresión visual",
+    "lab1-title": "Dibujo y Pintura",
+    "lab1-desc": "Los niños se expresan con colores, témperas y materiales artísticos, trabajando la motricidad fina, la creatividad y la capacidad de completar una tarea elegida.",
+    "lab2-tag": "Autonomía cotidiana",
+    "lab2-title": "Cocina Educativa",
+    "lab2-desc": "Actividades sencillas y guiadas para experimentar pequeñas autonomías cotidianas, seguir pasos en secuencia y colaborar en la preparación de meriendas y recetas básicas.",
+    "lab3-tag": "Vida cotidiana",
+    "lab3-title": "Actividades Prácticas",
+    "lab3-desc": "Dedicado a las habilidades de la vida diaria: ordenar, trasvasar, doblar, organizar materiales, siempre con apoyos visuales e indicaciones claras.",
+    "lab4-tag": "Colaboración",
+    "lab4-title": "Trabajo en Grupo",
+    "lab4-desc": "Los niños aprenden a cooperar, respetar turnos, pedir ayuda y llevar adelante una actividad juntos en un clima de confianza.",
+    "approach-tag": "Nuestro enfoque",
+    "approach-title": "Objetivos y<br><em>modalidades de trabajo</em>",
+    "card1-title": "Objetivos de los talleres",
+    "card1-li1": "Favorecer la expresión, la creatividad y la curiosidad a través de actividades concretas y accesibles.",
+    "card1-li2": "Entrenar habilidades de autonomía básica en un contexto estructurado y seguro.",
+    "card1-li3": "Reforzar la atención, la planificación y la tolerancia a la espera.",
+    "card1-li4": "Promover la participación activa y el sentido de autoeficacia en cada niño.",
+    "card2-title": "Modalidades de desarrollo",
+    "card2-li1": "Grupos pequeños o actividades individuales, según el perfil y los objetivos del niño.",
+    "card2-li2": "Uso de apoyos visuales, rutinas claras y tareas graduales para reducir la carga cognitiva.",
+    "card2-li3": "Propuestas adaptadas a la edad, los intereses y las habilidades de cada uno.",
+    "card2-li4": "Comunicación con la familia sobre las actividades realizadas y las competencias observadas.",
+    "cta-tag": "Participa en los talleres",
+    "cta-title": "Empecemos<br><em>el camino juntos</em>",
+    "cta-desc": "Los talleres forman parte de los programas educativos personalizados y se planifican según los objetivos definidos con la familia y el equipo de trabajo. Para información sobre horarios, calendarios e inscripción, contacta con la secretaría del centro.",
+    "cta-btn-primary": "Reservar una consulta →",
+    "cta-btn-secondary": "← Todos los espacios",
+    "back-link": "← Volver a \"Nuestras instalaciones\"",
+    "footer-rights": "Todos los derechos reservados.",
+    "footer-note": "El azul es el color de la concienciación sobre el autismo — Día Mundial, 2 de Abril."
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "breadcrumb-home": "Home",
+    "breadcrumb-structure": "Our facilities",
+    "breadcrumb-current": "Creative workshops",
+    "hero-eyebrow": "Therapeutic and educational space",
+    "hero-title": "Creative<br><em>Workshops</em>",
+    "hero-desc": "Spaces designed to explore different expressive languages, build independence and work on socialisation through hands-on, expressive and group activities.",
+    "gallery-tag": "Our spaces",
+    "gallery-title": "Four workshops,<br><em>endless possibilities</em>",
+    "gallery-desc": "Each environment is designed to stimulate specific skills in an engaging and safe way.",
+    "lab1-tag": "Visual expression",
+    "lab1-title": "Drawing & Painting",
+    "lab1-desc": "Children express themselves with colours, paints and art materials, working on fine motor skills, creativity and the ability to complete a chosen task.",
+    "lab2-tag": "Daily autonomy",
+    "lab2-title": "Educational Cooking",
+    "lab2-desc": "Simple, guided activities to practise small everyday autonomy skills, follow sequential steps and collaborate in preparing snacks and basic recipes.",
+    "lab3-tag": "Daily life",
+    "lab3-title": "Practical Activities",
+    "lab3-desc": "Dedicated to daily living skills: tidying, pouring, folding, organising materials — always with visual supports and clear instructions.",
+    "lab4-tag": "Collaboration",
+    "lab4-title": "Group Work",
+    "lab4-desc": "Children learn to cooperate, take turns, ask for help and carry out an activity together in an atmosphere of trust.",
+    "approach-tag": "Our approach",
+    "approach-title": "Goals &<br><em>working methods</em>",
+    "card1-title": "Workshop goals",
+    "card1-li1": "Foster expression, creativity and curiosity through concrete, accessible activities.",
+    "card1-li2": "Build basic autonomy skills in a structured, supportive setting.",
+    "card1-li3": "Strengthen attention, planning and tolerance for waiting.",
+    "card1-li4": "Promote active participation and a sense of self-efficacy in every child.",
+    "card2-title": "How sessions work",
+    "card2-li1": "Small groups or individual activities, depending on the child's profile and goals.",
+    "card2-li2": "Use of visual supports, clear routines and graduated tasks to reduce cognitive load.",
+    "card2-li3": "Activities adapted to each child's age, interests and abilities.",
+    "card2-li4": "Regular updates shared with families on activities carried out and skills observed over time.",
+    "cta-tag": "Join the workshops",
+    "cta-title": "Let's start<br><em>the journey together</em>",
+    "cta-desc": "The workshops are part of personalised educational programmes and are scheduled based on goals agreed with the family and the team. For information on timetables, calendars and enrolment, please contact the centre.",
+    "cta-btn-primary": "Book a consultation →",
+    "cta-btn-secondary": "← All spaces",
+    "back-link": "← Back to \"Our facilities\"",
+    "footer-rights": "All rights reserved.",
+    "footer-note": "Blue is the colour of autism awareness — World Autism Day, 2 April."
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // lingua salvata dall'index
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+});
 </script>
 </body>
 </html>
