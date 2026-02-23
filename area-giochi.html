@@ -65,7 +65,7 @@
       z-index: 1;
     }
 
-    /* ─── HEADER ─── */
+    /* HEADER */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -112,42 +112,13 @@
       text-transform: uppercase;
     }
 
-    .nav-pills {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      list-style: none;
-      background: rgba(8, 20, 45, 0.6);
-      border: 1px solid var(--blue-border);
-      border-radius: 999px;
-      padding: 4px;
-    }
-
-    .nav-pills li a {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-body);
-      padding: 7px 15px;
-      border-radius: 999px;
-      transition: all 0.25s;
-      white-space: nowrap;
-      opacity: 1;
-    }
-    .nav-pills li a:hover { color: var(--text-white); opacity: 1; }
-    .nav-pills li a.active {
-      background: linear-gradient(135deg, #0ea5e9, #0369a1);
-      color: #fff;
-      box-shadow: 0 0 16px rgba(14,165,233,0.4);
-    }
-
     .divider {
       border: none;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
     }
 
-    /* ─── PAGE HEADER ─── */
+    /* PAGE HEADER */
     .page-header {
       padding: 60px 0 70px;
       position: relative;
@@ -171,6 +142,7 @@
       font-size: 0.78rem;
       color: var(--text-muted);
       margin-bottom: 24px;
+      flex-wrap: wrap;
     }
     .breadcrumb a { color: var(--text-muted); opacity: 1; transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--accent); opacity: 1; }
@@ -232,7 +204,7 @@
       line-height: 1.8;
     }
 
-    /* ─── GALLERY ─── */
+    /* GALLERY */
     .gallery-section { padding: 70px 0 60px; }
 
     .gallery-grid {
@@ -299,7 +271,7 @@
       line-height: 1.75;
     }
 
-    /* ─── CONTENT ─── */
+    /* CONTENT */
     .content-section { padding: 0 0 70px; }
 
     .section-tag {
@@ -375,7 +347,7 @@
       opacity: 0.7;
     }
 
-    /* ─── CTA ─── */
+    /* CTA */
     .cta-section { padding: 0 0 80px; }
 
     .cta-banner {
@@ -474,7 +446,7 @@
       opacity: 1;
     }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
       background: rgba(2,8,18,0.95);
       border-top: 1px solid var(--blue-border);
@@ -493,7 +465,7 @@
 
     footer p { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* ─── REVEAL ─── */
+    /* REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -504,10 +476,9 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       body { padding-top: 68px; }
-      .nav-pills { display: none; }
       .page-header h1 { font-size: 2.1rem; }
       .gallery-grid { grid-template-columns: 1fr; }
       .two-col { grid-template-columns: 1fr; }
@@ -521,7 +492,6 @@
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- ══════════════ HEADER ══════════════ -->
 <header>
   <div class="container">
     <nav>
@@ -529,37 +499,30 @@
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div>
           <div class="brand-name">Centro BluMente</div>
-          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
         </div>
       </div>
-      <ul class="nav-pills">
-        <li><a href="index.html#chi-siamo">L'Autismo</a></li>
-        <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a href="index.html#terapie">Terapie</a></li>
-        <li><a href="index.html#struttura" class="active">Struttura</a></li>
-        <li><a href="index.html#contatti">Prenota</a></li>
-      </ul>
+      <!-- niente nav-pills, niente selettore lingua -->
     </nav>
   </div>
 </header>
 
-<!-- ══════════════ PAGE HEADER ══════════════ -->
 <section class="page-header">
   <div class="container">
     <div class="breadcrumb reveal">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="bc-home">Home</a>
       <span>›</span>
-      <a href="index.html#struttura">La nostra struttura</a>
+      <a href="index.html#struttura" data-i18n="bc-struttura">La nostra struttura</a>
       <span>›</span>
-      <span style="color: var(--accent);">Area giochi e socializzazione</span>
+      <span style="color: var(--accent);" data-i18n="bc-current">Area giochi e socializzazione</span>
     </div>
     <div class="page-tag reveal reveal-delay-1">
       <span class="dot"></span>
-      Struttura · Spazi educativi
+      <span data-i18n="page-tag">Struttura · Spazi educativi</span>
     </div>
-    <h1 class="reveal reveal-delay-1">Area giochi e <em>socializzazione</em></h1>
+    <h1 class="reveal reveal-delay-1" data-i18n-html="page-title">Area giochi e <em>socializzazione</em></h1>
     <span class="hero-line reveal reveal-delay-2"></span>
-    <p class="reveal reveal-delay-2">
+    <p class="reveal reveal-delay-2" data-i18n="header-intro">
       L'area giochi del Centro BluMente è uno spazio pensato per favorire
       interazione, cooperazione e divertimento in un ambiente protetto,
       strutturato e adatto alle esigenze di bambini e ragazzi nello spettro
@@ -570,7 +533,6 @@
 
 <hr class="divider">
 
-<!-- ══════════════ GALLERY ══════════════ -->
 <section class="gallery-section">
   <div class="container">
     <div class="gallery-grid">
@@ -579,8 +541,8 @@
           <img src="area-giochi-costruzioni.jpg.jpg" alt="Giochi di costruzione e manipolazione">
         </div>
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Motricità fine</span>
-          <p>Giochi di costruzione e manipolazione per sviluppare motricità fine, coordinazione e capacità di pianificare semplici sequenze di azioni.</p>
+          <span class="gallery-card-label" data-i18n="label1">Motricità fine</span>
+          <p data-i18n="card1-desc">Giochi di costruzione e manipolazione per sviluppare motricità fine, coordinazione e capacità di pianificare semplici sequenze di azioni.</p>
         </div>
       </div>
       <div class="gallery-card reveal reveal-delay-1">
@@ -588,8 +550,8 @@
           <img src="area-giochi-movimento.jpg.png" alt="Area movimento con tappeti, cuscini e percorsi motori">
         </div>
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Movimento & corpo</span>
-          <p>Area movimento con tappeti morbidi, cuscini e piccoli percorsi motori, pensata per lavorare su equilibrio, schema corporeo e scarico dell'energia in modo sicuro.</p>
+          <span class="gallery-card-label" data-i18n="label2">Movimento & corpo</span>
+          <p data-i18n="card2-desc">Area movimento con tappeti morbidi, cuscini e piccoli percorsi motori, pensata per lavorare su equilibrio, schema corporeo e scarico dell'energia in modo sicuro.</p>
         </div>
       </div>
       <div class="gallery-card reveal reveal-delay-1">
@@ -597,8 +559,8 @@
           <img src="area-giochi-cooperativi.jpg.png" alt="Giochi cooperativi di gruppo">
         </div>
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Gioco cooperativo</span>
-          <p>Giochi cooperativi di gruppo che promuovono collaborazione, rispetto dei turni e condivisione dei materiali, sempre con la guida di un adulto.</p>
+          <span class="gallery-card-label" data-i18n="label3">Gioco cooperativo</span>
+          <p data-i18n="card3-desc">Giochi cooperativi di gruppo che promuovono collaborazione, rispetto dei turni e condivisione dei materiali, sempre con la guida di un adulto.</p>
         </div>
       </div>
       <div class="gallery-card reveal reveal-delay-2">
@@ -606,8 +568,8 @@
           <img src="area-giochi-simbolico.jpg.jpg" alt="Angolo di gioco simbolico">
         </div>
         <div class="gallery-card-body">
-          <span class="gallery-card-label">Gioco simbolico</span>
-          <p>Angolo di gioco simbolico con cucina giocattolo, pupazzi e materiali per il "fare finta", a supporto di linguaggio, immaginazione e rappresentazione di situazioni quotidiane.</p>
+          <span class="gallery-card-label" data-i18n="label4">Gioco simbolico</span>
+          <p data-i18n="card4-desc">Angolo di gioco simbolico con cucina giocattolo, pupazzi e materiali per il "fare finta", a supporto di linguaggio, immaginazione e rappresentazione di situazioni quotidiane.</p>
         </div>
       </div>
     </div>
@@ -616,27 +578,26 @@
 
 <hr class="divider">
 
-<!-- ══════════════ CONTENT ══════════════ -->
 <section class="content-section" style="padding-top: 60px;">
   <div class="container">
-    <div class="section-tag reveal">Obiettivi e attività</div>
+    <div class="section-tag reveal" data-i18n="section-tag">Obiettivi e attività</div>
     <div class="two-col">
       <div class="content-card reveal reveal-delay-1">
-        <h2>Obiettivi dell'area giochi</h2>
+        <h2 data-i18n="col1-title">Obiettivi dell'area giochi</h2>
         <ul class="feature-list">
-          <li>Favorire la turnazione, l'attesa e la condivisione delle attività e dei materiali.</li>
-          <li>Incrementare le competenze sociali di base: chiedere, proporre e rifiutare in modo adeguato.</li>
-          <li>Stimolare il gioco simbolico e il gioco di ruolo, fondamentali per lo sviluppo del linguaggio.</li>
-          <li>Offrire occasioni di incontro con i pari in un contesto guidato e prevedibile.</li>
+          <li data-i18n="obj1">Favorire la turnazione, l'attesa e la condivisione delle attività e dei materiali.</li>
+          <li data-i18n="obj2">Incrementare le competenze sociali di base: chiedere, proporre e rifiutare in modo adeguato.</li>
+          <li data-i18n="obj3">Stimolare il gioco simbolico e il gioco di ruolo, fondamentali per lo sviluppo del linguaggio.</li>
+          <li data-i18n="obj4">Offrire occasioni di incontro con i pari in un contesto guidato e prevedibile.</li>
         </ul>
       </div>
       <div class="content-card reveal reveal-delay-2">
-        <h2>Come si svolgono le attività</h2>
+        <h2 data-i18n="col2-title">Come si svolgono le attività</h2>
         <ul class="feature-list">
-          <li>Piccoli gruppi o sessioni individuali, in base agli obiettivi del progetto educativo.</li>
-          <li>Uso di regole chiare, supporti visivi e routine ripetitive per aumentare prevedibilità e sicurezza.</li>
-          <li>Alternanza tra momenti di gioco strutturato e spazi di gioco più libero ma sempre monitorato.</li>
-          <li>Condivisione con la famiglia delle strategie per favorire il gioco e la socializzazione anche a casa.</li>
+          <li data-i18n="act1">Piccoli gruppi o sessioni individuali, in base agli obiettivi del progetto educativo.</li>
+          <li data-i18n="act2">Uso di regole chiare, supporti visivi e routine ripetitive per aumentare prevedibilità e sicurezza.</li>
+          <li data-i18n="act3">Alternanza tra momenti di gioco strutturato e spazi di gioco più libero ma sempre monitorato.</li>
+          <li data-i18n="act4">Condivisione con la famiglia delle strategie per favorire il gioco e la socializzazione anche a casa.</li>
         </ul>
       </div>
     </div>
@@ -645,45 +606,162 @@
 
 <hr class="divider">
 
-<!-- ══════════════ CTA ══════════════ -->
 <section class="cta-section" style="padding-top: 60px;">
   <div class="container">
     <div class="cta-banner reveal">
       <div class="cta-text">
-        <h2>Partecipa alle attività</h2>
-        <p>
+        <h2 data-i18n="cta-title">Partecipa alle attività</h2>
+        <p data-i18n="cta-desc">
           Le attività dell'area giochi vengono inserite nei percorsi individualizzati
           e nei piccoli gruppi. Per informazioni sui programmi attivi e sulle modalità
           di accesso contatta la nostra segreteria.
         </p>
       </div>
       <div class="cta-actions">
-        <a href="index.html#contatti" class="btn-primary">Vai ai contatti →</a>
-        <a href="index.html#struttura" class="back-link">← Torna alla struttura</a>
+        <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn">Vai ai contatti →</a>
+        <a href="index.html#struttura" class="back-link" data-i18n="back-link">← Torna alla struttura</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="container">
     <div class="footer-brand">Centro BluMente</div>
-    <p>© 2026 Centro BluMente · Via G. di Vittorio 1, Cinisello Balsamo (MI)</p>
+    <p data-i18n="footer-address">© 2026 Centro BluMente · Via G. di Vittorio 1, Cinisello Balsamo (MI)</p>
     <p style="margin-top:6px; font-size:0.75rem; opacity:0.45;">info.centroautismo@gmail.com</p>
   </div>
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "bc-home": "Home",
+    "bc-struttura": "La nostra struttura",
+    "bc-current": "Area giochi e socializzazione",
+    "page-tag": "Struttura · Spazi educativi",
+    "page-title": "Area giochi e <em>socializzazione</em>",
+    "header-intro": "L'area giochi del Centro BluMente è uno spazio pensato per favorire interazione, cooperazione e divertimento in un ambiente protetto, strutturato e adatto alle esigenze di bambini e ragazzi nello spettro autistico.",
+    "label1": "Motricità fine",
+    "card1-desc": "Giochi di costruzione e manipolazione per sviluppare motricità fine, coordinazione e capacità di pianificare semplici sequenze di azioni.",
+    "label2": "Movimento & corpo",
+    "card2-desc": "Area movimento con tappeti morbidi, cuscini e piccoli percorsi motori, pensata per lavorare su equilibrio, schema corporeo e scarico dell'energia in modo sicuro.",
+    "label3": "Gioco cooperativo",
+    "card3-desc": "Giochi cooperativi di gruppo che promuovono collaborazione, rispetto dei turni e condivisione dei materiali, sempre con la guida di un adulto.",
+    "label4": "Gioco simbolico",
+    "card4-desc": "Angolo di gioco simbolico con cucina giocattolo, pupazzi e materiali per il \"fare finta\", a supporto di linguaggio, immaginazione e rappresentazione di situazioni quotidiane.",
+    "section-tag": "Obiettivi e attività",
+    "col1-title": "Obiettivi dell'area giochi",
+    "obj1": "Favorire la turnazione, l'attesa e la condivisione delle attività e dei materiali.",
+    "obj2": "Incrementare le competenze sociali di base: chiedere, proporre e rifiutare in modo adeguato.",
+    "obj3": "Stimolare il gioco simbolico e il gioco di ruolo, fondamentali per lo sviluppo del linguaggio.",
+    "obj4": "Offrire occasioni di incontro con i pari in un contesto guidato e prevedibile.",
+    "col2-title": "Come si svolgono le attività",
+    "act1": "Piccoli gruppi o sessioni individuali, in base agli obiettivi del progetto educativo.",
+    "act2": "Uso di regole chiare, supporti visivi e routine ripetitive per aumentare prevedibilità e sicurezza.",
+    "act3": "Alternanza tra momenti di gioco strutturato e spazi di gioco più libero ma sempre monitorato.",
+    "act4": "Condivisione con la famiglia delle strategie per favorire il gioco e la socializzazione anche a casa.",
+    "cta-title": "Partecipa alle attività",
+    "cta-desc": "Le attività dell'area giochi vengono inserite nei percorsi individualizzati e nei piccoli gruppi. Per informazioni sui programmi attivi e sulle modalità di accesso contatta la nostra segreteria.",
+    "cta-btn": "Vai ai contatti →",
+    "back-link": "← Torna alla struttura",
+    "footer-address": "© 2026 Centro BluMente · Via G. di Vittorio 1, Cinisello Balsamo (MI)"
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "bc-home": "Inicio",
+    "bc-struttura": "Nuestra estructura",
+    "bc-current": "Área de juegos y socialización",
+    "page-tag": "Estructura · Espacios educativos",
+    "page-title": "Área de juegos y <em>socialización</em>",
+    "header-intro": "El área de juegos del Centro BluMente es un espacio diseñado para favorecer la interacción, la cooperación y la diversión en un entorno protegido, estructurado y adaptado a las necesidades de niños y jóvenes en el espectro autista.",
+    "label1": "Motricidad fina",
+    "card1-desc": "Juegos de construcción y manipulación para desarrollar la motricidad fina, la coordinación y la capacidad de planificar secuencias sencillas de acciones.",
+    "label2": "Movimiento & cuerpo",
+    "card2-desc": "Área de movimiento con colchonetas, cojines y pequeños recorridos motores, diseñada para trabajar el equilibrio, el esquema corporal y la descarga de energía de forma segura.",
+    "label3": "Juego cooperativo",
+    "card3-desc": "Juegos cooperativos de grupo que promueven la colaboración, el respeto de turnos y el intercambio de materiales, siempre con la guía de un adulto.",
+    "label4": "Juego simbólico",
+    "card4-desc": "Rincón de juego simbólico con cocina de juguete, muñecos y materiales para el \"hacer como si\", en apoyo al lenguaje, la imaginación y la representación de situaciones cotidianas.",
+    "section-tag": "Objetivos y actividades",
+    "col1-title": "Objetivos del área de juegos",
+    "obj1": "Favorecer la turnación, la espera y el intercambio de actividades y materiales.",
+    "obj2": "Incrementar las competencias sociales básicas: pedir, proponer y rechazar de forma adecuada.",
+    "obj3": "Estimular el juego simbólico y el juego de rol, fundamentales para el desarrollo del lenguaje.",
+    "obj4": "Ofrecer oportunidades de encuentro con los pares en un contexto guiado y predecible.",
+    "col2-title": "Cómo se desarrollan las actividades",
+    "act1": "Grupos pequeños o sesiones individuales, según los objetivos del proyecto educativo.",
+    "act2": "Uso de reglas claras, apoyos visuales y rutinas repetitivas para aumentar la previsibilidad y la seguridad.",
+    "act3": "Alternancia entre momentos de juego estructurado y espacios de juego más libre pero siempre supervisado.",
+    "act4": "Compartir con la familia las estrategias para favorecer el juego y la socialización también en casa.",
+    "cta-title": "Participa en las actividades",
+    "cta-desc": "Las actividades del área de juegos se insertan en los itinerarios individualizados y en los grupos pequeños. Para obtener información sobre los programas activos y las modalidades de acceso, contacta con nuestra secretaría.",
+    "cta-btn": "Ir a contactos →",
+    "back-link": "← Volver a la estructura",
+    "footer-address": "© 2026 Centro BluMente · Via G. di Vittorio 1, Cinisello Balsamo (MI)"
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "bc-home": "Home",
+    "bc-struttura": "Our facilities",
+    "bc-current": "Play & socialisation area",
+    "page-tag": "Facilities · Educational spaces",
+    "page-title": "Play & <em>socialisation</em> area",
+    "header-intro": "The play area at Centro BluMente is a space designed to encourage interaction, cooperation and fun in a safe, structured environment tailored to the needs of children and young people on the autism spectrum.",
+    "label1": "Fine motor skills",
+    "card1-desc": "Construction and manipulation games to develop fine motor skills, coordination and the ability to plan simple sequences of actions.",
+    "label2": "Movement & body",
+    "card2-desc": "A movement area with soft mats, cushions and small motor circuits, designed to work on balance, body awareness and safe energy release.",
+    "label3": "Cooperative play",
+    "card3-desc": "Cooperative group games that promote collaboration, turn-taking and sharing of materials, always with adult guidance.",
+    "label4": "Symbolic play",
+    "card4-desc": "A symbolic play corner with a toy kitchen, dolls and props for pretend play, supporting language, imagination and the representation of everyday situations.",
+    "section-tag": "Goals & activities",
+    "col1-title": "Goals of the play area",
+    "obj1": "Encourage turn-taking, waiting and sharing activities and materials.",
+    "obj2": "Build basic social skills: asking, suggesting and refusing appropriately.",
+    "obj3": "Stimulate symbolic play and role play, which are fundamental to language development.",
+    "obj4": "Provide opportunities to interact with peers in a guided and predictable context.",
+    "col2-title": "How activities are run",
+    "act1": "Small groups or individual sessions, based on the goals of the educational plan.",
+    "act2": "Use of clear rules, visual supports and repetitive routines to increase predictability and safety.",
+    "act3": "Alternating between structured play sessions and freer play spaces that are always supervised.",
+    "act4": "Sharing strategies with families to encourage play and socialisation at home as well.",
+    "cta-title": "Join the activities",
+    "cta-desc": "Play area activities are integrated into individualised programmes and small groups. For information about active programmes and how to access them, please contact our office.",
+    "cta-btn": "Go to contacts →",
+    "back-link": "← Back to facilities",
+    "footer-address": "© 2026 Centro BluMente · Via G. di Vittorio 1, Cinisello Balsamo (MI)"
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+});
 </script>
 </body>
 </html>
