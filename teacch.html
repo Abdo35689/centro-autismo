@@ -22,10 +22,8 @@
       --radius: 18px;
       --radius-sm: 10px;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--blue-deep);
@@ -33,7 +31,6 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -43,7 +40,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -53,20 +49,58 @@
     }
     .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(14,165,233,0.1), transparent 65%); top: -150px; right: -100px; }
     .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 65%); bottom: 10%; left: -120px; }
-
     a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
     a:hover { opacity: 0.75; }
+
+    /* ── LANG SWITCHER ── */
+    .lang-bar {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(8, 20, 45, 0.85);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 999px;
+      padding: 4px;
+      backdrop-filter: blur(12px);
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.22s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { color: var(--text-white); }
+    .lang-btn.active {
+      background: linear-gradient(135deg, #0ea5e9, #0369a1);
+      color: #fff;
+      box-shadow: 0 0 14px rgba(14,165,233,0.35);
+    }
 
     /* ─── HEADER ─── */
     header {
       position: relative;
       z-index: 1;
-      padding: 60px 0 70px;
+      padding: 80px 0 70px;
       border-bottom: 1px solid var(--blue-border);
       background: linear-gradient(to bottom, rgba(8,20,45,0.5), transparent);
       overflow: hidden;
     }
-
     header::before {
       content: "";
       position: absolute;
@@ -75,7 +109,6 @@
       top: -100px; right: -60px;
       pointer-events: none;
     }
-
     .container {
       width: 92%;
       max-width: 900px;
@@ -84,7 +117,6 @@
       position: relative;
       z-index: 1;
     }
-
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -101,12 +133,7 @@
       margin-bottom: 28px;
       opacity: 1;
     }
-    .back-link:hover {
-      color: var(--accent);
-      border-color: rgba(56,189,248,0.4);
-      opacity: 1;
-    }
-
+    .back-link:hover { color: var(--accent); border-color: rgba(56,189,248,0.4); opacity: 1; }
     .page-tag {
       display: inline-block;
       font-size: 0.7rem;
@@ -119,7 +146,6 @@
       margin-bottom: 16px;
       background: rgba(56,189,248,0.05);
     }
-
     header h1 {
       font-family: 'DM Serif Display', serif;
       font-size: 3.2rem;
@@ -127,12 +153,7 @@
       line-height: 1.1;
       margin-bottom: 18px;
     }
-
-    header h1 em {
-      font-style: italic;
-      color: var(--accent-2);
-    }
-
+    header h1 em { font-style: italic; color: var(--accent-2); }
     .hero-line {
       display: block;
       width: 70px;
@@ -140,14 +161,12 @@
       background: linear-gradient(90deg, var(--accent), transparent);
       margin-bottom: 20px;
     }
-
     header p {
       font-size: 1.05rem;
       color: var(--text-body);
       max-width: 680px;
       line-height: 1.8;
     }
-
     .divider {
       border: none;
       height: 1px;
@@ -155,17 +174,9 @@
       margin: 0;
     }
 
-    /* ─── MAIN CONTENT ─── */
-    main {
-      padding: 70px 0 80px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .content-block {
-      margin-bottom: 50px;
-    }
-
+    /* ─── MAIN ─── */
+    main { padding: 70px 0 80px; position: relative; z-index: 1; }
+    .content-block { margin-bottom: 50px; }
     .content-block h2 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.9rem;
@@ -175,17 +186,14 @@
       align-items: center;
       gap: 14px;
     }
-
     .content-block h2::before {
       content: "";
       display: inline-block;
-      width: 4px;
-      height: 28px;
+      width: 4px; height: 28px;
       border-radius: 999px;
       background: linear-gradient(to bottom, var(--accent), rgba(56,189,248,0.2));
       flex-shrink: 0;
     }
-
     .content-block p {
       font-size: 0.97rem;
       color: var(--text-body);
@@ -194,14 +202,7 @@
     }
 
     /* ─── FEATURE LIST ─── */
-    .feature-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      list-style: none;
-      padding: 0;
-    }
-
+    .feature-list { display: flex; flex-direction: column; gap: 14px; list-style: none; padding: 0; }
     .feature-list li {
       display: flex;
       gap: 16px;
@@ -212,12 +213,7 @@
       border-radius: 16px;
       transition: border-color 0.25s, transform 0.25s;
     }
-
-    .feature-list li:hover {
-      border-color: rgba(56,189,248,0.35);
-      transform: translateX(4px);
-    }
-
+    .feature-list li:hover { border-color: rgba(56,189,248,0.35); transform: translateX(4px); }
     .feature-icon {
       width: 38px; height: 38px;
       flex-shrink: 0;
@@ -229,27 +225,11 @@
       justify-content: center;
       font-size: 1.1rem;
     }
+    .feature-text strong { display: block; color: var(--text-white); font-size: 0.95rem; margin-bottom: 4px; }
+    .feature-text span { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
 
-    .feature-text strong {
-      display: block;
-      color: var(--text-white);
-      font-size: 0.95rem;
-      margin-bottom: 4px;
-    }
-
-    .feature-text span {
-      font-size: 0.87rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* ─── OBIETTIVI GRID ─── */
-    .goals-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
+    /* ─── GOALS GRID ─── */
+    .goals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .goal-card {
       background: rgba(8,20,45,0.6);
       border: 1px solid var(--blue-border);
@@ -260,9 +240,7 @@
       align-items: flex-start;
       transition: border-color 0.25s;
     }
-
     .goal-card:hover { border-color: rgba(56,189,248,0.35); }
-
     .goal-num {
       font-family: 'DM Serif Display', serif;
       font-size: 1.8rem;
@@ -271,14 +249,9 @@
       flex-shrink: 0;
       width: 32px;
     }
+    .goal-text { font-size: 0.88rem; color: var(--text-body); line-height: 1.75; }
 
-    .goal-text {
-      font-size: 0.88rem;
-      color: var(--text-body);
-      line-height: 1.75;
-    }
-
-    /* ─── INFO CARD (famiglia) ─── */
+    /* ─── INFO CARD ─── */
     .info-card {
       background: rgba(8,20,45,0.7);
       border: 1px solid var(--blue-border);
@@ -287,7 +260,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .info-card::before {
       content: "";
       position: absolute;
@@ -296,26 +268,16 @@
       bottom: -70px; right: -60px;
       pointer-events: none;
     }
-
     .info-card h2 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.6rem;
       color: var(--text-white);
       margin-bottom: 16px;
     }
+    .info-card p { font-size: 0.95rem; color: var(--text-body); line-height: 1.85; margin-bottom: 12px; }
 
-    .info-card p {
-      font-size: 0.95rem;
-      color: var(--text-body);
-      line-height: 1.85;
-      margin-bottom: 12px;
-    }
-
-    /* ─── FAQ / DETAILS ─── */
-    .faq-wrap {
-      margin-top: 50px;
-    }
-
+    /* ─── FAQ ─── */
+    .faq-wrap { margin-top: 50px; }
     .faq-wrap h2 {
       font-family: 'DM Serif Display', serif;
       font-size: 1.9rem;
@@ -325,17 +287,14 @@
       align-items: center;
       gap: 14px;
     }
-
     .faq-wrap h2::before {
       content: "";
       display: inline-block;
-      width: 4px;
-      height: 28px;
+      width: 4px; height: 28px;
       border-radius: 999px;
       background: linear-gradient(to bottom, var(--accent), rgba(56,189,248,0.2));
       flex-shrink: 0;
     }
-
     details.faq-item {
       background: rgba(8,20,45,0.6);
       border: 1px solid var(--blue-border);
@@ -344,7 +303,6 @@
       transition: border-color 0.2s;
     }
     details.faq-item[open] { border-color: rgba(56,189,248,0.4); }
-
     details.faq-item summary {
       display: flex;
       align-items: center;
@@ -359,7 +317,6 @@
       user-select: none;
     }
     details.faq-item summary::-webkit-details-marker { display: none; }
-
     .faq-arrow {
       width: 28px; height: 28px;
       flex-shrink: 0;
@@ -374,20 +331,17 @@
       color: var(--accent);
     }
     details[open] .faq-arrow { transform: rotate(45deg); background: rgba(56,189,248,0.2); }
-
     .faq-body {
-      padding: 0 22px 22px;
+      padding: 18px 22px 22px;
       font-size: 0.92rem;
       color: var(--text-body);
       line-height: 1.8;
       border-top: 1px solid var(--blue-border);
-      padding-top: 18px;
     }
-
     .faq-body p { margin-bottom: 12px; }
     .faq-body p:last-child { margin-bottom: 0; }
 
-    /* ─── CTA BANNER ─── */
+    /* ─── CTA ─── */
     .cta-banner {
       margin-top: 60px;
       background: linear-gradient(135deg, rgba(8,20,45,0.9), rgba(14,30,60,0.9));
@@ -402,7 +356,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .cta-banner::before {
       content: "";
       position: absolute;
@@ -411,19 +364,8 @@
       top: -100px; right: -60px;
       pointer-events: none;
     }
-
-    .cta-banner h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.6rem;
-      color: var(--text-white);
-      margin-bottom: 6px;
-    }
-
-    .cta-banner p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-    }
-
+    .cta-banner h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--text-white); margin-bottom: 6px; }
+    .cta-banner p { font-size: 0.92rem; color: var(--text-muted); }
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -442,11 +384,7 @@
       opacity: 1;
       flex-shrink: 0;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(14,165,233,0.5);
-      opacity: 1;
-    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5); opacity: 1; }
 
     /* ─── FOOTER ─── */
     footer {
@@ -457,71 +395,68 @@
       position: relative;
       z-index: 1;
     }
-
-    footer p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+    footer p { font-size: 0.85rem; color: var(--text-muted); }
 
     /* ─── REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 640px) {
       header h1 { font-size: 2.2rem; }
       .goals-grid { grid-template-columns: 1fr; }
       .cta-banner { flex-direction: column; text-align: center; }
+      .lang-bar { top: 10px; right: 10px; }
     }
   </style>
 </head>
 <body>
-
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 
-<!-- ══════════════ HEADER ══════════════ -->
+<!-- SELETTORE LINGUA -->
+<div class="lang-bar">
+  <button class="lang-btn active" data-lang="it">🇮🇹 IT</button>
+  <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+  <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+</div>
+
+<!-- HEADER -->
 <header>
   <div class="container">
-    <a href="index.html" class="back-link">← Torna alla home</a>
-    <div class="page-tag">Metodi e Terapie</div>
-    <h1>Metodo <em>TEACCH</em></h1>
+    <a href="index.html" class="back-link" data-i18n="back-link">← Torna alla home</a>
+    <div class="page-tag" data-i18n="page-tag">Metodi e Terapie</div>
+    <h1 data-i18n-html="page-title">Metodo <em>TEACCH</em></h1>
     <span class="hero-line"></span>
-    <p>
+    <p data-i18n="header-intro">
       Il programma TEACCH (Treatment and Education of Autistic and related Communication
       Handicapped Children) è un modello di intervento nato nella Carolina del Nord che
       rappresenta una modalità di presa in carico globale della persona con autismo.
     </p>
   </div>
 </header>
-
 <hr class="divider">
 
-<!-- ══════════════ MAIN ══════════════ -->
+<!-- MAIN -->
 <main>
   <div class="container">
 
     <!-- Cos'è -->
     <div class="content-block reveal">
-      <h2>Che cos'è il TEACCH</h2>
-      <p>
+      <h2 data-i18n="section1-title">Che cos'è il TEACCH</h2>
+      <p data-i18n="section1-p1">
         Il modello TEACCH si fonda su un sistema di educazione strutturata che pone particolare
         attenzione all'organizzazione degli spazi fisici, dei compiti e dei materiali, utilizzando
         prevalentemente supporti di tipo visivo-spaziale.
       </p>
-      <p>
+      <p data-i18n="section1-p2">
         Una dimensione centrale del TEACCH è l'organizzazione concreta della sequenza di azioni
         o attività che si svolgono nel tempo, visualizzando la giornata tramite oggetti, immagini,
         fotografie o scritte, fino ad arrivare a vere e proprie agende in base alle abilità della persona.
       </p>
-      <p>
+      <p data-i18n="section1-p3">
         L'obiettivo è incrementare le abilità emergenti dell'individuo e rendere l'ambiente più
         comprensibile, adattandolo alle necessità della persona con autismo attraverso una
         strutturazione chiara e prevedibile.
@@ -530,41 +465,41 @@
 
     <!-- Elementi principali -->
     <div class="content-block reveal reveal-delay-1">
-      <h2>Elementi principali dell'intervento</h2>
+      <h2 data-i18n="section2-title">Elementi principali dell'intervento</h2>
       <ul class="feature-list">
         <li>
           <div class="feature-icon">🏠</div>
           <div class="feature-text">
-            <strong>Organizzazione degli spazi fisici</strong>
-            <span>Strutturare lo spazio significa rispondere alla domanda "Dove?", definendo aree specifiche per le diverse attività (lavoro, gioco, pausa) in modo chiaro.</span>
+            <strong data-i18n="feat1-title">Organizzazione degli spazi fisici</strong>
+            <span data-i18n="feat1-desc">Strutturare lo spazio significa rispondere alla domanda "Dove?", definendo aree specifiche per le diverse attività (lavoro, gioco, pausa) in modo chiaro.</span>
           </div>
         </li>
         <li>
           <div class="feature-icon">⏱️</div>
           <div class="feature-text">
-            <strong>Organizzazione del tempo</strong>
-            <span>Strutturare il tempo significa rispondere a "Quando?" e "Per quanto tempo?", attraverso sequenze prevedibili di attività e orari visivi.</span>
+            <strong data-i18n="feat2-title">Organizzazione del tempo</strong>
+            <span data-i18n="feat2-desc">Strutturare il tempo significa rispondere a "Quando?" e "Per quanto tempo?", attraverso sequenze prevedibili di attività e orari visivi.</span>
           </div>
         </li>
         <li>
           <div class="feature-icon">📋</div>
           <div class="feature-text">
-            <strong>Strutturazione dei materiali di lavoro</strong>
-            <span>Predisporre compiti e materiali in modo che rispondano chiaramente alla domanda "Che cosa devo fare?", con attività strutturate visivamente.</span>
+            <strong data-i18n="feat3-title">Strutturazione dei materiali di lavoro</strong>
+            <span data-i18n="feat3-desc">Predisporre compiti e materiali in modo che rispondano chiaramente alla domanda "Che cosa devo fare?", con attività strutturate visivamente.</span>
           </div>
         </li>
         <li>
           <div class="feature-icon">📅</div>
           <div class="feature-text">
-            <strong>Agende e schemi di lavoro</strong>
-            <span>Oltre all'agenda giornaliera, la persona dispone di uno schema di lavoro che indica cosa si fa, in che ordine e con quali materiali.</span>
+            <strong data-i18n="feat4-title">Agende e schemi di lavoro</strong>
+            <span data-i18n="feat4-desc">Oltre all'agenda giornaliera, la persona dispone di uno schema di lavoro che indica cosa si fa, in che ordine e con quali materiali.</span>
           </div>
         </li>
         <li>
           <div class="feature-icon">🔁</div>
           <div class="feature-text">
-            <strong>Routine prevedibili</strong>
-            <span>L'uso di routine, orari visivi e sequenze stabili riduce lo stress causato dalla mancata comprensione di cosa si deve fare o dove si deve andare.</span>
+            <strong data-i18n="feat5-title">Routine prevedibili</strong>
+            <span data-i18n="feat5-desc">L'uso di routine, orari visivi e sequenze stabili riduce lo stress causato dalla mancata comprensione di cosa si deve fare o dove si deve andare.</span>
           </div>
         </li>
       </ul>
@@ -572,23 +507,23 @@
 
     <!-- Obiettivi -->
     <div class="content-block reveal">
-      <h2>Obiettivi del percorso TEACCH</h2>
+      <h2 data-i18n="section3-title">Obiettivi del percorso TEACCH</h2>
       <div class="goals-grid">
         <div class="goal-card">
           <div class="goal-num">01</div>
-          <div class="goal-text">Incrementare le abilità emergenti dell'individuo, valorizzando ciò che la persona sa già fare e costruendo competenze adattive a partire dai punti di forza.</div>
+          <div class="goal-text" data-i18n="goal1">Incrementare le abilità emergenti dell'individuo, valorizzando ciò che la persona sa già fare e costruendo competenze adattive a partire dai punti di forza.</div>
         </div>
         <div class="goal-card">
           <div class="goal-num">02</div>
-          <div class="goal-text">Rendere l'ambiente più comprensibile e prevedibile, adattandolo tramite organizzazione di spazi, tempi e attività.</div>
+          <div class="goal-text" data-i18n="goal2">Rendere l'ambiente più comprensibile e prevedibile, adattandolo tramite organizzazione di spazi, tempi e attività.</div>
         </div>
         <div class="goal-card">
           <div class="goal-num">03</div>
-          <div class="goal-text">Favorire l'apprendimento riducendo i problemi di comportamento: quando l'allievo comprende cosa ci si aspetta da lui, le difficoltà tendono ad attenuarsi.</div>
+          <div class="goal-text" data-i18n="goal3">Favorire l'apprendimento riducendo i problemi di comportamento: quando l'allievo comprende cosa ci si aspetta da lui, le difficoltà tendono ad attenuarsi.</div>
         </div>
         <div class="goal-card">
           <div class="goal-num">04</div>
-          <div class="goal-text">Coprire l'intero arco di vita, offrendo servizi e strategie che accompagnano la persona con autismo nelle diverse fasi dello sviluppo.</div>
+          <div class="goal-text" data-i18n="goal4">Coprire l'intero arco di vita, offrendo servizi e strategie che accompagnano la persona con autismo nelle diverse fasi dello sviluppo.</div>
         </div>
       </div>
     </div>
@@ -596,35 +531,35 @@
     <!-- Famiglia -->
     <div class="reveal reveal-delay-1">
       <div class="info-card">
-        <h2>Ruolo della famiglia e dei contesti di vita</h2>
-        <p>
+        <h2 data-i18n="family-title">Ruolo della famiglia e dei contesti di vita</h2>
+        <p data-i18n="family-p1">
           I genitori vengono coinvolti nell'intervento svolgendo un lavoro parallelo: il genitore
           è un compagno di giochi e una guida, che collabora con il professionista portando la
           propria conoscenza specifica del bambino.
         </p>
-        <p>
+        <p data-i18n="family-p2">
           Il modello TEACCH prevede la collaborazione con i genitori e interventi che si estendono
           a tutti gli ambienti di vita del soggetto, integrando casa, scuola e altri contesti quotidiani.
         </p>
       </div>
     </div>
 
-    <!-- FAQ / Informazioni aggiuntive -->
+    <!-- FAQ -->
     <div class="faq-wrap reveal">
-      <h2>Approfondimenti</h2>
+      <h2 data-i18n="faq-title">Approfondimenti</h2>
       <details class="faq-item">
         <summary>
-          Principi chiave della filosofia TEACCH
+          <span data-i18n="faq1-q">Principi chiave della filosofia TEACCH</span>
           <span class="faq-arrow">+</span>
         </summary>
         <div class="faq-body">
-          <p>
+          <p data-i18n="faq1-a1">
             I principi chiave della filosofia TEACCH includono: attenzione alle caratteristiche
             specifiche dell'autismo, individualizzazione degli interventi, strutturazione dell'ambiente,
             sistema di educazione strutturata, collaborazione con i genitori e servizi che coprono
             l'intero arco di vita.
           </p>
-          <p>
+          <p data-i18n="faq1-a2">
             Organizzare e strutturare tempi, ambienti di lavoro, compiti e materiali in modo adeguato
             e prevedibile permette alla persona di orientarsi meglio: quando è chiaro cosa succede e
             cosa si deve fare, i problemi di comportamento diminuiscono e l'apprendimento risulta favorito.
@@ -633,11 +568,11 @@
       </details>
       <details class="faq-item" style="margin-top:10px;">
         <summary>
-          Punti di forza dell'autismo e approccio visivo
+          <span data-i18n="faq2-q">Punti di forza dell'autismo e approccio visivo</span>
           <span class="faq-arrow">+</span>
         </summary>
         <div class="faq-body">
-          <p>
+          <p data-i18n="faq2-a">
             Le persone autistiche hanno spesso una particolare facilità nel seguire routine ed eseguire
             consegne visive o scritte; l'uso di agende, orari visivi e postazioni di lavoro strutturate
             sfrutta questi punti di forza e rispetta la cultura dell'autismo.
@@ -646,11 +581,11 @@
       </details>
       <details class="faq-item" style="margin-top:10px;">
         <summary>
-          TEACCH e ABA: differenze e punti in comune
+          <span data-i18n="faq3-q">TEACCH e ABA: differenze e punti in comune</span>
           <span class="faq-arrow">+</span>
         </summary>
         <div class="faq-body">
-          <p>
+          <p data-i18n="faq3-a">
             TEACCH e ABA condividono una matrice culturale comune, utilizzano tecniche comportamentali
             orientate alla riduzione dei comportamenti inadeguati e allo sviluppo di competenze adattive,
             trattano problemi multipli in molteplici contesti e richiedono un intervento precoce e
@@ -664,32 +599,189 @@
     <!-- CTA -->
     <div class="cta-banner reveal reveal-delay-1">
       <div>
-        <h3>Vuoi saperne di più?</h3>
-        <p>Contattaci per un primo colloquio conoscitivo gratuito.</p>
+        <h3 data-i18n="cta-title">Vuoi saperne di più?</h3>
+        <p data-i18n="cta-desc">Contattaci per un primo colloquio conoscitivo gratuito.</p>
       </div>
-      <a href="index.html#contatti" class="btn-primary">Prenota un colloquio →</a>
+      <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn">Prenota un colloquio →</a>
     </div>
 
   </div>
 </main>
 
-<!-- ══════════════ FOOTER ══════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
-    <p>© 2026 Centro BluMente · Interventi educativi basati sul metodo TEACCH</p>
+    <p data-i18n="footer-text">© 2026 Centro BluMente · Interventi educativi basati sul metodo TEACCH</p>
   </div>
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
+// ── TRADUZIONI ───────────────────────────────────────────────────────────────
+const translations = {
+  it: {
+    "back-link": "← Torna alla home",
+    "page-tag": "Metodi e Terapie",
+    "page-title": "Metodo <em>TEACCH</em>",
+    "header-intro": "Il programma TEACCH (Treatment and Education of Autistic and related Communication Handicapped Children) è un modello di intervento nato nella Carolina del Nord che rappresenta una modalità di presa in carico globale della persona con autismo.",
+    "section1-title": "Che cos'è il TEACCH",
+    "section1-p1": "Il modello TEACCH si fonda su un sistema di educazione strutturata che pone particolare attenzione all'organizzazione degli spazi fisici, dei compiti e dei materiali, utilizzando prevalentemente supporti di tipo visivo-spaziale.",
+    "section1-p2": "Una dimensione centrale del TEACCH è l'organizzazione concreta della sequenza di azioni o attività che si svolgono nel tempo, visualizzando la giornata tramite oggetti, immagini, fotografie o scritte, fino ad arrivare a vere e proprie agende in base alle abilità della persona.",
+    "section1-p3": "L'obiettivo è incrementare le abilità emergenti dell'individuo e rendere l'ambiente più comprensibile, adattandolo alle necessità della persona con autismo attraverso una strutturazione chiara e prevedibile.",
+    "section2-title": "Elementi principali dell'intervento",
+    "feat1-title": "Organizzazione degli spazi fisici",
+    "feat1-desc": "Strutturare lo spazio significa rispondere alla domanda \"Dove?\", definendo aree specifiche per le diverse attività (lavoro, gioco, pausa) in modo chiaro.",
+    "feat2-title": "Organizzazione del tempo",
+    "feat2-desc": "Strutturare il tempo significa rispondere a \"Quando?\" e \"Per quanto tempo?\", attraverso sequenze prevedibili di attività e orari visivi.",
+    "feat3-title": "Strutturazione dei materiali di lavoro",
+    "feat3-desc": "Predisporre compiti e materiali in modo che rispondano chiaramente alla domanda \"Che cosa devo fare?\", con attività strutturate visivamente.",
+    "feat4-title": "Agende e schemi di lavoro",
+    "feat4-desc": "Oltre all'agenda giornaliera, la persona dispone di uno schema di lavoro che indica cosa si fa, in che ordine e con quali materiali.",
+    "feat5-title": "Routine prevedibili",
+    "feat5-desc": "L'uso di routine, orari visivi e sequenze stabili riduce lo stress causato dalla mancata comprensione di cosa si deve fare o dove si deve andare.",
+    "section3-title": "Obiettivi del percorso TEACCH",
+    "goal1": "Incrementare le abilità emergenti dell'individuo, valorizzando ciò che la persona sa già fare e costruendo competenze adattive a partire dai punti di forza.",
+    "goal2": "Rendere l'ambiente più comprensibile e prevedibile, adattandolo tramite organizzazione di spazi, tempi e attività.",
+    "goal3": "Favorire l'apprendimento riducendo i problemi di comportamento: quando l'allievo comprende cosa ci si aspetta da lui, le difficoltà tendono ad attenuarsi.",
+    "goal4": "Coprire l'intero arco di vita, offrendo servizi e strategie che accompagnano la persona con autismo nelle diverse fasi dello sviluppo.",
+    "family-title": "Ruolo della famiglia e dei contesti di vita",
+    "family-p1": "I genitori vengono coinvolti nell'intervento svolgendo un lavoro parallelo: il genitore è un compagno di giochi e una guida, che collabora con il professionista portando la propria conoscenza specifica del bambino.",
+    "family-p2": "Il modello TEACCH prevede la collaborazione con i genitori e interventi che si estendono a tutti gli ambienti di vita del soggetto, integrando casa, scuola e altri contesti quotidiani.",
+    "faq-title": "Approfondimenti",
+    "faq1-q": "Principi chiave della filosofia TEACCH",
+    "faq1-a1": "I principi chiave della filosofia TEACCH includono: attenzione alle caratteristiche specifiche dell'autismo, individualizzazione degli interventi, strutturazione dell'ambiente, sistema di educazione strutturata, collaborazione con i genitori e servizi che coprono l'intero arco di vita.",
+    "faq1-a2": "Organizzare e strutturare tempi, ambienti di lavoro, compiti e materiali in modo adeguato e prevedibile permette alla persona di orientarsi meglio: quando è chiaro cosa succede e cosa si deve fare, i problemi di comportamento diminuiscono e l'apprendimento risulta favorito.",
+    "faq2-q": "Punti di forza dell'autismo e approccio visivo",
+    "faq2-a": "Le persone autistiche hanno spesso una particolare facilità nel seguire routine ed eseguire consegne visive o scritte; l'uso di agende, orari visivi e postazioni di lavoro strutturate sfrutta questi punti di forza e rispetta la cultura dell'autismo.",
+    "faq3-q": "TEACCH e ABA: differenze e punti in comune",
+    "faq3-a": "TEACCH e ABA condividono una matrice culturale comune, utilizzano tecniche comportamentali orientate alla riduzione dei comportamenti inadeguati e allo sviluppo di competenze adattive, trattano problemi multipli in molteplici contesti e richiedono un intervento precoce e intensivo, pur differenziandosi per il maggiore orientamento del TEACCH alla creazione di contesti facilitanti.",
+    "cta-title": "Vuoi saperne di più?",
+    "cta-desc": "Contattaci per un primo colloquio conoscitivo gratuito.",
+    "cta-btn": "Prenota un colloquio →",
+    "footer-text": "© 2026 Centro BluMente · Interventi educativi basati sul metodo TEACCH"
+  },
+  es: {
+    "back-link": "← Volver al inicio",
+    "page-tag": "Métodos y Terapias",
+    "page-title": "Método <em>TEACCH</em>",
+    "header-intro": "El programa TEACCH (Treatment and Education of Autistic and related Communication Handicapped Children) es un modelo de intervención nacido en Carolina del Norte que representa una modalidad de atención global a la persona con autismo.",
+    "section1-title": "¿Qué es el TEACCH?",
+    "section1-p1": "El modelo TEACCH se basa en un sistema de educación estructurada que presta especial atención a la organización de los espacios físicos, las tareas y los materiales, utilizando principalmente apoyos de tipo visoespacial.",
+    "section1-p2": "Una dimensión central del TEACCH es la organización concreta de la secuencia de acciones o actividades que se desarrollan en el tiempo, visualizando la jornada mediante objetos, imágenes, fotografías o escritos, hasta llegar a verdaderas agendas según las habilidades de la persona.",
+    "section1-p3": "El objetivo es incrementar las habilidades emergentes del individuo y hacer el entorno más comprensible, adaptándolo a las necesidades de la persona con autismo mediante una estructuración clara y predecible.",
+    "section2-title": "Elementos principales de la intervención",
+    "feat1-title": "Organización de los espacios físicos",
+    "feat1-desc": "Estructurar el espacio significa responder a la pregunta \"¿Dónde?\", definiendo áreas específicas para las distintas actividades (trabajo, juego, descanso) de forma clara.",
+    "feat2-title": "Organización del tiempo",
+    "feat2-desc": "Estructurar el tiempo significa responder a \"¿Cuándo?\" y \"¿Por cuánto tiempo?\", a través de secuencias predecibles de actividades y horarios visuales.",
+    "feat3-title": "Estructuración de los materiales de trabajo",
+    "feat3-desc": "Preparar tareas y materiales de modo que respondan claramente a la pregunta \"¿Qué tengo que hacer?\", con actividades estructuradas visualmente.",
+    "feat4-title": "Agendas y esquemas de trabajo",
+    "feat4-desc": "Además de la agenda diaria, la persona dispone de un esquema de trabajo que indica qué se hace, en qué orden y con qué materiales.",
+    "feat5-title": "Rutinas predecibles",
+    "feat5-desc": "El uso de rutinas, horarios visuales y secuencias estables reduce el estrés causado por no comprender qué hay que hacer o adónde hay que ir.",
+    "section3-title": "Objetivos del programa TEACCH",
+    "goal1": "Incrementar las habilidades emergentes del individuo, valorando lo que la persona ya sabe hacer y construyendo competencias adaptativas a partir de sus puntos fuertes.",
+    "goal2": "Hacer el entorno más comprensible y predecible, adaptándolo mediante la organización de espacios, tiempos y actividades.",
+    "goal3": "Favorecer el aprendizaje reduciendo los problemas de conducta: cuando el alumno comprende lo que se espera de él, las dificultades tienden a disminuir.",
+    "goal4": "Cubrir todo el ciclo vital, ofreciendo servicios y estrategias que acompañan a la persona con autismo en las diferentes etapas del desarrollo.",
+    "family-title": "El papel de la familia y los contextos de vida",
+    "family-p1": "Los padres se involucran en la intervención desarrollando un trabajo paralelo: el progenitor es un compañero de juegos y una guía, que colabora con el profesional aportando su conocimiento específico del niño.",
+    "family-p2": "El modelo TEACCH prevé la colaboración con los padres e intervenciones que se extienden a todos los entornos de vida del sujeto, integrando el hogar, la escuela y otros contextos cotidianos.",
+    "faq-title": "Más información",
+    "faq1-q": "Principios clave de la filosofía TEACCH",
+    "faq1-a1": "Los principios clave de la filosofía TEACCH incluyen: atención a las características específicas del autismo, individualización de las intervenciones, estructuración del entorno, sistema de educación estructurada, colaboración con los padres y servicios que cubren todo el ciclo vital.",
+    "faq1-a2": "Organizar y estructurar tiempos, entornos de trabajo, tareas y materiales de forma adecuada y predecible permite a la persona orientarse mejor: cuando queda claro qué sucede y qué hay que hacer, los problemas de conducta disminuyen y el aprendizaje se ve favorecido.",
+    "faq2-q": "Puntos fuertes del autismo y enfoque visual",
+    "faq2-a": "Las personas autistas suelen tener una facilidad especial para seguir rutinas y ejecutar instrucciones visuales o escritas; el uso de agendas, horarios visuales y puestos de trabajo estructurados aprovecha estos puntos fuertes y respeta la cultura del autismo.",
+    "faq3-q": "TEACCH y ABA: diferencias y puntos en común",
+    "faq3-a": "TEACCH y ABA comparten una matriz cultural común, utilizan técnicas conductuales orientadas a la reducción de conductas inadecuadas y al desarrollo de competencias adaptativas, abordan múltiples problemas en múltiples contextos y requieren una intervención temprana e intensiva, diferenciándose por la mayor orientación del TEACCH a la creación de contextos facilitadores.",
+    "cta-title": "¿Quieres saber más?",
+    "cta-desc": "Contáctanos para una primera consulta informativa gratuita.",
+    "cta-btn": "Reservar una consulta →",
+    "footer-text": "© 2026 Centro BluMente · Intervenciones educativas basadas en el método TEACCH"
+  },
+  en: {
+    "back-link": "← Back to home",
+    "page-tag": "Methods & Therapies",
+    "page-title": "The <em>TEACCH</em> Method",
+    "header-intro": "The TEACCH programme (Treatment and Education of Autistic and related Communication Handicapped Children) is an intervention model developed in North Carolina that represents a comprehensive approach to supporting people with autism.",
+    "section1-title": "What is TEACCH?",
+    "section1-p1": "The TEACCH model is based on a structured teaching system that pays particular attention to the organisation of physical spaces, tasks and materials, using primarily visual-spatial supports.",
+    "section1-p2": "A central element of TEACCH is the concrete organisation of the sequence of actions or activities that take place over time, making the day visible through objects, pictures, photographs or written cues, up to full daily schedules tailored to each person's abilities.",
+    "section1-p3": "The goal is to build on each individual's emerging skills and make the environment more understandable, adapting it to the needs of the person with autism through clear and predictable structuring.",
+    "section2-title": "Key elements of the intervention",
+    "feat1-title": "Organisation of physical spaces",
+    "feat1-desc": "Structuring space means answering the question \"Where?\", clearly defining specific areas for different activities (work, play, break).",
+    "feat2-title": "Organisation of time",
+    "feat2-desc": "Structuring time means answering \"When?\" and \"For how long?\", through predictable activity sequences and visual schedules.",
+    "feat3-title": "Structuring of work materials",
+    "feat3-desc": "Setting up tasks and materials so that they clearly answer the question \"What do I have to do?\", with visually structured activities.",
+    "feat4-title": "Schedules and work systems",
+    "feat4-desc": "In addition to the daily schedule, the person has a work system indicating what to do, in what order, and with which materials.",
+    "feat5-title": "Predictable routines",
+    "feat5-desc": "The use of routines, visual schedules and stable sequences reduces the stress caused by not understanding what to do or where to go.",
+    "section3-title": "Goals of the TEACCH programme",
+    "goal1": "Build on the individual's emerging skills, valuing what the person can already do and developing adaptive competencies starting from their strengths.",
+    "goal2": "Make the environment more understandable and predictable by adapting it through the organisation of spaces, times and activities.",
+    "goal3": "Support learning by reducing behavioural challenges: when students understand what is expected of them, difficulties tend to decrease.",
+    "goal4": "Cover the entire lifespan, offering services and strategies that accompany the person with autism through different stages of development.",
+    "family-title": "The role of the family and everyday contexts",
+    "family-p1": "Parents are involved in the intervention through parallel work: the parent acts as a play companion and guide, collaborating with the professional and contributing their specific knowledge of the child.",
+    "family-p2": "The TEACCH model involves collaboration with parents and interventions that extend to all the living environments of the individual, integrating home, school and other everyday contexts.",
+    "faq-title": "Further information",
+    "faq1-q": "Key principles of the TEACCH philosophy",
+    "faq1-a1": "The key principles of the TEACCH philosophy include: attention to the specific characteristics of autism, individualisation of interventions, structuring of the environment, structured teaching system, collaboration with parents, and services covering the entire lifespan.",
+    "faq1-a2": "Organising and structuring time, work environments, tasks and materials in an appropriate and predictable way helps the person to orientate themselves: when it is clear what is happening and what needs to be done, behavioural challenges decrease and learning is supported.",
+    "faq2-q": "Autism strengths and the visual approach",
+    "faq2-a": "People with autism often have a particular ease in following routines and carrying out visual or written instructions; the use of schedules, visual timetables and structured workstations leverages these strengths and respects the culture of autism.",
+    "faq3-q": "TEACCH and ABA: differences and common ground",
+    "faq3-a": "TEACCH and ABA share a common cultural foundation, use behavioural techniques aimed at reducing inappropriate behaviours and developing adaptive skills, address multiple problems across multiple contexts, and require early and intensive intervention — differing mainly in TEACCH's greater focus on creating facilitative environments.",
+    "cta-title": "Want to know more?",
+    "cta-desc": "Contact us for a free initial consultation.",
+    "cta-btn": "Book a consultation →",
+    "footer-text": "© 2026 Centro BluMente · Educational interventions based on the TEACCH method"
+  }
+};
+
+// ── FUNZIONE APPLICA LINGUA ───────────────────────────────────────────────────
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  localStorage.setItem('blumente-lang', lang);
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Lingua salvata dall'index (o default italiano)
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+
+  // Bottoni lingua
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+});
 </script>
 </body>
 </html>
