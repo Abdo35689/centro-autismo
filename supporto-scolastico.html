@@ -2,175 +2,316 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Supporto Scolastico - Centro BluMente</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supporto Scolastico | Centro BluMente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b1120;
-      color: #cbd5e1;
-      line-height: 1.6;
+    :root {
+      --blue-deep: #020c1b;
+      --blue-card: rgba(8,20,45,0.85);
+      --blue-border: rgba(56,189,248,0.15);
+      --accent: #38bdf8;
+      --accent-2: #7dd3fc;
+      --text-white: #f0f8ff;
+      --text-body: #a8c4d8;
+      --text-muted: #5a7a94;
     }
-    .container {
-      width: 92%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    header {
-      padding: 30px 0 10px;
-      border-bottom: 1px solid rgba(148,163,184,0.3);
-    }
-    a {
-      color: #0ea5e9;
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-    h1 {
-      color: #f8fafc;
-      margin-top: 10px;
-      margin-bottom: 5px;
-    }
-    h2, h3 {
-      color: #e5e7eb;
-      margin-top: 24px;
-    }
-    ul { padding-left: 18px; }
-
-    details {
-      background: #020617;
-      border: 1px solid rgba(148,163,184,0.5);
-      border-radius: 10px;
-      padding: 16px 20px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    summary {
-      cursor: pointer;
-      list-style: none;
-      color: #e5e7eb;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    summary:hover {
-      color: #0ea5e9;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 20px 0;
-      border-top: 1px solid rgba(148,163,184,0.3);
-      font-size: 0.85rem;
-      color: #94a3b8;
-      text-align: center;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--blue-deep); color: var(--text-body); line-height: 1.7; overflow-x: hidden; padding-top: 76px; }
+    body::before { content: ""; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; z-index: 0; }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.12), transparent 65%); top: -200px; right: -150px; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: 10%; left: -150px; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
+    a { color: inherit; text-decoration: none; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(2,12,27,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--blue-border); }
+    .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
+    .logo-area { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 1.5px solid rgba(56,189,248,0.4); box-shadow: 0 0 20px rgba(56,189,248,0.2); }
+    .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); }
+    .brand-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; }
+    .brand-contacts a { font-size: 0.72rem; color: var(--text-muted); border-bottom: 1px solid rgba(90,122,148,0.4); transition: color 0.2s, border-color 0.2s; }
+    .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); }
+    .nav-pills { display: flex; align-items: center; gap: 4px; list-style: none; background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 999px; padding: 4px; }
+    .nav-pills li a { display: block; font-size: 0.85rem; font-weight: 500; color: var(--text-body); padding: 7px 15px; border-radius: 999px; transition: all 0.25s; white-space: nowrap; }
+    .nav-pills li a:hover { color: var(--text-white); }
+    .nav-pills li a.active { background: linear-gradient(135deg, #0ea5e9, #0369a1); color: #fff; box-shadow: 0 0 16px rgba(14,165,233,0.4); }
+    .breadcrumb-wrap { padding: 28px 0 0; position: relative; z-index: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); }
+    .breadcrumb a { color: var(--text-body); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb .sep { opacity: 0.5; }
+    .breadcrumb .current { color: var(--accent); }
+    .page-hero { padding: 40px 0 70px; position: relative; overflow: hidden; }
+    .page-hero::after { content: ""; position: absolute; width: 1px; height: 300px; background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent); right: 20%; top: 10%; transform: rotate(15deg); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px; border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05); }
+    .hero-eyebrow .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{box-shadow:0 0 8px #22c55e}50%{box-shadow:0 0 16px #22c55e,0 0 24px rgba(34,197,94,0.4)} }
+    .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: 3.2rem; line-height: 1.1; color: var(--text-white); margin-bottom: 10px; max-width: 700px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent-2); }
+    .hero-line { display: block; width: 80px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px 0; }
+    .page-hero-desc { font-size: 1.05rem; color: var(--text-body); max-width: 620px; line-height: 1.8; margin-bottom: 36px; }
+    .hero-image-wrap { position: relative; margin-top: 40px; }
+    .hero-image-wrap::before { content: ""; position: absolute; inset: -16px; border-radius: 32px; border: 1px dashed rgba(56,189,248,0.15); pointer-events: none; }
+    .hero-image-wrap img { width: 100%; border-radius: 24px; border: 1px solid var(--blue-border); box-shadow: 0 30px 60px rgba(0,0,0,0.5); display: block; filter: brightness(0.88); }
+    .section { padding: 80px 0; position: relative; }
+    .section-header { margin-bottom: 50px; }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; padding: 4px 14px; margin-bottom: 14px; background: rgba(56,189,248,0.05); }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--text-white); line-height: 1.15; margin-bottom: 12px; }
+    .section-title em { font-style: italic; color: var(--accent-2); }
+    .section-desc { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.8; }
+    .divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-border), transparent); }
+    .bg-subtle { background: rgba(8,20,45,0.25); border-top: 1px solid var(--blue-border); border-bottom: 1px solid var(--blue-border); }
+    .point-list { display: flex; flex-direction: column; gap: 14px; }
+    .point-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; background: rgba(8,20,45,0.5); border: 1px solid var(--blue-border); border-radius: 16px; transition: border-color 0.2s, transform 0.3s; }
+    .point-item:hover { border-color: rgba(56,189,248,0.38); transform: translateX(4px); }
+    .point-icon { width: 38px; height: 38px; background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 1px solid rgba(56,189,248,0.3); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .point-text strong { display: block; color: var(--text-white); font-size: 0.92rem; margin-bottom: 4px; }
+    .point-text span { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .info-card { background: var(--blue-card); border: 1px solid var(--blue-border); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
+    .info-card::before { content: ""; position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 70%); bottom: -80px; right: -60px; pointer-events: none; }
+    .info-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-4px); }
+    .info-card-icon { width: 46px; height: 46px; background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 1px solid rgba(56,189,248,0.3); border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px; }
+    .info-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); margin-bottom: 18px; }
+    .info-card-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .info-card-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.91rem; color: var(--text-body); line-height: 1.65; }
+    .info-card-list li::before { content: ""; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(56,189,248,0.5); flex-shrink: 0; margin-top: 8px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    details.faq-item { background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+    details.faq-item[open] { border-color: rgba(56,189,248,0.4); }
+    details.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; padding: 20px 22px; font-weight: 600; font-size: 0.95rem; color: var(--text-white); user-select: none; }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    .faq-arrow { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); display: flex; align-items: center; justify-content: center; transition: transform 0.3s, background 0.2s; font-size: 0.8rem; color: var(--accent); }
+    details[open] .faq-arrow { transform: rotate(45deg); background: rgba(56,189,248,0.2); }
+    .faq-body { padding: 16px 22px 20px; font-size: 0.92rem; color: var(--text-body); line-height: 1.8; border-top: 1px solid var(--blue-border); }
+    .faq-body p { margin-bottom: 12px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+    .cta-card { background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95)); border: 1px solid var(--blue-border); border-radius: 24px; padding: 50px 44px; position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04); }
+    .cta-card::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); top: -120px; right: -80px; pointer-events: none; }
+    .cta-card-text h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--text-white); line-height: 1.2; margin-bottom: 12px; }
+    .cta-card-text h2 em { font-style: italic; color: var(--accent-2); }
+    .cta-card-text p { font-size: 0.97rem; color: var(--text-body); line-height: 1.8; max-width: 480px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; flex-shrink: 0; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 999px; background: linear-gradient(135deg, #0ea5e9, #0284c7); color: #fff; font-weight: 600; font-size: 0.92rem; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(14,165,233,0.35); transition: all 0.3s; white-space: nowrap; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: 999px; background: transparent; color: var(--text-white); font-weight: 500; font-size: 0.88rem; border: 1px solid rgba(255,255,255,0.18); transition: all 0.3s; white-space: nowrap; }
+    .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
+    .back-wrap { padding: 10px 0 60px; position: relative; z-index: 1; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-muted); border: 1px solid var(--blue-border); border-radius: 999px; padding: 8px 18px; transition: all 0.25s; }
+    .back-link:hover { color: var(--accent); border-color: rgba(56,189,248,0.4); background: rgba(56,189,248,0.05); }
+    footer { background: rgba(2,8,18,0.95); border-top: 1px solid var(--blue-border); padding: 44px 0; text-align: center; }
+    footer p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 10px; }
+    .footer-accent { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 8px; opacity: 0.6; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } .cta-card { grid-template-columns: 1fr; text-align: center; } .cta-actions { flex-direction: row; justify-content: center; } }
+    @media (max-width: 640px) { body { padding-top: 68px; } .nav-pills { display: none; } .page-hero h1 { font-size: 2.1rem; } .section { padding: 60px 0; } .cta-card { padding: 34px 24px; } .cta-actions { flex-direction: column; } }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="index.html">&larr; Torna alla home</a>
-      <h1>Supporto Scolastico</h1>
-
-      <img
-        src="supporto-scolastico.png"
-        alt="Bambino con autismo supportato a scuola da insegnanti e terapisti"
-        width="900"
-        loading="lazy"
-        style="margin-top:16px; width:100%; height:auto; border-radius:12px;"
-      >
-
-      <p>
-        Collaborazione tra scuola, famiglia e servizi per favorire la partecipazione dello studente
-        con disturbo dello spettro autistico alla vita scolastica quotidiana.
-      </p>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo-area">
+        <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
+        <div>
+          <div class="brand-name">Centro BluMente</div>
+          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-contacts">
+            <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
+            <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <ul class="nav-pills">
+        <li><a href="index.html#servizi">Servizi</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#terapie">Terapie</a></li>
+        <li><a href="index.html#struttura">Struttura</a></li>
+        <li><a href="index.html#recensioni">Opinioni</a></li>
+        <li><a href="index.html#contatti" class="active">Prenota</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="breadcrumb reveal">
+      <a href="index.html">Home</a>
+      <span class="sep">&rsaquo;</span>
+      <a href="index.html#servizi">Servizi</a>
+      <span class="sep">&rsaquo;</span>
+      <span class="current">Supporto Scolastico</span>
     </div>
-  </header>
-
-  <main class="container">
-    <h2>Come lavoriamo con la scuola</h2>
-    <p>
-      La presa in carico del bambino con autismo comprende interventi psicoeducativi e scolastici,
-      basati su programmi personalizzati, lavoro di rete e verifiche periodiche.
+  </div>
+</div>
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow reveal"><span class="dot"></span> Percorso educativo specializzato</div>
+    <h1 class="reveal reveal-delay-1">Supporto<br><em>Scolastico</em></h1>
+    <span class="hero-line reveal reveal-delay-2"></span>
+    <p class="page-hero-desc reveal reveal-delay-2">
+      Collaborazione tra scuola, famiglia e servizi per favorire la piena partecipazione
+      dello studente con disturbo dello spettro autistico alla vita scolastica quotidiana.
     </p>
-    <ul>
-      <li>
-        Incontri con insegnanti curricolari e di sostegno per condividere il profilo di sviluppo,
-        le aree di forza e di difficoltà e gli obiettivi prioritari.
-      </li>
-      <li>
-        Condivisione di strategie ispirate ai modelli cognitivo-comportamentali per sostenere
-        comunicazione, socializzazione e comportamento adattivo in classe.
-      </li>
-      <li>
-        Attenzione alla strutturazione di tempi, ambienti di lavoro, compiti e materiali
-        per renderli adeguati e prevedibili, riducendo così i problemi di comportamento.
-      </li>
-      <li>
-        Monitoraggio periodico dei risultati ottenuti e adeguamento del progetto educativo
-        in base all'evoluzione dello studente e ai cambiamenti di contesto scolastico.
-      </li>
-    </ul>
-
-    <h2>Obiettivi del supporto scolastico</h2>
-    <p>
-      Il lavoro con la scuola mira a favorire la partecipazione dello studente, a sostenere le sue
-      competenze adattive e a costruire un ambiente più comprensibile e regolato.
-    </p>
-    <ul>
-      <li>
-        Potenziare le abilità comunicative e sociali, tenendo conto delle difficoltà nel riconoscere
-        gli stati mentali altrui, nella reciprocità e nella gestione delle relazioni tra pari.
-      </li>
-      <li>
-        Ridurre i comportamenti problema attraverso interventi comportamentali specifici
-        e una migliore organizzazione della giornata scolastica.
-      </li>
-      <li>
-        Valorizzare i punti di forza, come il pensiero visivo, la capacità di seguire routine
-        e l'uso di consegne visive o scritte, inserendoli nella didattica quotidiana.
-      </li>
-      <li>
-        Mantenere un'alleanza costante tra scuola, famiglia e servizi, così che gli obiettivi educativi
-        siano condivisi e coerenti nei diversi ambienti di vita.
-      </li>
-    </ul>
-
-    <section style="margin-top: 40px; width: 100%;">
-      <details>
-        <summary>Informazioni aggiuntive (clicca per espandere)</summary>
-        <div style="margin-top:15px; font-size:1rem; color:#cbd5e1; line-height:1.7;">
-          <p>
-            Il bambino con autismo necessita di una giornata strutturata e di insegnanti ordinati
-            e preparati, in grado di organizzare spazi, tempi e attività in modo chiaro e prevedibile,
-            favorendo l'apprendimento e attenuando i problemi di comportamento.
-          </p>
-          <p>
-            L'organizzazione concreta della sequenza di azioni e attività nel tempo, tramite orari
-            visivi e schemi di lavoro, aiuta lo studente a capire cosa sta accadendo, cosa si
-            aspetta da lui la scuola e quali passaggi seguiranno.
-          </p>
-          <p>
-            Il lavoro scolastico si inserisce in un progetto individualizzato che tiene conto
-            del grado di funzionamento cognitivo, delle comorbidità e dell'andamento evolutivo,
-            con l'obiettivo di preparare gradualmente il passaggio ai diversi ordini di scuola.
-          </p>
-          <p>
-            Il coinvolgimento attivo dei genitori e il lavoro di rete tra insegnanti, operatori
-            sanitari e riabilitativi sono elementi chiave per garantire continuità agli interventi
-            e massimizzare la possibilità che lo studente sviluppi le competenze sociali a lui
-            inizialmente mancanti.
-          </p>
+    <div class="hero-image-wrap reveal reveal-delay-3">
+      <img src="supporto-scolastico.png" alt="Bambino con autismo supportato a scuola" loading="lazy">
+    </div>
+  </div>
+</section>
+<hr class="divider">
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Il nostro metodo</div>
+      <h2 class="section-title">Come lavoriamo<br><em>con la scuola</em></h2>
+      <p class="section-desc">La presa in carico comprende interventi psicoeducativi basati su programmi personalizzati, lavoro di rete e verifiche periodiche.</p>
+    </div>
+    <div class="point-list">
+      <div class="point-item reveal">
+        <div class="point-icon">&#129309;</div>
+        <div class="point-text">
+          <strong>Incontri con il team docenti</strong>
+          <span>Confronto con insegnanti curricolari e di sostegno per condividere il profilo di sviluppo, le aree di forza e di difficolta e gli obiettivi prioritari.</span>
+        </div>
+      </div>
+      <div class="point-item reveal reveal-delay-1">
+        <div class="point-icon">&#129504;</div>
+        <div class="point-text">
+          <strong>Strategie cognitivo-comportamentali</strong>
+          <span>Condivisione di tecniche ispirate ai modelli evidence-based per sostenere comunicazione, socializzazione e comportamento adattivo in classe.</span>
+        </div>
+      </div>
+      <div class="point-item reveal reveal-delay-2">
+        <div class="point-icon">&#128197;</div>
+        <div class="point-text">
+          <strong>Strutturazione di tempi e ambienti</strong>
+          <span>Attenzione all'organizzazione di spazi, compiti e materiali per renderli adeguati e prevedibili, riducendo i problemi di comportamento.</span>
+        </div>
+      </div>
+      <div class="point-item reveal reveal-delay-3">
+        <div class="point-icon">&#128202;</div>
+        <div class="point-text">
+          <strong>Monitoraggio e adeguamento continuo</strong>
+          <span>Verifiche periodiche dei risultati e adeguamento del progetto educativo in base all'evoluzione dello studente e ai cambiamenti di contesto.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+<section class="section bg-subtle">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Finalita</div>
+      <h2 class="section-title">Obiettivi del<br><em>supporto scolastico</em></h2>
+      <p class="section-desc">Sostenere le competenze adattive, valorizzare i punti di forza e costruire un ambiente piu comprensibile e regolato.</p>
+    </div>
+    <div class="two-col">
+      <div class="info-card reveal">
+        <div class="info-card-icon">&#128172;</div>
+        <h3>Competenze sociali e comunicative</h3>
+        <ul class="info-card-list">
+          <li>Potenziare le abilita comunicative tenendo conto delle difficolta nella reciprocita e nelle relazioni tra pari.</li>
+          <li>Ridurre i comportamenti problema attraverso interventi comportamentali specifici.</li>
+          <li>Favorire la comprensione degli stati mentali altrui con supporti visivi e sociali adeguati.</li>
+        </ul>
+      </div>
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-card-icon">&#11088;</div>
+        <h3>Valorizzazione dei punti di forza</h3>
+        <ul class="info-card-list">
+          <li>Sfruttare pensiero visivo, capacita di routine e consegne scritte nella didattica quotidiana.</li>
+          <li>Mantenere alleanza costante tra scuola, famiglia e servizi con obiettivi condivisi e coerenti.</li>
+          <li>Preparare gradualmente il passaggio ai diversi ordini di scuola con continuita progettuale.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Approfondimenti</div>
+      <h2 class="section-title">Informazioni<br><em>aggiuntive</em></h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>La giornata strutturata a scuola <span class="faq-arrow">+</span></summary>
+        <div class="faq-body">
+          <p>Il bambino con autismo necessita di una giornata strutturata e di insegnanti preparati, in grado di organizzare spazi, tempi e attivita in modo chiaro e prevedibile, favorendo l'apprendimento e attenuando i problemi di comportamento.</p>
         </div>
       </details>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      &copy; 2026 Centro BluMente · Collaborazione scuola–famiglia–centro
+      <details class="faq-item reveal reveal-delay-1">
+        <summary>Orari visivi e schemi di lavoro <span class="faq-arrow">+</span></summary>
+        <div class="faq-body">
+          <p>L'organizzazione concreta della sequenza di azioni tramite orari visivi e schemi di lavoro aiuta lo studente a capire cosa sta accadendo, cosa si aspetta da lui la scuola e quali passaggi seguiranno, riducendo l'ansia da imprevisto e aumentando la cooperazione nelle attivita didattiche.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal reveal-delay-2">
+        <summary>Il progetto individualizzato <span class="faq-arrow">+</span></summary>
+        <div class="faq-body">
+          <p>Il lavoro scolastico si inserisce in un progetto individualizzato che tiene conto del grado di funzionamento cognitivo, delle comorbidita e dell'andamento evolutivo, con l'obiettivo di preparare gradualmente il passaggio ai diversi ordini di scuola.</p>
+        </div>
+      </details>
+      <details class="faq-item reveal reveal-delay-3">
+        <summary>Il lavoro di rete con genitori e servizi <span class="faq-arrow">+</span></summary>
+        <div class="faq-body">
+          <p>Il coinvolgimento attivo dei genitori e il lavoro di rete tra insegnanti, operatori sanitari e riabilitativi sono elementi chiave per garantire continuita agli interventi e massimizzare la possibilita che lo studente sviluppi le competenze sociali a lui inizialmente mancanti.</p>
+        </div>
+      </details>
     </div>
-  </footer>
+  </div>
+</section>
+<hr class="divider">
+<section class="section bg-subtle">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-card-text">
+        <div class="section-tag" style="margin-bottom:12px;">Inizia il percorso</div>
+        <h2>Costruiamo insieme<br><em>il progetto scolastico</em></h2>
+        <p>Ogni percorso di supporto scolastico e pensato su misura, in stretta collaborazione con la famiglia e il team docenti. Contattaci per un primo colloquio: rispondiamo entro 24 ore lavorative.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#contatti" class="btn-primary">Prenota un colloquio &rarr;</a>
+        <a href="index.html#servizi" class="btn-secondary">&larr; Tutti i servizi</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="back-wrap">
+  <div class="container">
+    <a href="index.html#servizi" class="back-link reveal">&larr; Torna a "I nostri percorsi"</a>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="footer-brand">Centro BluMente</div>
+    <p>&copy; 2026 Centro BluMente. Tutti i diritti riservati.<span class="footer-accent"></span>Cinisello Balsamo (MI)</p>
+    <p style="margin-top:8px;font-size:0.75rem;opacity:0.45;">Il blu e il colore della consapevolezza sull'autismo &mdash; Giornata Mondiale, 2 Aprile.</p>
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  });
+</script>
 </body>
 </html>
