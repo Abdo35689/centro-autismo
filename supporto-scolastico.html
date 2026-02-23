@@ -19,38 +19,62 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--blue-deep); color: var(--text-body); line-height: 1.7; overflow-x: hidden; padding-top: 76px; }
-    body::before { content: ""; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.5; pointer-events: none; z-index: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
+      color: var(--text-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding-top: 76px;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
     .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
     .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.12), transparent 65%); top: -200px; right: -150px; }
     .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: 10%; left: -150px; }
     .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
     a { color: inherit; text-decoration: none; }
-    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(2,12,27,0.75); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--blue-border); }
+
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(2,12,27,0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--blue-border);
+    }
     .container { width: 92%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
     nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
+
     .logo-area { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
     .logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 1.5px solid rgba(56,189,248,0.4); box-shadow: 0 0 20px rgba(56,189,248,0.2); }
     .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); }
     .brand-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
-    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; }
+    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
     .brand-contacts a { font-size: 0.72rem; color: var(--text-muted); border-bottom: 1px solid rgba(90,122,148,0.4); transition: color 0.2s, border-color 0.2s; }
     .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); }
-    .nav-pills { display: flex; align-items: center; gap: 4px; list-style: none; background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 999px; padding: 4px; }
-    .nav-pills li a { display: block; font-size: 0.85rem; font-weight: 500; color: var(--text-body); padding: 7px 15px; border-radius: 999px; transition: all 0.25s; white-space: nowrap; }
-    .nav-pills li a:hover { color: var(--text-white); }
-    .nav-pills li a.active { background: linear-gradient(135deg, #0ea5e9, #0369a1); color: #fff; box-shadow: 0 0 16px rgba(14,165,233,0.4); }
+
     .breadcrumb-wrap { padding: 28px 0 0; position: relative; z-index: 1; }
     .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--text-muted); }
     .breadcrumb a { color: var(--text-body); transition: color 0.2s; }
     .breadcrumb a:hover { color: var(--accent); }
     .breadcrumb .sep { opacity: 0.5; }
     .breadcrumb .current { color: var(--accent); }
+
     .page-hero { padding: 40px 0 70px; position: relative; overflow: hidden; }
     .page-hero::after { content: ""; position: absolute; width: 1px; height: 300px; background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent); right: 20%; top: 10%; transform: rotate(15deg); }
     .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px; border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05); }
     .hero-eyebrow .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{box-shadow:0 0 8px #22c55e}50%{box-shadow:0 0 16px #22c55e,0 0 24px rgba(34,197,94,0.4)} }
+    @keyframes pulse {
+      0%,100%{box-shadow:0 0 8px #22c55e}
+      50%{box-shadow:0 0 16px #22c55e,0 0 24px rgba(34,197,94,0.4)}
+    }
     .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: 3.2rem; line-height: 1.1; color: var(--text-white); margin-bottom: 10px; max-width: 700px; }
     .page-hero h1 em { font-style: italic; color: var(--accent-2); }
     .hero-line { display: block; width: 80px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px 0; }
@@ -58,20 +82,24 @@
     .hero-image-wrap { position: relative; margin-top: 40px; }
     .hero-image-wrap::before { content: ""; position: absolute; inset: -16px; border-radius: 32px; border: 1px dashed rgba(56,189,248,0.15); pointer-events: none; }
     .hero-image-wrap img { width: 100%; border-radius: 24px; border: 1px solid var(--blue-border); box-shadow: 0 30px 60px rgba(0,0,0,0.5); display: block; filter: brightness(0.88); }
+
     .section { padding: 80px 0; position: relative; }
     .section-header { margin-bottom: 50px; }
     .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; padding: 4px 14px; margin-bottom: 14px; background: rgba(56,189,248,0.05); }
     .section-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--text-white); line-height: 1.15; margin-bottom: 12px; }
     .section-title em { font-style: italic; color: var(--accent-2); }
     .section-desc { font-size: 1rem; color: var(--text-muted); max-width: 520px; line-height: 1.8; }
+
     .divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-border), transparent); }
     .bg-subtle { background: rgba(8,20,45,0.25); border-top: 1px solid var(--blue-border); border-bottom: 1px solid var(--blue-border); }
+
     .point-list { display: flex; flex-direction: column; gap: 14px; }
     .point-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px; background: rgba(8,20,45,0.5); border: 1px solid var(--blue-border); border-radius: 16px; transition: border-color 0.2s, transform 0.3s; }
     .point-item:hover { border-color: rgba(56,189,248,0.38); transform: translateX(4px); }
     .point-icon { width: 38px; height: 38px; background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 1px solid rgba(56,189,248,0.3); border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
     .point-text strong { display: block; color: var(--text-white); font-size: 0.92rem; margin-bottom: 4px; }
     .point-text span { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
     .info-card { background: var(--blue-card); border: 1px solid var(--blue-border); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
     .info-card::before { content: ""; position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 70%); bottom: -80px; right: -60px; pointer-events: none; }
@@ -81,6 +109,7 @@
     .info-card-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
     .info-card-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.91rem; color: var(--text-body); line-height: 1.65; }
     .info-card-list li::before { content: ""; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px rgba(56,189,248,0.5); flex-shrink: 0; margin-top: 8px; }
+
     .faq-list { display: flex; flex-direction: column; gap: 10px; }
     details.faq-item { background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
     details.faq-item[open] { border-color: rgba(56,189,248,0.4); }
@@ -91,6 +120,7 @@
     .faq-body { padding: 16px 22px 20px; font-size: 0.92rem; color: var(--text-body); line-height: 1.8; border-top: 1px solid var(--blue-border); }
     .faq-body p { margin-bottom: 12px; }
     .faq-body p:last-child { margin-bottom: 0; }
+
     .cta-card { background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95)); border: 1px solid var(--blue-border); border-radius: 24px; padding: 50px 44px; position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04); }
     .cta-card::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); top: -120px; right: -80px; pointer-events: none; }
     .cta-card-text h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--text-white); line-height: 1.2; margin-bottom: 12px; }
@@ -101,26 +131,41 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5); }
     .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: 999px; background: transparent; color: var(--text-white); font-weight: 500; font-size: 0.88rem; border: 1px solid rgba(255,255,255,0.18); transition: all 0.3s; white-space: nowrap; }
     .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.35); }
+
     .back-wrap { padding: 10px 0 60px; position: relative; z-index: 1; }
     .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--text-muted); border: 1px solid var(--blue-border); border-radius: 999px; padding: 8px 18px; transition: all 0.25s; }
     .back-link:hover { color: var(--accent); border-color: rgba(56,189,248,0.4); background: rgba(56,189,248,0.05); }
+
     footer { background: rgba(2,8,18,0.95); border-top: 1px solid var(--blue-border); padding: 44px 0; text-align: center; }
     footer p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
     .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 10px; }
     .footer-accent { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 8px; opacity: 0.6; }
+
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
-    @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } .cta-card { grid-template-columns: 1fr; text-align: center; } .cta-actions { flex-direction: row; justify-content: center; } }
-    @media (max-width: 640px) { body { padding-top: 68px; } .nav-pills { display: none; } .page-hero h1 { font-size: 2.1rem; } .section { padding: 60px 0; } .cta-card { padding: 34px 24px; } .cta-actions { flex-direction: column; } }
+
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; }
+      .cta-card { grid-template-columns: 1fr; text-align: center; }
+      .cta-actions { flex-direction: row; justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      body { padding-top: 68px; }
+      .page-hero h1 { font-size: 2.1rem; }
+      .section { padding: 60px 0; }
+      .cta-card { padding: 34px 24px; }
+      .cta-actions { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
+
 <header>
   <div class="container">
     <nav>
@@ -128,41 +173,39 @@
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div>
           <div class="brand-name">Centro BluMente</div>
-          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
           <div class="brand-contacts">
             <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
             <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
           </div>
         </div>
       </div>
-      <ul class="nav-pills">
-        <li><a href="index.html#servizi">Servizi</a></li>
-        <li><a href="index.html#faq">FAQ</a></li>
-        <li><a href="index.html#terapie">Terapie</a></li>
-        <li><a href="index.html#struttura">Struttura</a></li>
-        <li><a href="index.html#recensioni">Opinioni</a></li>
-        <li><a href="index.html#contatti" class="active">Prenota</a></li>
-      </ul>
+      <!-- nav-right rimosso (menu + selettore lingua) -->
     </nav>
   </div>
 </header>
+
 <div class="breadcrumb-wrap">
   <div class="container">
     <div class="breadcrumb reveal">
-      <a href="index.html">Home</a>
-      <span class="sep">&rsaquo;</span>
-      <a href="index.html#servizi">Servizi</a>
-      <span class="sep">&rsaquo;</span>
-      <span class="current">Supporto Scolastico</span>
+      <a href="index.html" data-i18n="breadcrumb-home">Home</a>
+      <span class="sep">›</span>
+      <a href="index.html#servizi" data-i18n="breadcrumb-services">Servizi</a>
+      <span class="sep">›</span>
+      <span class="current" data-i18n="breadcrumb-current">Supporto Scolastico</span>
     </div>
   </div>
 </div>
+
 <section class="page-hero">
   <div class="container">
-    <div class="hero-eyebrow reveal"><span class="dot"></span> Percorso educativo specializzato</div>
-    <h1 class="reveal reveal-delay-1">Supporto<br><em>Scolastico</em></h1>
+    <div class="hero-eyebrow reveal">
+      <span class="dot"></span>
+      <span data-i18n="hero-eyebrow">Percorso educativo specializzato</span>
+    </div>
+    <h1 class="reveal reveal-delay-1" data-i18n-html="page-title">Supporto<br><em>Scolastico</em></h1>
     <span class="hero-line reveal reveal-delay-2"></span>
-    <p class="page-hero-desc reveal reveal-delay-2">
+    <p class="page-hero-desc reveal reveal-delay-2" data-i18n="page-desc">
       Collaborazione tra scuola, famiglia e servizi per favorire la piena partecipazione
       dello studente con disturbo dello spettro autistico alla vita scolastica quotidiana.
     </p>
@@ -171,147 +214,327 @@
     </div>
   </div>
 </section>
+
 <hr class="divider">
+
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Il nostro metodo</div>
-      <h2 class="section-title">Come lavoriamo<br><em>con la scuola</em></h2>
-      <p class="section-desc">La presa in carico comprende interventi psicoeducativi basati su programmi personalizzati, lavoro di rete e verifiche periodiche.</p>
+      <div class="section-tag" data-i18n="method-tag">Il nostro metodo</div>
+      <h2 class="section-title" data-i18n-html="method-title">Come lavoriamo<br><em>con la scuola</em></h2>
+      <p class="section-desc" data-i18n="method-desc">La presa in carico comprende interventi psicoeducativi basati su programmi personalizzati, lavoro di rete e verifiche periodiche.</p>
     </div>
     <div class="point-list">
       <div class="point-item reveal">
-        <div class="point-icon">&#129309;</div>
+        <div class="point-icon">🤝</div>
         <div class="point-text">
-          <strong>Incontri con il team docenti</strong>
-          <span>Confronto con insegnanti curricolari e di sostegno per condividere il profilo di sviluppo, le aree di forza e di difficolta e gli obiettivi prioritari.</span>
+          <strong data-i18n="p1-title">Incontri con il team docenti</strong>
+          <span data-i18n="p1-desc">Confronto con insegnanti curricolari e di sostegno per condividere il profilo di sviluppo, le aree di forza e di difficoltà e gli obiettivi prioritari.</span>
         </div>
       </div>
       <div class="point-item reveal reveal-delay-1">
-        <div class="point-icon">&#129504;</div>
+        <div class="point-icon">🧠</div>
         <div class="point-text">
-          <strong>Strategie cognitivo-comportamentali</strong>
-          <span>Condivisione di tecniche ispirate ai modelli evidence-based per sostenere comunicazione, socializzazione e comportamento adattivo in classe.</span>
+          <strong data-i18n="p2-title">Strategie cognitivo-comportamentali</strong>
+          <span data-i18n="p2-desc">Condivisione di tecniche ispirate ai modelli evidence-based per sostenere comunicazione, socializzazione e comportamento adattivo in classe.</span>
         </div>
       </div>
       <div class="point-item reveal reveal-delay-2">
-        <div class="point-icon">&#128197;</div>
+        <div class="point-icon">📅</div>
         <div class="point-text">
-          <strong>Strutturazione di tempi e ambienti</strong>
-          <span>Attenzione all'organizzazione di spazi, compiti e materiali per renderli adeguati e prevedibili, riducendo i problemi di comportamento.</span>
+          <strong data-i18n="p3-title">Strutturazione di tempi e ambienti</strong>
+          <span data-i18n="p3-desc">Attenzione all'organizzazione di spazi, compiti e materiali per renderli adeguati e prevedibili, riducendo i problemi di comportamento.</span>
         </div>
       </div>
       <div class="point-item reveal reveal-delay-3">
-        <div class="point-icon">&#128202;</div>
+        <div class="point-icon">📊</div>
         <div class="point-text">
-          <strong>Monitoraggio e adeguamento continuo</strong>
-          <span>Verifiche periodiche dei risultati e adeguamento del progetto educativo in base all'evoluzione dello studente e ai cambiamenti di contesto.</span>
+          <strong data-i18n="p4-title">Monitoraggio e adeguamento continuo</strong>
+          <span data-i18n="p4-desc">Verifiche periodiche dei risultati e adeguamento del progetto educativo in base all'evoluzione dello studente e ai cambiamenti di contesto.</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <hr class="divider">
+
 <section class="section bg-subtle">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Finalita</div>
-      <h2 class="section-title">Obiettivi del<br><em>supporto scolastico</em></h2>
-      <p class="section-desc">Sostenere le competenze adattive, valorizzare i punti di forza e costruire un ambiente piu comprensibile e regolato.</p>
+      <div class="section-tag" data-i18n="goals-tag">Finalità</div>
+      <h2 class="section-title" data-i18n-html="goals-title">Obiettivi del<br><em>supporto scolastico</em></h2>
+      <p class="section-desc" data-i18n="goals-desc">Sostenere le competenze adattive, valorizzare i punti di forza e costruire un ambiente più comprensibile e regolato.</p>
     </div>
     <div class="two-col">
       <div class="info-card reveal">
-        <div class="info-card-icon">&#128172;</div>
-        <h3>Competenze sociali e comunicative</h3>
+        <div class="info-card-icon">💬</div>
+        <h3 data-i18n="card1-title">Competenze sociali e comunicative</h3>
         <ul class="info-card-list">
-          <li>Potenziare le abilita comunicative tenendo conto delle difficolta nella reciprocita e nelle relazioni tra pari.</li>
-          <li>Ridurre i comportamenti problema attraverso interventi comportamentali specifici.</li>
-          <li>Favorire la comprensione degli stati mentali altrui con supporti visivi e sociali adeguati.</li>
+          <li data-i18n="card1-li1">Potenziare le abilità comunicative tenendo conto delle difficoltà nella reciprocità e nelle relazioni tra pari.</li>
+          <li data-i18n="card1-li2">Ridurre i comportamenti problema attraverso interventi comportamentali specifici.</li>
+          <li data-i18n="card1-li3">Favorire la comprensione degli stati mentali altrui con supporti visivi e sociali adeguati.</li>
         </ul>
       </div>
       <div class="info-card reveal reveal-delay-1">
-        <div class="info-card-icon">&#11088;</div>
-        <h3>Valorizzazione dei punti di forza</h3>
+        <div class="info-card-icon">⭐</div>
+        <h3 data-i18n="card2-title">Valorizzazione dei punti di forza</h3>
         <ul class="info-card-list">
-          <li>Sfruttare pensiero visivo, capacita di routine e consegne scritte nella didattica quotidiana.</li>
-          <li>Mantenere alleanza costante tra scuola, famiglia e servizi con obiettivi condivisi e coerenti.</li>
-          <li>Preparare gradualmente il passaggio ai diversi ordini di scuola con continuita progettuale.</li>
+          <li data-i18n="card2-li1">Sfruttare pensiero visivo, capacità di routine e consegne scritte nella didattica quotidiana.</li>
+          <li data-i18n="card2-li2">Mantenere alleanza costante tra scuola, famiglia e servizi con obiettivi condivisi e coerenti.</li>
+          <li data-i18n="card2-li3">Preparare gradualmente il passaggio ai diversi ordini di scuola con continuità progettuale.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
+
 <hr class="divider">
+
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Approfondimenti</div>
-      <h2 class="section-title">Informazioni<br><em>aggiuntive</em></h2>
+      <div class="section-tag" data-i18n="faq-tag">Approfondimenti</div>
+      <h2 class="section-title" data-i18n-html="faq-title">Informazioni<br><em>aggiuntive</em></h2>
     </div>
     <div class="faq-list">
       <details class="faq-item reveal">
-        <summary>La giornata strutturata a scuola <span class="faq-arrow">+</span></summary>
+        <summary><span data-i18n="faq1-q">La giornata strutturata a scuola</span> <span class="faq-arrow">+</span></summary>
         <div class="faq-body">
-          <p>Il bambino con autismo necessita di una giornata strutturata e di insegnanti preparati, in grado di organizzare spazi, tempi e attivita in modo chiaro e prevedibile, favorendo l'apprendimento e attenuando i problemi di comportamento.</p>
+          <p data-i18n="faq1-a">Il bambino con autismo necessita di una giornata strutturata e di insegnanti preparati, in grado di organizzare spazi, tempi e attività in modo chiaro e prevedibile, favorendo l'apprendimento e attenuando i problemi di comportamento.</p>
         </div>
       </details>
       <details class="faq-item reveal reveal-delay-1">
-        <summary>Orari visivi e schemi di lavoro <span class="faq-arrow">+</span></summary>
+        <summary><span data-i18n="faq2-q">Orari visivi e schemi di lavoro</span> <span class="faq-arrow">+</span></summary>
         <div class="faq-body">
-          <p>L'organizzazione concreta della sequenza di azioni tramite orari visivi e schemi di lavoro aiuta lo studente a capire cosa sta accadendo, cosa si aspetta da lui la scuola e quali passaggi seguiranno, riducendo l'ansia da imprevisto e aumentando la cooperazione nelle attivita didattiche.</p>
+          <p data-i18n="faq2-a">L'organizzazione concreta della sequenza di azioni tramite orari visivi e schemi di lavoro aiuta lo studente a capire cosa sta accadendo, cosa si aspetta da lui la scuola e quali passaggi seguiranno, riducendo l'ansia da imprevisto e aumentando la cooperazione nelle attività didattiche.</p>
         </div>
       </details>
       <details class="faq-item reveal reveal-delay-2">
-        <summary>Il progetto individualizzato <span class="faq-arrow">+</span></summary>
+        <summary><span data-i18n="faq3-q">Il progetto individualizzato</span> <span class="faq-arrow">+</span></summary>
         <div class="faq-body">
-          <p>Il lavoro scolastico si inserisce in un progetto individualizzato che tiene conto del grado di funzionamento cognitivo, delle comorbidita e dell'andamento evolutivo, con l'obiettivo di preparare gradualmente il passaggio ai diversi ordini di scuola.</p>
+          <p data-i18n="faq3-a">Il lavoro scolastico si inserisce in un progetto individualizzato che tiene conto del grado di funzionamento cognitivo, delle comorbidità e dell'andamento evolutivo, con l'obiettivo di preparare gradualmente il passaggio ai diversi ordini di scuola.</p>
         </div>
       </details>
       <details class="faq-item reveal reveal-delay-3">
-        <summary>Il lavoro di rete con genitori e servizi <span class="faq-arrow">+</span></summary>
+        <summary><span data-i18n="faq4-q">Il lavoro di rete con genitori e servizi</span> <span class="faq-arrow">+</span></summary>
         <div class="faq-body">
-          <p>Il coinvolgimento attivo dei genitori e il lavoro di rete tra insegnanti, operatori sanitari e riabilitativi sono elementi chiave per garantire continuita agli interventi e massimizzare la possibilita che lo studente sviluppi le competenze sociali a lui inizialmente mancanti.</p>
+          <p data-i18n="faq4-a">Il coinvolgimento attivo dei genitori e il lavoro di rete tra insegnanti, operatori sanitari e riabilitativi sono elementi chiave per garantire continuità agli interventi e massimizzare la possibilità che lo studente sviluppi le competenze sociali a lui inizialmente mancanti.</p>
         </div>
       </details>
     </div>
   </div>
 </section>
+
 <hr class="divider">
+
 <section class="section bg-subtle">
   <div class="container">
     <div class="cta-card reveal">
       <div class="cta-card-text">
-        <div class="section-tag" style="margin-bottom:12px;">Inizia il percorso</div>
-        <h2>Costruiamo insieme<br><em>il progetto scolastico</em></h2>
-        <p>Ogni percorso di supporto scolastico e pensato su misura, in stretta collaborazione con la famiglia e il team docenti. Contattaci per un primo colloquio: rispondiamo entro 24 ore lavorative.</p>
+        <div class="section-tag" style="margin-bottom:12px;" data-i18n="cta-tag">Inizia il percorso</div>
+        <h2 data-i18n-html="cta-title">Costruiamo insieme<br><em>il progetto scolastico</em></h2>
+        <p data-i18n="cta-desc">Ogni percorso di supporto scolastico è pensato su misura, in stretta collaborazione con la famiglia e il team docenti. Contattaci per un primo colloquio: rispondiamo entro 24 ore lavorative.</p>
       </div>
       <div class="cta-actions">
-        <a href="index.html#contatti" class="btn-primary">Prenota un colloquio &rarr;</a>
-        <a href="index.html#servizi" class="btn-secondary">&larr; Tutti i servizi</a>
+        <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn-primary">Prenota un colloquio →</a>
+        <a href="index.html#servizi" class="btn-secondary" data-i18n="cta-btn-secondary">← Tutti i servizi</a>
       </div>
     </div>
   </div>
 </section>
+
 <div class="back-wrap">
   <div class="container">
-    <a href="index.html#servizi" class="back-link reveal">&larr; Torna a "I nostri percorsi"</a>
+    <a href="index.html#servizi" class="back-link reveal" data-i18n="back-link">← Torna a "I nostri percorsi"</a>
   </div>
 </div>
+
 <footer>
   <div class="container">
     <div class="footer-brand">Centro BluMente</div>
-    <p>&copy; 2026 Centro BluMente. Tutti i diritti riservati.<span class="footer-accent"></span>Cinisello Balsamo (MI)</p>
-    <p style="margin-top:8px;font-size:0.75rem;opacity:0.45;">Il blu e il colore della consapevolezza sull'autismo &mdash; Giornata Mondiale, 2 Aprile.</p>
+    <p>&copy; 2026 Centro BluMente. <span data-i18n="footer-rights">Tutti i diritti riservati.</span><span class="footer-accent"></span>Cinisello Balsamo (MI)</p>
+    <p style="margin-top:8px;font-size:0.75rem;opacity:0.45;" data-i18n="footer-note">Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.</p>
   </div>
 </footer>
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "breadcrumb-home": "Home",
+    "breadcrumb-services": "Servizi",
+    "breadcrumb-current": "Supporto Scolastico",
+    "hero-eyebrow": "Percorso educativo specializzato",
+    "page-title": "Supporto<br><em>Scolastico</em>",
+    "page-desc": "Collaborazione tra scuola, famiglia e servizi per favorire la piena partecipazione dello studente con disturbo dello spettro autistico alla vita scolastica quotidiana.",
+    "method-tag": "Il nostro metodo",
+    "method-title": "Come lavoriamo<br><em>con la scuola</em>",
+    "method-desc": "La presa in carico comprende interventi psicoeducativi basati su programmi personalizzati, lavoro di rete e verifiche periodiche.",
+    "p1-title": "Incontri con il team docenti",
+    "p1-desc": "Confronto con insegnanti curricolari e di sostegno per condividere il profilo di sviluppo, le aree di forza e di difficoltà e gli obiettivi prioritari.",
+    "p2-title": "Strategie cognitivo-comportamentali",
+    "p2-desc": "Condivisione di tecniche ispirate ai modelli evidence-based per sostenere comunicazione, socializzazione e comportamento adattivo in classe.",
+    "p3-title": "Strutturazione di tempi e ambienti",
+    "p3-desc": "Attenzione all'organizzazione di spazi, compiti e materiali per renderli adeguati e prevedibili, riducendo i problemi di comportamento.",
+    "p4-title": "Monitoraggio e adeguamento continuo",
+    "p4-desc": "Verifiche periodiche dei risultati e adeguamento del progetto educativo in base all'evoluzione dello studente e ai cambiamenti di contesto.",
+    "goals-tag": "Finalità",
+    "goals-title": "Obiettivi del<br><em>supporto scolastico</em>",
+    "goals-desc": "Sostenere le competenze adattive, valorizzare i punti di forza e costruire un ambiente più comprensibile e regolato.",
+    "card1-title": "Competenze sociali e comunicative",
+    "card1-li1": "Potenziare le abilità comunicative tenendo conto delle difficoltà nella reciprocità e nelle relazioni tra pari.",
+    "card1-li2": "Ridurre i comportamenti problema attraverso interventi comportamentali specifici.",
+    "card1-li3": "Favorire la comprensione degli stati mentali altrui con supporti visivi e sociali adeguati.",
+    "card2-title": "Valorizzazione dei punti di forza",
+    "card2-li1": "Sfruttare pensiero visivo, capacità di routine e consegne scritte nella didattica quotidiana.",
+    "card2-li2": "Mantenere alleanza costante tra scuola, famiglia e servizi con obiettivi condivisi e coerenti.",
+    "card2-li3": "Preparare gradualmente il passaggio ai diversi ordini di scuola con continuità progettuale.",
+    "faq-tag": "Approfondimenti",
+    "faq-title": "Informazioni<br><em>aggiuntive</em>",
+    "faq1-q": "La giornata strutturata a scuola",
+    "faq1-a": "Il bambino con autismo necessita di una giornata strutturata e di insegnanti preparati, in grado di organizzare spazi, tempi e attività in modo chiaro e prevedibile, favorendo l'apprendimento e attenuando i problemi di comportamento.",
+    "faq2-q": "Orari visivi e schemi di lavoro",
+    "faq2-a": "L'organizzazione concreta della sequenza di azioni tramite orari visivi e schemi di lavoro aiuta lo studente a capire cosa sta accadendo, cosa si aspetta da lui la scuola e quali passaggi seguiranno, riducendo l'ansia da imprevisto e aumentando la cooperazione nelle attività didattiche.",
+    "faq3-q": "Il progetto individualizzato",
+    "faq3-a": "Il lavoro scolastico si inserisce in un progetto individualizzato che tiene conto del grado di funzionamento cognitivo, delle comorbidità e dell'andamento evolutivo, con l'obiettivo di preparare gradualmente il passaggio ai diversi ordini di scuola.",
+    "faq4-q": "Il lavoro di rete con genitori e servizi",
+    "faq4-a": "Il coinvolgimento attivo dei genitori e il lavoro di rete tra insegnanti, operatori sanitari e riabilitativi sono elementi chiave per garantire continuità agli interventi e massimizzare la possibilità che lo studente sviluppi le competenze sociali a lui inizialmente mancanti.",
+    "cta-tag": "Inizia il percorso",
+    "cta-title": "Costruiamo insieme<br><em>il progetto scolastico</em>",
+    "cta-desc": "Ogni percorso di supporto scolastico è pensato su misura, in stretta collaborazione con la famiglia e il team docenti. Contattaci per un primo colloquio: rispondiamo entro 24 ore lavorative.",
+    "cta-btn-primary": "Prenota un colloquio →",
+    "cta-btn-secondary": "← Tutti i servizi",
+    "back-link": "← Torna a \"I nostri percorsi\"",
+    "footer-rights": "Tutti i diritti riservati.",
+    "footer-note": "Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile."
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "breadcrumb-home": "Inicio",
+    "breadcrumb-services": "Servicios",
+    "breadcrumb-current": "Apoyo Escolar",
+    "hero-eyebrow": "Itinerario educativo especializado",
+    "page-title": "Apoyo<br><em>Escolar</em>",
+    "page-desc": "Colaboración entre la escuela, la familia y los servicios para favorecer la plena participación del alumno con trastorno del espectro autista en la vida escolar cotidiana.",
+    "method-tag": "Nuestro método",
+    "method-title": "Cómo trabajamos<br><em>con la escuela</em>",
+    "method-desc": "La atención incluye intervenciones psicoeducativas basadas en programas personalizados, trabajo en red y seguimientos periódicos.",
+    "p1-title": "Reuniones con el equipo docente",
+    "p1-desc": "Encuentros con profesores de aula y de apoyo para compartir el perfil de desarrollo, las áreas de fortaleza y de dificultad y los objetivos prioritarios.",
+    "p2-title": "Estrategias cognitivo-conductuales",
+    "p2-desc": "Presentación de técnicas basadas en modelos con evidencia científica para sostener la comunicación, la socialización y el comportamiento adaptativo en el aula.",
+    "p3-title": "Estructuración de tiempos y entornos",
+    "p3-desc": "Atención a la organización de espacios, tareas y materiales para hacerlos adecuados y predecibles, reduciendo los problemas de conducta.",
+    "p4-title": "Seguimiento y ajuste continuo",
+    "p4-desc": "Revisiones periódicas de los resultados y adecuación del proyecto educativo según la evolución del alumno y los cambios de contexto.",
+    "goals-tag": "Finalidades",
+    "goals-title": "Objetivos del<br><em>apoyo escolar</em>",
+    "goals-desc": "Sostener las competencias adaptativas, valorizar los puntos fuertes y construir un entorno más comprensible y regulado.",
+    "card1-title": "Competencias sociales y comunicativas",
+    "card1-li1": "Potenciar las habilidades comunicativas teniendo en cuenta las dificultades en la reciprocidad y en las relaciones entre iguales.",
+    "card1-li2": "Reducir los comportamientos problemáticos mediante intervenciones conductuales específicas.",
+    "card1-li3": "Favorecer la comprensión de los estados mentales ajenos con apoyos visuales y sociales adecuados.",
+    "card2-title": "Valorización de los puntos fuertes",
+    "card2-li1": "Aprovechar el pensamiento visual, la capacidad de rutina y las instrucciones escritas en la didáctica cotidiana.",
+    "card2-li2": "Mantener una alianza constante entre la escuela, la familia y los servicios con objetivos compartidos y coherentes.",
+    "card2-li3": "Preparar gradualmente el paso a los distintos niveles educativos con continuidad en el proyecto.",
+    "faq-tag": "Profundizaciones",
+    "faq-title": "Información<br><em>adicional</em>",
+    "faq1-q": "La jornada estructurada en la escuela",
+    "faq1-a": "El niño con autismo necesita una jornada estructurada y docentes preparados, capaces de organizar espacios, tiempos y actividades de forma clara y predecible, favoreciendo el aprendizaje y atenuando los problemas de conducta.",
+    "faq2-q": "Horarios visuales y esquemas de trabajo",
+    "faq2-a": "La organización concreta de la secuencia de acciones mediante horarios visuales y esquemas de trabajo ayuda al alumno a entender qué está ocurriendo, qué espera la escuela de él y qué pasos seguirán, reduciendo la ansiedad ante lo imprevisto y aumentando la cooperación en las actividades didácticas.",
+    "faq3-q": "El proyecto individualizado",
+    "faq3-a": "El trabajo escolar se enmarca en un proyecto individualizado que tiene en cuenta el nivel de funcionamiento cognitivo, las comorbilidades y la evolución del desarrollo, con el objetivo de preparar gradualmente el paso a los distintos niveles educativos.",
+    "faq4-q": "El trabajo en red con familias y servicios",
+    "faq4-a": "La implicación activa de los padres y el trabajo en red entre docentes, profesionales sanitarios y rehabilitadores son elementos clave para garantizar la continuidad de las intervenciones y maximizar la posibilidad de que el alumno desarrolle las competencias sociales que inicialmente le faltan.",
+    "cta-tag": "Inicia el recorrido",
+    "cta-title": "Construyamos juntos<br><em>el proyecto escolar</em>",
+    "cta-desc": "Cada recorrido de apoyo escolar está diseñado a medida, en estrecha colaboración con la familia y el equipo docente. Contáctanos para una primera entrevista: respondemos en un plazo de 24 horas laborables.",
+    "cta-btn-primary": "Reserva una consulta →",
+    "cta-btn-secondary": "← Todos los servicios",
+    "back-link": "← Volver a \"Nuestros recorridos\"",
+    "footer-rights": "Todos los derechos reservados.",
+    "footer-note": "El azul es el color de la concienciación sobre el autismo — Día Mundial, 2 de Abril."
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "breadcrumb-home": "Home",
+    "breadcrumb-services": "Services",
+    "breadcrumb-current": "School Support",
+    "hero-eyebrow": "Specialised educational pathway",
+    "page-title": "School<br><em>Support</em>",
+    "page-desc": "Collaboration between school, family and services to promote the full participation of students with autism spectrum disorder in daily school life.",
+    "method-tag": "Our approach",
+    "method-title": "How we work<br><em>with schools</em>",
+    "method-desc": "Our care plan includes psychoeducational interventions based on personalised programmes, network collaboration and periodic reviews.",
+    "p1-title": "Meetings with the teaching team",
+    "p1-desc": "Sessions with subject and support teachers to share the developmental profile, areas of strength and difficulty, and priority goals.",
+    "p2-title": "Cognitive-behavioural strategies",
+    "p2-desc": "Sharing evidence-based techniques to support communication, socialisation and adaptive behaviour in the classroom.",
+    "p3-title": "Structuring time and environments",
+    "p3-desc": "Focus on organising spaces, tasks and materials to make them predictable and manageable, reducing behavioural challenges.",
+    "p4-title": "Ongoing monitoring and adjustment",
+    "p4-desc": "Periodic reviews of outcomes and adjustment of the educational plan based on the student's progress and contextual changes.",
+    "goals-tag": "Goals",
+    "goals-title": "Aims of<br><em>school support</em>",
+    "goals-desc": "Strengthen adaptive skills, build on existing strengths and create a more comprehensible and regulated environment.",
+    "card1-title": "Social and communication skills",
+    "card1-li1": "Enhance communication skills while addressing difficulties in reciprocity and peer relationships.",
+    "card1-li2": "Reduce challenging behaviours through targeted behavioural interventions.",
+    "card1-li3": "Support understanding of others' mental states using appropriate visual and social tools.",
+    "card2-title": "Building on strengths",
+    "card2-li1": "Leverage visual thinking, routine capacity and written instructions in everyday teaching.",
+    "card2-li2": "Maintain a consistent alliance between school, family and services with shared, coherent goals.",
+    "card2-li3": "Gradually prepare for transitions to different school levels with continuity of planning.",
+    "faq-tag": "Further information",
+    "faq-title": "Additional<br><em>information</em>",
+    "faq1-q": "A structured school day",
+    "faq1-a": "Children with autism need a structured school day and well-prepared teachers who can organise spaces, time and activities in a clear and predictable way, promoting learning and reducing behavioural difficulties.",
+    "faq2-q": "Visual timetables and work systems",
+    "faq2-a": "A concrete sequence of actions through visual timetables and work systems helps the student understand what is happening, what the school expects and what steps will follow — reducing anxiety about the unexpected and increasing cooperation in learning activities.",
+    "faq3-q": "The individualised plan",
+    "faq3-a": "School work is embedded in an individualised plan that accounts for the level of cognitive functioning, co-occurring conditions and developmental trajectory, with the aim of gradually preparing the student for transitions between school levels.",
+    "faq4-q": "Network collaboration with families and services",
+    "faq4-a": "Active parent involvement and network collaboration among teachers, health and rehabilitation professionals are key factors in ensuring continuity of support and maximising the student's opportunity to develop the social skills they initially lack.",
+    "cta-tag": "Start the journey",
+    "cta-title": "Let's build together<br><em>the school plan</em>",
+    "cta-desc": "Every school support pathway is tailored to the individual child, in close collaboration with the family and the teaching team. Contact us for an initial consultation — we reply within 24 working hours.",
+    "cta-btn-primary": "Book a consultation →",
+    "cta-btn-secondary": "← All services",
+    "back-link": "← Back to \"Our pathways\"",
+    "footer-rights": "All rights reserved.",
+    "footer-note": "Blue is the colour of autism awareness — World Autism Day, 2 April."
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+});
 </script>
 </body>
 </html>
