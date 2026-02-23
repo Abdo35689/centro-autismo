@@ -3,516 +3,800 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laboratori creativi | Centro BluMente</title>
+  <title>Laboratori Creativi | Centro BluMente</title>
+  <meta name="description" content="I laboratori creativi del Centro BluMente: spazi pensati per espressione, autonomia e socializzazione attraverso attività pratiche ed espressive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-deep: #0b1120;
-      --bg-card: rgba(30, 41, 59, 0.7);
-      --bg-card-hover: rgba(51, 65, 85, 0.8);
-      --primary-glow: #0ea5e9;
-      --text-main: #f8fafc;
-      --text-body: #cbd5e1;
-      --text-muted: #94a3b8;
-      --border-glass: rgba(148, 163, 184, 0.2);
-      --border-glass-hover: rgba(56, 189, 248, 0.5);
-      --radius-lg: 20px;
-      --radius-md: 14px;
+      --blue-deep: #020c1b;
+      --blue-mid: #0a1628;
+      --blue-card: rgba(8, 20, 45, 0.85);
+      --blue-border: rgba(56, 189, 248, 0.15);
+      --blue-border-hover: rgba(56, 189, 248, 0.5);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --accent-2: #7dd3fc;
+      --gold: #fbbf24;
+      --text-white: #f0f8ff;
+      --text-body: #a8c4d8;
+      --text-muted: #5a7a94;
+      --radius: 18px;
+      --radius-sm: 10px;
     }
-
-    * { box-sizing: border-box; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
       color: var(--text-body);
-      background-color: var(--bg-deep);
-      scroll-behavior: smooth;
-      background-image:
-        radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08), transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08), transparent 40%);
-      background-attachment: fixed;
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding-top: 76px;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s;
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
     }
+    /* ─── AMBIENT ORBS ─── */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.12), transparent 65%); top: -200px; right: -150px; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: 10%; left: -150px; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
+    a { color: inherit; text-decoration: none; }
 
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(2, 12, 27, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--blue-border);
+    }
     .container {
       width: 92%;
-      max-width: 1180px;
-      margin: auto;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 0 20px;
+      position: relative;
+      z-index: 1;
     }
-
-    /* HEADER */
-    header {
-      background-color: rgba(11, 17, 32, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-glass);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
     nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 14px 0;
+      gap: 20px;
     }
-
-    .logo-container {
+    .logo-area {
       display: flex;
       align-items: center;
       gap: 14px;
+      flex-shrink: 0;
     }
-
     .logo-img {
-      height: 48px;
-      width: 48px;
-      object-fit: cover;
+      width: 46px;
+      height: 46px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
-      border: 1px solid rgba(14, 165, 233, 0.4);
+      object-fit: cover;
+      border: 1.5px solid rgba(56,189,248,0.4);
+      box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05);
     }
-
-    .brand-block {
-      display: flex;
-      flex-direction: column;
-    }
-
     .brand-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: 0.02em;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text-white);
+      letter-spacing: 0.01em;
     }
-
-    .brand-subtitle {
-      font-size: 0.75rem;
+    .brand-sub {
+      font-size: 0.7rem;
       color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
-
-    .nav-shell {
-      background: rgba(30, 41, 59, 0.5);
-      border-radius: 999px;
-      padding: 5px;
-      border: 1px solid var(--border-glass);
-      position: relative;
-    }
-
-    nav ul {
+    .brand-contacts {
+      margin-top: 3px;
       display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      align-items: center;
-      position: relative;
-      z-index: 2;
+      gap: 12px;
     }
-
-    nav ul li { position: relative; }
-
-    nav ul li a {
-      display: block;
-      color: var(--text-body);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 8px 18px;
-      border-radius: 999px;
-      position: relative;
-      z-index: 2;
-    }
-
-    nav ul li a:hover { color: #fff; }
-
-    .nav-indicator {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      height: calc(100% - 10px);
-      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
-      border-radius: 999px;
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      z-index: 1;
-      width: 0;
-      opacity: 0;
-      box-shadow: 0 0 15px rgba(14, 165, 233, 0.6);
-    }
-
-    .active-link {
-      color: #0f172a !important;
-      font-weight: 700;
-    }
-
-    /* HERO / intestazione pagina */
-    .detail-hero {
-      padding: 60px 0 40px;
-      position: relative;
-    }
-
-    .detail-hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .breadcrumb {
-      font-size: 0.8rem;
+    .brand-contacts a {
+      font-size: 0.72rem;
       color: var(--text-muted);
-      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(90,122,148,0.4);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); }
+    /* NAV PILLS */
+    .nav-pills {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+      background: rgba(8, 20, 45, 0.6);
+      border: 1px solid var(--blue-border);
+      border-radius: 999px;
+      padding: 4px;
+    }
+    .nav-pills li a {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-body);
+      padding: 7px 15px;
+      border-radius: 999px;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .nav-pills li a:hover { color: var(--text-white); }
+    .nav-pills li a.active {
+      background: linear-gradient(135deg, #0ea5e9, #0369a1);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(14,165,233,0.4);
     }
 
-    .breadcrumb a { color: var(--text-body); }
-    .breadcrumb span { margin: 0 4px; }
-
-    .detail-kicker {
-      display: inline-flex;
+    /* ─── BREADCRUMB ─── */
+    .breadcrumb-wrap {
+      padding: 28px 0 0;
+      position: relative;
+      z-index: 1;
+    }
+    .breadcrumb {
+      display: flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--border-glass);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--primary-glow);
-      margin-bottom: 10px;
-    }
-
-    .detail-kicker span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
-    }
-
-    .detail-hero h1 {
-      font-size: 2.2rem;
-      margin: 0 0 10px;
-      color: #ffffff;
-    }
-
-    .detail-intro {
-      font-size: 0.98rem;
-      color: var(--text-body);
-      max-width: 760px;
-    }
-
-    /* GALLERIA */
-    .detail-gallery {
-      max-width: 1100px;
-      margin: 10px auto 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-      gap: 18px;
-    }
-
-    .detail-gallery figure {
-      margin: 0;
-      background: rgba(15, 23, 42, 0.8);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-glass);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .detail-gallery img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .detail-gallery figure:hover img {
-      transform: scale(1.05);
-    }
-
-    .detail-gallery figcaption {
-      padding: 10px 12px 12px;
-      font-size: 0.86rem;
-      color: var(--text-body);
-    }
-
-    /* TESTO DUE COLONNE */
-    .detail-text {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
-      gap: 30px;
-    }
-
-    .detail-text h2 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-      color: var(--text-main);
-    }
-
-    .detail-text ul {
-      padding-left: 18px;
-      font-size: 0.95rem;
-      color: var(--text-body);
-    }
-
-    .detail-text li { margin-bottom: 8px; }
-
-    /* CTA BOX */
-    .detail-cta {
-      max-width: 900px;
-      margin: 0 auto 24px;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 22px 22px 20px;
-      border: 1px solid var(--border-glass);
-      box-shadow: 0 18px 36px rgba(0,0,0,0.45);
-    }
-
-    .detail-cta h2 {
-      font-size: 1.3rem;
-      margin: 0 0 8px;
-      color: var(--text-main);
-    }
-
-    .detail-cta p {
-      margin: 0 0 14px;
-      font-size: 0.95rem;
-      color: var(--text-body);
-    }
-
-    .btn-glow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 22px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9, #0284c7);
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.25s ease;
-    }
-
-    .btn-glow:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 28px rgba(14,165,233,0.65);
-    }
-
-    .detail-back {
-      max-width: 900px;
-      margin: 0 auto 50px;
-      font-size: 0.9rem;
-    }
-
-    .detail-back a {
-      color: var(--primary-glow);
-    }
-
-    .detail-back a:hover {
-      text-decoration: underline;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #020617;
-      border-top: 1px solid var(--border-glass);
-      padding: 26px 0 22px;
-      text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
     }
+    .breadcrumb a {
+      color: var(--text-body);
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb .sep {
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+    .breadcrumb .current {
+      color: var(--accent);
+    }
 
-    @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 12px; }
-      .nav-shell { width: 100%; overflow-x: auto; }
-      .nav-indicator { display: none; }
-      .detail-hero { padding-top: 50px; }
-      .detail-hero h1 { font-size: 1.9rem; }
+    /* ─── HERO ─── */
+    .page-hero {
+      padding: 40px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 300px;
+      background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent);
+      right: 20%;
+      top: 10%;
+      transform: rotate(15deg);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+      padding: 6px 14px 6px 8px;
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 999px;
+      background: rgba(56,189,248,0.05);
+    }
+    .hero-eyebrow .dot {
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 8px #22c55e; }
+      50% { box-shadow: 0 0 16px #22c55e, 0 0 24px rgba(34,197,94,0.4); }
+    }
+    .page-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.2rem;
+      line-height: 1.1;
+      color: var(--text-white);
+      margin-bottom: 10px;
+      max-width: 700px;
+    }
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--accent-2);
+    }
+    .hero-line {
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin: 20px 0;
+    }
+    .page-hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      max-width: 620px;
+      line-height: 1.8;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 80px 0;
+      position: relative;
+    }
+    .section-header {
+      margin-bottom: 50px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 14px;
+      background: rgba(56,189,248,0.05);
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      color: var(--text-white);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .section-title em { font-style: italic; color: var(--accent-2); }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.8;
+    }
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
+      margin: 0;
+    }
+    .bg-subtle {
+      background: rgba(8, 20, 45, 0.25);
+      border-top: 1px solid var(--blue-border);
+      border-bottom: 1px solid var(--blue-border);
+    }
+
+    /* ─── GALLERY GRID ─── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+    .gallery-item {
+      display: block;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--blue-border);
+      background: rgba(8,20,45,0.6);
+      transition: border-color 0.3s, transform 0.35s cubic-bezier(0.23,1,0.32,1), box-shadow 0.35s;
+    }
+    .gallery-item:hover {
+      border-color: rgba(56,189,248,0.45);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .gallery-item-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.82);
+    }
+    .gallery-item:hover .gallery-item-img {
+      transform: scale(1.06);
+      filter: brightness(0.95);
+    }
+    .gallery-caption {
+      padding: 22px 22px 20px;
+      position: relative;
+    }
+    .gallery-caption-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .gallery-caption-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+    .gallery-caption-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ─── INFO CARDS (objectives / methods) ─── */
+    .info-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .info-card {
+      background: var(--blue-card);
+      border: 1px solid var(--blue-border);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .info-card::before {
+      content: "";
+      position: absolute;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(56,189,248,0.07), transparent 70%);
+      bottom: -80px; right: -60px;
+      pointer-events: none;
+    }
+    .info-card:hover {
+      border-color: rgba(56,189,248,0.4);
+      transform: translateY(-4px);
+    }
+    .info-card-icon {
+      width: 46px; height: 46px;
+      background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05));
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+    .info-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--text-white);
+      margin-bottom: 20px;
+    }
+    .info-card-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .info-card-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.6;
+    }
+    .info-card-list li::before {
+      content: "";
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(56,189,248,0.5);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    /* ─── CTA SECTION ─── */
+    .cta-card {
+      background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95));
+      border: 1px solid var(--blue-border);
+      border-radius: 24px;
+      padding: 50px 44px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+    .cta-card::before {
+      content: "";
+      position: absolute;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
+      top: -120px; right: -80px;
+      pointer-events: none;
+    }
+    .cta-card::after {
+      content: "";
+      position: absolute;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(251,191,36,0.05), transparent 70%);
+      bottom: -80px; left: -60px;
+      pointer-events: none;
+    }
+    .cta-card-text .section-tag { margin-bottom: 12px; }
+    .cta-card-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--text-white);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .cta-card-text h2 em { font-style: italic; color: var(--accent-2); }
+    .cta-card-text p {
+      font-size: 0.97rem;
+      color: var(--text-body);
+      line-height: 1.8;
+      max-width: 480px;
+    }
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.92rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2);
+      transition: all 0.3s;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-white);
+      font-weight: 500;
+      font-size: 0.88rem;
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-wrap {
+      padding: 10px 0 60px;
+      position: relative;
+      z-index: 1;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      border: 1px solid var(--blue-border);
+      border-radius: 999px;
+      padding: 8px 18px;
+      transition: all 0.25s;
+    }
+    .back-link:hover {
+      color: var(--accent);
+      border-color: rgba(56,189,248,0.4);
+      background: rgba(56,189,248,0.05);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: rgba(2,8,18,0.95);
+      border-top: 1px solid var(--blue-border);
+      padding: 44px 0;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    footer .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--text-white);
+      margin-bottom: 10px;
+    }
+    .footer-accent {
+      display: inline-block;
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin: 0 8px;
+      opacity: 0.6;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .info-columns { grid-template-columns: 1fr; }
+      .cta-card { grid-template-columns: 1fr; text-align: center; }
+      .cta-card-text p { max-width: 100%; margin: 0 auto; }
+      .cta-actions { flex-direction: row; justify-content: center; }
+    }
+    @media (max-width: 640px) {
+      body { padding-top: 68px; }
+      .nav-pills { display: none; }
+      .page-hero h1 { font-size: 2.1rem; }
+      .section { padding: 60px 0; }
+      .cta-card { padding: 34px 24px; }
+      .cta-actions { flex-direction: column; }
     }
   </style>
 </head>
 <body>
+<!-- ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
 
+<!-- ══════════════ HEADER ══════════════ -->
 <header>
   <div class="container">
     <nav>
-      <div class="logo-container">
+      <div class="logo-area">
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
-        <div class="brand-block">
-          <span class="brand-name">Centro BluMente</span>
-          <span class="brand-subtitle">Diagnosi e supporto per lo spettro autistico</span>
+        <div>
+          <div class="brand-name">Centro BluMente</div>
+          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-contacts">
+            <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
+            <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
+          </div>
         </div>
       </div>
-
-      <div class="nav-shell">
-        <div class="nav-indicator"></div>
-        <ul>
-          <li><a href="index.html#chi-siamo" class="nav-link">L'Autismo</a></li>
-          <li><a href="index.html#servizi" class="nav-link">Servizi</a></li>
-          <li><a href="index.html#terapie" class="nav-link">Terapie</a></li>
-          <li><a href="index.html#struttura" class="nav-link active-link">Struttura</a></li>
-          <li><a href="index.html#contatti" class="nav-link">Prenota</a></li>
-        </ul>
-      </div>
+      <ul class="nav-pills">
+        <li><a href="index.html#chi-siamo">L'Autismo</a></li>
+        <li><a href="index.html#servizi">Servizi</a></li>
+        <li><a href="index.html#terapie">Terapie</a></li>
+        <li><a href="index.html#struttura" class="active">Struttura</a></li>
+        <li><a href="index.html#contatti">Prenota</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="detail-hero">
-    <div class="container detail-hero-inner">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>&rsaquo;</span>
-        <a href="index.html#struttura">La nostra struttura</a>
-        <span>&rsaquo;</span>
-        <span>Laboratori creativi</span>
-      </div>
-
-      <div class="detail-kicker">
-        <span></span> LABORATORI CREATIVI
-      </div>
-
-      <h1>Laboratori creativi ed educativi</h1>
-      <p class="detail-intro">
-        I laboratori creativi del Centro BluMente sono spazi pensati per
-        sperimentare linguaggi diversi, allenare l’autonomia e lavorare sulla
-        socializzazione attraverso attività pratiche, espressive e di gruppo.
-      </p>
+<!-- ══════════════ BREADCRUMB ══════════════ -->
+<div class="breadcrumb-wrap">
+  <div class="container">
+    <div class="breadcrumb reveal">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="index.html#struttura">La nostra struttura</a>
+      <span class="sep">›</span>
+      <span class="current">Laboratori creativi</span>
     </div>
-  </section>
-
-  <section class="detail-gallery">
-    <figure>
-      <img src="lab-creativi-disegno-pittura.jpg.png" alt="Laboratorio di disegno e pittura per bambini e ragazzi">
-      <figcaption>
-        Laboratorio di disegno e pittura dove i bambini possono esprimersi con
-        colori, tempere e materiali artistici, lavorando su motricità fine,
-        creatività e capacità di scegliere e portare a termine un compito.
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img src="lab-creativi-cucina-educativa.jpg.jpg" alt="Laboratorio di cucina educativa con attività semplici">
-      <figcaption>
-        Laboratorio di cucina educativa con attività semplici e guidate, per
-        sperimentare piccole autonomie quotidiane, seguire passaggi in sequenza
-        e collaborare alla preparazione di merende e ricette base.
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img src="lab-creativi-attivita-pratiche.jpg.webp" alt="Laboratorio di attività pratiche e abilità di vita quotidiana">
-      <figcaption>
-        Laboratorio di attività pratiche dedicato alle abilità di vita
-        quotidiana: riordinare, travasare, piegare, organizzare materiali,
-        sempre con supporti visivi e indicazioni chiare.
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img src="lab-creativi-lavori-gruppo.jpg.webp" alt="Laboratorio dedicato ai lavori di gruppo">
-      <figcaption>
-        Spazio per lavori di gruppo e progetti condivisi, in cui i bambini e i
-        ragazzi imparano a cooperare, rispettare i turni, chiedere aiuto e
-        portare avanti un’attività insieme agli altri.
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="detail-text">
-    <div>
-      <h2>Obiettivi dei laboratori</h2>
-      <ul>
-        <li>Favorire espressione, creatività e curiosità attraverso attività concrete.</li>
-        <li>Allenare abilità di autonomia di base in un contesto protetto.</li>
-        <li>Rafforzare attenzione, pianificazione e tolleranza all’attesa.</li>
-        <li>Promuovere la partecipazione attiva e il senso di autoefficacia.</li>
-      </ul>
-    </div>
-    <div>
-      <h2>Modalità di svolgimento</h2>
-      <ul>
-        <li>Piccoli gruppi o attività individuali, in base al profilo del bambino.</li>
-        <li>Uso di supporti visivi, routine chiare e compiti graduali.</li>
-        <li>Proposte adattate all’età, agli interessi e alle abilità di ciascuno.</li>
-        <li>Condivisione con la famiglia delle attività svolte e delle competenze osservate.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="detail-cta">
-    <h2>Partecipare ai laboratori creativi</h2>
-    <p>
-      I laboratori creativi fanno parte dei percorsi educativi personalizzati e
-      vengono programmati in base agli obiettivi definiti con la famiglia e il
-      team di lavoro. Per informazioni su orari, calendari e modalità di
-      iscrizione è possibile contattare la segreteria del centro.
-    </p>
-    <a href="index.html#contatti" class="btn-glow">Vai ai contatti</a>
-  </section>
-
-  <div class="detail-back">
-    <a href="index.html#struttura">← Torna a “La nostra struttura”</a>
   </div>
-</main>
+</div>
 
+<!-- ══════════════ HERO ══════════════ -->
+<section class="page-hero">
+  <div class="container">
+    <div class="hero-eyebrow reveal">
+      <span class="dot"></span> Spazio terapeutico ed educativo
+    </div>
+    <h1 class="reveal reveal-delay-1">
+      Laboratori<br><em>Creativi</em>
+    </h1>
+    <span class="hero-line reveal reveal-delay-2"></span>
+    <p class="page-hero-desc reveal reveal-delay-2">
+      Spazi pensati per sperimentare linguaggi diversi, allenare l'autonomia
+      e lavorare sulla socializzazione attraverso attività pratiche, espressive e di gruppo.
+    </p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════ GALLERY ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">I nostri spazi</div>
+      <h2 class="section-title">Quattro laboratori,<br><em>mille possibilità</em></h2>
+      <p class="section-desc">Ogni ambiente è progettato per stimolare competenze specifiche in modo coinvolgente e sicuro.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="lab-creativi-disegno-pittura.jpg.png" alt="Laboratorio di disegno e pittura" class="gallery-item-img">
+        <div class="gallery-caption">
+          <span class="gallery-caption-tag">Espressione visiva</span>
+          <div class="gallery-caption-title">Disegno e Pittura</div>
+          <p class="gallery-caption-desc">
+            I bambini si esprimono con colori, tempere e materiali artistici, lavorando su motricità fine,
+            creatività e capacità di portare a termine un compito scelto.
+          </p>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-1">
+        <img src="lab-creativi-cucina-educativa.jpg.jpg" alt="Laboratorio di cucina educativa" class="gallery-item-img">
+        <div class="gallery-caption">
+          <span class="gallery-caption-tag">Autonomie quotidiane</span>
+          <div class="gallery-caption-title">Cucina Educativa</div>
+          <p class="gallery-caption-desc">
+            Attività semplici e guidate per sperimentare piccole autonomie quotidiane, seguire passaggi
+            in sequenza e collaborare nella preparazione di merende e ricette base.
+          </p>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-2">
+        <img src="lab-creativi-attivita-pratiche.jpg.webp" alt="Laboratorio di attività pratiche" class="gallery-item-img">
+        <div class="gallery-caption">
+          <span class="gallery-caption-tag">Vita quotidiana</span>
+          <div class="gallery-caption-title">Attività Pratiche</div>
+          <p class="gallery-caption-desc">
+            Dedicato alle abilità di vita quotidiana: riordinare, travasare, piegare, organizzare materiali,
+            sempre con supporti visivi e indicazioni chiare.
+          </p>
+        </div>
+      </div>
+      <div class="gallery-item reveal reveal-delay-3">
+        <img src="lab-creativi-lavori-gruppo.jpg.webp" alt="Laboratorio di lavori di gruppo" class="gallery-item-img">
+        <div class="gallery-caption">
+          <span class="gallery-caption-tag">Collaborazione</span>
+          <div class="gallery-caption-title">Lavori di Gruppo</div>
+          <p class="gallery-caption-desc">
+            I bambini imparano a cooperare, rispettare i turni, chiedere aiuto e portare avanti
+            un'attività insieme agli altri in un clima di fiducia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════ OBIETTIVI E METODO ══════════════ -->
+<section class="section bg-subtle">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Il nostro approccio</div>
+      <h2 class="section-title">Obiettivi e<br><em>modalità di lavoro</em></h2>
+    </div>
+    <div class="info-columns">
+      <div class="info-card reveal">
+        <div class="info-card-icon">🎯</div>
+        <h3>Obiettivi dei laboratori</h3>
+        <ul class="info-card-list">
+          <li>Favorire espressione, creatività e curiosità attraverso attività concrete e accessibili.</li>
+          <li>Allenare abilità di autonomia di base in un contesto strutturato e protetto.</li>
+          <li>Rafforzare attenzione, pianificazione e tolleranza all'attesa.</li>
+          <li>Promuovere partecipazione attiva e senso di autoefficacia in ogni bambino.</li>
+        </ul>
+      </div>
+      <div class="info-card reveal reveal-delay-1">
+        <div class="info-card-icon">🧩</div>
+        <h3>Modalità di svolgimento</h3>
+        <ul class="info-card-list">
+          <li>Piccoli gruppi o attività individuali, in base al profilo e agli obiettivi del bambino.</li>
+          <li>Uso di supporti visivi, routine chiare e compiti graduali per ridurre il carico cognitivo.</li>
+          <li>Proposte adattate all'età, agli interessi e alle abilità di ciascuno.</li>
+          <li>Condivisione con la famiglia delle attività svolte e delle competenze osservate nel tempo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-card reveal">
+      <div class="cta-card-text">
+        <div class="section-tag">Partecipa ai laboratori</div>
+        <h2>Iniziamo<br><em>il percorso insieme</em></h2>
+        <p>
+          I laboratori fanno parte dei percorsi educativi personalizzati e vengono programmati
+          in base agli obiettivi definiti con la famiglia e il team di lavoro.
+          Per informazioni su orari, calendari e modalità di iscrizione contatta la segreteria del centro.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#contatti" class="btn-primary">Prenota un colloquio →</a>
+        <a href="index.html#struttura" class="btn-secondary">← Tutti gli spazi</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ BACK LINK ══════════════ -->
+<div class="back-wrap">
+  <div class="container">
+    <a href="index.html#struttura" class="back-link reveal">
+      ← Torna a "La nostra struttura"
+    </a>
+  </div>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="container">
-    <p>&copy; 2026 Centro BluMente · Via Roma 123, Milano · info.centroautismo@gmail.com</p>
+    <div class="footer-brand">Centro BluMente</div>
+    <p>
+      © 2026 Centro BluMente. Tutti i diritti riservati.
+      <span class="footer-accent"></span>
+      Cinisello Balsamo (MI)
+    </p>
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;">
+      Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.
+    </p>
   </div>
 </footer>
 
+<!-- ══════════════ SCRIPTS ══════════════ -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-  const indicator = document.querySelector('.nav-indicator');
-  const navShell = document.querySelector('.nav-shell');
-
-  if (!indicator || !navShell || navLinks.length === 0) return;
-
-  function moveIndicator(el) {
-    const shellRect = navShell.getBoundingClientRect();
-    const rect = el.getBoundingClientRect();
-    const left = rect.left - shellRect.left;
-    const top  = rect.top  - shellRect.top;
-
-    indicator.style.width = rect.width + 'px';
-    indicator.style.height = rect.height + 'px';
-    indicator.style.transform = `translate(${left}px, ${top}px)`;
-    indicator.style.opacity = '1';
-  }
-
-  function setActive(link) {
-    navLinks.forEach(l => l.classList.remove('active-link'));
-    link.classList.add('active-link');
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      setActive(link);
-      moveIndicator(link);
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
   });
-
-  const current = navLinks.find(l => l.textContent.trim() === 'Struttura') || navLinks[0];
-  setActive(current);
-  moveIndicator(current);
-});
 </script>
-
 </body>
 </html>
