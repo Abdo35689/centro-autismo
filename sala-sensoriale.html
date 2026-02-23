@@ -3,512 +3,701 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sala sensoriale | Centro BluMente</title>
+  <title>Sala Sensoriale - Centro BluMente</title>
+  <meta name="description" content="La sala sensoriale del Centro BluMente: un ambiente progettato per modulare stimoli visivi, uditivi e tattili per bambini nello spettro autistico.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-deep: #0b1120;
-      --bg-card: rgba(30, 41, 59, 0.7);
-      --bg-card-hover: rgba(51, 65, 85, 0.8);
-      --primary-glow: #0ea5e9;
-      --text-main: #f8fafc;
-      --text-body: #cbd5e1;
-      --text-muted: #94a3b8;
-      --border-glass: rgba(148, 163, 184, 0.2);
-      --border-glass-hover: rgba(56, 189, 248, 0.5);
-      --radius-lg: 20px;
-      --radius-md: 14px;
+      --blue-deep: #020c1b;
+      --blue-card: rgba(8, 20, 45, 0.85);
+      --blue-border: rgba(56, 189, 248, 0.15);
+      --blue-border-hover: rgba(56, 189, 248, 0.5);
+      --accent: #38bdf8;
+      --accent-2: #7dd3fc;
+      --text-white: #f0f8ff;
+      --text-body: #a8c4d8;
+      --text-muted: #5a7a94;
+      --radius: 18px;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
       color: var(--text-body);
-      background-color: var(--bg-deep);
-      scroll-behavior: smooth;
-      background-image:
-        radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08), transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.08), transparent 40%);
-      background-attachment: fixed;
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding-top: 76px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.2s;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
     }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(14,165,233,0.1), transparent 65%); top: -150px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.08), transparent 65%); bottom: 10%; left: -120px; }
+
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.75; }
 
     .container {
       width: 92%;
-      max-width: 1180px;
-      margin: auto;
+      max-width: 1100px;
+      margin: 0 auto;
       padding: 0 20px;
+      position: relative;
+      z-index: 1;
     }
 
-    /* HEADER uguale a index */
+    /* ─── HEADER ─── */
     header {
-      background-color: rgba(11, 17, 32, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-glass);
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
+      background: rgba(2, 12, 27, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--blue-border);
     }
 
     nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 14px 0;
+      gap: 20px;
     }
 
-    .logo-container {
+    .logo-area {
       display: flex;
       align-items: center;
       gap: 14px;
+      flex-shrink: 0;
     }
 
     .logo-img {
-      height: 48px;
-      width: 48px;
-      object-fit: cover;
+      width: 46px; height: 46px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(14, 165, 233, 0.3);
-      border: 1px solid rgba(14, 165, 233, 0.4);
-    }
-
-    .brand-block {
-      display: flex;
-      flex-direction: column;
+      object-fit: cover;
+      border: 1.5px solid rgba(56,189,248,0.4);
+      box-shadow: 0 0 20px rgba(56,189,248,0.2);
     }
 
     .brand-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-main);
-      letter-spacing: 0.02em;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text-white);
     }
 
-    .brand-subtitle {
-      font-size: 0.75rem;
+    .brand-sub {
+      font-size: 0.7rem;
       color: var(--text-muted);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .nav-shell {
-      background: rgba(30, 41, 59, 0.5);
-      border-radius: 999px;
-      padding: 5px;
-      border: 1px solid var(--border-glass);
-      position: relative;
-    }
-
-    nav ul {
+    .nav-pills {
       display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
       align-items: center;
-      position: relative;
-      z-index: 2;
+      gap: 4px;
+      list-style: none;
+      background: rgba(8, 20, 45, 0.6);
+      border: 1px solid var(--blue-border);
+      border-radius: 999px;
+      padding: 4px;
     }
 
-    nav ul li { position: relative; }
-
-    nav ul li a {
+    .nav-pills li a {
       display: block;
-      color: var(--text-body);
+      font-size: 0.85rem;
       font-weight: 500;
-      font-size: 0.9rem;
-      padding: 8px 18px;
+      color: var(--text-body);
+      padding: 7px 15px;
       border-radius: 999px;
-      position: relative;
-      z-index: 2;
+      transition: all 0.25s;
+      white-space: nowrap;
+      opacity: 1;
+    }
+    .nav-pills li a:hover { color: var(--text-white); opacity: 1; }
+    .nav-pills li a.active {
+      background: linear-gradient(135deg, #0ea5e9, #0369a1);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(14,165,233,0.4);
     }
 
-    nav ul li a:hover { color: #fff; }
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
+    }
 
-    .nav-indicator {
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 60px 0 70px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--blue-border);
+    }
+
+    .page-header::before {
+      content: "";
       position: absolute;
-      top: 5px;
-      left: 5px;
-      height: calc(100% - 10px);
-      background: linear-gradient(90deg, #0ea5e9, #38bdf8);
-      border-radius: 999px;
-      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      z-index: 1;
-      width: 0;
-      opacity: 0;
-      box-shadow: 0 0 15px rgba(14, 165, 233, 0.6);
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1), transparent 70%);
+      top: -120px; right: -80px;
+      pointer-events: none;
     }
 
-    .active-link {
-      color: #0f172a !important;
-      font-weight: 700;
-    }
-
-    /* HERO / INTESTAZIONE PAGINA */
-    .detail-hero {
-      padding: 60px 0 40px;
-      position: relative;
-    }
-
-    .detail-hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
+    /* subtle second glow for sensory theme */
+    .page-header::after {
+      content: "";
+      position: absolute;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(167,139,250,0.07), transparent 70%);
+      bottom: -60px; left: 10%;
+      pointer-events: none;
     }
 
     .breadcrumb {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .breadcrumb a { color: var(--text-body); }
-    .breadcrumb span { margin: 0 4px; }
-
-    .detail-kicker {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid var(--border-glass);
-      font-size: 0.72rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--text-muted); opacity: 1; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); opacity: 1; }
+    .breadcrumb span { opacity: 0.5; }
+
+    .page-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 999px;
+      padding: 4px 14px 4px 10px;
+      margin-bottom: 16px;
+      background: rgba(56,189,248,0.05);
+    }
+
+    .page-tag .dot {
+      width: 7px; height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 8px #22c55e; }
+      50% { box-shadow: 0 0 16px #22c55e, 0 0 24px rgba(34,197,94,0.4); }
+    }
+
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      color: var(--text-white);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .page-header h1 em {
+      font-style: italic;
+      color: var(--accent-2);
+    }
+
+    .hero-line {
+      display: block;
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      margin-bottom: 20px;
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      max-width: 680px;
+      line-height: 1.8;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-section {
+      padding: 70px 0 60px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-card {
+      background: rgba(8,20,45,0.7);
+      border: 1px solid var(--blue-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .gallery-card:hover {
+      border-color: rgba(56,189,248,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .gallery-card-img-wrap {
+      overflow: hidden;
+      height: 210px;
+      position: relative;
+    }
+
+    .gallery-card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.82);
+    }
+
+    .gallery-card:hover .gallery-card-img-wrap img {
+      transform: scale(1.06);
+      filter: brightness(0.95);
+    }
+
+    .gallery-card-body {
+      padding: 20px 22px 22px;
+      flex: 1;
+    }
+
+    .gallery-card-label {
+      display: inline-block;
+      font-size: 0.65rem;
       letter-spacing: 0.12em;
-      color: var(--primary-glow);
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.25);
+      color: var(--accent);
       margin-bottom: 10px;
     }
 
-    .detail-kicker span {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 8px #22c55e;
-    }
-
-    .detail-hero h1 {
-      font-size: 2.2rem;
-      margin: 0 0 10px;
-      color: #ffffff;
-    }
-
-    .detail-intro {
-      font-size: 0.98rem;
+    .gallery-card-body p {
+      font-size: 0.9rem;
       color: var(--text-body);
-      max-width: 760px;
+      line-height: 1.75;
     }
 
-    /* GALLERIA */
-    .detail-gallery {
-      max-width: 1100px;
-      margin: 10px auto 40px;
+    /* ─── CONTENT TWO-COL ─── */
+    .content-section {
+      padding: 0 0 70px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 28px;
+      background: rgba(56,189,248,0.05);
+    }
+
+    .two-col {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
-      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
 
-    .detail-gallery figure {
-      margin: 0;
-      background: rgba(15, 23, 42, 0.8);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid var(--border-glass);
-      box-shadow: 0 10px 26px rgba(0,0,0,0.5);
+    .content-card {
+      background: rgba(8,20,45,0.6);
+      border: 1px solid var(--blue-border);
+      border-radius: 18px;
+      padding: 28px;
+      transition: border-color 0.25s;
+    }
+    .content-card:hover { border-color: rgba(56,189,248,0.35); }
+
+    .content-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text-white);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content-card h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px; height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, var(--accent), rgba(56,189,248,0.2));
+      flex-shrink: 0;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      height: 100%;
+      gap: 12px;
     }
 
-    .detail-gallery img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-
-    .detail-gallery figure:hover img {
-      transform: scale(1.05);
-    }
-
-    .detail-gallery figcaption {
-      padding: 10px 12px 12px;
-      font-size: 0.86rem;
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
       color: var(--text-body);
+      line-height: 1.6;
     }
 
-    /* TESTO DUE COLONNE */
-    .detail-text {
-      max-width: 1100px;
-      margin: 0 auto 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    .feature-list li::before {
+      content: "→";
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* ─── CTA BANNER ─── */
+    .cta-section { padding: 0 0 80px; }
+
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(8,20,45,0.95), rgba(14,30,60,0.95));
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 22px;
+      padding: 44px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 30px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
     }
 
-    .detail-text h2 {
-      font-size: 1.3rem;
+    .cta-banner::before {
+      content: "";
+      position: absolute;
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(56,189,248,0.1), transparent 70%);
+      top: -120px; right: -80px;
+      pointer-events: none;
+    }
+
+    .cta-banner::after {
+      content: "";
+      position: absolute;
+      width: 1px; height: 200px;
+      background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.3), transparent);
+      left: 45%; top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .cta-text h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--text-white);
       margin-bottom: 8px;
-      color: var(--text-main);
     }
 
-    .detail-text ul {
-      padding-left: 18px;
+    .cta-text p {
       font-size: 0.95rem;
-      color: var(--text-body);
+      color: var(--text-muted);
+      max-width: 440px;
+      line-height: 1.75;
     }
 
-    .detail-text li { margin-bottom: 8px; }
-
-    /* CTA BOX */
-    .detail-cta {
-      max-width: 900px;
-      margin: 0 auto 24px;
-      background: var(--bg-card);
-      border-radius: var(--radius-lg);
-      padding: 22px 22px 20px;
-      border: 1px solid var(--border-glass);
-      box-shadow: 0 18px 36px rgba(0,0,0,0.45);
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      flex-shrink: 0;
     }
 
-    .detail-cta h2 {
-      font-size: 1.3rem;
-      margin: 0 0 8px;
-      color: var(--text-main);
-    }
-
-    .detail-cta p {
-      margin: 0 0 14px;
-      font-size: 0.95rem;
-      color: var(--text-body);
-    }
-
-    .btn-glow {
+    .btn-primary {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      padding: 10px 22px;
+      gap: 8px;
+      padding: 13px 28px;
       border-radius: 999px;
       background: linear-gradient(135deg, #0ea5e9, #0284c7);
       color: #fff;
       font-weight: 600;
-      border: none;
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.4);
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: all 0.25s ease;
+      font-size: 0.92rem;
+      box-shadow: 0 4px 24px rgba(14,165,233,0.35);
+      transition: all 0.3s;
+      white-space: nowrap;
+      opacity: 1;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(14,165,233,0.5);
+      opacity: 1;
     }
 
-    .btn-glow:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 28px rgba(14,165,233,0.65);
-    }
-
-    .detail-back {
-      max-width: 900px;
-      margin: 0 auto 50px;
-      font-size: 0.9rem;
-    }
-
-    .detail-back a {
-      color: var(--primary-glow);
-    }
-
-    .detail-back a:hover {
-      text-decoration: underline;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #020617;
-      border-top: 1px solid var(--border-glass);
-      padding: 26px 0 22px;
-      text-align: center;
-      font-size: 0.85rem;
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
       color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(56,189,248,0.15);
+      border-radius: 999px;
+      padding: 7px 16px 7px 12px;
+      background: rgba(8,20,45,0.5);
+      transition: all 0.2s;
+      opacity: 1;
+    }
+    .back-link:hover {
+      color: var(--accent);
+      border-color: rgba(56,189,248,0.4);
+      opacity: 1;
     }
 
+    /* ─── FOOTER ─── */
+    footer {
+      background: rgba(2,8,18,0.95);
+      border-top: 1px solid var(--blue-border);
+      padding: 40px 0;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+
+    footer p { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      nav { flex-wrap: wrap; gap: 12px; }
-      .nav-shell { width: 100%; overflow-x: auto; }
-      .nav-indicator { display: none; }
-      .detail-hero { padding-top: 50px; }
-      .detail-hero h1 { font-size: 1.9rem; }
+      body { padding-top: 68px; }
+      .nav-pills { display: none; }
+      .page-header h1 { font-size: 2.1rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; }
+      .cta-banner::after { display: none; }
     }
   </style>
 </head>
 <body>
 
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- ══════════════ HEADER ══════════════ -->
 <header>
   <div class="container">
     <nav>
-      <div class="logo-container">
+      <div class="logo-area">
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
-        <div class="brand-block">
-          <span class="brand-name">Centro BluMente</span>
-          <span class="brand-subtitle">Diagnosi e supporto per lo spettro autistico</span>
+        <div>
+          <div class="brand-name">Centro BluMente</div>
+          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
         </div>
       </div>
-
-      <div class="nav-shell">
-        <div class="nav-indicator"></div>
-        <ul>
-          <li><a href="index.html#chi-siamo" class="nav-link">L'Autismo</a></li>
-          <li><a href="index.html#servizi" class="nav-link">Servizi</a></li>
-          <li><a href="index.html#terapie" class="nav-link">Terapie</a></li>
-          <li><a href="index.html#struttura" class="nav-link active-link">Struttura</a></li>
-          <li><a href="index.html#contatti" class="nav-link">Prenota</a></li>
-        </ul>
-      </div>
+      <ul class="nav-pills">
+        <li><a href="index.html#chi-siamo">L'Autismo</a></li>
+        <li><a href="index.html#servizi">Servizi</a></li>
+        <li><a href="index.html#terapie">Terapie</a></li>
+        <li><a href="index.html#struttura" class="active">Struttura</a></li>
+        <li><a href="index.html#contatti">Prenota</a></li>
+      </ul>
     </nav>
   </div>
 </header>
 
-<main>
-  <section class="detail-hero">
-    <div class="container detail-hero-inner">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>&rsaquo;</span>
-        <a href="index.html#struttura">La nostra struttura</a>
-        <span>&rsaquo;</span>
-        <span>Sala sensoriale</span>
-      </div>
-
-      <div class="detail-kicker">
-        <span></span> SALA SENSORIALE
-      </div>
-
-      <h1>Sala sensoriale</h1>
-      <p class="detail-intro">
-        La sala sensoriale del Centro BluMente è un ambiente progettato per modulare in modo mirato
-        stimoli visivi, uditivi e tattili, favorendo rilassamento, regolazione emotiva ed esplorazione
-        sicura per bambini e ragazzi nello spettro autistico.
-      </p>
+<!-- ══════════════ PAGE HEADER ══════════════ -->
+<section class="page-header">
+  <div class="container">
+    <div class="breadcrumb reveal">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <a href="index.html#struttura">La nostra struttura</a>
+      <span>›</span>
+      <span style="color: var(--accent);">Sala sensoriale</span>
     </div>
-  </section>
-
-  <section class="detail-gallery">
-    <figure>
-      <img src="sala-pannelli-luminosi.jpg.webp" alt="Pannelli luminosi e proiezioni nella sala sensoriale">
-      <figcaption>
-        Pannelli luminosi, proiezioni e giochi di luce che permettono di lavorare
-        sulla percezione visiva in un contesto controllato e rassicurante.
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img src="sala-fibre-ottiche.jpg.jpg" alt="Fibre ottiche e colonna di bolle nella sala sensoriale">
-      <figcaption>
-        Fibre ottiche e colonne di bolle che offrono stimoli visivi e tattili
-        graduali, utili per esplorare colori, vibrazioni e sensazioni in sicurezza.
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img src="sala-poltrone-relax.jpg.webp" alt="Poltrone relax e cuscini nella sala sensoriale">
-      <figcaption>
-        Poltrone relax, cuscini e lettini pensati per creare routine di
-        rilassamento personalizzate e momenti di pausa protetta.
-      </figcaption>
-    </figure>
-
-    <figure>
-      <img src="sala-angolo-musicale.jpg.jpg" alt="Angolo musicale e sonoro nella sala sensoriale">
-      <figcaption>
-        Angolo musicale con strumenti semplici e suoni morbidi per intervenire
-        sulla sensibilità uditiva e favorire l’ascolto attivo.
-      </figcaption>
-    </figure>
-  </section>
-
-  <section class="detail-text">
-    <div>
-      <h2>Obiettivi dell’intervento</h2>
-      <ul>
-        <li>Favorire la regolazione emotiva e ridurre stati di agitazione o sovraccarico sensoriale.</li>
-        <li>Proporre esperienze sensoriali graduali, adattate al profilo di sensibilità di ogni bambino.</li>
-        <li>Sostenere momenti di relazione positiva tra bambino, famiglia ed operatori.</li>
-        <li>Integrare obiettivi educativi e terapeutici definiti nel progetto individualizzato.</li>
-      </ul>
+    <div class="page-tag reveal reveal-delay-1">
+      <span class="dot"></span>
+      Struttura · Spazi terapeutici
     </div>
-    <div>
-      <h2>Come si svolgono le sedute</h2>
-      <ul>
-        <li>Accesso programmato, con durata e frequenza stabilite in base al piano di trattamento.</li>
-        <li>Presenza di un professionista che guida l’esperienza, osserva le reazioni e adatta gli stimoli.</li>
-        <li>Uso di supporti visivi e routine prevedibili per aumentare senso di sicurezza e comprensibilità.</li>
-        <li>Condivisione con i genitori degli obiettivi e delle strategie da proseguire a casa e a scuola.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="detail-cta">
-    <h2>Prenotare una visita alla sala sensoriale</h2>
-    <p>
-      La sala sensoriale è accessibile su appuntamento, dopo una valutazione iniziale presso i nostri
-      studi clinici. Per ricevere maggiori informazioni o fissare un incontro è possibile utilizzare
-      il modulo di contatto presente nella pagina principale del centro.
+    <h1 class="reveal reveal-delay-1">Sala <em>sensoriale</em></h1>
+    <span class="hero-line reveal reveal-delay-2"></span>
+    <p class="reveal reveal-delay-2">
+      La sala sensoriale del Centro BluMente è un ambiente progettato per modulare in modo mirato
+      stimoli visivi, uditivi e tattili, favorendo rilassamento, regolazione emotiva ed esplorazione
+      sicura per bambini e ragazzi nello spettro autistico.
     </p>
-    <a href="index.html#contatti" class="btn-glow">Vai ai contatti</a>
-  </section>
-
-  <div class="detail-back">
-    <a href="index.html#struttura">← Torna a “La nostra struttura”</a>
   </div>
-</main>
+</section>
 
+<hr class="divider">
+
+<!-- ══════════════ GALLERY ══════════════ -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="gallery-card reveal">
+        <div class="gallery-card-img-wrap">
+          <img src="sala-pannelli-luminosi.jpg.webp" alt="Pannelli luminosi e proiezioni nella sala sensoriale">
+        </div>
+        <div class="gallery-card-body">
+          <span class="gallery-card-label">Stimoli visivi</span>
+          <p>Pannelli luminosi, proiezioni e giochi di luce che permettono di lavorare sulla percezione visiva in un contesto controllato e rassicurante.</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-1">
+        <div class="gallery-card-img-wrap">
+          <img src="sala-fibre-ottiche.jpg.jpg" alt="Fibre ottiche e colonna di bolle nella sala sensoriale">
+        </div>
+        <div class="gallery-card-body">
+          <span class="gallery-card-label">Tattile & visivo</span>
+          <p>Fibre ottiche e colonne di bolle che offrono stimoli visivi e tattili graduali, utili per esplorare colori, vibrazioni e sensazioni in sicurezza.</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-1">
+        <div class="gallery-card-img-wrap">
+          <img src="sala-poltrone-relax.jpg.webp" alt="Poltrone relax e cuscini nella sala sensoriale">
+        </div>
+        <div class="gallery-card-body">
+          <span class="gallery-card-label">Zona relax</span>
+          <p>Poltrone relax, cuscini e lettini pensati per creare routine di rilassamento personalizzate e momenti di pausa protetta.</p>
+        </div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-2">
+        <div class="gallery-card-img-wrap">
+          <img src="sala-angolo-musicale.jpg.jpg" alt="Angolo musicale e sonoro nella sala sensoriale">
+        </div>
+        <div class="gallery-card-body">
+          <span class="gallery-card-label">Stimoli uditivi</span>
+          <p>Angolo musicale con strumenti semplici e suoni morbidi per intervenire sulla sensibilità uditiva e favorire l'ascolto attivo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════ CONTENT ══════════════ -->
+<section class="content-section" style="padding-top: 60px;">
+  <div class="container">
+    <div class="section-tag reveal">Obiettivi e modalità</div>
+    <div class="two-col">
+      <div class="content-card reveal reveal-delay-1">
+        <h2>Obiettivi dell'intervento</h2>
+        <ul class="feature-list">
+          <li>Favorire la regolazione emotiva e ridurre stati di agitazione o sovraccarico sensoriale.</li>
+          <li>Proporre esperienze sensoriali graduali, adattate al profilo di sensibilità di ogni bambino.</li>
+          <li>Sostenere momenti di relazione positiva tra bambino, famiglia ed operatori.</li>
+          <li>Integrare obiettivi educativi e terapeutici definiti nel progetto individualizzato.</li>
+        </ul>
+      </div>
+      <div class="content-card reveal reveal-delay-2">
+        <h2>Come si svolgono le sedute</h2>
+        <ul class="feature-list">
+          <li>Accesso programmato, con durata e frequenza stabilite in base al piano di trattamento.</li>
+          <li>Presenza di un professionista che guida l'esperienza, osserva le reazioni e adatta gli stimoli.</li>
+          <li>Uso di supporti visivi e routine prevedibili per aumentare senso di sicurezza e comprensibilità.</li>
+          <li>Condivisione con i genitori degli obiettivi e delle strategie da proseguire a casa e a scuola.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ══════════════ CTA ══════════════ -->
+<section class="cta-section" style="padding-top: 60px;">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <div class="cta-text">
+        <h2>Prenota una visita</h2>
+        <p>
+          La sala sensoriale è accessibile su appuntamento, dopo una valutazione iniziale
+          presso i nostri studi clinici. Per informazioni su tempi e modalità di accesso
+          contatta la nostra segreteria.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#contatti" class="btn-primary">Vai ai contatti →</a>
+        <a href="index.html#struttura" class="back-link">← Torna alla struttura</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div class="container">
-    <p>&copy; 2026 Centro BluMente · Via Roma 123, Milano · info.centroautismo@gmail.com</p>
+    <div class="footer-brand">Centro BluMente</div>
+    <p>© 2026 Centro BluMente · Via G. di Vittorio 1, Cinisello Balsamo (MI)</p>
+    <p style="margin-top:6px; font-size:0.75rem; opacity:0.45;">info.centroautismo@gmail.com</p>
   </div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-  const indicator = document.querySelector('.nav-indicator');
-  const navShell = document.querySelector('.nav-shell');
-
-  if (!indicator || !navShell || navLinks.length === 0) return;
-
-  function moveIndicator(el) {
-    const shellRect = navShell.getBoundingClientRect();
-    const rect = el.getBoundingClientRect();
-    const left = rect.left - shellRect.left;
-    const top  = rect.top  - shellRect.top;
-
-    indicator.style.width = rect.width + 'px';
-    indicator.style.height = rect.height + 'px';
-    indicator.style.transform = `translate(${left}px, ${top}px)`;
-    indicator.style.opacity = '1';
-  }
-
-  function setActive(link) {
-    navLinks.forEach(l => l.classList.remove('active-link'));
-    link.classList.add('active-link');
-  }
-
-  navLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      setActive(link);
-      moveIndicator(link);
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
   });
-
-  // inizializza su "Struttura" per questa pagina
-  const current = navLinks.find(l => l.textContent.trim() === 'Struttura') || navLinks[0];
-  setActive(current);
-  moveIndicator(current);
-});
 </script>
-
 </body>
 </html>
