@@ -43,19 +43,13 @@
       pointer-events: none;
       z-index: 0;
     }
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(90px);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
     .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.12), transparent 65%); top: -200px; right: -150px; }
     .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: 10%; left: -150px; }
     .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
     a { color: inherit; text-decoration: none; }
 
-    /* ─── HEADER ─── */
+    /* HEADER */
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -65,476 +59,105 @@
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--blue-border);
     }
-    .container {
-      width: 92%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-      position: relative;
-      z-index: 1;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      gap: 20px;
-    }
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-    .logo-img {
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      object-fit: cover;
-      border: 1.5px solid rgba(56,189,248,0.4);
-      box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05);
-    }
-    .brand-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.35rem;
-      color: var(--text-white);
-      letter-spacing: 0.01em;
-    }
-    .brand-sub {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-body);
-      padding: 7px 15px;
-      border-radius: 999px;
-      border: 1px solid var(--blue-border);
-      background: rgba(8,20,45,0.6);
-      transition: all 0.25s;
-    }
-    .back-link:hover {
-      color: var(--text-white);
-      border-color: rgba(56,189,248,0.4);
-      background: rgba(56,189,248,0.08);
-    }
+    .container { width: 92%; max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
+    .logo-area { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; border: 1.5px solid rgba(56,189,248,0.4); box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05); }
+    .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); letter-spacing: 0.01em; }
+    .brand-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .brand-contacts { margin-top: 3px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .brand-contacts a { font-size: 0.72rem; color: var(--text-muted); border-bottom: 1px solid rgba(90,122,148,0.4); transition: color 0.2s, border-color 0.2s; }
+    .brand-contacts a:hover { color: var(--accent); border-color: var(--accent); }
 
-    /* ─── HERO ─── */
-    .page-hero {
-      padding: 72px 0 60px;
-      position: relative;
-      overflow: hidden;
-    }
+    /* HERO */
+    .page-hero { padding: 72px 0 60px; position: relative; overflow: hidden; }
     .page-hero::after {
-      content: "";
-      position: absolute;
-      width: 1px; height: 300px;
+      content: ""; position: absolute; width: 1px; height: 300px;
       background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent);
-      right: 18%;
-      top: 5%;
-      transform: rotate(15deg);
+      right: 18%; top: 5%; transform: rotate(15deg);
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 22px;
-      padding: 6px 14px 6px 8px;
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 999px;
-      background: rgba(56,189,248,0.05);
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px;
+      border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05);
     }
-    .hero-eyebrow .dot {
-      width: 7px; height: 7px;
-      background: #22c55e;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #22c55e;
-      animation: pulse 2s infinite;
-    }
+    .hero-eyebrow .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
     @keyframes pulse {
       0%,100% { box-shadow: 0 0 8px #22c55e; }
       50% { box-shadow: 0 0 16px #22c55e, 0 0 24px rgba(34,197,94,0.4); }
     }
-    .page-hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 3.4rem;
-      line-height: 1.08;
-      color: var(--text-white);
-      margin-bottom: 10px;
-    }
-    .page-hero h1 em {
-      font-style: italic;
-      color: var(--accent-2);
-    }
-    .hero-line {
-      display: block;
-      width: 80px; height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      margin: 20px 0;
-    }
-    .page-hero p.lead {
-      font-size: 1.05rem;
-      color: var(--text-body);
-      max-width: 580px;
-      line-height: 1.8;
-      margin-bottom: 36px;
-    }
+    .page-hero h1 { font-family: 'DM Serif Display', serif; font-size: 3.4rem; line-height: 1.08; color: var(--text-white); margin-bottom: 10px; }
+    .page-hero h1 em { font-style: italic; color: var(--accent-2); }
+    .hero-line { display: block; width: 80px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px 0; }
+    .page-hero p.lead { font-size: 1.05rem; color: var(--text-body); max-width: 580px; line-height: 1.8; margin-bottom: 36px; }
 
-    /* ─── HERO IMAGE ─── */
-    .hero-image-wrap {
-      position: relative;
-      margin-top: 48px;
-      border-radius: 24px;
-      overflow: hidden;
-      border: 1px solid var(--blue-border);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
-      max-height: 400px;
-    }
-    .hero-image-wrap img {
-      width: 100%;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.8);
-    }
-    .hero-image-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(2,12,27,0.6) 0%, transparent 60%);
-    }
+    .hero-image-wrap { position: relative; margin-top: 48px; border-radius: 24px; overflow: hidden; border: 1px solid var(--blue-border); box-shadow: 0 30px 60px rgba(0,0,0,0.45); max-height: 400px; }
+    .hero-image-wrap img { width: 100%; object-fit: cover; display: block; filter: brightness(0.8); }
+    .hero-image-wrap::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(2,12,27,0.6) 0%, transparent 60%); }
 
-    /* ─── DIVIDER ─── */
-    .divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--blue-border), transparent);
-    }
+    .divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-border), transparent); }
 
-    /* ─── SECTION ─── */
     .section { padding: 72px 0; position: relative; }
-    .bg-subtle {
-      background: rgba(8, 20, 45, 0.25);
-      border-top: 1px solid var(--blue-border);
-      border-bottom: 1px solid var(--blue-border);
-    }
-    .section-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 999px;
-      padding: 4px 14px;
-      margin-bottom: 16px;
-      background: rgba(56,189,248,0.05);
-    }
-    .section-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.4rem;
-      color: var(--text-white);
-      line-height: 1.15;
-      margin-bottom: 14px;
-    }
+    .bg-subtle { background: rgba(8, 20, 45, 0.25); border-top: 1px solid var(--blue-border); border-bottom: 1px solid var(--blue-border); }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; padding: 4px 14px; margin-bottom: 16px; background: rgba(56,189,248,0.05); }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--text-white); line-height: 1.15; margin-bottom: 14px; }
     .section-title em { font-style: italic; color: var(--accent-2); }
-    .section-desc {
-      font-size: 1rem;
-      color: var(--text-body);
-      max-width: 620px;
-      line-height: 1.8;
-      margin-bottom: 10px;
-    }
+    .section-desc { font-size: 1rem; color: var(--text-body); max-width: 620px; line-height: 1.8; margin-bottom: 10px; }
 
-    /* ─── POINTS LIST ─── */
-    .points-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-top: 32px;
-    }
-    .point-card {
-      background: var(--blue-card);
-      border: 1px solid var(--blue-border);
-      border-radius: 18px;
-      padding: 24px 22px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .point-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(56,189,248,0.05), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .point-card:hover {
-      border-color: rgba(56,189,248,0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-    }
+    .points-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 32px; }
+    .point-card { background: var(--blue-card); border: 1px solid var(--blue-border); border-radius: 18px; padding: 24px 22px; display: flex; gap: 16px; align-items: flex-start; transition: all 0.3s cubic-bezier(0.23,1,0.32,1); position: relative; overflow: hidden; }
+    .point-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(56,189,248,0.05), transparent 60%); opacity: 0; transition: opacity 0.3s; }
+    .point-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
     .point-card:hover::before { opacity: 1; }
-    .point-icon {
-      width: 42px; height: 42px;
-      background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05));
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: 12px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-    .point-body strong {
-      display: block;
-      color: var(--text-white);
-      font-size: 0.95rem;
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-    .point-body span {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
+    .point-icon { width: 42px; height: 42px; background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 1px solid rgba(56,189,248,0.3); border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .point-body strong { display: block; color: var(--text-white); font-size: 0.95rem; margin-bottom: 5px; font-weight: 600; }
+    .point-body span { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
 
-    /* ─── IMPORTANCE SECTION ─── */
-    .importance-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-    .importance-text p {
-      font-size: 0.97rem;
-      color: var(--text-body);
-      line-height: 1.85;
-      margin-bottom: 16px;
-    }
+    .importance-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .importance-text p { font-size: 0.97rem; color: var(--text-body); line-height: 1.85; margin-bottom: 16px; }
     .importance-text p strong { color: var(--text-white); }
-    .quote-card {
-      background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95));
-      border: 1px solid rgba(56,189,248,0.25);
-      border-left: 3px solid var(--accent);
-      border-radius: 18px;
-      padding: 30px 28px;
-      position: relative;
-      overflow: hidden;
-    }
-    .quote-card::before {
-      content: "\201C";
-      position: absolute;
-      font-family: 'DM Serif Display', serif;
-      font-size: 8rem;
-      color: rgba(56,189,248,0.06);
-      top: -10px; right: 16px;
-      line-height: 1;
-    }
-    .quote-card p {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
-      color: var(--text-white);
-      line-height: 1.65;
-      font-style: italic;
-    }
-    .quote-card cite {
-      display: block;
-      margin-top: 16px;
-      font-size: 0.78rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-style: normal;
-    }
+    .quote-card { background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95)); border: 1px solid rgba(56,189,248,0.25); border-left: 3px solid var(--accent); border-radius: 18px; padding: 30px 28px; position: relative; overflow: hidden; }
+    .quote-card::before { content: "\201C"; position: absolute; font-family: 'DM Serif Display', serif; font-size: 8rem; color: rgba(56,189,248,0.06); top: -10px; right: 16px; line-height: 1; }
+    .quote-card p { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--text-white); line-height: 1.65; font-style: italic; }
+    .quote-card cite { display: block; margin-top: 16px; font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; font-style: normal; }
 
-    /* ─── FAQ / DETAILS ─── */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 36px;
-    }
-    details.faq-item {
-      background: rgba(8,20,45,0.6);
-      border: 1px solid var(--blue-border);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 36px; }
+    details.faq-item { background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
     details.faq-item[open] { border-color: rgba(56,189,248,0.4); }
-    details.faq-item summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      cursor: pointer;
-      list-style: none;
-      padding: 20px 22px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--text-white);
-      user-select: none;
-    }
+    details.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; padding: 20px 22px; font-weight: 600; font-size: 0.95rem; color: var(--text-white); user-select: none; }
     details.faq-item summary::-webkit-details-marker { display: none; }
-    .faq-arrow {
-      width: 28px; height: 28px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: rgba(56,189,248,0.1);
-      border: 1px solid rgba(56,189,248,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s, background 0.2s;
-      font-size: 0.8rem;
-      color: var(--accent);
-    }
+    .faq-arrow { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); display: flex; align-items: center; justify-content: center; transition: transform 0.3s, background 0.2s; font-size: 0.8rem; color: var(--accent); }
     details[open] .faq-arrow { transform: rotate(45deg); background: rgba(56,189,248,0.2); }
-    .faq-body {
-      padding: 0 22px 20px;
-      font-size: 0.92rem;
-      color: var(--text-body);
-      line-height: 1.8;
-      border-top: 1px solid var(--blue-border);
-      padding-top: 16px;
-    }
+    .faq-body { padding: 0 22px 20px; font-size: 0.92rem; color: var(--text-body); line-height: 1.8; border-top: 1px solid var(--blue-border); padding-top: 16px; }
 
-    /* ─── STATS BAR ─── */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 50px;
-    }
-    .stat-item {
-      background: rgba(8,20,45,0.7);
-      border: 1px solid var(--blue-border);
-      border-radius: 16px;
-      padding: 24px 20px;
-      text-align: center;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .stats-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 50px; }
+    .stat-item { background: rgba(8,20,45,0.7); border: 1px solid var(--blue-border); border-radius: 16px; padding: 24px 20px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
     .stat-item:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-3px); }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--accent);
-      display: block;
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-top: 4px;
-    }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent); display: block; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
 
-    /* ─── CTA BAND ─── */
-    .cta-band {
-      background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(3,105,161,0.1));
-      border: 1px solid rgba(56,189,248,0.25);
-      border-radius: 22px;
-      padding: 44px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-band::before {
-      content: "";
-      position: absolute;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-      top: -120px; right: -80px;
-    }
-    .cta-band h3 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.9rem;
-      color: var(--text-white);
-      line-height: 1.2;
-      margin-bottom: 8px;
-    }
+    .cta-band { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(3,105,161,0.1)); border: 1px solid rgba(56,189,248,0.25); border-radius: 22px; padding: 44px 40px; display: flex; align-items: center; justify-content: space-between; gap: 30px; position: relative; overflow: hidden; }
+    .cta-band::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); top: -120px; right: -80px; }
+    .cta-band h3 { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--text-white); line-height: 1.2; margin-bottom: 8px; }
     .cta-band h3 em { font-style: italic; color: var(--accent-2); }
-    .cta-band p {
-      font-size: 0.95rem;
-      color: var(--text-body);
-      max-width: 420px;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 30px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.92rem;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2);
-      transition: all 0.3s;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4);
-    }
+    .cta-band p { font-size: 0.95rem; color: var(--text-body); max-width: 420px; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 999px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: #fff; font-weight: 600; font-size: 0.92rem; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2); transition: all 0.3s; white-space: nowrap; flex-shrink: 0; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4); }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: rgba(2,8,18,0.95);
-      border-top: 1px solid var(--blue-border);
-      padding: 44px 0;
-      text-align: center;
-    }
+    footer { background: rgba(2,8,18,0.95); border-top: 1px solid var(--blue-border); padding: 44px 0; text-align: center; }
     footer p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
-    .footer-brand {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.4rem;
-      color: var(--text-white);
-      margin-bottom: 10px;
-    }
-    .footer-accent {
-      display: inline-block;
-      width: 8px; height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-      margin: 0 8px;
-      opacity: 0.6;
-    }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 10px; }
+    .footer-accent { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 8px; opacity: 0.6; }
 
-    /* ─── REVEAL ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .reveal.visible { opacity: 1; transform: none; }
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 860px) {
-      .points-grid,
-      .importance-layout { grid-template-columns: 1fr; }
+      .points-grid, .importance-layout { grid-template-columns: 1fr; }
       .stats-bar { grid-template-columns: 1fr 1fr; }
       .cta-band { flex-direction: column; text-align: center; }
       .cta-band p { max-width: 100%; }
@@ -550,12 +173,11 @@
 </head>
 <body>
 
-<!-- Ambient orbs -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 
-<!-- ══════════════ HEADER ══════════════ -->
+<!-- HEADER -->
 <header>
   <div class="container">
     <nav>
@@ -563,46 +185,49 @@
         <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
         <div>
           <div class="brand-name">Centro BluMente</div>
-          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-sub" data-i18n="brand-sub">Diagnosi · Supporto · Autismo</div>
+          <div class="brand-contacts">
+            <a href="https://www.instagram.com/centro_blumente" target="_blank" rel="noopener">@centro_blumente</a>
+            <a href="mailto:info.centroautismo@gmail.com">info.centroautismo@gmail.com</a>
+          </div>
         </div>
       </div>
-      <a href="index.html" class="back-link">← Torna alla home</a>
+      <!-- nav-right eliminato (pillole menu + lang switcher) -->
     </nav>
   </div>
 </header>
 
-<!-- ══════════════ PAGE HERO ══════════════ -->
+<!-- PAGE HERO -->
 <section class="page-hero">
   <div class="container">
     <div class="hero-eyebrow reveal">
-      <span class="dot"></span> Percorso per le famiglie
+      <span class="dot"></span>
+      <span data-i18n="hero-eyebrow">Percorso per le famiglie</span>
     </div>
-    <h1 class="reveal reveal-delay-1">
+    <h1 class="reveal reveal-delay-1" data-i18n-html="hero-title">
       Parent<br><em>Training</em>
     </h1>
     <span class="hero-line reveal reveal-delay-2"></span>
-    <p class="lead reveal reveal-delay-2">
+    <p class="lead reveal reveal-delay-2" data-i18n="hero-desc">
       Coinvolgimento attivo e costante dei genitori all'interno del progetto
       terapeutico riabilitativo, per sostenere lo sviluppo del bambino con
       disturbo dello spettro autistico in ogni contesto di vita.
     </p>
-
     <div class="hero-image-wrap reveal reveal-delay-3">
-      <img src="parent-training-famiglia-autismo.png"
-           alt="Genitori e bambino impegnati in un percorso di parent training">
+      <img src="parent-training-famiglia-autismo.png" alt="Genitori e bambino impegnati in un percorso di parent training">
     </div>
   </div>
 </section>
 
 <hr class="divider">
 
-<!-- ══════════════ COSA VIENE PROPOSTO ══════════════ -->
+<!-- COSA VIENE PROPOSTO -->
 <section class="section">
   <div class="container">
     <div class="reveal">
-      <div class="section-tag">I nostri interventi</div>
-      <h2 class="section-title">Cosa viene<br><em>proposto</em></h2>
-      <p class="section-desc">
+      <div class="section-tag" data-i18n="section1-tag">I nostri interventi</div>
+      <h2 class="section-title" data-i18n-html="section1-title">Cosa viene<br><em>proposto</em></h2>
+      <p class="section-desc" data-i18n="section1-desc">
         Il trattamento dello spettro autistico richiede interventi psicoeducativi e
         riabilitativi organizzati in un programma personalizzato, che prevede anche
         il coinvolgimento diretto della famiglia e un lavoro di rete continuo.
@@ -613,29 +238,29 @@
       <div class="point-card reveal">
         <div class="point-icon">📚</div>
         <div class="point-body">
-          <strong>Psicoeducazione</strong>
-          <span>Incontri di informazione per comprendere meglio l'autismo, le sue modalità di manifestazione e il profilo di funzionamento del bambino.</span>
+          <strong data-i18n="point1-title">Psicoeducazione</strong>
+          <span data-i18n="point1-desc">Incontri di informazione per comprendere meglio l'autismo, le sue modalità di manifestazione e il profilo di funzionamento del bambino.</span>
         </div>
       </div>
       <div class="point-card reveal reveal-delay-1">
         <div class="point-icon">🧩</div>
         <div class="point-body">
-          <strong>Strategie cognitivo-comportamentali</strong>
-          <span>Condivisione di tecniche per gestire comportamenti problema e favorire abilità comunicative, sociali e adattive.</span>
+          <strong data-i18n="point2-title">Strategie cognitivo-comportamentali</strong>
+          <span data-i18n="point2-desc">Condivisione di tecniche per gestire comportamenti problema e favorire abilità comunicative, sociali e adattive.</span>
         </div>
       </div>
       <div class="point-card reveal reveal-delay-2">
         <div class="point-icon">🏠</div>
         <div class="point-body">
-          <strong>Routine e continuità</strong>
-          <span>Supporto nell'organizzazione di routine quotidiane prevedibili tra casa, scuola e altri contesti, in continuità con gli obiettivi del progetto individualizzato.</span>
+          <strong data-i18n="point3-title">Routine e continuità</strong>
+          <span data-i18n="point3-desc">Supporto nell'organizzazione di routine quotidiane prevedibili tra casa, scuola e altri contesti, in continuità con gli obiettivi del progetto individualizzato.</span>
         </div>
       </div>
       <div class="point-card reveal reveal-delay-3">
         <div class="point-icon">💬</div>
         <div class="point-body">
-          <strong>Spazio di ascolto</strong>
-          <span>Domande, dubbi ed elaborazione delle diverse fasi di adattamento familiare alla disabilità, dalla crisi iniziale fino all'attivismo e alla rete di sostegno.</span>
+          <strong data-i18n="point4-title">Spazio di ascolto</strong>
+          <span data-i18n="point4-desc">Domande, dubbi ed elaborazione delle diverse fasi di adattamento familiare alla disabilità, dalla crisi iniziale fino all'attivismo e alla rete di sostegno.</span>
         </div>
       </div>
     </div>
@@ -643,15 +268,15 @@
     <div class="stats-bar">
       <div class="stat-item reveal">
         <span class="stat-num">6+</span>
-        <span class="stat-label">Anni di esperienza</span>
+        <span class="stat-label" data-i18n="stat1-label">Anni di esperienza</span>
       </div>
       <div class="stat-item reveal reveal-delay-1">
         <span class="stat-num">95%</span>
-        <span class="stat-label">Famiglie soddisfatte</span>
+        <span class="stat-label" data-i18n="stat2-label">Famiglie soddisfatte</span>
       </div>
       <div class="stat-item reveal reveal-delay-2">
         <span class="stat-num">∞</span>
-        <span class="stat-label">Supporto continuo</span>
+        <span class="stat-label" data-i18n="stat3-label">Supporto continuo</span>
       </div>
     </div>
   </div>
@@ -659,25 +284,25 @@
 
 <hr class="divider">
 
-<!-- ══════════════ PERCHÉ È IMPORTANTE ══════════════ -->
+<!-- PERCHÉ È IMPORTANTE -->
 <section class="section bg-subtle">
   <div class="container">
     <div class="importance-layout">
       <div class="importance-text reveal">
-        <div class="section-tag">L'importanza del ruolo familiare</div>
-        <h2 class="section-title">Perché il parent<br><em>training è fondamentale</em></h2>
-        <p>
+        <div class="section-tag" data-i18n="section2-tag">L'importanza del ruolo familiare</div>
+        <h2 class="section-title" data-i18n-html="section2-title">Perché il parent<br><em>training è fondamentale</em></h2>
+        <p data-i18n-html="section2-p1">
           La prognosi del bambino con autismo dipende in modo significativo dalla
           <strong>precocità della diagnosi</strong> e del trattamento e dal
           <strong>coinvolgimento attivo e costante della famiglia</strong>.
         </p>
-        <p>
+        <p data-i18n="section2-p2">
           La partecipazione dei genitori consente di rendere l'ambiente educativo più
           coerente nei diversi contesti, di ridurre il rischio di regressione e di
           massimizzare la possibilità che il bambino sviluppi competenze legate alla
           cognitività sociale inizialmente mancanti.
         </p>
-        <p>
+        <p data-i18n="section2-p3">
           I percorsi di parent training aiutano inoltre a sostenere il processo di
           adattamento familiare, accompagnando i genitori nel passaggio dalla fase di
           crisi alla pianificazione e all'attivismo, promuovendo il contatto con altre
@@ -685,11 +310,11 @@
         </p>
       </div>
       <div class="quote-card reveal reveal-delay-1">
-        <p>
+        <p data-i18n="quote-text">
           "La famiglia è una componente fondamentale del trattamento, perché rappresenta
           il principale ambiente di vita del bambino."
         </p>
-        <cite>Approccio Centro BluMente</cite>
+        <cite data-i18n="quote-cite">Approccio Centro BluMente</cite>
       </div>
     </div>
   </div>
@@ -697,19 +322,19 @@
 
 <hr class="divider">
 
-<!-- ══════════════ APPROFONDIMENTO ══════════════ -->
+<!-- FAQ -->
 <section class="section">
   <div class="container">
-    <div class="section-tag reveal">Approfondimento</div>
-    <h2 class="section-title reveal reveal-delay-1">Informazioni<br><em>aggiuntive</em></h2>
+    <div class="section-tag reveal" data-i18n="section3-tag">Approfondimento</div>
+    <h2 class="section-title reveal reveal-delay-1" data-i18n-html="section3-title">Informazioni<br><em>aggiuntive</em></h2>
 
     <div class="faq-list">
       <details class="faq-item reveal">
         <summary>
-          Come vengono coinvolti i genitori nel programma intensivo?
+          <span data-i18n="faq1-q">Come vengono coinvolti i genitori nel programma intensivo?</span>
           <span class="faq-arrow">+</span>
         </summary>
-        <div class="faq-body">
+        <div class="faq-body" data-i18n="faq1-a">
           Nei programmi intensivi che coinvolgono la persona e i genitori in molti momenti
           della giornata, la famiglia è considerata una componente fondamentale del
           trattamento. I genitori partecipano attivamente a sessioni osservative, ricevono
@@ -719,10 +344,10 @@
 
       <details class="faq-item reveal reveal-delay-1">
         <summary>
-          Quali modalità di interazione vengono insegnate?
+          <span data-i18n="faq2-q">Quali modalità di interazione vengono insegnate?</span>
           <span class="faq-arrow">+</span>
         </summary>
-        <div class="faq-body">
+        <div class="faq-body" data-i18n="faq2-a">
           I genitori vengono sostenuti nell'acquisire modalità di interazione che tengano
           conto delle caratteristiche dell'autismo: la tendenza al pensiero concreto e
           visivo, la necessità di routine e la sensibilità ai cambiamenti e agli stimoli
@@ -732,10 +357,10 @@
 
       <details class="faq-item reveal reveal-delay-2">
         <summary>
-          Come si integra il lavoro con la scuola?
+          <span data-i18n="faq3-q">Come si integra il lavoro con la scuola?</span>
           <span class="faq-arrow">+</span>
         </summary>
-        <div class="faq-body">
+        <div class="faq-body" data-i18n="faq3-a">
           Il lavoro con la famiglia si integra con gli interventi scolastici e
           riabilitativi: attraverso incontri periodici e verifiche, si definiscono
           obiettivi condivisi, strategie per il loro conseguimento e modalità per
@@ -745,10 +370,10 @@
 
       <details class="faq-item reveal reveal-delay-3">
         <summary>
-          Come viene supportato il benessere dei genitori?
+          <span data-i18n="faq4-q">Come viene supportato il benessere dei genitori?</span>
           <span class="faq-arrow">+</span>
         </summary>
-        <div class="faq-body">
+        <div class="faq-body" data-i18n="faq4-a">
           I percorsi aiutano a sostenere il processo di adattamento familiare alla
           disabilità, accompagnando i genitori nel passaggio dalla fase di crisi alla
           pianificazione e all'attivismo, e promuovendo il contatto con altre famiglie
@@ -761,49 +386,193 @@
 
 <hr class="divider">
 
-<!-- ══════════════ CTA ══════════════ -->
+<!-- CTA -->
 <section class="section bg-subtle">
   <div class="container">
     <div class="cta-band reveal">
       <div>
-        <h3>Inizia il percorso<br><em>insieme a noi</em></h3>
-        <p>
+        <h3 data-i18n-html="cta-title">Inizia il percorso<br><em>insieme a noi</em></h3>
+        <p data-i18n="cta-desc">
           Prenota un primo colloquio conoscitivo. Rispondiamo entro 24 ore
           lavorative per trovare insieme il percorso più adatto alla tua famiglia.
         </p>
       </div>
-      <a href="index.html#contatti" class="btn-primary">
-        Prenota un colloquio →
-      </a>
+      <a href="index.html#contatti" class="btn-primary" data-i18n="cta-btn">Prenota un colloquio →</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ FOOTER ══════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="container">
     <div class="footer-brand">Centro BluMente</div>
     <p>
-      © 2026 Centro BluMente. Tutti i diritti riservati.
+      © 2026 Centro BluMente. <span data-i18n="footer-rights">Tutti i diritti riservati.</span>
       <span class="footer-accent"></span>
       Cinisello Balsamo (MI)
     </p>
-    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;">
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;" data-i18n="footer-note">
       Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.
     </p>
   </div>
 </footer>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => io.observe(el));
+const translations = {
+  it: {
+    "brand-sub": "Diagnosi · Supporto · Autismo",
+    "hero-eyebrow": "Percorso per le famiglie",
+    "hero-title": "Parent<br><em>Training</em>",
+    "hero-desc": "Coinvolgimento attivo e costante dei genitori all'interno del progetto terapeutico riabilitativo, per sostenere lo sviluppo del bambino con disturbo dello spettro autistico in ogni contesto di vita.",
+    "section1-tag": "I nostri interventi",
+    "section1-title": "Cosa viene<br><em>proposto</em>",
+    "section1-desc": "Il trattamento dello spettro autistico richiede interventi psicoeducativi e riabilitativi organizzati in un programma personalizzato, che prevede anche il coinvolgimento diretto della famiglia e un lavoro di rete continuo.",
+    "point1-title": "Psicoeducazione",
+    "point1-desc": "Incontri di informazione per comprendere meglio l'autismo, le sue modalità di manifestazione e il profilo di funzionamento del bambino.",
+    "point2-title": "Strategie cognitivo-comportamentali",
+    "point2-desc": "Condivisione di tecniche per gestire comportamenti problema e favorire abilità comunicative, sociali e adattive.",
+    "point3-title": "Routine e continuità",
+    "point3-desc": "Supporto nell'organizzazione di routine quotidiane prevedibili tra casa, scuola e altri contesti, in continuità con gli obiettivi del progetto individualizzato.",
+    "point4-title": "Spazio di ascolto",
+    "point4-desc": "Domande, dubbi ed elaborazione delle diverse fasi di adattamento familiare alla disabilità, dalla crisi iniziale fino all'attivismo e alla rete di sostegno.",
+    "stat1-label": "Anni di esperienza",
+    "stat2-label": "Famiglie soddisfatte",
+    "stat3-label": "Supporto continuo",
+    "section2-tag": "L'importanza del ruolo familiare",
+    "section2-title": "Perché il parent<br><em>training è fondamentale</em>",
+    "section2-p1": "La prognosi del bambino con autismo dipende in modo significativo dalla <strong>precocità della diagnosi</strong> e del trattamento e dal <strong>coinvolgimento attivo e costante della famiglia</strong>.",
+    "section2-p2": "La partecipazione dei genitori consente di rendere l'ambiente educativo più coerente nei diversi contesti, di ridurre il rischio di regressione e di massimizzare la possibilità che il bambino sviluppi competenze legate alla cognitività sociale inizialmente mancanti.",
+    "section2-p3": "I percorsi di parent training aiutano inoltre a sostenere il processo di adattamento familiare, accompagnando i genitori nel passaggio dalla fase di crisi alla pianificazione e all'attivismo, promuovendo il contatto con altre famiglie e le risorse del territorio.",
+    "quote-text": "\"La famiglia è una componente fondamentale del trattamento, perché rappresenta il principale ambiente di vita del bambino.\"",
+    "quote-cite": "Approccio Centro BluMente",
+    "section3-tag": "Approfondimento",
+    "section3-title": "Informazioni<br><em>aggiuntive</em>",
+    "faq1-q": "Come vengono coinvolti i genitori nel programma intensivo?",
+    "faq1-a": "Nei programmi intensivi che coinvolgono la persona e i genitori in molti momenti della giornata, la famiglia è considerata una componente fondamentale del trattamento. I genitori partecipano attivamente a sessioni osservative, ricevono feedback diretti e acquisiscono strategie da applicare nei contesti quotidiani.",
+    "faq2-q": "Quali modalità di interazione vengono insegnate?",
+    "faq2-a": "I genitori vengono sostenuti nell'acquisire modalità di interazione che tengano conto delle caratteristiche dell'autismo: la tendenza al pensiero concreto e visivo, la necessità di routine e la sensibilità ai cambiamenti e agli stimoli ambientali. Ogni strategia viene personalizzata sul profilo del bambino.",
+    "faq3-q": "Come si integra il lavoro con la scuola?",
+    "faq3-a": "Il lavoro con la famiglia si integra con gli interventi scolastici e riabilitativi: attraverso incontri periodici e verifiche, si definiscono obiettivi condivisi, strategie per il loro conseguimento e modalità per favorire la generalizzazione delle competenze in tutti gli ambienti di vita.",
+    "faq4-q": "Come viene supportato il benessere dei genitori?",
+    "faq4-a": "I percorsi aiutano a sostenere il processo di adattamento familiare alla disabilità, accompagnando i genitori nel passaggio dalla fase di crisi alla pianificazione e all'attivismo, e promuovendo il contatto con altre famiglie e con le risorse associative del territorio.",
+    "cta-title": "Inizia il percorso<br><em>insieme a noi</em>",
+    "cta-desc": "Prenota un primo colloquio conoscitivo. Rispondiamo entro 24 ore lavorative per trovare insieme il percorso più adatto alla tua famiglia.",
+    "cta-btn": "Prenota un colloquio →",
+    "footer-rights": "Tutti i diritti riservati.",
+    "footer-note": "Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile."
+  },
+  es: {
+    "brand-sub": "Diagnóstico · Apoyo · Autismo",
+    "hero-eyebrow": "Programa para familias",
+    "hero-title": "Formación<br><em>para Padres</em>",
+    "hero-desc": "Participación activa y constante de los padres dentro del proyecto terapéutico-rehabilitador, para apoyar el desarrollo del niño con trastorno del espectro autista en todos los contextos de vida.",
+    "section1-tag": "Nuestras intervenciones",
+    "section1-title": "Qué se<br><em>ofrece</em>",
+    "section1-desc": "El tratamiento del espectro autista requiere intervenciones psicoeducativas y rehabilitadoras organizadas en un programa personalizado, que incluye también la participación directa de la familia y un trabajo en red continuo.",
+    "point1-title": "Psicoeducación",
+    "point1-desc": "Sesiones informativas para comprender mejor el autismo, sus formas de manifestación y el perfil de funcionamiento del niño.",
+    "point2-title": "Estrategias cognitivo-conductuales",
+    "point2-desc": "Transmisión de técnicas para gestionar conductas problemáticas y favorecer habilidades comunicativas, sociales y adaptativas.",
+    "point3-title": "Rutinas y continuidad",
+    "point3-desc": "Apoyo en la organización de rutinas diarias predecibles entre el hogar, la escuela y otros contextos, en coherencia con los objetivos del proyecto individualizado.",
+    "point4-title": "Espacio de escucha",
+    "point4-desc": "Preguntas, dudas y elaboración de las distintas fases de adaptación familiar a la discapacidad, desde la crisis inicial hasta el activismo y la red de apoyo.",
+    "stat1-label": "Años de experiencia",
+    "stat2-label": "Familias satisfechas",
+    "stat3-label": "Apoyo continuo",
+    "section2-tag": "La importancia del rol familiar",
+    "section2-title": "Por qué la formación<br><em>para padres es esencial</em>",
+    "section2-p1": "El pronóstico del niño con autismo depende de forma significativa de la <strong>precocidad del diagnóstico</strong> y del tratamiento, y de la <strong>participación activa y constante de la familia</strong>.",
+    "section2-p2": "La participación de los padres permite hacer el entorno educativo más coherente en los distintos contextos, reducir el riesgo de regresión y maximizar la posibilidad de que el niño desarrolle competencias de cognición social inicialmente ausentes.",
+    "section2-p3": "Los programas de formación para padres también contribuyen a sostener el proceso de adaptación familiar, acompañando a los padres desde la fase de crisis hacia la planificación y el activismo, y promoviendo el contacto con otras familias y los recursos del territorio.",
+    "quote-text": "\"La familia es un componente fundamental del tratamiento, ya que representa el principal entorno de vida del niño.\"",
+    "quote-cite": "Enfoque Centro BluMente",
+    "section3-tag": "Más información",
+    "section3-title": "Información<br><em>adicional</em>",
+    "faq1-q": "¿Cómo participan los padres en el programa intensivo?",
+    "faq1-a": "En los programas intensivos que involucran a la persona y a los padres en muchos momentos del día, la familia es considerada un componente fundamental del tratamiento. Los padres participan activamente en sesiones de observación, reciben retroalimentación directa y adquieren estrategias para aplicar en los contextos cotidianos.",
+    "faq2-q": "¿Qué modalidades de interacción se enseñan?",
+    "faq2-a": "Se apoya a los padres en la adquisición de modalidades de interacción que tengan en cuenta las características del autismo: la tendencia al pensamiento concreto y visual, la necesidad de rutinas y la sensibilidad a los cambios y estímulos ambientales. Cada estrategia se personaliza según el perfil del niño.",
+    "faq3-q": "¿Cómo se integra el trabajo con la escuela?",
+    "faq3-a": "El trabajo con la familia se integra con las intervenciones escolares y rehabilitadoras: a través de reuniones periódicas y seguimientos, se definen objetivos compartidos, estrategias para alcanzarlos y modalidades para favorecer la generalización de las competencias en todos los entornos de vida.",
+    "faq4-q": "¿Cómo se apoya el bienestar de los padres?",
+    "faq4-a": "Los programas ayudan a sostener el proceso de adaptación familiar a la discapacidad, acompañando a los padres desde la fase de crisis hacia la planificación y el activismo, y promoviendo el contacto con otras familias y con los recursos asociativos del territorio.",
+    "cta-title": "Comienza el camino<br><em>junto a nosotros</em>",
+    "cta-desc": "Reserva una primera consulta introductoria. Respondemos en un plazo de 24 horas laborables para encontrar juntos el programa más adecuado para tu familia.",
+    "cta-btn": "Reservar una consulta →",
+    "footer-rights": "Todos los derechos reservados.",
+    "footer-note": "El azul es el color de la concienciación sobre el autismo — Día Mundial, 2 de Abril."
+  },
+  en: {
+    "brand-sub": "Diagnosis · Support · Autism",
+    "hero-eyebrow": "Programme for families",
+    "hero-title": "Parent<br><em>Training</em>",
+    "hero-desc": "Active and continuous involvement of parents within the therapeutic and rehabilitation programme, to support the development of children with autism spectrum disorder in every life context.",
+    "section1-tag": "Our interventions",
+    "section1-title": "What we<br><em>offer</em>",
+    "section1-desc": "Treating autism spectrum disorder requires psychoeducational and rehabilitative interventions organised into a personalised programme, which also includes direct family involvement and ongoing network collaboration.",
+    "point1-title": "Psychoeducation",
+    "point1-desc": "Information sessions to better understand autism, its manifestations and the child's functional profile.",
+    "point2-title": "Cognitive-behavioural strategies",
+    "point2-desc": "Sharing techniques to manage challenging behaviours and foster communicative, social and adaptive skills.",
+    "point3-title": "Routines & continuity",
+    "point3-desc": "Support in organising predictable daily routines across home, school and other settings, in line with the goals of the individualised plan.",
+    "point4-title": "Listening space",
+    "point4-desc": "Questions, doubts and processing of the different stages of family adaptation to disability — from the initial crisis through to activism and support networks.",
+    "stat1-label": "Years of experience",
+    "stat2-label": "Families satisfied",
+    "stat3-label": "Ongoing support",
+    "section2-tag": "The importance of family involvement",
+    "section2-title": "Why parent training<br><em>is essential</em>",
+    "section2-p1": "A child's prognosis with autism depends significantly on the <strong>early diagnosis</strong> and treatment, and on the <strong>active, consistent involvement of the family</strong>.",
+    "section2-p2": "Parental participation makes the educational environment more consistent across different settings, reduces the risk of regression and maximises the child's opportunities to develop social-cognitive skills that were initially absent.",
+    "section2-p3": "Parent training programmes also help support the family's adaptation process, guiding parents from the initial crisis phase towards planning and activism, and encouraging contact with other families and local resources.",
+    "quote-text": "\"The family is a fundamental component of treatment, as it represents the child's primary living environment.\"",
+    "quote-cite": "Centro BluMente approach",
+    "section3-tag": "Further reading",
+    "section3-title": "Additional<br><em>information</em>",
+    "faq1-q": "How are parents involved in the intensive programme?",
+    "faq1-a": "In intensive programmes where the child and parents are involved at many points throughout the day, the family is considered a fundamental part of the treatment. Parents actively take part in observation sessions, receive direct feedback and acquire strategies to apply in everyday settings.",
+    "faq2-q": "What interaction methods are taught?",
+    "faq2-a": "Parents are supported in developing interaction approaches that take the characteristics of autism into account: a tendency towards concrete and visual thinking, the need for routine, and sensitivity to environmental changes and stimuli. Every strategy is tailored to the child's individual profile.",
+    "faq3-q": "How does the work integrate with school?",
+    "faq3-a": "Family work is integrated with school and rehabilitative interventions: through regular meetings and reviews, shared goals are defined, along with strategies for achieving them and ways to support the generalisation of skills across all life settings.",
+    "faq4-q": "How is parents' wellbeing supported?",
+    "faq4-a": "The programmes help sustain the family's adaptation process, guiding parents from the crisis phase towards planning and activism, and promoting contact with other families and local support associations.",
+    "cta-title": "Start the journey<br><em>with us</em>",
+    "cta-desc": "Book an initial consultation. We respond within 24 working hours to find the most suitable path for your family.",
+    "cta-btn": "Book a consultation →",
+    "footer-rights": "All rights reserved.",
+    "footer-note": "Blue is the colour of autism awareness — World Autism Day, 2 April."
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  if (!t) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  const saved = localStorage.getItem('blumente-lang') || 'it';
+  applyLang(saved);
+});
 </script>
 </body>
 </html>
