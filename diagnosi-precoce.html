@@ -2,198 +2,430 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Diagnosi Precoce - Centro BluMente</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diagnosi Precoce - Centro BluMente</title>
+  <meta name="description" content="Valutazioni specialistiche per individuare i segnali dello spettro autistico e avviare percorsi di intervento mirati già nei primi anni di vita.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --blue-deep: #020c1b;
+      --blue-mid: #0a1628;
+      --blue-card: rgba(8, 20, 45, 0.85);
+      --blue-border: rgba(56, 189, 248, 0.15);
+      --blue-border-hover: rgba(56, 189, 248, 0.5);
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.35);
+      --accent-2: #7dd3fc;
+      --text-white: #f0f8ff;
+      --text-body: #a8c4d8;
+      --text-muted: #5a7a94;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0b1120;
-      color: #cbd5e1;
-      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--blue-deep);
+      color: var(--text-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+      padding-top: 76px;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb { position: fixed; border-radius: 50%; filter: blur(90px); pointer-events: none; z-index: 0; }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(14,165,233,0.12), transparent 65%); top: -200px; right: -150px; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.09), transparent 65%); bottom: 10%; left: -150px; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, rgba(251,191,36,0.06), transparent 65%); top: 50%; left: 40%; }
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.8; }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(2, 12, 27, 0.75);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--blue-border);
     }
     .container {
-      width: 92%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
+      width: 92%; max-width: 1100px;
+      margin: 0 auto; padding: 0 20px;
+      position: relative; z-index: 1;
     }
-    header {
-      padding: 30px 0 10px;
-      border-bottom: 1px solid rgba(148,163,184,0.3);
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
+    .logo-area { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .logo-img {
+      width: 46px; height: 46px; border-radius: 12px; object-fit: cover;
+      border: 1.5px solid rgba(56,189,248,0.4);
+      box-shadow: 0 0 20px rgba(56,189,248,0.2), inset 0 0 10px rgba(56,189,248,0.05);
     }
-    a {
-      color: #0ea5e9;
-      text-decoration: none;
+    .brand-name { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-white); }
+    .brand-sub { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.85rem; font-weight: 500; color: var(--text-body);
+      padding: 7px 18px; border-radius: 999px;
+      border: 1px solid var(--blue-border); background: rgba(8,20,45,0.6);
+      transition: all 0.25s;
     }
-    a:hover { text-decoration: underline; }
-    h1 {
-      color: #f8fafc;
-      margin-top: 10px;
-      margin-bottom: 5px;
+    .back-link:hover { color: var(--accent); border-color: rgba(56,189,248,0.4); opacity: 1; }
+
+    /* PAGE HERO */
+    .page-hero { padding: 70px 0 60px; position: relative; overflow: hidden; }
+    .page-hero::after {
+      content: ""; position: absolute; width: 1px; height: 300px;
+      background: linear-gradient(to bottom, transparent, rgba(56,189,248,0.4), transparent);
+      right: 15%; top: 5%; transform: rotate(15deg);
     }
-    h2, h3 {
-      color: #e5e7eb;
-      margin-top: 24px;
+    .page-hero-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 22px; padding: 6px 14px 6px 8px;
+      border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; background: rgba(56,189,248,0.05);
     }
-    ul { padding-left: 18px; }
-    
-    details {
-      background: #020617;
-      border: 1px solid rgba(148,163,184,0.5);
-      border-radius: 10px;
-      padding: 16px 20px;
-      width: 100%;
-      box-sizing: border-box;
+    .hero-eyebrow .dot {
+      width: 7px; height: 7px; background: #22c55e; border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite;
     }
-    summary {
-      cursor: pointer;
-      list-style: none;
-      color: #e5e7eb;
-      font-weight: 600;
-      font-size: 1.1rem;
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 8px #22c55e; }
+      50% { box-shadow: 0 0 16px #22c55e, 0 0 24px rgba(34,197,94,0.4); }
     }
-    summary:hover {
-      color: #0ea5e9;
+    .page-title { font-family: 'DM Serif Display', serif; font-size: 3.4rem; line-height: 1.08; color: var(--text-white); margin-bottom: 10px; }
+    .page-title em { font-style: italic; color: var(--accent-2); }
+    .hero-line { display: block; width: 80px; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); margin: 20px 0; }
+    .page-lead { font-size: 1.05rem; color: var(--text-body); line-height: 1.8; max-width: 480px; }
+    .hero-image { position: relative; }
+    .hero-image img { width: 100%; border-radius: 24px; border: 1px solid var(--blue-border); box-shadow: 0 30px 60px rgba(0,0,0,0.4); display: block; }
+    .hero-image::before { content: ""; position: absolute; inset: -20px; border-radius: 30px; border: 1px dashed rgba(56,189,248,0.15); pointer-events: none; }
+
+    .divider { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--blue-border), transparent); margin: 0; }
+    .section { padding: 80px 0; position: relative; }
+    .bg-subtle { background: rgba(8,20,45,0.25); border-top: 1px solid var(--blue-border); border-bottom: 1px solid var(--blue-border); }
+    .section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; padding: 4px 14px; margin-bottom: 16px; background: rgba(56,189,248,0.05); }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--text-white); line-height: 1.15; margin-bottom: 14px; }
+    .section-title em { font-style: italic; color: var(--accent-2); }
+    .section-desc { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.8; }
+    .section-header { margin-bottom: 48px; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .content-block p { font-size: 0.97rem; color: var(--text-body); line-height: 1.85; margin-bottom: 18px; }
+    .content-block p strong { color: var(--text-white); }
+
+    /* INFO POINTS */
+    .info-points { display: flex; flex-direction: column; gap: 14px; }
+    .info-point { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; background: rgba(8,20,45,0.5); border: 1px solid var(--blue-border); border-radius: 14px; transition: border-color 0.2s; }
+    .info-point:hover { border-color: rgba(56,189,248,0.35); }
+    .info-point-icon { width: 38px; height: 38px; background: linear-gradient(135deg, rgba(14,165,233,0.2), rgba(14,165,233,0.05)); border: 1px solid rgba(56,189,248,0.3); border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; }
+    .info-point-text strong { display: block; color: var(--text-white); font-size: 0.92rem; margin-bottom: 4px; }
+    .info-point-text span { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
+
+    /* SIGNAL CARDS */
+    .signals-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; }
+    .signal-card { background: var(--blue-card); border: 1px solid var(--blue-border); border-radius: 18px; padding: 24px; position: relative; overflow: hidden; transition: all 0.35s cubic-bezier(0.23,1,0.32,1); }
+    .signal-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(56,189,248,0.06), transparent 60%); opacity: 0; transition: opacity 0.35s; }
+    .signal-card:hover { border-color: rgba(56,189,248,0.4); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+    .signal-card:hover::before { opacity: 1; }
+    .signal-age { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(56,189,248,0.3); border-radius: 999px; padding: 3px 10px; background: rgba(56,189,248,0.07); display: inline-block; margin-bottom: 12px; }
+    .signal-card h4 { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: var(--text-white); margin-bottom: 10px; }
+    .signal-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.75; }
+
+    /* AFTER CARD */
+    .after-card { background: linear-gradient(145deg, rgba(8,20,45,0.9), rgba(4,12,28,0.95)); border: 1px solid var(--blue-border); border-radius: 24px; padding: 40px; position: relative; overflow: hidden; }
+    .after-card::before { content: ""; position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%); top: -120px; right: -80px; pointer-events: none; }
+    .after-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--text-white); margin-bottom: 16px; }
+    .after-card p { font-size: 0.95rem; color: var(--text-body); line-height: 1.85; margin-bottom: 16px; max-width: 680px; }
+    .after-card p:last-child { margin-bottom: 0; }
+
+    /* FAQ ACCORDION */
+    details.faq-item { background: rgba(8,20,45,0.6); border: 1px solid var(--blue-border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+    details.faq-item[open] { border-color: rgba(56,189,248,0.4); }
+    details.faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; list-style: none; padding: 22px 24px; font-weight: 600; font-size: 0.97rem; color: var(--text-white); user-select: none; }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    .faq-arrow { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.25); display: flex; align-items: center; justify-content: center; transition: transform 0.3s, background 0.2s; font-size: 0.8rem; color: var(--accent); }
+    details[open] .faq-arrow { transform: rotate(45deg); background: rgba(56,189,248,0.2); }
+    .faq-body { padding: 18px 24px 22px; font-size: 0.93rem; color: var(--text-body); line-height: 1.85; border-top: 1px solid var(--blue-border); }
+    .faq-body p { margin-bottom: 14px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+
+    /* CTA STRIP */
+    .cta-strip { background: linear-gradient(135deg, rgba(14,165,233,0.12), rgba(3,105,161,0.08)); border: 1px solid rgba(56,189,248,0.25); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    .cta-strip h3 { font-family: 'DM Serif Display', serif; font-size: 1.7rem; color: var(--text-white); margin-bottom: 6px; }
+    .cta-strip p { font-size: 0.93rem; color: var(--text-body); max-width: 440px; line-height: 1.7; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 999px; background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); color: #fff; font-weight: 600; font-size: 0.92rem; border: none; cursor: pointer; box-shadow: 0 4px 24px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.2); transition: all 0.3s; white-space: nowrap; flex-shrink: 0; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,165,233,0.5), 0 0 0 1px rgba(14,165,233,0.4); opacity: 1; }
+
+    /* FOOTER */
+    footer { background: rgba(2,8,18,0.95); border-top: 1px solid var(--blue-border); padding: 44px 0; text-align: center; }
+    footer p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 1.4rem; color: var(--text-white); margin-bottom: 10px; }
+    .footer-accent { display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; margin: 0 8px; opacity: 0.6; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    @media (max-width: 900px) {
+      .page-hero-inner, .two-col { grid-template-columns: 1fr; }
+      .signals-grid { grid-template-columns: 1fr; }
+      .page-title { font-size: 2.4rem; }
+      .section-title { font-size: 2rem; }
+      .cta-strip { flex-direction: column; align-items: flex-start; }
     }
-    
-    footer {
-      margin-top: 40px;
-      padding: 20px 0;
-      border-top: 1px solid rgba(148,163,184,0.3);
-      font-size: 0.85rem;
-      color: #94a3b8;
-      text-align: center;
+    @media (max-width: 640px) {
+      body { padding-top: 68px; }
+      .page-title { font-size: 2rem; }
+      .section { padding: 55px 0; }
+      .after-card, .cta-strip { padding: 24px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="index.html">&larr; Torna alla home</a>
-      <h1>Diagnosi Precoce</h1>
 
-      <img
-        src="diagnosi-precoce.jpg"
-        alt="Immagine di supporto sulla diagnosi precoce nello spettro autistico"
-        width="900"
-        loading="lazy"
-        style="margin-top:16px; width:100%; height:auto; border-radius:12px;"
-      >
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
 
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo-area">
+        <img src="image.jpeg.jpg" alt="Logo Centro BluMente" class="logo-img">
+        <div>
+          <div class="brand-name">Centro BluMente</div>
+          <div class="brand-sub">Diagnosi · Supporto · Autismo</div>
+        </div>
+      </div>
+      <a href="index.html" class="back-link">← Torna alla home</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div>
+        <div class="hero-eyebrow reveal">
+          <span class="dot"></span> Percorso diagnostico
+        </div>
+        <h1 class="page-title reveal reveal-delay-1">
+          Diagnosi<br><em>Precoce</em>
+        </h1>
+        <span class="hero-line reveal reveal-delay-1"></span>
+        <p class="page-lead reveal reveal-delay-2">
+          Valutazioni specialistiche per individuare in modo tempestivo i segnali
+          di un disturbo dello spettro autistico e avviare percorsi di intervento
+          mirati già nei primi anni di vita.
+        </p>
+      </div>
+      <div class="hero-image reveal reveal-delay-2">
+        <img src="diagnosi-precoce.jpg" alt="Supporto alla diagnosi precoce nello spettro autistico" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PERCHÉ È IMPORTANTE -->
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div class="reveal">
+        <div class="section-tag">Importanza</div>
+        <h2 class="section-title">Perché è importante<br><em>intervenire presto</em></h2>
+      </div>
+      <div class="content-block reveal reveal-delay-1">
+        <p>
+          La diagnosi clinica dello spettro autistico si basa sull'osservazione del comportamento
+          e sulla raccolta accurata dei dati anamnestici, perché non esistono test biologici in grado
+          di individuare direttamente la condizione.
+        </p>
+        <p>
+          La valutazione e il trattamento precoci <strong>cambiano la prognosi a lungo termine</strong>:
+          un intervento avviato presto aumenta significativamente le probabilità di sviluppare
+          autonomia comunicativa e sociale, mentre un intervento tardivo riduce le possibilità di
+          piena espressione delle potenzialità di ogni bambino.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COSA COMPRENDE -->
+<section class="section bg-subtle">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Il percorso</div>
+      <h2 class="section-title">Cosa comprende<br><em>la valutazione</em></h2>
+      <p class="section-desc">Un percorso multidisciplinare strutturato, costruito attorno al bambino e alla sua famiglia.</p>
+    </div>
+    <div class="info-points">
+      <div class="info-point reveal">
+        <div class="info-point-icon">🗣️</div>
+        <div class="info-point-text">
+          <strong>Colloqui con i genitori</strong>
+          <span>Raccolta accurata della storia di sviluppo, delle tappe motorie e linguistiche e delle preoccupazioni emerse nei primi anni di vita.</span>
+        </div>
+      </div>
+      <div class="info-point reveal reveal-delay-1">
+        <div class="info-point-icon">👁️</div>
+        <div class="info-point-text">
+          <strong>Osservazione diretta</strong>
+          <span>Attenzione alla comunicazione, all'interazione sociale, al gioco, alla presenza di stereotipie e alla risposta ai cambiamenti.</span>
+        </div>
+      </div>
+      <div class="info-point reveal reveal-delay-2">
+        <div class="info-point-icon">📋</div>
+        <div class="info-point-text">
+          <strong>Strumenti psicometrici standardizzati</strong>
+          <span>Interviste strutturate con neuropsichiatra infantile e psicologo per valutare il livello di sviluppo e il funzionamento globale in modo oggettivo.</span>
+        </div>
+      </div>
+      <div class="info-point reveal reveal-delay-3">
+        <div class="info-point-icon">🔬</div>
+        <div class="info-point-text">
+          <strong>Esami medici di approfondimento</strong>
+          <span>Quando indicati: valutazione dell'udito, EEG e accertamenti genetici o metabolici per escludere altre condizioni associate.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SEGNALI PRECOCI -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Indicatori di rischio</div>
+      <h2 class="section-title">Segnali precoci<br><em>da osservare</em></h2>
+      <p class="section-desc">Alcuni comportamenti nei primi anni possono rendere opportuna una valutazione specialistica.</p>
+    </div>
+    <div class="signals-grid">
+      <div class="signal-card reveal">
+        <span class="signal-age">Primi mesi di vita</span>
+        <h4>Segnali primissimi</h4>
+        <p>Assenza del sorriso sociale, pianti poco frequenti, scarso contatto oculare e difficoltà nel dialogo tonico con la figura di riferimento.</p>
+      </div>
+      <div class="signal-card reveal reveal-delay-1">
+        <span class="signal-age">6–12 mesi</span>
+        <h4>Primo semestre</h4>
+        <p>Assenza di reazioni di angoscia di fronte agli estranei, mancanza di lallazione e di risposte anticipatorie come girare la testa o tendere le braccia.</p>
+      </div>
+      <div class="signal-card reveal reveal-delay-2">
+        <span class="signal-age">12–24 mesi</span>
+        <h4>Secondo anno</h4>
+        <p>Comparsa di stereotipie motorie come dondolarsi o camminare sulle punte, assenza del gesto di indicare per mostrare e forte opposizione ai cambiamenti di routine.</p>
+      </div>
+      <div class="signal-card reveal reveal-delay-3">
+        <span class="signal-age">Area comunicativa</span>
+        <h4>Linguaggio e socialità</h4>
+        <p>Scarso interesse per gli altri bambini, uso atipico dei giochi, linguaggio assente o non adeguato all'età, ecolalia, rigidità negli interessi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DOPO LA DIAGNOSI -->
+<section class="section bg-subtle">
+  <div class="container">
+    <div class="after-card reveal">
+      <div class="section-tag" style="margin-bottom:20px;">Cosa succede dopo</div>
+      <h3>Dopo la diagnosi</h3>
       <p>
-        Valutazioni specialistiche per individuare in modo tempestivo i segnali di un disturbo
-        dello spettro autistico e avviare percorsi di intervento mirati già nei primi anni di vita.
+        Al termine del percorso diagnostico viene offerta una restituzione chiara alla famiglia,
+        spiegando il significato del quadro clinico, le prospettive evolutive e le priorità di intervento
+        nelle aree chiave della comunicazione, della socializzazione e del comportamento adattivo.
+      </p>
+      <p>
+        La presa in carico prevede un <strong style="color:var(--text-white)">progetto individualizzato</strong>,
+        costruito sui punti di forza e di debolezza del bambino, il coinvolgimento attivo dei genitori,
+        il lavoro di rete con la scuola e la programmazione di rivalutazioni periodiche
+        per aggiornare il piano educativo.
       </p>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main class="container">
-    <h2>Perché è importante la diagnosi precoce</h2>
-    <p>
-      La diagnosi clinica dello spettro autistico si basa sull'osservazione del comportamento
-      e sulla raccolta accurata dei dati anamnestici, perché non esistono test biologici in grado
-      di individuare direttamente la sindrome autistica.
-    </p>
-    <p>
-      La valutazione e il trattamento precoci cambiano la prognosi a lungo termine:
-      un intervento avviato presto aumenta le probabilità di successo, mentre in assenza
-      di terapia o in caso di intervento tardivo le possibilità di una vita autonoma si riducono.
-    </p>
+<hr class="divider">
 
-    <h2>Cosa comprende la valutazione</h2>
-    <ul>
-      <li>
-        Colloqui iniziali con i genitori per raccogliere la storia di sviluppo, le tappe motorie
-        e linguistiche e le eventuali preoccupazioni emerse nei primi anni di vita.
-      </li>
-      <li>
-        Osservazione diretta del bambino, con particolare attenzione alla comunicazione,
-        all'interazione sociale, al gioco, alla presenza di stereotipie e alla risposta ai cambiamenti.
-      </li>
-      <li>
-        Utilizzo di strumenti psicometrici e interviste strutturate da parte di neuropsichiatra infantile
-        e psicologo per valutare il livello di sviluppo e il funzionamento globale.
-      </li>
-      <li>
-        Esami strumentali e medici di approfondimento, quando indicati, come valutazione dell'udito,
-        EEG e accertamenti genetici o metabolici per escludere altre condizioni associate.
-      </li>
-    </ul>
-
-    <h2>Segnali precoci da osservare</h2>
-    <p>
-      Alcuni segnali nei primi anni di vita possono rappresentare indicatori di rischio e rendere
-      opportuna una valutazione specialistica.
-    </p>
-    <ul>
-      <li>
-        Nei primi mesi di vita: assenza del sorriso sociale, pianti poco frequenti, scarso contatto
-        oculare e difficoltà nel dialogo tonico con la figura di riferimento.
-      </li>
-      <li>
-        Tra i sei e i dodici mesi: assenza di reazioni di angoscia di fronte agli estranei,
-        mancanza di lallazione e di risposte anticipatorie come girare la testa o tendere le braccia.
-      </li>
-      <li>
-        Tra i dodici e i ventiquattro mesi: comparsa di stereotipie motorie come dondolarsi
-        o camminare sulle punte, assenza del gesto di indicare per mostrare e forte opposizione
-        ai cambiamenti di routine.
-      </li>
-      <li>
-        Scarso interesse per gli altri bambini, uso atipico dei giochi, linguaggio assente
-        o non adeguato all'età, ecolalia, rigidità negli interessi e necessità di ripetere sempre
-        le stesse azioni o percorsi.
-      </li>
-    </ul>
-
-    <h2>Dopo la diagnosi</h2>
-    <p>
-      Al termine del percorso diagnostico viene offerta una restituzione chiara alla famiglia,
-      spiegando il significato del quadro clinico, le prospettive evolutive e le priorità di intervento
-      nelle aree chiave della comunicazione, della socializzazione e del comportamento adattivo.
-    </p>
-    <p>
-      La presa in carico prevede un progetto individualizzato, costruito sui punti di forza
-      e di debolezza del bambino, il coinvolgimento attivo dei genitori, il lavoro di rete con la scuola
-      e la programmazione di rivalutazioni periodiche per aggiornare il piano educativo.
-    </p>
-
-    <section style="margin-top: 40px; width: 100%;">
-      <details>
-        <summary>Informazioni aggiuntive (clicca per espandere)</summary>
-        <div style="margin-top:15px; font-size:1rem; color:#cbd5e1; line-height:1.7;">
-          <p>
-            La valutazione comprende un'attenta anamnesi, l'intervista ai genitori e
-            l'osservazione del bambino in situazioni strutturate e non strutturate, così da
-            cogliere il modo in cui comunica, gioca, reagisce ai cambiamenti e ricerca
-            il contatto con l'altro.
-          </p>
-          <p>
-            Gli strumenti psicometrici e le interviste standardizzate permettono di descrivere
-            in modo più oggettivo il profilo di sviluppo, integrando le osservazioni cliniche
-            con dati confrontabili con i parametri di riferimento disponibili.
-          </p>
-          <p>
-            Un intervento precoce, intensivo e cucito su misura, che consideri sia le difficoltà
-            sia le risorse del bambino, offre maggiori possibilità di sviluppare competenze
-            comunicative, sociali e adattive e di preparare al meglio il passaggio alle fasi
-            successive della crescita.
-          </p>
-          <p>
-            La famiglia non è lasciata sola: il centro rimane un punto di riferimento nel tempo
-            per verifiche, aggiornamenti del progetto, consulenze su aspetti scolastici e
-            orientamento tra i diversi servizi sanitari, riabilitativi ed educativi del territorio.
-          </p>
+<!-- INFORMAZIONI AGGIUNTIVE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Approfondimento</div>
+      <h2 class="section-title">Ulteriori<br><em>informazioni</em></h2>
+    </div>
+    <div class="reveal">
+      <details class="faq-item">
+        <summary>
+          Informazioni aggiuntive sul percorso diagnostico
+          <span class="faq-arrow">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>La valutazione comprende un'attenta anamnesi, l'intervista ai genitori e l'osservazione del bambino in situazioni strutturate e non strutturate, così da cogliere il modo in cui comunica, gioca, reagisce ai cambiamenti e ricerca il contatto con l'altro.</p>
+          <p>Gli strumenti psicometrici e le interviste standardizzate permettono di descrivere in modo più oggettivo il profilo di sviluppo, integrando le osservazioni cliniche con dati confrontabili con i parametri di riferimento disponibili.</p>
+          <p>Un intervento precoce, intensivo e cucito su misura, che consideri sia le difficoltà sia le risorse del bambino, offre maggiori possibilità di sviluppare competenze comunicative, sociali e adattive e di preparare al meglio il passaggio alle fasi successive della crescita.</p>
+          <p>La famiglia non è lasciata sola: il centro rimane un punto di riferimento nel tempo per verifiche, aggiornamenti del progetto, consulenze su aspetti scolastici e orientamento tra i diversi servizi sanitari, riabilitativi ed educativi del territorio.</p>
         </div>
       </details>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      &copy; 2026 Centro BluMente · Diagnosi precoce nello spettro autistico
     </div>
-  </footer>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CTA -->
+<section class="section bg-subtle">
+  <div class="container">
+    <div class="cta-strip reveal">
+      <div>
+        <h3>Prenota una valutazione</h3>
+        <p>Il nostro team è pronto ad accoglierti e guidarti nel percorso più adatto al tuo bambino.</p>
+      </div>
+      <a href="index.html#contatti" class="btn-primary">Contattaci ora →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">Centro BluMente</div>
+    <p>© 2026 Centro BluMente. Tutti i diritti riservati.<span class="footer-accent"></span>Cinisello Balsamo (MI)</p>
+    <p style="margin-top:8px; font-size:0.75rem; opacity:0.45;">Il blu è il colore della consapevolezza sull'autismo — Giornata Mondiale, 2 Aprile.</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+  });
+</script>
+
 </body>
 </html>
